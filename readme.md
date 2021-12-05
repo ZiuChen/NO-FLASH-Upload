@@ -1,61 +1,38 @@
-# This is a project help you build userscript with webpack
+# 免Flash文件上传 (NO FLASH UPLOAD)
 
-Just [use this git repo as a template](https://github.com/Trim21/webpack-userscript-template/generate).
+一个北京交通大学课程平台附件上传脚本。
 
-[中文说明](./readme.cn.md)
+## :rocket: 初衷
 
-## dev
+由于课程平台使用的`THEOL清华教育在线`系统版本过旧，其基于`Flash`的附件上传功能不再在主流浏览器上被支持，故编写此脚本以实现基本的附件上传功能以方便自己与身边同学。
 
-1. Allow Tampermonkey's access to local file URIs [tampermonkey/faq](https://tampermonkey.net/faq.php?ext=dhdg#Q204)
-2. install deps with `npm i` or `npm ci`.
-3. `npm run dev` to start your development.
-4. open `webpack-userscript-template/dist/index.dev.user.js` in your Chrome and install it with your userscript manager.
+本脚本于2021年9月7日发布0.1版本，随着不断更新迭代，目前已在[*Greasy Fork*平台](https://greasyfork.org/zh-CN/scripts/432056)被安装550余次，在吸取了同学们的反馈与建议后，已经发展出一些新功能如：作业信息显示增强、作业截止日期汇总、链接快速跳转等功能。
 
-this userscript's meta contains `// @require file://path/to/dist/index.debug.user.js`,
-which take [src/index.ts](./src/index.ts) as entry point.
+由于个人编码能力有限，为了更方便管理代码、方便想参与维护的同学开发，现将代码提交至Github。
 
-every times you edit your metadata, you'll have to install it again,
-because Tampermonkey don't read it from dist every times.
+## :building_construction: 开发
 
-5. edit [src/index.ts](./src/index.ts), you can even import css or less files. You can use scss if you like.
-6. go wo <https://www.example.com/> and open console, you'll see it's working.
+有一定`JavaScript`基础即可参与脚本开发，
 
-livereload is default enabled, use [this chrome extension](https://chrome.google.com/webstore/detail/jnihajbhpnppcggbcgedagnkighmdlei)
+    1.  *Fork* 本仓库。
+    2.  使用`npm i`安装依赖。
+    3.  使用`npm run dev`来进行自动编译。
+    4.  在`Tampermonkey`脚本管理器中新建脚本，将`dist`目录下生成的`index.dev.user.js`复制到其中并保存。
+  5. 编辑`src/index.js`进行开发。
 
-## TypeScript
 
-use typescript as normal, see [example](src/index.ts)
+## :heart: 感谢捐助
 
-## dependencies
+*柒：`￥1.00`
+*秸：`￥1.00`
+Q*t：`￥1.00`
+*纸：`￥1.00`
+h*z：`￥1.00`
+*方：`￥1.00`
+## :paperclip: 相关链接
 
-There are two ways to using a package on npm.
+[脚本发布页 *(Greasy Fork)*](https://greasyfork.org/zh-CN/scripts/432056)
 
-### UserScript way
+[webpack-userscript-template](https://github.com/Trim21/webpack-userscript-template)
 
-like original UserScript way, you will need to add them to your [user script metadata's require section](./config/metadata.cjs#L13-L17) , and exclude them in [config/webpack.config.base.cjs](./config/webpack.config.base.cjs#L18-L20)
-
-### Webpack way
-
-just install a package and import it in your js file. webpack will pack them with in your final production js file.
-
-## build
-
-```bash
-npm run build
-```
-
-`dist/index.prod.user.js` is the finally script. you can manually copy it to greaskfork for deploy.
-
-### minify
-
-There is a [limit in greasyfork](https://greasyfork.org/en/help/code-rules), your code must not be obfuscated or minified.
-
-## auto deploy
-
-[github actions](./.github/workflows/deploy.yaml#L36) will deploy production userscript to gh-pages branch.
-
-[example](https://github.com/Trim21/webpack-userscript-template/tree/gh-pages)
-
-[deployed](https://trim21.github.io/webpack-userscript-template/)
-
-You can auto use greasyfork's auto update function.
+![捐助二维码](https://gitee.com/ziuc/utool-filebed/raw/master/Buy%20me%20a%20coffee.png)
