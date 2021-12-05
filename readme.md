@@ -14,21 +14,21 @@
 
 有一定`JavaScript`基础即可参与脚本开发，
 
-    1.  *Fork* 本仓库。
-    2.  使用`npm i`安装依赖。
-    3.  使用`npm run dev`来进行自动编译。
-    4.  在`Tampermonkey`脚本管理器中新建脚本，将`dist`目录下生成的`index.dev.user.js`复制到其中并保存。
+  1.  *Fork* 本仓库。
+  2.  使用`npm i`安装依赖。
+  3.  使用`npm run dev`来进行自动编译。
+  4.  在`Tampermonkey`脚本管理器中新建脚本，将`dist`目录下生成的`index.dev.user.js`复制到其中并保存。
   5. 编辑`src/index.js`进行开发。
 
 
 ## :heart: 感谢捐助
 
-*柒：`￥1.00`
-*秸：`￥1.00`
-Q*t：`￥1.00`
-*纸：`￥1.00`
-h*z：`￥1.00`
-*方：`￥1.00`
+\*柒：`￥1.00`
+\*秸：`￥1.00`
+Q\*t：`￥1.00`
+\*纸：`￥1.00`
+h\*z：`￥1.00`
+\*方：`￥1.00`
 ## :paperclip: 相关链接
 
 [脚本发布页 *(Greasy Fork)*](https://greasyfork.org/zh-CN/scripts/432056)
