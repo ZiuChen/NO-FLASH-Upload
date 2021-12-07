@@ -1,0 +1,362 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 108px 0 36px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+html,
+body {
+    background: #FFF;
+    font-family: "Arial", "Arial Narrow", "Verdana", "Microsoft Yahei", sans-serif;
+    letter-spacing: 1px;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.top {
+    position: relative;
+    margin-top: -108px;
+    height: 108px;
+    z-index: 999;
+    background: url(../image/eol_frame_top_bg.jpg) left top repeat-x;
+}
+
+.side {
+    position: relative;
+    text-align: left;
+    height: 100%;
+    background: url(../image/eol_frame_side_bg.jpg) right top repeat-y;
+    width: 213px;
+    float: left;
+    margin-right: 0 !important;
+    margin-right: -3px;
+    overflow: hidden;
+    ;
+}
+
+.sidebar {
+    height: 100%;
+    width: 203px;
+    overflow: auto;
+}
+
+.flexbar {
+    width: 9px;
+    height: 57px;
+    position: absolute;
+    left: 204px;
+    top: 45%;
+    background: url(../image/eol_frame_flexbar_hidde.jpg) no-repeat;
+    cursor: pointer;
+}
+
+.flexbarshow {
+    left: 0;
+    background: url(../image/eol_frame_flexbar_show.jpg) no-repeat;
+}
+
+.main {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    top: 0;
+    z-index: 2;
+}
+
+.main iframe {
+    height: 100%;
+    width: 100%;
+    background: Transparent;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.bottom {
+    position: relative;
+    height: 36px;
+    background: url(../image/eol_frame_footer_bg.jpg) left top repeat-x;
+    clear: both;
+    overflow: hidden;
+}
+
+.header {
+    background: url(../image/eol_frame_top_right.jpg) top right no-repeat;
+}
+
+.logo {
+    background: url(../image/eol_frame_top_logo.jpg) left top no-repeat;
+    height: 108px;
+    position: relative;
+}
+
+.jpklogo {
+    background: url(../image/eol_frame_jpktop_logo.jpg) left top no-repeat;
+}
+
+.date {
+    position: absolute;
+    left: 150px;
+    top: 80px;
+    font-size: 12px;
+    color: #FFF;
+    height: 25px;
+    _zoom: 1
+}
+
+.topright {
+    padding-right: 35px;
+}
+
+.ctrl {
+    height: 74px;
+    text-align: right;
+    float: right;
+}
+
+.ctrl ul {
+    line-height: 34px;
+    font-size: 1px;
+    padding-top: 22px;
+}
+
+.ctrl ul li {
+    display: -moz-inline-stack;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    height: 38px;
+    line-height: 38px;
+}
+
+.ctrl ul li a {
+    background: url(../image/eol_frame_ctrl_ico1.png) left top no-repeat;
+    float: left;
+    font-size: 12px;
+    height: 38px;
+    letter-spacing: 2px;
+    color: #FFF;
+    padding-left: 33px;
+    text-decoration: none;
+}
+
+.ctrl ul li a:hover {}
+
+.ctrl ul li.help a {
+    background: url(../image/eol_frame_ctrl_ico2.png) left top no-repeat;
+}
+
+.ctrl ul li.exit a {
+    background: url(../image/eol_frame_ctrl_ico3.png) left top no-repeat;
+}
+
+.menu,
+.mianmenu {
+    height: 33px;
+    text-align: right;
+    clear: both;
+    position: absolute;
+    top: 73px;
+    right: 25px;
+    z-index: 5;
+}
+
+.menu ul {
+    line-height: 33px;
+    font-size: 1px;
+}
+
+.menu ul li {
+    display: -moz-inline-stack;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    height: 33px;
+    line-height: 33px;
+    padding-left: 15px;
+    background: url(../image/eol_frame_menu_l.jpg) left top no-repeat;
+}
+
+.menu ul li a {
+    font-size: 13px;
+    display: block;
+    letter-spacing: 2px;
+    color: #000;
+    background: url(../image/eol_frame_menu_r.jpg) right top no-repeat;
+    float: left;
+    text-decoration: none;
+    padding-right: 15px
+}
+
+.menu ul li a:hover {}
+
+.menu ul li.cur {
+    background: url(../image/eol_frame_menucur_l.jpg) left bottom no-repeat;
+}
+
+.menu ul li.cur a {
+    display: block;
+    background: url(../image/eol_frame_menucur_r.jpg) right bottom no-repeat;
+    color: #FFF;
+}
+
+.notepad {
+    width: 176px;
+    margin: 0 auto;
+    padding-top: 10px;
+    border-bottom: 1px solid #FFF;
+}
+
+.notepad a {
+    display: block;
+    padding-bottom: 8px;
+    height: 20px;
+    border-bottom: 1px solid #B3B3B3;
+    background: url(../image/eol_lessonleft_note.jpg) center no-repeat;
+    font-size: 1px;
+    text-decoration: none;
+    color: #EEE;
+}
+
+.leftmenu {
+    width: 176px;
+    margin: 0 auto;
+    padding-top: 10px
+}
+
+.leftmenu ul {}
+
+.leftmenu li {
+    padding-bottom: 2px
+}
+
+.lmsz {
+    background: none !important;
+}
+
+.lmsz span {
+    background: url(../image/ico_set.gif) no-repeat 0 0;
+    padding-left: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #454E5D
+}
+
+.leftmenu a {
+    background: url(../image/eol_frame_leftmenu_bg.jpg) left top no-repeat;
+    display: block;
+    height: 32px;
+    line-height: 32px;
+    font-size: 13px;
+    color: #000;
+    padding-left: 45px;
+    text-decoration: none;
+}
+
+.leftmenu a.cur,
+.leftmenu a.le1cur {
+    background: url(../image/eol_frame_leftmenu_curbg.jpg) left top no-repeat;
+    height: 37px;
+    color: #FFF;
+}
+
+.leftmenu a.le2cur {
+    color: #d55418;
+    font-weight: bold;
+}
+
+.leftmenu ul ul {
+    display: none;
+    background: #C0E0F1;
+    padding: 0 5px
+}
+
+.leftmenu ul ul a {
+    background: url(../image/eol_coursehome_coin3.gif) no-repeat 33px 12px;
+    border-bottom: 1px solid #DFF0F9;
+    height: auto;
+    line-height: 150%;
+    padding-top: 4px;
+    padding-bottom: 4px
+}
+
+.leftmenu ul ul a.cur {
+    color: #D55418;
+    height: auto;
+    line-height: 150%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background: url(../image/eol_coursehome_coin3.gif) no-repeat 33px 12px;
+}
+
+.leftmenu ul ul ul a {
+    background: none;
+}
+
+.leftmenu ul ul ul a.cur {
+    background: none;
+}
+
+.leftmenu ul ul ul {
+    padding: 0 0 0 5px;
+    background: #bad8f0;
+}
+
+.leftmenu a.le3cur {
+    font-weight: bold;
+}
+
+.jpkt1 {
+    background: url(../image/eol_frame_jpk_left_t1.jpg) 5px center no-repeat;
+    height: 30px;
+}
+
+.jpkt2 {
+    background: url(../image/eol_frame_jpk_left_t2.jpg) 5px center no-repeat;
+    height: 30px;
+}
+
+.jpkt1 h2,
+.jpkt2 h2 {
+    display: none;
+}
+
+.recycle {
+    position: absolute;
+    width: 178px;
+    height: 47px;
+    left: 10px;
+    bottom: 5px;
+}
+
+.recycle a {
+    display: block;
+    height: 47px;
+    background: url(../image/eol_frame_trash.jpg) no-repeat;
+    font-size: 1px;
+    color: #FFF;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 12px;
+    line-height: 36px;
+    color: #FFF;
+}
+
+.copyright a {
+    color: #FFF;
+}
