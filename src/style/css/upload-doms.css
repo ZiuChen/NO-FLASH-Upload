@@ -51,3 +51,27 @@
     color: #c0c1bb;
     cursor: default;
 }
+
+#uploadTrigger {
+    cursor: pointer;
+    padding-top: 3.5px;
+    padding-bottom: 3.5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: #c6f062;
+    border: 2px solid;
+}
+
+#emptyTrigger {
+    cursor: pointer;
+    padding-top: 3.5px;
+    padding-bottom: 3.5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    background-color: #c6f062;
+    border: 2px solid;
+}
