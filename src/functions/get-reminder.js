@@ -11,14 +11,13 @@ function dateString2Object(dateString, toFormatted) {
     else return new Date(year, month - 1, day, 23, 59, 59);
 }
 
-let appendFlag = 0;
-
 function getReminder() {
     // 由于iframe结构的网页会多次发送请求 避免每次请求都触发一次getReminder()
-    if (appendFlag) {
+    // appendFlag不可取：访问其他页面也会发送多余请求
+    if (location.href.indexOf('welcomepage/student/index.jsp') == -1) {
+        // 只发welcome页的一次请求
         return
     }
-    appendFlag = 1;
     let url = 'http://cc.bjtu.edu.cn:81/meol/welcomepage/student/interaction_reminder.jsp?';
     let xReq = new XMLHttpRequest();
     xReq.responseType = "document";
