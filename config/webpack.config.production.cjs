@@ -5,15 +5,15 @@ const metadata = require('./metadata.cjs')
 const webpackConfig = require('./webpack.config.base.cjs')
 
 const cfg = merge(webpackConfig, {
-  mode: 'production',
-  output: {
-    filename: 'index.prod.user.js',
-  },
-  plugins: [
-    new UserScriptMetaDataPlugin({
-      metadata,
-    }),
-  ],
+    mode: 'production',
+    output: {
+        filename: 'index.prod.user.js',
+    },
+    plugins: [
+        new UserScriptMetaDataPlugin({
+            metadata,
+        }),
+    ],
 })
 
 module.exports = cfg
