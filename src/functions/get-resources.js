@@ -1,3 +1,5 @@
+import PopNotify from "../js/PopNotify"
+
 function getResources() {
     if (location.href.indexOf('listview.jsp?') == -1) {
         return
@@ -15,9 +17,9 @@ function getResources() {
             fileLinks.forEach(value => {
                 window.open(value)
             })
-        } else alert('当前目录下无文件')
-
-    })
+        } else PopNotify.show("警告", "当前目录下无文件", "warn")
+    });
 }
+
 
 export default getResources

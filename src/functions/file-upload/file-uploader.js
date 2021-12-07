@@ -1,4 +1,5 @@
 import uploadDoms from "./upload-doms";
+import PopNotify from "../../js/PopNotify"
 
 function fileUploader() {
     if ($("span:contains('查看作业任务')").length == 0) {
@@ -253,7 +254,7 @@ function fileUploader() {
                     $('#fileTh' + index).css('font-color', '#e7e8e0');
 
                     clipboard.on('success', function(evt) {
-                        alert('【' + $(evt.trigger).text() + '】文件链接已复制到剪切板')
+                        PopNotify.show("成功", `【${$(evt.trigger).text()}】 文件链接已复制到剪切板`, "success");
                         evt.clearSelection();
                     });
 
@@ -310,7 +311,7 @@ function fileUploader() {
                 sizeTypeTMP.size = (item.size / 1048576).toFixed(2);
                 sizeTypeTMP.type = 'MB';
             } else if (item.size > 1073741824) {
-                alert('你选择了大于1GB的文件，服务器存储资源有限，建议选择其他传输方式。');
+                PopNotify.show("警告", "你选择了大于1GB的文件，服务器存储资源有限，建议选择其他传输方式。", "warn");
                 sizeTypeTMP.size = (item.size / 1073741824).toFixed(2);
                 sizeTypeTMP.type = 'GB';
             }
