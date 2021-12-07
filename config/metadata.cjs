@@ -13,7 +13,7 @@ module.exports = {
     require: [
         `https://cdn.jsdelivr.net/npm/jquery@${dependencies.jquery}/dist/jquery.min.js`,
         `https://cdn.bootcdn.net/ajax/libs/jquery/1.7.2/jquery.min.js`,
-        `https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js`,
+        `https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.8/clipboard.min.js`
     ],
     'icon': 'https://gitee.com/ziuc/utool-filebed/raw/master/20210514-231824-0795.png',
     'license': 'MIT',
