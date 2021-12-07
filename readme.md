@@ -34,4 +34,4 @@ h\*z：`￥1.00`
 
 [webpack-userscript-template](https://github.com/Trim21/webpack-userscript-template)
 
-![捐助二维码](./content/Buy%20me%20a%20coffee.png)
+[捐助二维码](https://gitee.com/ziuc/utool-filebed/raw/master/Buy%20me%20a%20coffee.png)
