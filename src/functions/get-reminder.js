@@ -18,7 +18,7 @@ function getReminder() {
         // 只发welcome页的一次请求
         return
     }
-    let url = 'http://cc.bjtu.edu.cn:81/meol/welcomepage/student/interaction_reminder.jsp?';
+    let url = 'http://cc.bjtu.edu.cn:81/meol/welcomepage/student/interaction_reminder.jsp';
     let xReq = new XMLHttpRequest();
     xReq.responseType = "document";
     xReq.open('GET', url, true); // 注意，此处请求应当为异步请求 用以接收text/html数据

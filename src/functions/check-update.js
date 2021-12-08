@@ -1,4 +1,4 @@
-import sendRequest from "./send-request";
+import sendRequest from "./common/send-request";
 import PopNotify from "../js/PopNotify"
 import PopNotifyCSS from "../style/css/PopNotify.css";
 const { version } = require('../../package.json')

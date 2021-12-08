@@ -6,11 +6,13 @@ import getReminder from "./functions/get-reminder";
 import getResources from "./functions/get-resources";
 import judgeOnceSubmit from "./functions/only-once-commit";
 import checkUpdate from "./functions/check-update";
+import getMainpageInfo from "./functions/send-request/main-page"
 
 apppendTags();
 fileUploader();
-getReminder();
+// getReminder();
 getResources();
 getHomeworkInfo();
 judgeOnceSubmit();
 checkUpdate();
+getMainpageInfo();
