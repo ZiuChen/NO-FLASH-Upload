@@ -29,14 +29,14 @@ body {
     margin-top: -108px;
     height: 108px;
     z-index: 999;
-    background: url(../image/eol_frame_top_bg.jpg) left top repeat-x;
+    /* background: url(../image/eol_frame_top_bg.jpg) left top repeat-x; */
 }
 
 .side {
     position: relative;
     text-align: left;
     height: 100%;
-    background: url(../image/eol_frame_side_bg.jpg) right top repeat-y;
+    /* background: url(../image/eol_frame_side_bg.jpg) right top repeat-y; */
     width: 213px;
     float: left;
     margin-right: 0 !important;
@@ -57,13 +57,13 @@ body {
     position: absolute;
     left: 204px;
     top: 45%;
-    background: url(../image/eol_frame_flexbar_hidde.jpg) no-repeat;
+    /* background: url(../image/eol_frame_flexbar_hidde.jpg) no-repeat; */
     cursor: pointer;
 }
 
 .flexbarshow {
     left: 0;
-    background: url(../image/eol_frame_flexbar_show.jpg) no-repeat;
+    /* background: url(../image/eol_frame_flexbar_show.jpg) no-repeat; */
 }
 
 .main {
@@ -86,23 +86,23 @@ body {
 .bottom {
     position: relative;
     height: 36px;
-    background: url(../image/eol_frame_footer_bg.jpg) left top repeat-x;
+    /* background: url(../image/eol_frame_footer_bg.jpg) left top repeat-x; */
     clear: both;
     overflow: hidden;
 }
 
 .header {
-    background: url(../image/eol_frame_top_right.jpg) top right no-repeat;
+    /* background: url(../image/eol_frame_top_right.jpg) top right no-repeat; */
 }
 
 .logo {
-    background: url(../image/eol_frame_top_logo.jpg) left top no-repeat;
+    /* background: url(../image/eol_frame_top_logo.jpg) left top no-repeat; */
     height: 108px;
     position: relative;
 }
 
 .jpklogo {
-    background: url(../image/eol_frame_jpktop_logo.jpg) left top no-repeat;
+    /* background: url(../image/eol_frame_jpktop_logo.jpg) left top no-repeat; */
 }
 
 .date {
@@ -141,7 +141,7 @@ body {
 }
 
 .ctrl ul li a {
-    background: url(../image/eol_frame_ctrl_ico1.png) left top no-repeat;
+    /* background: url(../image/eol_frame_ctrl_ico1.png) left top no-repeat; */
     float: left;
     font-size: 12px;
     height: 38px;
@@ -154,11 +154,11 @@ body {
 .ctrl ul li a:hover {}
 
 .ctrl ul li.help a {
-    background: url(../image/eol_frame_ctrl_ico2.png) left top no-repeat;
+    /* background: url(../image/eol_frame_ctrl_ico2.png) left top no-repeat; */
 }
 
 .ctrl ul li.exit a {
-    background: url(../image/eol_frame_ctrl_ico3.png) left top no-repeat;
+    /* background: url(../image/eol_frame_ctrl_ico3.png) left top no-repeat; */
 }
 
 .menu,
@@ -185,7 +185,7 @@ body {
     height: 33px;
     line-height: 33px;
     padding-left: 15px;
-    background: url(../image/eol_frame_menu_l.jpg) left top no-repeat;
+    /* background: url(../image/eol_frame_menu_l.jpg) left top no-repeat; */
 }
 
 .menu ul li a {
@@ -193,7 +193,7 @@ body {
     display: block;
     letter-spacing: 2px;
     color: #000;
-    background: url(../image/eol_frame_menu_r.jpg) right top no-repeat;
+    /* background: url(../image/eol_frame_menu_r.jpg) right top no-repeat; */
     float: left;
     text-decoration: none;
     padding-right: 15px
@@ -202,12 +202,12 @@ body {
 .menu ul li a:hover {}
 
 .menu ul li.cur {
-    background: url(../image/eol_frame_menucur_l.jpg) left bottom no-repeat;
+    /* background: url(../image/eol_frame_menucur_l.jpg) left bottom no-repeat; */
 }
 
 .menu ul li.cur a {
     display: block;
-    background: url(../image/eol_frame_menucur_r.jpg) right bottom no-repeat;
+    /* background: url(../image/eol_frame_menucur_r.jpg) right bottom no-repeat; */
     color: #FFF;
 }
 
@@ -223,7 +223,7 @@ body {
     padding-bottom: 8px;
     height: 20px;
     border-bottom: 1px solid #B3B3B3;
-    background: url(../image/eol_lessonleft_note.jpg) center no-repeat;
+    /* background: url(../image/eol_lessonleft_note.jpg) center no-repeat; */
     font-size: 1px;
     text-decoration: none;
     color: #EEE;
@@ -246,7 +246,7 @@ body {
 }
 
 .lmsz span {
-    background: url(../image/ico_set.gif) no-repeat 0 0;
+    /* background: url(../image/ico_set.gif) no-repeat 0 0; */
     padding-left: 20px;
     font-size: 14px;
     font-weight: bold;
@@ -254,7 +254,7 @@ body {
 }
 
 .leftmenu a {
-    background: url(../image/eol_frame_leftmenu_bg.jpg) left top no-repeat;
+    /* background: url(../image/eol_frame_leftmenu_bg.jpg) left top no-repeat; */
     display: block;
     height: 32px;
     line-height: 32px;
@@ -266,7 +266,7 @@ body {
 
 .leftmenu a.cur,
 .leftmenu a.le1cur {
-    background: url(../image/eol_frame_leftmenu_curbg.jpg) left top no-repeat;
+    /* background: url(../image/eol_frame_leftmenu_curbg.jpg) left top no-repeat; */
     height: 37px;
     color: #FFF;
 }
@@ -283,7 +283,7 @@ body {
 }
 
 .leftmenu ul ul a {
-    background: url(../image/eol_coursehome_coin3.gif) no-repeat 33px 12px;
+    /* background: url(../image/eol_coursehome_coin3.gif) no-repeat 33px 12px; */
     border-bottom: 1px solid #DFF0F9;
     height: auto;
     line-height: 150%;
@@ -297,7 +297,7 @@ body {
     line-height: 150%;
     padding-top: 4px;
     padding-bottom: 4px;
-    background: url(../image/eol_coursehome_coin3.gif) no-repeat 33px 12px;
+    /* background: url(../image/eol_coursehome_coin3.gif) no-repeat 33px 12px; */
 }
 
 .leftmenu ul ul ul a {
@@ -318,12 +318,12 @@ body {
 }
 
 .jpkt1 {
-    background: url(../image/eol_frame_jpk_left_t1.jpg) 5px center no-repeat;
+    /* background: url(../image/eol_frame_jpk_left_t1.jpg) 5px center no-repeat; */
     height: 30px;
 }
 
 .jpkt2 {
-    background: url(../image/eol_frame_jpk_left_t2.jpg) 5px center no-repeat;
+    /* background: url(../image/eol_frame_jpk_left_t2.jpg) 5px center no-repeat; */
     height: 30px;
 }
 
@@ -343,7 +343,7 @@ body {
 .recycle a {
     display: block;
     height: 47px;
-    background: url(../image/eol_frame_trash.jpg) no-repeat;
+    /*background: url(../image/eol_frame_trash.jpg) no-repeat;*/
     font-size: 1px;
     color: #FFF;
     text-decoration: none;
