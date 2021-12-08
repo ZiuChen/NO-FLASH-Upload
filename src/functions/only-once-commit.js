@@ -1,4 +1,5 @@
 import PopNotify from "../js/PopNotify"
+import PopNotifyCSS from "../style/css/PopNotify.css";
 
 function judgeOnceSubmit() {
     if ($("script:contains('该作业不允许重复提交,确定提交作业吗？')").length != 0) {

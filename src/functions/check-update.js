@@ -1,4 +1,5 @@
 import PopNotify from "../js/PopNotify"
+import PopNotifyCSS from "../style/css/PopNotify.css";
 const { version } = require('../../package.json')
 
 async function getLastestVersion() {

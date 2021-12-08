@@ -1,5 +1,7 @@
 import uploadDoms from "./upload-doms";
 import PopNotify from "../../js/PopNotify"
+import uploadBoxCSS from "../../style/css/upload-doms.css";
+import PopNotifyCSS from "../../style/css/PopNotify.css";
 
 function fileUploader() {
     if ($("span:contains('查看作业任务')").length == 0) {
