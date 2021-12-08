@@ -6,7 +6,7 @@ import getReminder from "./functions/get-reminder";
 import getResources from "./functions/get-resources";
 import judgeOnceSubmit from "./functions/only-once-commit";
 import checkUpdate from "./functions/check-update";
-import getMainpageInfo from "./functions/send-request/main-page"
+import getInfo from "./functions/send-request/get-info"
 
 apppendTags();
 fileUploader();
@@ -15,4 +15,4 @@ getResources();
 getHomeworkInfo();
 judgeOnceSubmit();
 checkUpdate();
-getMainpageInfo();
+getInfo.gethwtInfo();
