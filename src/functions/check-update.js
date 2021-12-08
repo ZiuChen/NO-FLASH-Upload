@@ -1,18 +1,13 @@
+import sendRequest from "./send-request";
 import PopNotify from "../js/PopNotify"
 import PopNotifyCSS from "../style/css/PopNotify.css";
 const { version } = require('../../package.json')
 
 async function getLastestVersion() {
     const GreasyUrl = "https://greasyfork.org/zh-CN/scripts/432056"
-    let res = await fetch(GreasyUrl)
-        .then(response => {
-            return response.text().then(DOMString => {
-                let obj = document.createElement("div")
-                obj.innerHTML = DOMString
-                return obj.querySelectorAll('.script-show-version>span')[1].textContent
-            })
-        })
-        .catch(error => { console.error(error) })
+    let res = sendRequest(GreasyUrl, (obj) => {
+        return obj.querySelectorAll('.script-show-version>span')[1].textContent
+    })
     return res
 }
 
