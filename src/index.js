@@ -1,7 +1,7 @@
 'use strict';
 import apppendTags from "./functions/append-tags/append-tags";
 import fileUploader from "./functions/file-upload/file-uploader";
-import getHomeworkInfo from "./functions/listpage-get-homework-info"
+import getHwtMoreInfo from "./functions/get-homework-more-info"
 import getReminder from "./functions/get-reminder";
 import getResources from "./functions/get-resources";
 import judgeOnceSubmit from "./functions/only-once-commit";
@@ -10,9 +10,9 @@ import getInfo from "./functions/send-request/get-info"
 
 apppendTags();
 fileUploader();
-// getReminder();
+getReminder();
 getResources();
-getHomeworkInfo();
+getHwtMoreInfo();
 judgeOnceSubmit();
 checkUpdate();
-getInfo.gethwtInfo();
+// getInfo.getHwtInfo();

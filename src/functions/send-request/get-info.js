@@ -80,7 +80,7 @@ async function getLessonInfo() {
     return lessonInfo
 }
 
-async function gethwtInfo() {
+async function getHwtInfo() {
     let hwtInfo = await sendRequest(hwtListUrl, (obj) => {
             return obj.querySelectorAll("tbody>tr")
         })
@@ -111,5 +111,5 @@ export default {
     getUserInfo: getUserInfo,
     getRemindInfo: getRemindInfo,
     getLessonInfo: getLessonInfo,
-    gethwtInfo: gethwtInfo
+    getHwtInfo: getHwtInfo
 }
