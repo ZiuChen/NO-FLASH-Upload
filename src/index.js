@@ -15,4 +15,3 @@ getResources();
 getHwtMoreInfo();
 judgeOnceSubmit();
 checkUpdate();
-// getInfo.getHwtInfo();
