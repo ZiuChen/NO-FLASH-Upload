@@ -1,0 +1,39 @@
+.title {
+    position: absolute;
+    top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.wrap {
+    position: relative;
+    display: flex;
+}
+
+table.infotable {
+    display: flex;
+    flex-flow: column;
+    float: left;
+    width: 50%;
+    height: 50%;
+}
+
+.cke_show_borders {
+    overflow: auto;
+}
+
+form {
+    display: flex;
+    flex-flow: column;
+    float: right;
+    width: 50%;
+}
+
+tr {
+    overflow: auto;
+    max-height: 10px;
+}
+
+tbody>tr>th {
+    background-color: #cbcbcb;
+}
