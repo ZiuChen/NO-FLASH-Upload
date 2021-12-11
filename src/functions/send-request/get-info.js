@@ -39,11 +39,13 @@ async function getRemindInfo() {
                 it.querySelectorAll("li>a").forEach(item => {
                     let classobj = {
                         name: '',
-                        id: ''
+                        id: '',
+                        type: ''
                     }
                     classobj.name = item.innerText.trim()
                     classobj.id = item.getAttribute("href").split("lid=")[1].split("&t=")[0]
-                    obj[Object.keys(obj)[ind]].push(classobj)
+                    classobj.type = item.getAttribute("href").split("lid=")[1].split("&t=")[1]
+                    if (classobj.type === "hw") { obj["hwt"].push(classobj) } else if (classobj.type === "info") { obj["notify"].push(classobj) }
                 })
             })
             return obj
@@ -92,11 +94,15 @@ async function getHwtInfo() {
                     hwtID: '',
                     hwtName: '',
                     date: '',
+                    DateObj: '',
+                    remainTime: '',
                     able: false
                 }
                 obj.hwtID = item.querySelectorAll(".infolist")[0].getAttribute("href").split("hwtid=")[1]
                 obj.hwtName = item.querySelectorAll(".infolist")[0].innerText.split("\n")[0].trim()
                 obj.date = item.children[1].innerText.split("\n")[0]
+                obj.DateObj = new Date(`${obj.date.split("年")[0]},${obj.date.split("年")[1].split("月")[0]},${obj.date.split("年")[1].split("月")[1].split("日")[0]},23:59:59`)
+                obj.remainTime = parseInt((obj.DateObj.valueOf() - new Date().valueOf()) / (24 * 60 * 60 * 1000))
                 obj.able = item.children[5].childElementCount !== 0
                 arry.push(obj)
             })
