@@ -1,7 +1,6 @@
 import uploadDoms from "./upload-doms";
 import PopNotify from "../../js/PopNotify"
 import uploadBoxCSS from "../../style/css/upload-doms.css";
-import PopNotifyCSS from "../../style/css/PopNotify.css";
 
 function fileUploader() {
     if ($("span:contains('查看作业任务')").length == 0) {
@@ -216,8 +215,8 @@ function fileUploader() {
                     }
                     speed = speed.toFixed(1);
 
-                    // 时间计算 文件>50MB触发
-                    if (evt.total > 52428800) {
+                    // 时间计算 文件>20MB触发
+                    if (evt.total > 20971520) {
                         let restTime = ((evt.total - evt.loaded) / bspeed).toFixed(0);
                         // 实时更新文件缓存区
                         $('#timeRemainTh' + index).html(upldIconList[0] + restTime + 's');

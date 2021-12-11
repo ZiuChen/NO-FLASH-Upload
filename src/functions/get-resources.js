@@ -1,5 +1,4 @@
 import PopNotify from "../js/PopNotify"
-import PopNotifyCSS from "../style/css/PopNotify.css";
 
 function getResources() {
     if (location.href.indexOf('listview.jsp?') == -1) {

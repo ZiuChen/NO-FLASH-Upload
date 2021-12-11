@@ -5,6 +5,7 @@
  * @licence MIT
  */
 
+import popNotifyCSS from "../style/css/PopNotify.css"
 
 function popNotifyUnit(title, content, onclick, timeout, style, autoshow) {
     this.constructor = function(title, content, onclick, timeout) {
