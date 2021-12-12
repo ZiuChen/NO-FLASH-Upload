@@ -69,7 +69,7 @@ async function getReminderNew() {
         .then(res => {
             createHwtList(res)
                 .then(() => {
-                    PopNotify.show("成功", "作业列表加载完毕", "success")
+                    PopNotify.show("成功", "作业列表加载完毕", "success", 2.5)
                     sortByTime()
                 })
             drawRed(res)

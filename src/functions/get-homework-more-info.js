@@ -21,7 +21,7 @@ async function initializate(courseID) {
         let a = await appendSubmitInfo()
         let b = await appendOnceInfo()
         PopNotify.closeAll()
-        PopNotify.show(`成功`, "已加载作业信息", "success")
+        PopNotify.show(`成功`, "已加载作业信息", "success", 2.5)
     } else { // initializate, dont get info
         if (courseID === undefined) return
         let init = await sendRequest(courseUrl + courseID, (obj) => {
