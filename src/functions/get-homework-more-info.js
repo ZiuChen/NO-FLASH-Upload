@@ -17,10 +17,8 @@ async function initializate(courseID) {
     let inPage = false
     if (location.href.indexOf("hwtask.jsp") === -1) { inPage = false } else { inPage = true }
     if (inPage) { // dont initializate, get info directly
-        PopNotify.show(`信息`, "正在加载作业信息", "info")
         let a = await appendSubmitInfo()
         let b = await appendOnceInfo()
-        PopNotify.closeAll()
         PopNotify.show(`成功`, "已加载作业信息", "success", 2.5)
     } else { // initializate, dont get info
         if (courseID === undefined) return
