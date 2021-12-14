@@ -2,7 +2,6 @@ import PopNotify from "../js/PopNotify"
 
 function judgeOnceSubmit() {
     if (location.href.indexOf("write.jsp") === -1) return
-    changeStyle()
     if ($("script:contains('该作业不允许重复提交,确定提交作业吗？')").length != 0) {
         let newspan = '<span>（只能提交一次）</span>';
         $('span:contains("查看作业任务")').after(newspan);

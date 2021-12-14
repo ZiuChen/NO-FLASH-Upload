@@ -21,7 +21,7 @@ function fileUploader() {
     // 信息显示部分
     let processImg = 'http://cc.bjtu.edu.cn:81/meol/styles/newstyle/course/new06/body_bg.jpg';
     let upldIconList = ['🕒', '⚡', '✅', '🕒', '⌛', '🔒', '✅']; // 所有icon统一管理
-    let fileTypeIconList = ['📄', '⛺', '📚', '🎬', '📝', '📜'];
+    let fileTypeIconList = ['📄', '⛺', '📚', '🎬', '📝', '📜', '🎵'];
 
     // 动效
     $('#inputDiv').mouseenter(function() {
@@ -49,7 +49,7 @@ function fileUploader() {
             item.showName = nameType[i];
             item.fileTypeIcon = fileType[i].icon;
             item.fileTypeInfo = fileType[i].info;
-            let fileObject = '<div class="fileObjects" id="fileTh' + i + '"style="cursor:default; margin-top: 10px; margin-bottom: 10px; background-image: url(' + processImg + '); background-repeat:no-repeat; background-size: 0%;"><a class="fileindex" id="fileindex' + i + '" title="' + item.fileTypeInfo + '" type="' + item.file.type + '" style="cursor:pointer; margin-left: 15px;">' + item.fileTypeIcon + '</a>&nbsp&nbsp|&nbsp&nbsp<a class="filename" id="filenameTH' + i + '" title="' + item.initName + '" data-clipboard-text="">' + item.showName + '<a class="fileSize">  (' + item.sizeType.size + item.sizeType.type + ')</a>' + '</a><a class="uploadSpeed" id="speedTh' + i + '" title="上传速度"></a><a class="timeRemain" id="timeRemainTh' + i + '"></a></div>';
+            let fileObject = /*html*/`<div class="fileObjects" id="fileTh${i}"style="cursor:default; margin-top: 10px; margin-bottom: 10px; background-image: url(${processImg}); background-repeat:no-repeat; background-size: 0%;"><a class="fileindex" id="fileindex${i}" title="${item.fileTypeInfo}" type="${item.file.type}" style="cursor:pointer; margin-left: 15px;">${item.fileTypeIcon}</a>&nbsp&nbsp|&nbsp&nbsp<a class="filename" id="filenameTH${{i}}" title="${item.initName}" data-clipboard-text="">${item.showName}<a class="fileSize">  (${item.sizeType.size}${item.sizeType.type})</a></a><a class="uploadSpeed" id="speedTh${i}" title="上传速度"></a><a class="timeRemain" id="timeRemainTh${i}"></a></div>`;
             $('#filenames').append(fileObject);
         }
         // 缓存区更新后DOM操作
@@ -346,7 +346,7 @@ function fileUploader() {
             if (escape(str).indexOf("%u") < 0) {
                 return 35; // 不包含中文
             } else {
-                return 18; // 包含中文
+                return 20; // 包含中文
             }
         }
         return nameType;
@@ -366,12 +366,15 @@ function fileUploader() {
             } else if (item.type.indexOf('video') != -1) {
                 fileTypeTMP.icon = fileTypeIconList[3];
                 fileTypeTMP.info = '[视频]';
-            } else if (item.type.indexOf('officedocument') != -1) {
+            } else if (item.type.indexOf('officedocument') != -1 || item.type.indexOf('excel') != -1 || item.type.indexOf('word') != -1 || item.type.indexOf('powerpoint') != -1) {
                 fileTypeTMP.icon = fileTypeIconList[4];
                 fileTypeTMP.info = '[文档]';
             } else if (item.type.indexOf('pdf') != -1) {
                 fileTypeTMP.icon = fileTypeIconList[5];
                 fileTypeTMP.info = '[文档]';
+            } else if(item.type.indexOf('audio') != -1) {
+                fileTypeTMP.icon = fileTypeIconList[6];
+                fileTypeTMP.info = '[音频]';
             } else {
                 fileTypeTMP.icon = fileTypeIconList[0];
                 fileTypeTMP.info = '[文件]';
