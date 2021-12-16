@@ -1,7 +1,7 @@
 {
     "name": "no-flash-upload",
     "description": "一个北京交通大学课程平台附件上传脚本。",
-    "version": "1.3.9",
+    "version": "1.4.0",
     "author": {
         "name": "ZiuChen",
         "email": "ZiuChen@outlook.com"
