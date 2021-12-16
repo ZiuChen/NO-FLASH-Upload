@@ -19,7 +19,6 @@ function fileUploader() {
     let filelist = [];
 
     // 信息显示部分
-    let processImg = 'http://cc.bjtu.edu.cn:81/meol/styles/newstyle/course/new06/body_bg.jpg';
     let upldIconList = ['🕒', '⚡', '✅', '🕒', '⌛', '🔒', '✅']; // 所有icon统一管理
     let fileTypeIconList = ['📄', '⛺', '📚', '🎬', '📝', '📜', '🎵'];
 
@@ -49,7 +48,7 @@ function fileUploader() {
             item.showName = nameType[i];
             item.fileTypeIcon = fileType[i].icon;
             item.fileTypeInfo = fileType[i].info;
-            let fileObject = /*html*/`<div class="fileObjects" id="fileTh${i}"style="cursor:default; margin-top: 10px; margin-bottom: 10px; background-image: url(${processImg}); background-repeat:no-repeat; background-size: 0%;"><a class="fileindex" id="fileindex${i}" title="${item.fileTypeInfo}" type="${item.file.type}" style="cursor:pointer; margin-left: 15px;">${item.fileTypeIcon}</a>&nbsp&nbsp|&nbsp&nbsp<a class="filename" id="filenameTH${{i}}" title="${item.initName}" data-clipboard-text="">${item.showName}<a class="fileSize">  (${item.sizeType.size}${item.sizeType.type})</a></a><a class="uploadSpeed" id="speedTh${i}" title="上传速度"></a><a class="timeRemain" id="timeRemainTh${i}"></a></div>`;
+            let fileObject = /*html*/`<div class="fileObjects" id="fileTh${i}"><a class="fileindex" id="fileindex${i}" title="${item.fileTypeInfo}" type="${item.file.type}" style="cursor:pointer; margin-left: 15px;">${item.fileTypeIcon}</a>&nbsp&nbsp|&nbsp&nbsp<a class="filename" id="filenameTH${i}" title="${item.initName}" data-clipboard-text="">${item.showName}<a class="fileSize">  (${item.sizeType.size}${item.sizeType.type})</a></a><a class="uploadSpeed" id="speedTh${i}" title="上传速度"></a><a class="timeRemain" id="timeRemainTh${i}"></a></div>`;
             $('#filenames').append(fileObject);
         }
         // 缓存区更新后DOM操作
@@ -57,13 +56,10 @@ function fileUploader() {
         $('#buttonDiv').append(uploadDoms.emptyBtn);
         // 动效 (所有Object都已插入完毕)
         $('.fileObjects').mouseenter(function() {
-            // 1.变背景色 2.文字加粗 3.展示全名
-            let prevBgc = $(this).css('background-color');
+            // 1.文字加粗 2.展示全名
             let prevName = $(this).find('.filename').html();
-            $(this).css('background-color', '#e7e8e0');
             $(this).find('.filename').css('font-weight', 'bold');
             $('.fileObjects').mouseleave(function() {
-                $(this).css('background-color', prevBgc);
                 $(this).find('.filename').css('font-weight', '');
                 $(this).find('.filename').html(prevName);
             });
@@ -92,7 +88,6 @@ function fileUploader() {
             });
         });
     }
-
     // 文件选择前事件监听
     $('#inputDiv').click(() => {
         $('#currentFile').trigger('click');
@@ -162,11 +157,9 @@ function fileUploader() {
                     onUpload = 0; // 上传开始标志位置0
                     return // 结束递归
                 }
-
                 let formData = new FormData();
                 formData.append('Filename', filelist[index].name);
                 formData.append('Filedata', filelist[index]);
-
                 let xReq = new XMLHttpRequest();
                 xReq.open('POST', 'http://cc.bjtu.edu.cn:81/meol/servlet/SerUpload');
                 xReq.addEventListener("load", onSuccess);
@@ -193,9 +186,7 @@ function fileUploader() {
                         xReq.abort(); // 上传过程中随时检查，终止请求
                     }
                     // 进度计算
-                    let percentage;
-                    percentage = (evt.loaded * 100 / evt.total).toFixed(0);
-
+                    let percentage = (evt.loaded * 100 / evt.total).toFixed(0);
                     // 速度计算
                     let nt = new Date().getTime(); // 获取当前时间
                     let perTime = (nt - startTime) / 1000; // 计算出上次调用该方法时到现在的时间差，单位为s
@@ -214,7 +205,6 @@ function fileUploader() {
                         Sunits = 'MB/s';
                     }
                     speed = speed.toFixed(1);
-
                     // 时间计算 文件>20MB触发
                     if (evt.total > 20971520) {
                         let restTime = ((evt.total - evt.loaded) / bspeed).toFixed(0);
@@ -222,7 +212,6 @@ function fileUploader() {
                         $('#timeRemainTh' + index).html(upldIconList[0] + restTime + 's');
                         $('#timeRemainTh' + index).attr('title', '剩余时间');
                     }
-
                     // 实时更新文件缓存区
                     $('#fileTh' + index).css('background-size', percentage + '%');
                     $('#speedTh' + index).html('&nbsp; | &nbsp;' + upldIconList[1] + speed + Sunits);
@@ -230,7 +219,7 @@ function fileUploader() {
 
                 function onAbort() {
                     isAbort = 0; // 终止条件置零
-                    index = 0; // 请求终止后index也必须归零，因为中止未完成递归，若中止文件index>0则第二次上传请求无法发起
+                    index = 0; // 请求终止后index也必须归零，准备发起第二次上传请求
                     onUpload = 0; // 上传标志位置0
                 }
 
@@ -239,12 +228,13 @@ function fileUploader() {
                     let myiframe = document.getElementsByTagName('iframe')[1].contentDocument;
                     let textArea = myiframe.getElementsByClassName('cke_show_borders');
                     let constructor = '<p><a data-cke-saved-href="/meol/' + this.responseText + '" href="/meol/' + this.responseText + '">' + filelist[index].name + '</a></p>';
+                    if($(textArea).find("p>br").length >= 1){
+                        $(textArea).find("p")[0].remove();
+                    }
                     $(textArea).append(constructor);
-
                     // 处理缓存区操作
-                    let clipboard = new ClipboardJS('#filenameTH' + index); // 要用id做索引 否则会重复调用.on 但在清空后重新上传还是会重复调用T.T
+                    let clipboard = new ClipboardJS('#filenameTH' + index); // 要用id做索引 否则会重复调用.on
                     let fileURL = 'http://cc.bjtu.edu.cn:81/meol/' + this.responseText;
-
                     $('#filenameTH' + index).attr("data-clipboard-text", fileURL);
                     $('#filenameTH' + index).css('cursor', 'pointer');
                     $('#fileindex' + index).html('<a>' + upldIconList[2] + '</a>')
@@ -253,12 +243,10 @@ function fileUploader() {
                     $('#timeRemainTh' + index).remove();
                     $('#fileTh' + index).css('background', '#ffffff');
                     $('#fileTh' + index).css('font-color', '#e7e8e0');
-
                     clipboard.on('success', function(evt) {
                         PopNotify.show("成功", `【${$(evt.trigger).text()}】 文件链接已复制到剪切板`, "success");
                         evt.clearSelection();
                     });
-
                     // 递归操作
                     index++;
                     sendFileMsg();
