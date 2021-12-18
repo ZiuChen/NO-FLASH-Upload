@@ -28,6 +28,7 @@ Q\*t：`￥1.00`
 \*纸：`￥1.00`
 h\*z：`￥1.00`
 \*方：`￥1.00`
+kindergarten：`￥1.00`
 ## :paperclip: 相关链接
 
 [脚本发布页 *(Greasy Fork)*](https://greasyfork.org/zh-CN/scripts/432056)
