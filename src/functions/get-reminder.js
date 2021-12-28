@@ -67,12 +67,17 @@ async function getReminderNew() {
     if (location.href.indexOf('welcomepage/student/index.jsp') == -1) return
     let remindInfo = await getInfo.getRemindInfo()
         .then(res => {
-            createHwtList(res)
+            if (res.hwt.length === 0) {
+                PopNotify.show("信息", "15日内无作业截止", "info", 2.5)
+            }
+            else {
+                createHwtList(res)
                 .then(() => {
                     PopNotify.show("成功", "作业列表加载完毕", "success", 2.5)
                     sortByTime()
                 })
             drawRed(res)
+            }
         })
 }
 
