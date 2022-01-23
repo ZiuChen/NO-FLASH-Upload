@@ -30,6 +30,7 @@ export default {
 
 <style scoped>
 .el-header {
+  padding: 0;
   height: 120px;
 }
 </style>

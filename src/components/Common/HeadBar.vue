@@ -7,14 +7,12 @@
       </div>
     </el-col>
     <el-col :span="8"> </el-col>
-    <el-col :span="4">
+    <el-col :span="8">
       <div class="user-info">
         <span>欢迎你，{{ userInfo.name }}</span>
       </div>
-    </el-col>
-    <el-col :span="4">
       <div class="operation">
-        <el-popconfirm title="是否确认退出？">
+        <el-popconfirm title="是否确认退出？" @confirm="confirmEvent">
           <template #reference>
             <el-button>退出</el-button>
           </template>
@@ -40,6 +38,10 @@ export default {
     async getUserInfo() {
       this.userInfo = await getInfo.getUserInfo();
       console.log(this.userInfo);
+    },
+    confirmEvent() {
+      window.open("http://cc.bjtu.edu.cn:81/meol/popups/logout.jsp");
+      console.log("logout");
     },
   },
 };
@@ -69,6 +71,10 @@ export default {
   margin-left: 25px;
   color: #ffffff;
   cursor: default;
+}
+
+.user-info {
+  margin-right: 10px;
 }
 
 .user-info span {
