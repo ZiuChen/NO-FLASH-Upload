@@ -20,6 +20,7 @@ declare module 'vue' {
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
     HeadBar: typeof import('./src/components/Common/HeadBar.vue')['default']
+    LessonMain: typeof import('./src/components/Lesson/LessonMain.vue')['default']
     Main: typeof import('./src/components/Main.vue')['default']
     ProfileMain: typeof import('./src/components/Profile/ProfileMain.vue')['default']
     SideBar: typeof import('./src/components/Common/SideBar.vue')['default']
