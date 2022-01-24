@@ -4,7 +4,7 @@ const userinfoUrl = `${baseUrl}/welcomepage/student/index.jsp`; // 个人信息l
 const reminderUrl = `${baseUrl}/welcomepage/student/interaction_reminder.jsp`; // 互动提醒reminder
 const lessonUrl = `${baseUrl}/lesson/blen.student.lesson.list.jsp`; // 课程列表courselist
 const hwtListUrl = `${baseUrl}/common/hw/student/hwtask.jsp`; // 课程作业hwtlist
-const informListUrl = `${baseUrl}/common/inform/index_stu.jsp?lid=`; // 通知列表inform
+const informListUrl = `${baseUrl}/article/ListNews.do?courseId=`; // 通知列表inform
 const informMessageUrl = `${baseUrl}/common/inform/message_content.jsp?nid=`; // 通知内容message_content
 
 async function getUserInfo() {
@@ -88,7 +88,7 @@ async function getLessonInfo() {
         let course = item.firstElementChild
           .firstElementChild as HTMLAnchorElement;
         let academy = item.children[1] as HTMLTableCellElement;
-        let teacher = item.children[1] as HTMLTableCellElement;
+        let teacher = item.children[2] as HTMLTableCellElement;
         obj.id = course.getAttribute("href").split("lid=")[1];
         obj.name = course.innerText.split("\n")[0].trim();
         obj.academy = academy.innerText.split("\n")[0];
@@ -151,9 +151,12 @@ async function getHwtInfo() {
 
 async function getInformList(lid: string) {
   let InformInfo = await sendRequest(informListUrl+lid, (obj: Document) => {
-    return obj.querySelectorAll("tbody>tr");
+    return obj.querySelectorAll(".valuelist tr");
   })
   .then(res => {
+    res.forEach((item: Document, index: number) => {
+      if(index === 0) return
+    })
     console.log(res);
     
   })
