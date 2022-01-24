@@ -3,7 +3,6 @@
     <el-header>
       <head-bar></head-bar>
     </el-header>
-
     <el-container>
       <el-aside>
         <side-bar></side-bar>
@@ -29,8 +28,12 @@ export default {
 </script>
 
 <style scoped>
+body {
+  font-family: Helvetica, Tahoma, Arial, "Heiti SC", "Microsoft YaHei",
+    "WenQuanYi Micro Hei";
+}
 .el-header {
   padding: 0;
-  height: 120px;
+  height: auto;
 }
 </style>

@@ -8,7 +8,7 @@
     </el-col>
     <el-col :span="8"> </el-col>
     <el-col :span="8">
-      <div class="user-info">
+      <div class="welcome-info">
         <span>欢迎你，{{ userInfo.name }}</span>
       </div>
       <div class="operation">
@@ -37,7 +37,6 @@ export default {
   methods: {
     async getUserInfo() {
       this.userInfo = await getInfo.getUserInfo();
-      console.log(this.userInfo);
     },
     confirmEvent() {
       window.open("http://cc.bjtu.edu.cn:81/meol/popups/logout.jsp");
@@ -73,11 +72,11 @@ export default {
   cursor: default;
 }
 
-.user-info {
+.welcome-info {
   margin-right: 10px;
 }
 
-.user-info span {
+.welcome-info span {
   color: #ffffff;
   cursor: default;
 }

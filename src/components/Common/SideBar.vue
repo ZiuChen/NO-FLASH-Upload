@@ -42,7 +42,7 @@
           </el-icon>
           <span>课程列表</span>
         </template>
-        <el-menu-item-group title="置顶课程"> </el-menu-item-group>
+        <!-- <el-menu-item-group title="置顶课程"> </el-menu-item-group> -->
         <el-menu-item-group title="所有课程">
           <el-menu-item
             v-for="lesson in lessonInfo"
@@ -122,4 +122,13 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.el-menu-item span,
+.el-sub-menu span {
+  font-weight: bold;
+}
+
+.el-icon {
+  zoom: 150%;
+}
+</style>
