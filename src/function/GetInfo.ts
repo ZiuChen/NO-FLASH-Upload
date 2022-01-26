@@ -154,12 +154,20 @@ async function getInformList(lid: string) {
     return obj.querySelectorAll(".valuelist tr");
   })
   .then(res => {
-    res.forEach((item: Document, index: number) => {
+    let array: object[] = [];
+    res.forEach((item: HTMLTableCellElement, index: number) => {
       if(index === 0) return
+      let obj = {
+        notifyName : "",
+        pubTime : "",
+      }
+      obj.notifyName = item.querySelectorAll("a")[0].innerText
+      obj.pubTime = item.querySelectorAll(".align_c")[0].innerHTML
+      array.push(obj)
     })
-    console.log(res);
-    
+    return array
   })
+  return InformInfo
 }
 
 export default {
