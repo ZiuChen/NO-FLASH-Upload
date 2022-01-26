@@ -116,7 +116,6 @@ export default {
   methods: {
     async getLessonInfo() {
       this.lessonInfo = await getInfo.getLessonInfo();
-      console.log(this.lessonInfo);
     },
   },
 };

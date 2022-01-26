@@ -90,25 +90,7 @@
               <span>通知列表</span>
             </div>
           </template>
-          <el-collapse v-model="activeName" accordion>
-            <el-collapse-item
-              :key="lesson.id"
-              v-for="lesson in remindList.notify"
-              :title="lesson.name"
-              :name="lesson.id"
-            >
-              <div class="notify-list-detail"></div>
-              <div>
-                Decision making: giving advices about operations is acceptable,
-                but do not make decisions for the users;
-              </div>
-              <div>
-                Controlled consequences: users should be granted the freedom to
-                operate, including canceling, aborting or terminating current
-                operation.
-              </div>
-            </el-collapse-item>
-          </el-collapse>
+          <notify-list :remindList="remindList"></notify-list>
         </el-card>
       </el-col>
     </el-row>
@@ -117,32 +99,28 @@
 
 <script>
 import getInfo from "../../function/GetInfo";
+import NotifyList from "./NotifyList.vue";
 
 export default {
+  components: {
+    NotifyList,
+  },
   data() {
     return {
       userInfo: {},
       remindList: {},
-      InformList: {},
     };
   },
   mounted() {
     this.getUserInfo();
     this.getRemindList();
-    this.getInformList("16602");
   },
   methods: {
     async getUserInfo() {
       this.userInfo = await getInfo.getUserInfo();
-      console.log(this.userInfo);
     },
     async getRemindList() {
       this.remindList = await getInfo.getRemindInfo();
-      console.log(this.remindList);
-    },
-    async getInformList(lid) {
-      this.InformList = await getInfo.getInformList(lid);
-      console.log(this.InformList);
     },
   },
 };
