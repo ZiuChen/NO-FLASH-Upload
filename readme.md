@@ -1,6 +1,6 @@
-<div align="center"><h2>免Flash文件上传 (NO FLASH UPLOAD)</h2></div>
+<div align="center"><h1>免Flash文件上传</h1></div>
 <div align="center">
-一个北京交通大学课程平台附件上传脚本。</br>
+一个北京交通大学课程平台附件上传脚本。</br></br>
 <img src="https://img.shields.io/static/v1?label=Node.js&message=v14.16&color=339933&style=flat-square&logo=node.js&logoColor=ffffff"></img>
 <img src="https://img.shields.io/static/v1?label=Vue.js&message=v3.2&color=4FC08D&style=flat-square&logo=vue.js&logoColor=ffffff"></img>
 <img src="https://img.shields.io/badge/%20License-MIT-yellow?style=flat-square&labelColor=black"></img>
