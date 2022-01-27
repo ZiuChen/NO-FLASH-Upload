@@ -159,9 +159,11 @@ async function getInformList(lid: string) {
       if(index === 0) return
       let obj = {
         notifyName : "",
+        id: "",
         pubTime : "",
       }
       obj.notifyName = item.querySelectorAll("a")[0].innerText
+      obj.id = item.querySelectorAll("a")[0].getAttribute("href").split("nid=")[1].split("&courseId=")[0]
       obj.pubTime = item.querySelectorAll(".align_c")[0].innerHTML
       array.push(obj)
     })

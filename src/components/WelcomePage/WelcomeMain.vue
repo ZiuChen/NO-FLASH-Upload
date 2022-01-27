@@ -24,15 +24,11 @@
               <span>作业列表</span>
             </div>
           </template>
-          <el-empty description="无作业截止"></el-empty>
+          <hwt-list></hwt-list>
         </el-card>
       </el-col>
       <el-col :span="8">
-        <el-card
-          class="user-info"
-          shadow="always"
-          v-if="userInfo.name !== undefined"
-        >
+        <el-card class="user-info" shadow="always">
           <template #header>
             <div class="card-header">
               <el-icon
@@ -58,10 +54,7 @@
               <span>用户信息</span>
             </div>
           </template>
-          <p>用户名：{{ userInfo.name }}</p>
-          <p>登录时间：{{ userInfo.loginTime }}</p>
-          <p>在线时间：{{ userInfo.onlineTime }}</p>
-          <p>登录次数：{{ userInfo.loginTimes }}</p>
+          <user-info></user-info>
         </el-card>
       </el-col>
     </el-row>
@@ -93,32 +86,38 @@
           <notify-list :remindList="remindList"></notify-list>
         </el-card>
       </el-col>
+      <el-col :span="8">
+        <el-card class="calendar">
+          <calender></calender>
+        </el-card>
+      </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
+import HwtList from "./HwtList.vue";
+import UserInfo from "./UserInfo.vue";
+import Calender from "./Calender.vue";
 import getInfo from "../../function/GetInfo";
 import NotifyList from "./NotifyList.vue";
 
 export default {
   components: {
+    HwtList,
+    UserInfo,
+    Calender,
     NotifyList,
   },
   data() {
     return {
-      userInfo: {},
       remindList: {},
     };
   },
   mounted() {
-    this.getUserInfo();
     this.getRemindList();
   },
   methods: {
-    async getUserInfo() {
-      this.userInfo = await getInfo.getUserInfo();
-    },
     async getRemindList() {
       this.remindList = await getInfo.getRemindInfo();
     },
@@ -133,6 +132,8 @@ export default {
 
 .el-card {
   margin: 5px 10px 5px 10px;
+  height: 500px;
+  overflow: auto;
 }
 
 .card-header {
