@@ -1,12 +1,16 @@
 <template>
-  <el-calendar v-model="currentMonth" />
+  <el-calendar v-model="currentDate">
+    <template #header="{ date }">
+      <span>{{ date }}</span>
+    </template>
+  </el-calendar>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      currentMonth: new Date(),
+      currentDate: new Date(),
     };
   },
 };

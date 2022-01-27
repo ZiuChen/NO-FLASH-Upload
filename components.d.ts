@@ -4,10 +4,11 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Calender: typeof import('./src/components/WelcomePage/Calender.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElButtonGroup: typeof import('element-plus/es')['ElButtonGroup']
     ElCalendar: typeof import('element-plus/es')['ElCalendar']
-    ElCar: typeof import('element-plus/es')['ElCar']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElCol: typeof import('element-plus/es')['ElCol']
     ElCollapse: typeof import('element-plus/es')['ElCollapse']
@@ -26,12 +27,14 @@ declare module 'vue' {
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
     HeadBar: typeof import('./src/components/Common/HeadBar.vue')['default']
+    HwtList: typeof import('./src/components/WelcomePage/HwtList.vue')['default']
     LessonMain: typeof import('./src/components/Lesson/LessonMain.vue')['default']
     Main: typeof import('./src/components/Main.vue')['default']
     NotifyList: typeof import('./src/components/WelcomePage/NotifyList.vue')['default']
     NotifyListDetail: typeof import('./src/components/WelcomePage/NotifyListDetail.vue')['default']
     ProfileMain: typeof import('./src/components/Profile/ProfileMain.vue')['default']
     SideBar: typeof import('./src/components/Common/SideBar.vue')['default']
+    UserInfo: typeof import('./src/components/WelcomePage/UserInfo.vue')['default']
     WelcomeMain: typeof import('./src/components/WelcomePage/WelcomeMain.vue')['default']
   }
 }

@@ -28,10 +28,6 @@ export default {
 </script>
 
 <style scoped>
-body {
-  font-family: Helvetica, Tahoma, Arial, "Heiti SC", "Microsoft YaHei",
-    "WenQuanYi Micro Hei";
-}
 .el-header {
   padding: 0;
   height: auto;

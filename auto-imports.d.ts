@@ -3,8 +3,8 @@
 declare global {
   const ElAside: typeof import('element-plus/es')['ElAside']
   const ElButton: typeof import('element-plus/es')['ElButton']
+  const ElButtonGroup: typeof import('element-plus/es')['ElButtonGroup']
   const ElCalendar: typeof import('element-plus/es')['ElCalendar']
-  const ElCar: typeof import('element-plus/es')['ElCar']
   const ElCard: typeof import('element-plus/es')['ElCard']
   const ElCol: typeof import('element-plus/es')['ElCol']
   const ElCollapse: typeof import('element-plus/es')['ElCollapse']
