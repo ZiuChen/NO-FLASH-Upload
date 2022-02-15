@@ -3,7 +3,6 @@
 declare global {
   const ElAside: typeof import('element-plus/es')['ElAside']
   const ElButton: typeof import('element-plus/es')['ElButton']
-  const ElButtonGroup: typeof import('element-plus/es')['ElButtonGroup']
   const ElCalendar: typeof import('element-plus/es')['ElCalendar']
   const ElCard: typeof import('element-plus/es')['ElCard']
   const ElCol: typeof import('element-plus/es')['ElCol']
@@ -19,6 +18,7 @@ declare global {
   const ElMenuItemGroup: typeof import('element-plus/es')['ElMenuItemGroup']
   const ElPopconfirm: typeof import('element-plus/es')['ElPopconfirm']
   const ElRow: typeof import('element-plus/es')['ElRow']
+  const ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
   const ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
   const ElTabPane: typeof import('element-plus/es')['ElTabPane']
   const ElTabs: typeof import('element-plus/es')['ElTabs']
