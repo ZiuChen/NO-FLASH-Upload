@@ -16,7 +16,7 @@
 
 ## :building_construction: 开发
 
-目前项目有两个分支：旧的`script`分支与新的`Vue`分支，`Vue`分支为目前主要开发分支，旧的`script`分支不再维护。
+目前项目有两个分支：旧的`script`分支与新的`Vue`分支。
 
   1.  使用`npm i`安装依赖，使用`npm run dev`来进行自动编译。
   2.  在`Tampermonkey`脚本管理器中新建脚本，将`dist`目录下生成的`index.dev.user.js`复制到其中并保存，开始开发。
