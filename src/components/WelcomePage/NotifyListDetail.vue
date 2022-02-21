@@ -3,7 +3,7 @@
     <p
       :key="notify.id"
       v-for="notify in Notifies"
-      @click="NotifyDetailClick(notify.id)"
+      @click="NotifyDetailClick(lid, notify.id)"
     >
       <span class="notify-list-detail-name" :title="notify.notifyName">{{
         notify.notifyName
@@ -30,8 +30,10 @@ export default {
     async getInformList(activeNotifyID) {
       this.Notifies = await getInfo.getInformList(activeNotifyID);
     },
-    async NotifyDetailClick(nid) {
-      console.log(nid);
+    async NotifyDetailClick(lid, nid) {
+      let url = `http://cc.bjtu.edu.cn:81/meol/jpk/course/layout/course_meswrap.jsp`;
+      window.open(`${url}?courseId=${lid}&nid=${nid}`);
+      console.log(lid, nid);
     },
   },
 };

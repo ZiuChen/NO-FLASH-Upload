@@ -1,11 +1,12 @@
+import { IgnorePlugin } from "webpack";
 import sendRequest from "./SendRequest";
 const baseUrl = `http://cc.bjtu.edu.cn:81/meol`;
 const userinfoUrl = `${baseUrl}/welcomepage/student/index.jsp`; // 个人信息leftBar
 const reminderUrl = `${baseUrl}/welcomepage/student/interaction_reminder.jsp`; // 互动提醒reminder
 const lessonUrl = `${baseUrl}/lesson/blen.student.lesson.list.jsp`; // 课程列表courselist
 const hwtListUrl = `${baseUrl}/common/hw/student/hwtask.jsp`; // 课程作业hwtlist
-const informListUrl = `${baseUrl}/article/ListNews.do?courseId=`; // 通知列表inform
-const informMessageUrl = `${baseUrl}/common/inform/message_content.jsp?nid=`; // 通知内容message_content
+const informListUrl = `${baseUrl}/article/ListNews.do`; // 通知列表inform
+const informMessageUrl = `${baseUrl}/jpk/course/layout/course_meswrap.jsp`; // 通知内容course_meswrap
 
 async function getUserInfo() {
   let stuInfo = await sendRequest(userinfoUrl, (obj: Document) => {
@@ -150,7 +151,7 @@ async function getHwtInfo() {
 }
 
 async function getInformList(lid: string) {
-  let InformInfo = await sendRequest(informListUrl+lid, (obj: Document) => {
+  let InformInfo = await sendRequest(informListUrl+`?courseId=${lid}`, (obj: Document) => {
     return obj.querySelectorAll(".valuelist tr");
   })
   .then(res => {
@@ -162,6 +163,7 @@ async function getInformList(lid: string) {
         id: "",
         pubTime : "",
       }
+      if(item.querySelectorAll("a").length === 0) return
       obj.notifyName = item.querySelectorAll("a")[0].innerText
       obj.id = item.querySelectorAll("a")[0].getAttribute("href").split("nid=")[1].split("&courseId=")[0]
       obj.pubTime = item.querySelectorAll(".align_c")[0].innerHTML
@@ -177,5 +179,5 @@ export default {
   getRemindInfo: getRemindInfo,
   getLessonInfo: getLessonInfo,
   getHwtInfo: getHwtInfo,
-  getInformList: getInformList
+  getInformList: getInformList,
 };
