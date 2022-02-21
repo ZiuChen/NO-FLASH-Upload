@@ -3,13 +3,15 @@
     <el-header>
       <head-bar></head-bar>
     </el-header>
-    <el-container>
+    <el-container style="height: calc(100vh - 100px)">
       <el-aside>
         <side-bar></side-bar>
       </el-aside>
-      <el-main>
-        <router-view></router-view>
-      </el-main>
+      <el-scrollbar>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
+      </el-scrollbar>
     </el-container>
   </el-container>
 </template>

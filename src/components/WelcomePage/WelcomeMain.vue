@@ -30,7 +30,9 @@
               <span>通知列表</span>
             </div>
           </template>
-          <notify-list :remindList="remindList"></notify-list>
+          <el-scrollbar>
+            <notify-list :remindList="remindList"></notify-list>
+          </el-scrollbar>
         </el-card>
       </el-col>
       <el-col :span="8">
@@ -80,7 +82,7 @@ export default {
 .el-card {
   margin: 5px 10px 5px 10px;
   height: 500px;
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 .card-header {
