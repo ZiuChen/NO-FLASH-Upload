@@ -30,7 +30,7 @@
               <span>通知列表</span>
             </div>
           </template>
-          <el-scrollbar>
+          <el-scrollbar height="500px">
             <notify-list :remindList="remindList"></notify-list>
           </el-scrollbar>
         </el-card>

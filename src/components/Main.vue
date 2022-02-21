@@ -34,4 +34,9 @@ export default {
   padding: 0;
   height: auto;
 }
+
+.el-aside {
+  padding: 0;
+  height: auto;
+}
 </style>
