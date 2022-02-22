@@ -3,7 +3,7 @@
     <el-aside>
       <el-menu
         default-active="welcome"
-        text-color="#7ca0c1"
+        text-color="#7e8f9f"
         active-text-color="#005bac"
         router
       >
