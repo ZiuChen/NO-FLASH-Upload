@@ -26,7 +26,7 @@ export default {
   computed: {
     shownNotifies: function () {
       return this.Notifies.filter((notify) => {
-        return notify.hadRead;
+        return notify.hadRead === false;
       });
     },
   },
