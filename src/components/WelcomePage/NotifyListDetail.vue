@@ -2,7 +2,7 @@
   <div :class="`notify-list-detail ${lid}`">
     <p
       :key="notify.id"
-      v-for="notify in Notifies"
+      v-for="notify in shownNotifies"
       @click="NotifyDetailClick(lid, notify.id)"
     >
       <span class="notify-list-detail-name" :title="notify.notifyName">{{
@@ -23,12 +23,19 @@ export default {
       Notifies: [],
     };
   },
+  computed: {
+    shownNotifies: function () {
+      return this.Notifies.filter((notify) => {
+        return notify.hadRead;
+      });
+    },
+  },
   mounted() {
-    this.getInformList(this.lessonID);
+    this.getNewInformList(this.lessonID);
   },
   methods: {
-    async getInformList(activeNotifyID) {
-      this.Notifies = await getInfo.getInformList(activeNotifyID);
+    async getNewInformList(activeNotifyID) {
+      this.Notifies = await getInfo.getNewInformList(activeNotifyID);
     },
     async NotifyDetailClick(lid, nid) {
       let url = `http://cc.bjtu.edu.cn:81/meol/jpk/course/layout/course_meswrap.jsp`;

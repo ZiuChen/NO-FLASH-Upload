@@ -39,7 +39,7 @@ export default {
       this.userInfo = await getInfo.getUserInfo();
     },
     confirmEvent() {
-      window.open("http://cc.bjtu.edu.cn:81/meol/popups/logout.jsp");
+      window.location.href = "http://cc.bjtu.edu.cn:81/meol/popups/logout.jsp";
       console.log("logout");
     },
   },

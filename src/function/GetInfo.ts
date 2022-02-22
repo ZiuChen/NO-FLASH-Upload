@@ -1,11 +1,11 @@
-import { IgnorePlugin } from "webpack";
 import sendRequest from "./SendRequest";
 const baseUrl = `http://cc.bjtu.edu.cn:81/meol`;
 const userinfoUrl = `${baseUrl}/welcomepage/student/index.jsp`; // 个人信息leftBar
 const reminderUrl = `${baseUrl}/welcomepage/student/interaction_reminder.jsp`; // 互动提醒reminder
 const lessonUrl = `${baseUrl}/lesson/blen.student.lesson.list.jsp`; // 课程列表courselist
 const hwtListUrl = `${baseUrl}/common/hw/student/hwtask.jsp`; // 课程作业hwtlist
-const informListUrl = `${baseUrl}/article/ListNews.do`; // 通知列表inform
+const informListUrl = `${baseUrl}/article/ListNews.do`; // 通知列表inform (无已阅读信息)
+const newInformListUrl = `${baseUrl}/common/inform/index_stu.jsp` // 通知列表inform (有已阅读信息)
 const informMessageUrl = `${baseUrl}/jpk/course/layout/course_meswrap.jsp`; // 通知内容course_meswrap
 
 async function getUserInfo() {
@@ -174,10 +174,37 @@ async function getInformList(lid: string) {
   return InformInfo
 }
 
+async function getNewInformList(lid: string) {
+  let InformInfo = await sendRequest(newInformListUrl+`?lid=${lid}`, (obj: Document) => {
+    return obj.querySelectorAll(".valuelist tr");
+  })
+  .then(res => {
+    let array: object[] = [];
+    res.forEach((item: HTMLTableCellElement, index: number) => {
+      if(index === 0) return
+      let obj = {
+        notifyName : "",
+        id: "",
+        pubTime : "",
+        hadRead: false
+      }
+      if(item.querySelectorAll("a").length === 0) return
+      obj.notifyName = item.querySelectorAll("a")[0].getAttribute("title")
+      obj.id = item.querySelectorAll("a")[0].getAttribute("href").split("?nid=")[1].split("\"")[0]
+      obj.pubTime = item.querySelectorAll(".align_c")[0].innerHTML
+      obj.hadRead = item.querySelectorAll("b").length === 0 // without </b> return true
+      array.push(obj)
+    })
+    return array
+  })
+  return InformInfo
+}
+
 export default {
   getUserInfo: getUserInfo,
   getRemindInfo: getRemindInfo,
   getLessonInfo: getLessonInfo,
   getHwtInfo: getHwtInfo,
   getInformList: getInformList,
+  getNewInformList: getNewInformList
 };
