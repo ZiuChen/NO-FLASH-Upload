@@ -14,6 +14,7 @@ const webpackConfig = {
         publicPath: path.resolve(__dirname, '../dist'),
         path: path.resolve(__dirname, '../dist')
     },
+    target: 'web',
     module: {
         rules: [
             {

@@ -1,8 +1,8 @@
 import getVersionInfo from "./GetVersionInfo";
-import Config from "./Config";
 
 async function checkUpdate() {
   await getVersionInfo().then((res) => {
+    console.log(res);
     if (res.need) {
       ElNotification({
         title: "免Flash文件上传",
@@ -15,14 +15,10 @@ async function checkUpdate() {
       ElNotification({
         title: "免Flash文件上传",
         type: "success",
-        message: `版本已是最新：${Config.version}`,
+        message: `版本已是最新：${res.current}`,
       });
     }
   });
-}
-
-function callBack() {
-  location.href = `${Config.GreasyUrl}/code/${Config.ScriptID}.user.js`;
 }
 
 export default checkUpdate;

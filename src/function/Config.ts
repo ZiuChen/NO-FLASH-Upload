@@ -1,13 +1,13 @@
 const { version } = require("../../package.json")
-const ScriptID = "432056";
-const GreasyUrl = `https://greasyfork.org/zh-CN/scripts/${ScriptID}`;
-const config = {
+const scriptID = "432056";
+const greasyUrl = `https://greasyfork.org/zh-CN/scripts/${scriptID}`;
+const userConfig = {
  
 }
 
 export default {
     version: version,
-    ScriptID: ScriptID,
-    GreasyUrl: GreasyUrl,
-    config: config
+    scriptID: scriptID,
+    greasyUrl: greasyUrl,
+    userConfig: userConfig
 }

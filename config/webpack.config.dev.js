@@ -16,6 +16,7 @@ metadata.require.push(
 )
 
 const cfg = merge(webpackConfig, {
+    mode: 'development',
     entry: {
         debug: webpackConfig.entry,
         dev: path.resolve(__dirname, './dev.js') // Generate index.dev.user.js
@@ -27,7 +28,8 @@ const cfg = merge(webpackConfig, {
     devtool: 'eval-source-map',
     watch: true,
     watchOptions: {
-        ignored: /node_modules/,
+        ignored: ['**/node_modules', '**/auto-imports.d.ts', '**/components.d.ts'],
+        aggregateTimeout: 500,
     },
     plugins: [
         new LiveReloadPlugin({
@@ -44,6 +46,7 @@ const cfg = merge(webpackConfig, {
             resolvers: [ElementPlusResolver()],
         }),
     ],
+    stats: 'minimal'
 })
 
 module.exports = cfg

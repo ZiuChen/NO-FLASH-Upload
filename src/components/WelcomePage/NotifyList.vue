@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import getInfo from "../../function/GetInfo";
 import NotifyListDetail from "./NotifyListDetail.vue";
 export default {
   components: {
@@ -22,12 +21,7 @@ export default {
     return { InformList: {}, activeNotifyID: "", Notifies: [] };
   },
   props: ["remindList"],
-  methods: {
-    // async activeNotifyChange(activeNotifyID) {
-    //   this.Notifies = await getInfo.getInformList(activeNotifyID);
-    //   getNotifyDetail(activeNotifyID);
-    // },
-  },
+  methods: {},
 };
 </script>
 
