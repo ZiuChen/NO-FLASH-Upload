@@ -31,7 +31,7 @@ export default {
       userInfo: {},
     };
   },
-  mounted() {
+  created() {
     this.getUserInfo();
   },
   methods: {

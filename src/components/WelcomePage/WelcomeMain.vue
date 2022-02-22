@@ -27,7 +27,7 @@
         <el-card class="inform-list" shadow="always">
           <template #header>
             <div class="card-header">
-              <span>通知列表</span>
+              <span>未读通知</span>
             </div>
           </template>
           <el-scrollbar height="500px">
@@ -48,8 +48,9 @@
 import HwtList from "./HwtList.vue";
 import UserInfo from "./UserInfo.vue";
 import Calender from "./Calender.vue";
-import getInfo from "../../function/GetInfo";
 import NotifyList from "./NotifyList.vue";
+import getInfo from "../../function/GetInfo";
+import checkUpdate from "../../function/CheckUpdate";
 
 export default {
   components: {
@@ -63,8 +64,11 @@ export default {
       remindList: {},
     };
   },
-  mounted() {
+  created() {
     this.getRemindList();
+  },
+  mounted() {
+    checkUpdate();
   },
   methods: {
     async getRemindList() {
