@@ -12,11 +12,32 @@
         <span>欢迎你，{{ userInfo.name }}</span>
       </div>
       <div class="operation">
-        <el-popconfirm title="是否确认退出？" @confirm="confirmEvent">
-          <template #reference>
-            <el-button>退出</el-button>
+        <el-dropdown @command="handleCommand">
+          <el-button class="el-dropdown-link" type="plain">
+            <el-icon
+              ><svg
+                t="1645608428232"
+                class="icon"
+                viewBox="0 0 1024 1024"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+                p-id="20733"
+                width="200"
+                height="200"
+              >
+                <path
+                  d="M128 256h768v85.333333H128V256m0 213.333333h768v85.333334H128v-85.333334m0 213.333334h768v85.333333H128v-85.333333z"
+                  fill=""
+                  p-id="20734"
+                ></path></svg
+            ></el-icon>
+          </el-button>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item command="exit"> 退出当前账号 </el-dropdown-item>
+            </el-dropdown-menu>
           </template>
-        </el-popconfirm>
+        </el-dropdown>
       </div>
     </el-col>
   </el-row>
@@ -38,9 +59,12 @@ export default {
     async getUserInfo() {
       this.userInfo = await getInfo.getUserInfo();
     },
-    confirmEvent() {
-      window.location.href = "http://cc.bjtu.edu.cn:81/meol/popups/logout.jsp";
-      console.log("logout");
+    handleCommand(command) {
+      if (command === "exit") {
+        window.location.href =
+          "http://cc.bjtu.edu.cn:81/meol/popups/logout.jsp";
+      }
+      console.log(`${command}`);
     },
   },
 };
