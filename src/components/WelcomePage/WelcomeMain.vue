@@ -8,7 +8,8 @@
               <span>作业列表</span>
             </div>
           </template>
-          <hwt-list></hwt-list>
+          <el-empty v-if="hwtEmpty" description="没有待提交作业哦~"></el-empty>
+          <hwt-list v-if="!hwtEmpty"></hwt-list>
         </el-card>
       </el-col>
       <el-col :span="8">
@@ -30,9 +31,11 @@
               <span>未读通知</span>
             </div>
           </template>
-          <el-scrollbar height="500px">
-            <notify-list :remindList="remindList"></notify-list>
-          </el-scrollbar>
+          <el-empty v-if="notifyEmpty" description="没有未读通知哦~"></el-empty>
+          <notify-list
+            v-if="!notifyEmpty"
+            :remindList="remindList"
+          ></notify-list>
         </el-card>
       </el-col>
       <el-col :span="8">
@@ -62,17 +65,30 @@ export default {
   data() {
     return {
       remindList: {},
+      hwtEmpty: false,
+      notifyEmpty: false,
     };
   },
   created() {
     this.getRemindList();
+    this.isEmpty();
   },
   mounted() {
     checkUpdate();
   },
   methods: {
     async getRemindList() {
-      this.remindList = await getInfo.getRemindInfo();
+      this.remindList = await getInfo.getRemindInfo().then((res) => {
+        return res;
+      });
+      return this.remindList;
+    },
+    async isEmpty() {
+      await getInfo.getRemindInfo().then((res) => {
+        console.log(res);
+        this.hwtEmpty = Object.keys(res.hwt).length === 0;
+        this.notifyEmpty = Object.keys(res.notify).length === 0;
+      });
     },
   },
 };
@@ -90,6 +106,8 @@ export default {
 }
 
 .card-header {
+  font-size: 1.1em;
+  cursor: default;
   display: flex;
   align-items: center;
   color: #005bac;

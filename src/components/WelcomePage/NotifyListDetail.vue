@@ -31,11 +31,11 @@ export default {
     },
   },
   mounted() {
-    this.getNewInformList(this.lessonID);
+    this.getInformList(this.lessonID);
   },
   methods: {
-    async getNewInformList(activeNotifyID) {
-      this.Notifies = await getInfo.getNewInformList(activeNotifyID);
+    async getInformList(activeNotifyID) {
+      this.Notifies = await getInfo.getInformList(activeNotifyID);
     },
     async NotifyDetailClick(lid, nid) {
       let url = `http://cc.bjtu.edu.cn:81/meol/jpk/course/layout/course_meswrap.jsp`;

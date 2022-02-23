@@ -1,6 +1,4 @@
-<template>
-  <el-empty description="施工中..."></el-empty>
-</template>
+<template></template>
 
 <script>
 export default {};
