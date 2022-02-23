@@ -46,8 +46,7 @@
 
 <script>
 import getInfo from "../../ts/GetInfo";
-import readConfig from "../../ts/Config/ReadConfig";
-import updateConfig from "../../ts/Config/updateConfig";
+import ConfigOperations from "../../ts/Config/ConfigOperations";
 
 export default {
   data() {
@@ -68,10 +67,10 @@ export default {
         window.location.href =
           "http://cc.bjtu.edu.cn:81/meol/popups/logout.jsp";
       } else if (command === "old") {
-        let config = readConfig();
+        let config = ConfigOperations.readConfig();
         let userConfig = config.userConfig;
         userConfig["backToOld"].value = true;
-        updateConfig(config);
+        ConfigOperations.updateConfig(config);
         window.location.reload();
       }
     },

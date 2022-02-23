@@ -1,6 +1,5 @@
 import config from "./Config";
-import readConfig from "./ReadConfig";
-import updateConfig from "./UpdateConfig";
+import log from "../Log";
 
 function initConfig() {
   if (readConfig() === null) {
@@ -30,4 +29,17 @@ function initConfig() {
   }
 }
 
-export default initConfig;
+function readConfig() {
+  return JSON.parse(localStorage.getItem("config"));
+}
+
+function updateConfig(config: object) {
+  localStorage.setItem("config", JSON.stringify(config));
+  log("config updated");
+}
+
+export default {
+  initConfig: initConfig,
+  readConfig: readConfig,
+  updateConfig: updateConfig,
+};

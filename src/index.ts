@@ -3,18 +3,17 @@ import Main from "./components/Main.vue";
 // import Notify from "./components/Notify.vue";
 import router from "./route";
 import checkUpdate from "./ts/CheckUpdate";
-import initConfig from "./ts/Config/InitConfig";
+import ConfigOperations from "./ts/Config/ConfigOperations";
 import mainStyle from "./style/MainStyle";
 import loadCSS from "./ts/LoadCSS";
-import readConfig from "./ts/Config/ReadConfig";
 import log from "./ts/Log";
 
-initConfig();
+ConfigOperations.initConfig();
 main();
 
 function main() {
   const href = window.location.href;
-  if (readConfig().userConfig["backToOld"].value === false) {
+  if (ConfigOperations.readConfig().userConfig["backToOld"].value === false) {
     if (href.indexOf("main.jsp") !== -1) {
       init();
       loadCSS(mainStyle);
