@@ -1,6 +1,9 @@
 async function sendRequest(url: string, callBack: Function, options?: Object) {
   let res = await fetch(url, options)
     .then((response) => {
+      if(response.ok === false) {
+        throw Error(`Request to ${url} rejected, with status ${response.status}`);
+      }
       return response.blob();
     })
     .then((blob) => {
