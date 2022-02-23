@@ -4,8 +4,7 @@ const userinfoUrl = `${baseUrl}/welcomepage/student/index.jsp`; // 个人信息l
 const reminderUrl = `${baseUrl}/welcomepage/student/interaction_reminder.jsp`; // 互动提醒reminder
 const lessonUrl = `${baseUrl}/lesson/blen.student.lesson.list.jsp`; // 课程列表courselist
 const hwtListUrl = `${baseUrl}/common/hw/student/hwtask.jsp`; // 课程作业hwtlist
-const informListUrl = `${baseUrl}/article/ListNews.do`; // 通知列表inform (无已阅读信息)
-const newInformListUrl = `${baseUrl}/common/inform/index_stu.jsp` // 通知列表inform (有已阅读信息)
+const informListUrl = `${baseUrl}/common/inform/index_stu.jsp`; // 通知列表inform (有已阅读信息)
 const informMessageUrl = `${baseUrl}/jpk/course/layout/course_meswrap.jsp`; // 通知内容course_meswrap
 
 async function getUserInfo() {
@@ -63,7 +62,38 @@ async function getRemindInfo() {
           }
         });
       });
-      return obj;
+      // return obj;
+      return {
+        notify: [
+          {
+            name: "电子测量",
+            id: "19003",
+            type: "info",
+          },
+          {
+            name: "传感器与检测技术",
+            id: "20697",
+            type: "info",
+          },
+          {
+            name: "导航与定位技术",
+            id: "22961",
+            type: "info",
+          }
+        ],
+        hwt: [
+          {
+            name: "现代控制理论",
+            id: "10625",
+            type: "info",
+          },
+          {
+            name: "计算机控制系统",
+            id: "16597",
+            type: "info",
+          },
+        ]
+      };
     })
     .catch((error) => {
       console.log(error);
@@ -146,58 +176,39 @@ async function getHwtInfo() {
     .catch((error) => {
       console.log(error);
     });
-
   return hwtInfo;
 }
 
 async function getInformList(lid: string) {
-  let InformInfo = await sendRequest(informListUrl+`?courseId=${lid}`, (obj: Document) => {
-    return obj.querySelectorAll(".valuelist tr");
-  })
-  .then(res => {
+  let InformInfo = await sendRequest(
+    informListUrl + `?lid=${lid}`,
+    (obj: Document) => {
+      return obj.querySelectorAll(".valuelist tr");
+    }
+  ).then((res) => {
     let array: object[] = [];
     res.forEach((item: HTMLTableCellElement, index: number) => {
-      if(index === 0) return
+      if (index === 0) return;
       let obj = {
-        notifyName : "",
+        notifyName: "",
         id: "",
-        pubTime : "",
-      }
-      if(item.querySelectorAll("a").length === 0) return
-      obj.notifyName = item.querySelectorAll("a")[0].innerText
-      obj.id = item.querySelectorAll("a")[0].getAttribute("href").split("nid=")[1].split("&courseId=")[0]
-      obj.pubTime = item.querySelectorAll(".align_c")[0].innerHTML
-      array.push(obj)
-    })
-    return array
-  })
-  return InformInfo
-}
-
-async function getNewInformList(lid: string) {
-  let InformInfo = await sendRequest(newInformListUrl+`?lid=${lid}`, (obj: Document) => {
-    return obj.querySelectorAll(".valuelist tr");
-  })
-  .then(res => {
-    let array: object[] = [];
-    res.forEach((item: HTMLTableCellElement, index: number) => {
-      if(index === 0) return
-      let obj = {
-        notifyName : "",
-        id: "",
-        pubTime : "",
-        hadRead: false
-      }
-      if(item.querySelectorAll("a").length === 0) return
-      obj.notifyName = item.querySelectorAll("a")[0].getAttribute("title")
-      obj.id = item.querySelectorAll("a")[0].getAttribute("href").split("?nid=")[1].split("\"")[0]
-      obj.pubTime = item.querySelectorAll(".align_c")[0].innerHTML
-      obj.hadRead = item.querySelectorAll("b").length === 0 // without </b> return true
-      array.push(obj)
-    })
-    return array
-  })
-  return InformInfo
+        pubTime: "",
+        hadRead: false,
+      };
+      if (item.querySelectorAll("a").length === 0) return;
+      obj.notifyName = item.querySelectorAll("a")[0].getAttribute("title");
+      obj.id = item
+        .querySelectorAll("a")[0]
+        .getAttribute("href")
+        .split("?nid=")[1]
+        .split('"')[0];
+      obj.pubTime = item.querySelectorAll(".align_c")[0].innerHTML;
+      obj.hadRead = item.querySelectorAll("b").length === 0; // without </b> return true
+      array.push(obj);
+    });
+    return array;
+  });
+  return InformInfo;
 }
 
 export default {
@@ -206,5 +217,4 @@ export default {
   getLessonInfo: getLessonInfo,
   getHwtInfo: getHwtInfo,
   getInformList: getInformList,
-  getNewInformList: getNewInformList
 };

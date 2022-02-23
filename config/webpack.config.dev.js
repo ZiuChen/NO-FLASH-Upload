@@ -29,7 +29,6 @@ const cfg = merge(webpackConfig, {
     watch: true,
     watchOptions: {
         ignored: ['**/node_modules', '**/auto-imports.d.ts', '**/components.d.ts'],
-        aggregateTimeout: 500,
     },
     plugins: [
         new LiveReloadPlugin({
@@ -46,7 +45,7 @@ const cfg = merge(webpackConfig, {
             resolvers: [ElementPlusResolver()],
         }),
     ],
-    stats: 'minimal'
+    stats: 'normal'
 })
 
 module.exports = cfg
