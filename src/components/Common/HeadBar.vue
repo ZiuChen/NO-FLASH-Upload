@@ -34,7 +34,8 @@
           </el-button>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item command="exit"> 退出当前账号 </el-dropdown-item>
+              <el-dropdown-item command="exit">退出当前账号</el-dropdown-item>
+              <el-dropdown-item command="old">返回旧版</el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -45,6 +46,8 @@
 
 <script>
 import getInfo from "../../ts/GetInfo";
+import readConfig from "../../ts/Config/ReadConfig";
+import updateConfig from "../../ts/Config/updateConfig";
 
 export default {
   data() {
@@ -60,11 +63,17 @@ export default {
       this.userInfo = await getInfo.getUserInfo();
     },
     handleCommand(command) {
+      console.log(`${command}`);
       if (command === "exit") {
         window.location.href =
           "http://cc.bjtu.edu.cn:81/meol/popups/logout.jsp";
+      } else if (command === "old") {
+        let config = readConfig();
+        let userConfig = config.userConfig;
+        userConfig["backToOld"].value = true;
+        updateConfig(config);
+        window.location.reload();
       }
-      console.log(`${command}`);
     },
   },
 };

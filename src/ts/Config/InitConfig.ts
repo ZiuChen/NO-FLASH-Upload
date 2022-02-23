@@ -1,7 +1,6 @@
 import config from "./Config";
 import readConfig from "./ReadConfig";
 import updateConfig from "./UpdateConfig";
-import log from "../Log";
 
 function initConfig() {
   if (readConfig() === null) {
