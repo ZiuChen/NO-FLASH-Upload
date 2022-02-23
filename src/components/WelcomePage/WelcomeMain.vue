@@ -52,7 +52,7 @@ import HwtList from "./HwtList.vue";
 import UserInfo from "./UserInfo.vue";
 import Calender from "./Calender.vue";
 import NotifyList from "./NotifyList.vue";
-import getInfo from "../../function/GetInfo";
+import getInfo from "../../ts/GetInfo";
 
 export default {
   components: {

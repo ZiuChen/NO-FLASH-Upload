@@ -21,7 +21,6 @@ declare global {
   const ElMenuItemGroup: typeof import('element-plus/es')['ElMenuItemGroup']
   const ElMessageBox: typeof import('element-plus/es')['ElMessageBox']
   const ElNotification: typeof import('element-plus/es')['ElNotification']
-  const ElPopconfirm: typeof import('element-plus/es')['ElPopconfirm']
   const ElRow: typeof import('element-plus/es')['ElRow']
   const ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
   const ElSubMenu: typeof import('element-plus/es')['ElSubMenu']

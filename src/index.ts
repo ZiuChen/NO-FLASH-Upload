@@ -2,13 +2,15 @@ import { createApp } from "vue";
 import Main from "./components/Main.vue";
 // import Notify from "./components/Notify.vue";
 import router from "./route";
-import checkUpdate from "./function/CheckUpdate";
+import checkUpdate from "./ts/CheckUpdate";
+import initConfig from "./ts/Config/InitConfig";
 import mainStyle from "./style/MainStyle";
-import loadCSS from "./function/LoadCSS";
+import loadCSS from "./ts/LoadCSS";
 
 const href = window.location.href;
 
 if (href.indexOf("main.jsp") !== -1) {
+  initConfig();
   init();
   loadCSS(mainStyle);
   createApp(Main).use(router).mount("body");

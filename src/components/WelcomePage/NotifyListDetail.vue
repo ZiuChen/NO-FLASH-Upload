@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import getInfo from "../../function/GetInfo";
+import getInfo from "../../ts/GetInfo";
 export default {
   props: ["lid"],
   data() {

@@ -13,7 +13,7 @@
       </div>
       <div class="operation">
         <el-dropdown @command="handleCommand">
-          <el-button class="el-dropdown-link" type="plain">
+          <el-button class="el-dropdown-link" plain>
             <el-icon
               ><svg
                 t="1645608428232"
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import getInfo from "../../function/GetInfo";
+import getInfo from "../../ts/GetInfo";
 
 export default {
   data() {

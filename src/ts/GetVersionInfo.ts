@@ -1,6 +1,6 @@
 import sendRequest from "./SendRequest";
 import log from "./Log";
-import config from "./Config";
+import config from "./Config/Config";
 
 async function getVersionInfo() {
   log(`script loaded: ${config.version}`);
@@ -13,23 +13,24 @@ async function getVersionInfo() {
       .split(".")
       .reverse()
       .forEach((value: string, index: number) => {
-        weightLastest += ((index + 1) * Math.pow(10, index+1)) * parseInt(value);
+        weightLastest +=
+          (index + 1) * Math.pow(10, index + 1) * parseInt(value);
       });
     config.version
       .split(".")
       .reverse()
       .forEach((value: string, index: number) => {
-        weightNow += ((index + 1) * Math.pow(10, index+1)) * parseInt(value);
+        weightNow += (index + 1) * Math.pow(10, index + 1) * parseInt(value);
       });
     if (weightLastest > weightNow) {
       log("need update");
-      return {need: true, current: config.version, lastest: res};
+      return { need: true, current: config.version, lastest: res };
     } else {
-      log("version Checked");
-      return {need: false, current: config.version, lastest: res};
+      log("version checked");
+      return { need: false, current: config.version, lastest: res };
     }
   });
-  return content
+  return content;
 }
 
 export default getVersionInfo;
