@@ -34,8 +34,8 @@
           </el-button>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item command="exit">退出当前账号</el-dropdown-item>
               <el-dropdown-item command="old">返回旧版</el-dropdown-item>
+              <el-dropdown-item command="exit">退出当前账号</el-dropdown-item>
             </el-dropdown-menu>
           </template>
         </el-dropdown>
