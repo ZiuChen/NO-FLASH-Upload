@@ -53,7 +53,6 @@ import UserInfo from "./UserInfo.vue";
 import Calender from "./Calender.vue";
 import NotifyList from "./NotifyList.vue";
 import getInfo from "../../function/GetInfo";
-import checkUpdate from "../../function/CheckUpdate";
 
 export default {
   components: {
@@ -72,9 +71,6 @@ export default {
   created() {
     this.getRemindList();
     this.isEmpty();
-  },
-  mounted() {
-    checkUpdate();
   },
   methods: {
     async getRemindList() {
