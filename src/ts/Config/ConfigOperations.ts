@@ -29,8 +29,19 @@ function initConfig() {
   }
 }
 
+function setUserConfig(id: string, value: boolean | object | string) {
+  let currentConfig = readConfig();
+  let currentUserConfig = currentConfig.userConfig;
+  currentUserConfig[id].value = value;
+  updateConfig(currentConfig);
+}
+
 function readConfig() {
   return JSON.parse(localStorage.getItem("config"));
+}
+
+function readUserConfig() {
+  return JSON.parse(localStorage.getItem("config")).userConfig;
 }
 
 function updateConfig(config: object) {
@@ -41,5 +52,7 @@ function updateConfig(config: object) {
 export default {
   initConfig: initConfig,
   readConfig: readConfig,
+  readUserConfig: readUserConfig,
   updateConfig: updateConfig,
+  setUserConfig: setUserConfig,
 };

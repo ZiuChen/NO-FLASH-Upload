@@ -13,7 +13,7 @@ main();
 
 function main() {
   const href = window.location.href;
-  if (ConfigOperations.readConfig().userConfig["backToOld"].value === false) {
+  if (ConfigOperations.readUserConfig()["back-to-old"].value === false) {
     if (href.indexOf("main.jsp") !== -1) {
       init();
       loadCSS(mainStyle);
