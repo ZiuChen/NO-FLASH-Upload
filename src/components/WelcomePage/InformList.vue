@@ -2,9 +2,12 @@
   <el-table :data="tableData" height="400px" style="width: 100%">
     <el-table-column prop="notifyName" label="通知">
       <template #default="scope">
-        <el-link :href="informUrl + scope.row.id" target="_blank">{{
-          scope.row.notifyName
-        }}</el-link>
+        <el-link
+          :underline="false"
+          :href="informUrl + scope.row.id"
+          target="_blank"
+          >{{ scope.row.notifyName }}</el-link
+        >
       </template>
     </el-table-column>
     <el-table-column prop="pubTime" label="发布时间" />
