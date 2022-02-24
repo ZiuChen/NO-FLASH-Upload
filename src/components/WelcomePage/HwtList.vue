@@ -1,38 +1,34 @@
 <template>
-  <el-scrollbar height="450px">
-    <el-table
-      fixed
-      :data="tableData"
-      :default-sort="{ prop: 'remain', order: 'ascending' }"
-      :row-class-name="tableRowClassName"
-      style="width: 100%"
-    >
-      <el-table-column prop="remain" label="剩余时间" sortable width="100" />
-      <el-table-column prop="name" label="作业标题" width="180" />
-      <el-table-column prop="date" label="截止日期" width="180" />
-      <el-table-column
-        prop="lesson"
-        label="Lesson"
-        width="180"
-        :filters="toFilterArray(PropHwtList)"
-        :filter-method="filterLesson"
-        ><template #default="scope">
-          <el-tag :type="getTagType()" disable-transitions>{{
-            scope.row.lesson
-          }}</el-tag>
-        </template>
-      </el-table-column>
-      <el-table-column label="操作">
-        <template #default="scope">
-          <el-button
-            size="small"
-            @click="handleRowJump(scope.$index, scope.row)"
-            >交作业</el-button
-          >
-        </template>
-      </el-table-column>
-    </el-table>
-  </el-scrollbar>
+  <el-table
+    height="400px"
+    :data="tableData"
+    :default-sort="{ prop: 'remain', order: 'ascending' }"
+    :row-class-name="tableRowClassName"
+    style="width: 100%"
+  >
+    <el-table-column prop="remain" label="剩余" sortable width="100" />
+    <el-table-column prop="name" label="作业标题" width="180" />
+    <el-table-column prop="date" label="截止日期" width="180" />
+    <el-table-column
+      prop="lesson"
+      label="Lesson"
+      width="180"
+      :filters="toFilterArray(PropHwtList)"
+      :filter-method="filterLesson"
+      ><template #default="scope">
+        <el-tag :type="getTagType()" disable-transitions>{{
+          scope.row.lesson
+        }}</el-tag>
+      </template>
+    </el-table-column>
+    <el-table-column label="操作">
+      <template #default="scope">
+        <el-button size="small" @click="handleRowJump(scope.$index, scope.row)"
+          >交作业</el-button
+        >
+      </template>
+    </el-table-column>
+  </el-table>
 </template>
 
 <script>
@@ -48,11 +44,11 @@ export default {
   watch: {
     hwts: async function (val) {
       this.PropHwtList = val;
+      console.log(val);
       // Async Trap: cannot async in forEach
       for (let remindHwt of this.PropHwtList) {
         await getInfo.visitLessonPage(remindHwt.id).then(async () => {
           await getInfo.getHwtInfo(remindHwt.id).then((res) => {
-            console.log(res);
             res.forEach((item) => {
               this.hwtObj2TableObj(item, remindHwt).then((res) => {
                 this.appendTableData(res);
@@ -86,22 +82,23 @@ export default {
     tableDataFilter(tableObj, start, end) {
       // start: lager, end: smaller
       // won't add to tableData
+      return true; // FIXME: REMOVE THIS
       if (tableObj.remain < start && tableObj.remain > end) return true;
       else false;
     },
     tableRowClassName({ row, rowIndex }) {
-      if (row.remain <= 3 && row.remain > 0) {
+      if (row.remain <= 3 && row.remain >= 0) {
         return "warning-row";
       } else if (row.remain < 0) {
         return "success-row";
-      } else if (row.remain === 0) {
-        return "danger-row";
       } else {
         return "info-row";
       }
     },
     async handleRowJump(index, row) {
       console.log(index, row);
+      let url = `http://cc.bjtu.edu.cn:81/meol/common/hw/student/taskanswer.jsp?hwtid=${row.hwtID}`;
+      window.open(url);
     },
     async hwtObj2TableObj(hwtObj, remindHwt) {
       let tableObj = {
@@ -123,7 +120,7 @@ export default {
       return tableObj;
     },
     async appendTableData(tableObj) {
-      if (this.tableDataFilter(tableObj, 15, -7)) {
+      if (this.tableDataFilter(tableObj, 15, -3)) {
         this.tableData.push(tableObj);
       } else {
         // do nothing
@@ -135,18 +132,18 @@ export default {
 
 <style>
 .el-table .danger-row {
-  --el-table-tr-bg-color: var(--el-color-danger-lighter);
+  --el-table-tr-bg-color: var(--el-color-danger-light);
 }
 
 .el-table .success-row {
-  --el-table-tr-bg-color: var(--el-color-success-lighter);
+  --el-table-tr-bg-color: var(--el-color-success-light);
 }
 
 .el-table .warning-row {
-  --el-table-tr-bg-color: var(--el-color-warning-lighter);
+  --el-table-tr-bg-color: var(--el-color-warning-light);
 }
 
 .el-table .info-row {
-  --el-table-tr-bg-color: var(--el-color-info-lighter);
+  --el-table-tr-bg-color: var(--el-color-info-light);
 }
 </style>

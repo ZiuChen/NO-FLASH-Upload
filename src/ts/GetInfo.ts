@@ -4,11 +4,13 @@ const userinfoUrl = `${baseUrl}/welcomepage/student/index.jsp`; // 个人信息l
 const reminderUrl = `${baseUrl}/welcomepage/student/interaction_reminder.jsp`; // 互动提醒reminder
 const lessonUrl = `${baseUrl}/lesson/blen.student.lesson.list.jsp`; // 课程列表courselist
 const hwtListUrl = `${baseUrl}/common/hw/student/hwtask.jsp`; // 课程作业hwtlist
+const hwtDetailUrl = `${baseUrl}/common/hw/student/taskanswer.jsp`; // 课程作业详情taskanswer
 const informListUrl = `${baseUrl}/common/inform/index_stu.jsp`; // 通知列表inform (有已阅读信息)
 const informMessageUrl = `${baseUrl}/jpk/course/layout/course_meswrap.jsp`; // 通知内容course_meswrap
+const lessonPageUrl = `${baseUrl}/jpk/course/layout/newpage/index.jsp`; // 某一课程的主页
 
 async function getUserInfo() {
-  let stuInfo = await sendRequest(userinfoUrl, (obj: Document) => {
+  return await sendRequest(userinfoUrl, (obj: Document) => {
     return obj.querySelectorAll(".userinfobody>ul>li");
   })
     .then((res) => {
@@ -26,12 +28,10 @@ async function getUserInfo() {
     .catch((error) => {
       console.log(error);
     });
-
-  return stuInfo;
 }
 
 async function getRemindInfo() {
-  let remindInfo = await sendRequest(reminderUrl, (obj: Document) => {
+  return await sendRequest(reminderUrl, (obj: Document) => {
     return obj.querySelectorAll("ul[id='reminder']>li>ul");
   })
     .then((res) => {
@@ -77,10 +77,10 @@ async function getRemindInfo() {
             type: "info",
           },
           {
-            name: "导航与定位技术",
-            id: "22961",
+            name: "现代控制理论",
+            id: "10625",
             type: "info",
-          }
+          },
         ],
         hwt: [
           {
@@ -93,18 +93,16 @@ async function getRemindInfo() {
             id: "16597",
             type: "info",
           },
-        ]
+        ],
       };
     })
     .catch((error) => {
       console.log(error);
     });
-
-  return remindInfo;
 }
 
 async function getLessonInfo() {
-  let lessonInfo = await sendRequest(lessonUrl, (obj: Document) => {
+  return await sendRequest(lessonUrl, (obj: Document) => {
     return obj.querySelectorAll("tbody>tr");
   })
     .then((res) => {
@@ -132,21 +130,21 @@ async function getLessonInfo() {
     .catch((error) => {
       console.log(error);
     });
-
-  return lessonInfo;
 }
 
-async function getHwtInfo() {
-  let hwtInfo = await sendRequest(hwtListUrl, (obj: Document) => {
+async function getHwtInfo(lid: string) {
+  return await sendRequest(hwtListUrl, (obj: Document) => {
     return obj.querySelectorAll("tbody>tr");
   })
     .then((res) => {
+      // TODO: add hadSubmit
       let arry: object[] = [];
       res.forEach((item: Document, index: number) => {
         if (index === 0) return;
         let obj = {
           hwtID: "",
           hwtName: "",
+          lid: lid,
           date: "",
           Date: new Date(),
           remainTime: "",
@@ -154,7 +152,6 @@ async function getHwtInfo() {
         };
         let hwt = item.querySelectorAll(".infolist")[0] as HTMLAnchorElement;
         let deadline = item.children[1] as HTMLTableCellElement;
-
         obj.hwtID = hwt.getAttribute("href").split("hwtid=")[1];
         obj.hwtName = hwt.innerText.split("\n")[0].trim();
         obj.date = deadline.innerText.split("\n")[0];
@@ -172,21 +169,161 @@ async function getHwtInfo() {
         obj.able = item.children[5].childElementCount !== 0;
         arry.push(obj);
       });
-      return arry;
+      // return arry;
+      // FIXME: Debugging
+      // FIXME: remove all lid
+      if (lid === "10625") {
+        return [
+          {
+            hwtID: "23514",
+            hwtName: "实验作业提交——请做成3个PDF文件",
+            lid: "10625",
+            date: "2022年1月8日",
+            Date: "2022-01-08T15:59:59.000Z",
+            remainTime: "-46",
+            able: false,
+          },
+          {
+            hwtID: "23209",
+            hwtName: "chap4作业补交",
+            lid: "10625",
+            date: "2022年1月25日",
+            Date: "2022-01-25T15:59:59.000Z",
+            remainTime: "-29",
+            able: false,
+          },
+          {
+            hwtID: "22868",
+            hwtName: "chap3作业（补交）",
+            lid: "10625",
+            date: "2022年1月12日",
+            Date: "2022-01-12T15:59:59.000Z",
+            remainTime: "-42",
+            able: false,
+          },
+          {
+            hwtID: "22195",
+            hwtName: "chap3作业",
+            lid: "10625",
+            date: "2022年3月31日",
+            Date: "2022-03-31T15:59:59.000Z",
+            remainTime: "35",
+            able: true,
+          },
+          {
+            hwtID: "20999",
+            hwtName: "chap2 作业",
+            lid: "10625",
+            date: "2022年3月15日",
+            Date: "2022-03-15T15:59:59.000Z",
+            remainTime: "19",
+            able: true,
+          },
+          {
+            hwtID: "20419",
+            hwtName: "chap1-3作业",
+            lid: "10625",
+            date: "2022年2月25日",
+            Date: "2022-02-25T15:59:59.000Z",
+            remainTime: "1",
+            able: true,
+          },
+          {
+            hwtID: "20166",
+            hwtName: "chap 1-2 作业",
+            lid: "10625",
+            date: "2022年2月24日",
+            Date: "2022-02-24T15:59:59.000Z",
+            remainTime: "0",
+            able: true,
+          },
+        ];
+      } else if (lid === "16597") {
+        return [
+          {
+            hwtID: "31389",
+            hwtName: "第三次作业",
+            lid: "16597",
+            date: "2022年2月21日",
+            Date: "2022-02-21T15:59:59.000Z",
+            remainTime: "-2",
+            able: false,
+          },
+          {
+            hwtID: "31203",
+            hwtName: "第二次作业",
+            lid: "16597",
+            date: "2022年2月14日",
+            Date: "2022-02-14T15:59:59.000Z",
+            remainTime: "-9",
+            able: false,
+          },
+          {
+            hwtID: "30911",
+            hwtName: "第一次作业",
+            lid: "16597",
+            date: "2022年3月7日",
+            Date: "2022-03-07T15:59:59.000Z",
+            remainTime: "11",
+            able: true,
+          },
+          {
+            hwtID: "24041",
+            hwtName: "期末测试试卷提交",
+            lid: "16597",
+            date: "2022年4月26日",
+            Date: "2022-04-26T15:59:59.000Z",
+            remainTime: "61",
+            able: true,
+          },
+          {
+            hwtID: "14171",
+            hwtName: "第三章作业",
+            lid: "16597",
+            date: "2022年3月18日",
+            Date: "2022-03-18T15:59:59.000Z",
+            remainTime: "22",
+            able: true,
+          },
+          {
+            hwtID: "14170",
+            hwtName: "第二章作业",
+            lid: "16597",
+            date: "2022年3月17日",
+            Date: "2022-03-17T15:59:59.000Z",
+            remainTime: "21",
+            able: true,
+          },
+        ];
+      }
     })
     .catch((error) => {
       console.log(error);
     });
-  return hwtInfo;
+}
+
+async function getHwtDetail(hwtid: string) {
+  return await sendRequest(
+    hwtDetailUrl + `?hwtid=${hwtid}`,
+    (obj: Document) => {
+      return (
+        obj.querySelectorAll(".infotable")[1].querySelectorAll("input")
+          .length !== 0
+      );
+    }
+  )
+    .then((res) => {
+      return res; // a boolean that whether submitted
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 async function getInformList(lid: string) {
-  let InformInfo = await sendRequest(
-    informListUrl + `?lid=${lid}`,
-    (obj: Document) => {
-      return obj.querySelectorAll(".valuelist tr");
-    }
-  ).then((res) => {
+  return await sendRequest(informListUrl + `?lid=${lid}`, (obj: Document) => {
+    return obj.querySelectorAll(".valuelist tr");
+  }).then((res) => {
     let array: object[] = [];
     res.forEach((item: HTMLTableCellElement, index: number) => {
       if (index === 0) return;
@@ -209,7 +346,17 @@ async function getInformList(lid: string) {
     });
     return array;
   });
-  return InformInfo;
+}
+
+async function visitLessonPage(lid: string) {
+  return await sendRequest(
+    lessonPageUrl + `?courseId=${lid}`,
+    (obj: Document) => {
+      return obj;
+    }
+  ).catch((err) => {
+    console.log(err);
+  });
 }
 
 export default {
@@ -217,5 +364,7 @@ export default {
   getRemindInfo: getRemindInfo,
   getLessonInfo: getLessonInfo,
   getHwtInfo: getHwtInfo,
+  getHwtDetail: getHwtDetail,
   getInformList: getInformList,
+  visitLessonPage: visitLessonPage,
 };

@@ -9,8 +9,9 @@
             </div>
           </template>
           <el-empty v-if="hwtEmpty" description="没有待提交作业哦~"></el-empty>
-          <!-- TODO: able to choose prop all Hwt or just remind Hwt -->
+          <!-- TODO: add optional choice to config -->
           <hwt-list v-if="!hwtEmpty" :hwts="remindList.hwt"></hwt-list>
+          <!-- <hwt-list v-if="!hwtEmpty" :hwts="lessonList"></hwt-list> -->
         </el-card>
       </el-col>
       <el-col :span="8">
@@ -64,20 +65,25 @@ export default {
   },
   data() {
     return {
+      lessonList: [],
       remindList: {},
-      hwtEmpty: false,
+      hwtEmpty: false, // cant use true
       notifyEmpty: false,
     };
   },
   created() {
+    this.getLessonList();
     this.getRemindList();
     this.isEmpty();
   },
   methods: {
-    async getRemindList() {
-      this.remindList = await getInfo.getRemindInfo().then((res) => {
+    async getLessonList() {
+      this.lessonList = await getInfo.getLessonInfo().then((res) => {
         return res;
       });
+    },
+    async getRemindList() {
+      this.remindList = await getInfo.getRemindInfo();
       return this.remindList;
     },
     async isEmpty() {

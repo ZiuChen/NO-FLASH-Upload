@@ -1,5 +1,5 @@
 <template>
-  <el-scrollbar height="450px">
+  <el-scrollbar height="400px">
     <el-collapse v-model="activeNotifyID">
       <el-collapse-item
         :key="lesson.id"
