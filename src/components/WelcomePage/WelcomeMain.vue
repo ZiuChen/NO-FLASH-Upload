@@ -41,8 +41,13 @@
         </el-card>
       </el-col>
       <el-col :span="8">
-        <el-card class="calendar">
-          <calender></calender>
+        <el-card class="inform-list" shadow="always">
+          <template #header>
+            <div class="card-header">
+              <span>系统通知</span>
+            </div>
+          </template>
+          <inform-list></inform-list>
         </el-card>
       </el-col>
     </el-row>
@@ -53,6 +58,7 @@
 import HwtList from "./HwtList.vue";
 import UserInfo from "./UserInfo.vue";
 import Calender from "./Calender.vue";
+import InformList from "./InformList.vue";
 import NotifyList from "./NotifyList.vue";
 import getInfo from "../../ts/GetInfo";
 
@@ -61,6 +67,7 @@ export default {
     HwtList,
     UserInfo,
     Calender,
+    InformList,
     NotifyList,
   },
   data() {

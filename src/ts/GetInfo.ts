@@ -7,7 +7,8 @@ const hwtListUrl = `${baseUrl}/common/hw/student/hwtask.jsp`; // 课程作业hwt
 const hwtDetailUrl = `${baseUrl}/common/hw/student/taskanswer.jsp`; // 课程作业详情taskanswer
 const notifyListUrl = `${baseUrl}/common/inform/index_stu.jsp`; // 通知列表notify (有已阅读信息)
 const notifyMessageUrl = `${baseUrl}/jpk/course/layout/course_meswrap.jsp`; // 通知内容course_meswrap
-const lessonPageUrl = `${baseUrl}/jpk/course/layout/newpage/index.jsp`; // 某一课程的主页
+const lessonPageUrl = `${baseUrl}/jpk/course/layout/newpage/index.jsp`; // 课程主页
+const informListUrl = `${baseUrl}/common/inform/index_stu.jsp?lid=0`; // 系统通知
 
 async function getUserInfo() {
   return await sendRequest(userinfoUrl, (obj: Document) => {
@@ -351,6 +352,10 @@ async function getNotifyList(lid: string) {
   });
 }
 
+async function getInformList() {
+  return await getNotifyList("0");
+}
+
 async function visitLessonPage(lid: string) {
   return await sendRequest(
     lessonPageUrl + `?courseId=${lid}`,
@@ -369,5 +374,6 @@ export default {
   getHwtInfo: getHwtInfo,
   getHwtDetail: getHwtDetail,
   getNotifyList: getNotifyList,
+  getInformList: getInformList,
   visitLessonPage: visitLessonPage,
 };

@@ -30,6 +30,10 @@ export default {
 </script>
 
 <style scoped>
+.el-scrollbar {
+  width: 100%;
+}
+
 .el-header {
   padding: 0;
   height: auto;
