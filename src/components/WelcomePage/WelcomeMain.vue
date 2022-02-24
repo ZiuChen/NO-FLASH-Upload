@@ -27,7 +27,7 @@
     </el-row>
     <el-row>
       <el-col :span="16">
-        <el-card class="inform-list" shadow="always">
+        <el-card class="notify-list" shadow="always">
           <template #header>
             <div class="card-header">
               <span>未读通知</span>

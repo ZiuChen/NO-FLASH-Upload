@@ -1,6 +1,6 @@
 <template>
   <el-scrollbar height="400px">
-    <el-collapse v-model="activeNotifyID">
+    <el-collapse>
       <el-collapse-item
         :key="lesson.id"
         v-for="lesson in notifies"
@@ -18,9 +18,6 @@ import NotifyListDetail from "./NotifyListDetail.vue";
 export default {
   components: {
     NotifyListDetail,
-  },
-  data() {
-    return { InformList: {}, activeNotifyID: "", Notifies: [] };
   },
   props: ["notifies"],
   methods: {},

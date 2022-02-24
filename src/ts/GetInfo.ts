@@ -5,8 +5,8 @@ const reminderUrl = `${baseUrl}/welcomepage/student/interaction_reminder.jsp`; /
 const lessonUrl = `${baseUrl}/lesson/blen.student.lesson.list.jsp`; // 课程列表courselist
 const hwtListUrl = `${baseUrl}/common/hw/student/hwtask.jsp`; // 课程作业hwtlist
 const hwtDetailUrl = `${baseUrl}/common/hw/student/taskanswer.jsp`; // 课程作业详情taskanswer
-const informListUrl = `${baseUrl}/common/inform/index_stu.jsp`; // 通知列表inform (有已阅读信息)
-const informMessageUrl = `${baseUrl}/jpk/course/layout/course_meswrap.jsp`; // 通知内容course_meswrap
+const notifyListUrl = `${baseUrl}/common/inform/index_stu.jsp`; // 通知列表notify (有已阅读信息)
+const notifyMessageUrl = `${baseUrl}/jpk/course/layout/course_meswrap.jsp`; // 通知内容course_meswrap
 const lessonPageUrl = `${baseUrl}/jpk/course/layout/newpage/index.jsp`; // 某一课程的主页
 
 async function getUserInfo() {
@@ -320,9 +320,9 @@ async function getHwtDetail(hwtid: string) {
     });
 }
 
-async function getInformList(lid: string) {
+async function getNotifyList(lid: string) {
   return await sendRequest(
-    informListUrl + `?tagbug=client&s_order=0&lid=${lid}`,
+    notifyListUrl + `?tagbug=client&s_order=0&lid=${lid}`,
     (obj: Document) => {
       return obj.querySelectorAll(".valuelist tr");
     }
@@ -368,6 +368,6 @@ export default {
   getLessonInfo: getLessonInfo,
   getHwtInfo: getHwtInfo,
   getHwtDetail: getHwtDetail,
-  getInformList: getInformList,
+  getNotifyList: getNotifyList,
   visitLessonPage: visitLessonPage,
 };
