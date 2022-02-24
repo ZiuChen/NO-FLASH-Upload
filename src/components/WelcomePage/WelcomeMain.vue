@@ -9,7 +9,8 @@
             </div>
           </template>
           <el-empty v-if="hwtEmpty" description="没有待提交作业哦~"></el-empty>
-          <hwt-list v-if="!hwtEmpty"></hwt-list>
+          <!-- TODO: able to choose prop all Hwt or just remind Hwt -->
+          <hwt-list v-if="!hwtEmpty" :hwts="remindList.hwt"></hwt-list>
         </el-card>
       </el-col>
       <el-col :span="8">
@@ -34,7 +35,7 @@
           <el-empty v-if="notifyEmpty" description="没有未读通知哦~"></el-empty>
           <notify-list
             v-if="!notifyEmpty"
-            :remindList="remindList"
+            :notifies="remindList.notify"
           ></notify-list>
         </el-card>
       </el-col>

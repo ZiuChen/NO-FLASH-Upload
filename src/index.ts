@@ -1,6 +1,5 @@
 import { createApp } from "vue";
 import Main from "./components/Main.vue";
-// import Notify from "./components/Notify.vue";
 import router from "./route";
 import checkUpdate from "./ts/CheckUpdate";
 import ConfigOperations from "./ts/Config/ConfigOperations";

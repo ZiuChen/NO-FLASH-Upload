@@ -1,9 +1,9 @@
 <template>
-  <el-scrollbar height="500px">
+  <el-scrollbar height="450px">
     <el-collapse v-model="activeNotifyID">
       <el-collapse-item
         :key="lesson.id"
-        v-for="lesson in remindList.notify"
+        v-for="lesson in notifies"
         :title="lesson.name"
         :name="lesson.id"
       >
@@ -22,7 +22,7 @@ export default {
   data() {
     return { InformList: {}, activeNotifyID: "", Notifies: [] };
   },
-  props: ["remindList"],
+  props: ["notifies"],
   methods: {},
 };
 </script>

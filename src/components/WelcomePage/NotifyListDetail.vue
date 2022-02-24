@@ -26,7 +26,9 @@ export default {
   computed: {
     shownNotifies: function () {
       return this.Notifies.filter((notify) => {
-        return notify.hadRead === false;
+        // FIXME: Debugging
+        // return notify.hadRead === false;
+        return notify.hadRead;
       });
     },
   },
