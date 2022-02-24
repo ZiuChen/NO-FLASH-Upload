@@ -321,9 +321,12 @@ async function getHwtDetail(hwtid: string) {
 }
 
 async function getInformList(lid: string) {
-  return await sendRequest(informListUrl + `?lid=${lid}`, (obj: Document) => {
-    return obj.querySelectorAll(".valuelist tr");
-  }).then((res) => {
+  return await sendRequest(
+    informListUrl + `?tagbug=client&s_order=0&lid=${lid}`,
+    (obj: Document) => {
+      return obj.querySelectorAll(".valuelist tr");
+    }
+  ).then((res) => {
     let array: object[] = [];
     res.forEach((item: HTMLTableCellElement, index: number) => {
       if (index === 0) return;
