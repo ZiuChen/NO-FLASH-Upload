@@ -6,24 +6,45 @@
     :row-class-name="tableRowClassName"
     style="width: 100%"
   >
-    <el-table-column prop="remain" label="剩余" sortable width="100" />
-    <el-table-column prop="name" label="作业标题" width="180" />
-    <el-table-column prop="date" label="截止日期" width="180" />
+    <el-table-column
+      prop="remain"
+      label="剩余时间"
+      sortable
+      align="center"
+      :formatter="remainDayFormatter"
+    />
+    <el-table-column prop="name" label="作业标题">
+      <template #default="scope">
+        <el-link
+          :href="taskAnswerUrl + scope.row.hwtID"
+          :underline="false"
+          target="_blank"
+          >{{ scope.row.name }}</el-link
+        >
+      </template>
+    </el-table-column>
+    <el-table-column prop="date" label="截止日期" />
     <el-table-column
       prop="lesson"
       label="Lesson"
-      width="180"
       :filters="toFilterArray(PropHwtList)"
       :filter-method="filterLesson"
       ><template #default="scope">
-        <el-tag :type="getTagType()" disable-transitions>{{
-          scope.row.lesson
-        }}</el-tag>
+        <el-tag
+          class="lesson-tag"
+          :type="getTagType()"
+          @click="handleTagClick(scope.row.lid)"
+          disable-transitions
+        >
+          {{ scope.row.lesson }}</el-tag
+        >
       </template>
     </el-table-column>
-    <el-table-column label="操作">
+    <el-table-column label="操作" align="center">
       <template #default="scope">
-        <el-button size="small" @click="handleRowJump(scope.$index, scope.row)"
+        <el-button
+          size="small"
+          @click="handleSubmitClick(scope.$index, scope.row)"
           >交作业</el-button
         >
       </template>
@@ -38,6 +59,8 @@ export default {
     return {
       tableData: [],
       PropHwtList: [],
+      lessonPageUrl: `http://cc.bjtu.edu.cn:81/meol/jpk/course/layout/newpage/index.jsp?courseId=`,
+      taskAnswerUrl: `http://cc.bjtu.edu.cn:81/meol/common/hw/student/taskanswer.jsp?hwtid=`,
     };
   },
   props: ["hwts"],
@@ -87,17 +110,33 @@ export default {
       else false;
     },
     tableRowClassName({ row, rowIndex }) {
-      if (row.remain <= 3 && row.remain >= 0) {
+      if (row.remain <= 3 && row.remain > 0) {
         return "warning-row";
       } else if (row.remain < 0) {
-        return "success-row";
-      } else {
         return "info-row";
+      } else if (row.remain === 0) {
+        return "danger-row";
+      } else {
+        return "success-row";
       }
     },
-    async handleRowJump(index, row) {
+    remainDayFormatter(row, column) {
+      if (row.remain < 0) {
+        return `已过期${Math.abs(row.remain).toString()}天`;
+      } else if (row.remain === 0) {
+        return `今日截止`;
+      } else if (row.remain > 0) {
+        return `还有${row.remain}天截止`;
+      }
+    },
+
+    async handleSubmitClick(index, row) {
       console.log(index, row);
-      let url = `http://cc.bjtu.edu.cn:81/meol/common/hw/student/taskanswer.jsp?hwtid=${row.hwtID}`;
+      let url = `${this.taskAnswerUrl}${row.hwtID}`;
+      window.open(url);
+    },
+    async handleTagClick(lid) {
+      let url = `${this.lessonPageUrl}${lid}`;
       window.open(url);
     },
     async hwtObj2TableObj(hwtObj, remindHwt) {
@@ -131,6 +170,10 @@ export default {
 </script>
 
 <style>
+.lesson-tag {
+  cursor: pointer;
+}
+
 .el-table .danger-row {
   --el-table-tr-bg-color: var(--el-color-danger-light);
 }
