@@ -45,7 +45,7 @@
 `****.**克：￥1.00(支付宝)`
 `**睿：￥1.00(支付宝)`
 
-<a href="https://gitee.com/ziuc/utool-filebed/raw/master/Buy%20me%20a%20coffee.png"><img alt="捐赠二维码" width="65%" src="https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload/doc/img/Buy%20me%20a%20coffee.png"></img></a>
+<a href="https://gitee.com/ziuc/utool-filebed/raw/master/Buy%20me%20a%20coffee.png"><img alt="捐赠二维码" width="65%" src="https://raw.githubusercontent.com/ZiuChen/NO-FLASH-Upload/v2.x-Vue/doc/img/Buy%20me%20a%20coffee.png"></img></a>
 ## 📎 相关链接
 
 [脚本发布页 *(Greasy Fork)*](https://greasyfork.org/zh-CN/scripts/432056)
