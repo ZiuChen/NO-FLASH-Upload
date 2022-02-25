@@ -1,75 +1,86 @@
 <template>
-  <el-table
-    height="400px"
-    :data="tableData"
-    :default-sort="{ prop: 'remain', order: 'ascending' }"
-    :row-class-name="tableRowClassName"
-    style="width: 100%"
-  >
-    <el-table-column
-      prop="remain"
-      label="剩余时间"
-      sortable
-      align="center"
-      :formatter="remainDayFormatter"
-    />
-    <el-table-column prop="name" label="作业标题">
-      <template #default="scope">
-        <el-link
-          :href="taskAnswerUrl + scope.row.hwtID"
-          :underline="false"
-          target="_blank"
-          >{{ scope.row.name }}</el-link
-        >
-      </template>
-    </el-table-column>
-    <el-table-column prop="date" label="截止日期" />
-    <el-table-column
-      prop="lesson"
-      label="Lesson"
-      :filters="toFilterArray(PropHwtList)"
-      :filter-method="filterLesson"
-      ><template #default="scope">
-        <el-tag
-          class="lesson-tag"
-          :type="getTagType()"
-          @click="handleTagClick(scope.row.lid)"
-          disable-transitions
-        >
-          {{ scope.row.lesson }}</el-tag
-        >
-      </template>
-    </el-table-column>
-    <el-table-column label="操作" align="center">
-      <template #default="scope">
-        <el-button
-          size="small"
-          @click="handleSubmitClick(scope.$index, scope.row)"
-          >交作业</el-button
-        >
-      </template>
-    </el-table-column>
-  </el-table>
+  <el-card class="hwt-list" shadow="always">
+    <template #header>
+      <div class="card-header">
+        <span>作业列表</span>
+      </div>
+    </template>
+    <!-- <el-empty v-if="hwtEmpty" description="没有待提交作业哦~"></el-empty>
+          <hwt-list v-if="!hwtEmpty" :hwts="lessonList"></hwt-list> -->
+    <el-table
+      height="400px"
+      :data="tableData"
+      :default-sort="{ prop: 'remain', order: 'ascending' }"
+      :row-class-name="tableRowClassName"
+      style="width: 100%"
+    >
+      <el-table-column
+        prop="remain"
+        label="剩余时间"
+        sortable
+        align="center"
+        :formatter="remainDayFormatter"
+      />
+      <el-table-column prop="name" label="作业标题">
+        <template #default="scope">
+          <el-link
+            :href="taskAnswerUrl + scope.row.hwtID"
+            :underline="false"
+            target="_blank"
+            >{{ scope.row.name }}</el-link
+          >
+        </template>
+      </el-table-column>
+      <el-table-column prop="date" label="截止日期" />
+      <el-table-column
+        prop="lesson"
+        label="课程名"
+        :filters="toFilterArray(lessonList)"
+        :filter-method="filterLesson"
+        ><template #default="scope">
+          <el-tag
+            class="lesson-tag"
+            :type="getTagType()"
+            @click="handleTagClick(scope.row.lid)"
+            disable-transitions
+          >
+            {{ scope.row.lesson }}</el-tag
+          >
+        </template>
+      </el-table-column>
+      <el-table-column label="操作" align="center">
+        <template #default="scope">
+          <el-button
+            size="small"
+            @click="handleSubmitClick(scope.$index, scope.row)"
+            >交作业</el-button
+          >
+        </template>
+      </el-table-column>
+    </el-table>
+  </el-card>
 </template>
 
 <script>
 import getInfo from "../../ts/GetInfo";
 export default {
+  created() {
+    this.getLessonList();
+  },
   data() {
     return {
+      lessonList: [],
       tableData: [],
-      PropHwtList: [],
       lessonPageUrl: `http://cc.bjtu.edu.cn:81/meol/jpk/course/layout/newpage/index.jsp?courseId=`,
       taskAnswerUrl: `http://cc.bjtu.edu.cn:81/meol/common/hw/student/taskanswer.jsp?hwtid=`,
     };
   },
   props: ["hwts"],
   watch: {
-    hwts: async function (val) {
-      this.PropHwtList = val;
-      console.log(val);
+    lessonList: async function (val) {
+      this.lessonList = val;
       // Async Trap: cannot async in forEach
-      for (let remindHwt of this.PropHwtList) {
+      for (let remindHwt of this.lessonList) {
         await getInfo.visitLessonPage(remindHwt.id).then(async () => {
           await getInfo.getHwtInfo(remindHwt.id).then((res) => {
             res.forEach((item) => {
@@ -129,7 +140,11 @@ export default {
         return `还有${row.remain}天截止`;
       }
     },
-
+    async getLessonList() {
+      this.lessonList = await getInfo.getLessonInfo().then((res) => {
+        return res;
+      });
+    },
     async handleSubmitClick(index, row) {
       console.log(index, row);
       let url = `${this.taskAnswerUrl}${row.hwtID}`;

@@ -2,17 +2,7 @@
   <div>
     <el-row>
       <el-col :span="16">
-        <el-card class="hwt-list" shadow="always">
-          <template #header>
-            <div class="card-header">
-              <span>作业列表</span>
-            </div>
-          </template>
-          <el-empty v-if="hwtEmpty" description="没有待提交作业哦~"></el-empty>
-          <!-- TODO: add optional choice to config -->
-          <hwt-list v-if="!hwtEmpty" :hwts="remindList.hwt"></hwt-list>
-          <!-- <hwt-list v-if="!hwtEmpty" :hwts="lessonList"></hwt-list> -->
-        </el-card>
+        <hwt-list></hwt-list>
       </el-col>
       <el-col :span="8">
         <el-card class="lesson-list" shadow="always">
