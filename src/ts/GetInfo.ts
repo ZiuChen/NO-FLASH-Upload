@@ -8,7 +8,6 @@ const hwtDetailUrl = `${baseUrl}/common/hw/student/taskanswer.jsp`; // 课程作
 const notifyListUrl = `${baseUrl}/common/inform/index_stu.jsp`; // 通知列表notify (有已阅读信息)
 const notifyMessageUrl = `${baseUrl}/jpk/course/layout/course_meswrap.jsp`; // 通知内容course_meswrap
 const lessonPageUrl = `${baseUrl}/jpk/course/layout/newpage/index.jsp`; // 课程主页
-const informListUrl = `${baseUrl}/common/inform/index_stu.jsp?lid=0`; // 系统通知
 
 async function getUserInfo() {
   return await sendRequest(userinfoUrl, (obj: Document) => {
@@ -170,54 +169,27 @@ async function getHwtInfo(lid: string) {
         obj.able = item.children[5].childElementCount !== 0;
         arry.push(obj);
       });
-      // return arry;
+      return arry;
       // FIXME: Debugging
       // FIXME: remove all lid
       if (lid === "10625") {
         return [
-          {
-            hwtID: "23514",
-            hwtName: "实验作业提交——请做成3个PDF文件",
-            lid: "10625",
-            date: "2022年1月8日",
-            Date: "2022-01-08T15:59:59.000Z",
-            remainTime: "-46",
-            able: false,
-          },
-          {
-            hwtID: "23209",
-            hwtName: "chap4作业补交",
-            lid: "10625",
-            date: "2022年1月25日",
-            Date: "2022-01-25T15:59:59.000Z",
-            remainTime: "-29",
-            able: false,
-          },
-          {
-            hwtID: "22868",
-            hwtName: "chap3作业（补交）",
-            lid: "10625",
-            date: "2022年1月12日",
-            Date: "2022-01-12T15:59:59.000Z",
-            remainTime: "-42",
-            able: false,
-          },
           {
             hwtID: "22195",
             hwtName: "chap3作业",
             lid: "10625",
             date: "2022年3月31日",
             Date: "2022-03-31T15:59:59.000Z",
-            remainTime: "35",
+            remainTime: "34",
             able: true,
           },
           {
             hwtID: "20999",
             hwtName: "chap2 作业",
             lid: "10625",
-            date: "2022年3月15日",
-            Date: "2022-03-15T15:59:59.000Z",
-            remainTime: "19",
+            date: "2022年2月26日",
+            Date: "2022-02-26T15:59:59.000Z",
+            remainTime: "1",
             able: true,
           },
           {
@@ -226,7 +198,7 @@ async function getHwtInfo(lid: string) {
             lid: "10625",
             date: "2022年2月25日",
             Date: "2022-02-25T15:59:59.000Z",
-            remainTime: "1",
+            remainTime: "0",
             able: true,
           },
           {
@@ -235,7 +207,7 @@ async function getHwtInfo(lid: string) {
             lid: "10625",
             date: "2022年2月24日",
             Date: "2022-02-24T15:59:59.000Z",
-            remainTime: "0",
+            remainTime: "-1",
             able: true,
           },
         ];
@@ -247,16 +219,16 @@ async function getHwtInfo(lid: string) {
             lid: "16597",
             date: "2022年2月21日",
             Date: "2022-02-21T15:59:59.000Z",
-            remainTime: "-2",
+            remainTime: "-3",
             able: false,
           },
           {
             hwtID: "31203",
-            hwtName: "第二次作业",
+            hwtName: "第二次作业作业长文本作业长文本作业长文本作业长文本",
             lid: "16597",
             date: "2022年2月14日",
             Date: "2022-02-14T15:59:59.000Z",
-            remainTime: "-9",
+            remainTime: "-10",
             able: false,
           },
           {
@@ -265,7 +237,7 @@ async function getHwtInfo(lid: string) {
             lid: "16597",
             date: "2022年3月7日",
             Date: "2022-03-07T15:59:59.000Z",
-            remainTime: "11",
+            remainTime: "10",
             able: true,
           },
           {
@@ -274,16 +246,16 @@ async function getHwtInfo(lid: string) {
             lid: "16597",
             date: "2022年4月26日",
             Date: "2022-04-26T15:59:59.000Z",
-            remainTime: "61",
+            remainTime: "60",
             able: true,
           },
           {
             hwtID: "14171",
             hwtName: "第三章作业",
             lid: "16597",
-            date: "2022年3月18日",
-            Date: "2022-03-18T15:59:59.000Z",
-            remainTime: "22",
+            date: "2022年2月26日",
+            Date: "2022-02-26T15:59:59.000Z",
+            remainTime: "1",
             able: true,
           },
           {
@@ -292,7 +264,7 @@ async function getHwtInfo(lid: string) {
             lid: "16597",
             date: "2022年3月17日",
             Date: "2022-03-17T15:59:59.000Z",
-            remainTime: "21",
+            remainTime: "20",
             able: true,
           },
         ];

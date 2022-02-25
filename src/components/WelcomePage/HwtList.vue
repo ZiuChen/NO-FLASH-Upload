@@ -113,10 +113,11 @@ export default {
       // return types[Math.floor(Math.random() * 4)];
       return types[0];
     },
+    // TODO: move this to before request
     tableDataFilter(tableObj, start, end) {
       // start: lager, end: smaller
       // won't add to tableData
-      return true; // FIXME: REMOVE THIS
+      // return true; // FIXME: REMOVE THIS
       if (tableObj.remain < start && tableObj.remain > end) return true;
       else false;
     },
@@ -174,7 +175,7 @@ export default {
       return tableObj;
     },
     async appendTableData(tableObj) {
-      if (this.tableDataFilter(tableObj, 15, -3)) {
+      if (this.tableDataFilter(tableObj, 25, -3)) {
         this.tableData.push(tableObj);
       } else {
         // do nothing
