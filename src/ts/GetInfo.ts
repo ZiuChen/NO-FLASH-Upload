@@ -1,13 +1,14 @@
 import sendRequest from "./SendRequest";
 const baseUrl = `http://cc.bjtu.edu.cn:81/meol`;
-const userinfoUrl = `${baseUrl}/welcomepage/student/index.jsp`; // 个人信息leftBar
-const reminderUrl = `${baseUrl}/welcomepage/student/interaction_reminder.jsp`; // 互动提醒reminder
-const lessonUrl = `${baseUrl}/lesson/blen.student.lesson.list.jsp`; // 课程列表courselist
-const hwtListUrl = `${baseUrl}/common/hw/student/hwtask.jsp`; // 课程作业hwtlist
-const hwtDetailUrl = `${baseUrl}/common/hw/student/taskanswer.jsp`; // 课程作业详情taskanswer
-const notifyListUrl = `${baseUrl}/common/inform/index_stu.jsp`; // 通知列表notify (有已阅读信息)
-const notifyMessageUrl = `${baseUrl}/jpk/course/layout/course_meswrap.jsp`; // 通知内容course_meswrap
-const lessonPageUrl = `${baseUrl}/jpk/course/layout/newpage/index.jsp`; // 课程主页
+const userinfoUrl = `${baseUrl}/welcomepage/student/index.jsp`; // 个人信息
+const reminderUrl = `${baseUrl}/welcomepage/student/interaction_reminder.jsp`; // 互动提醒
+const lessonUrl = `${baseUrl}/lesson/blen.student.lesson.list.jsp`; // 课程列表
+const hwtListUrl = `${baseUrl}/common/hw/student/hwtask.jsp`; // 课程作业
+const hwtDetailUrl = `${baseUrl}/common/hw/student/taskanswer.jsp`; // 课程作业详情 ?hwtid=
+const hwtContentUrl = `${baseUrl}/common/hw/student/write.jsp`; // 作业提交页
+const notifyListUrl = `${baseUrl}/common/inform/index_stu.jsp`; // 通知列表(有已阅读信息) ?lid=
+const notifyMessageUrl = `${baseUrl}/jpk/course/layout/course_meswrap.jsp`; // 通知内容
+const lessonPageUrl = `${baseUrl}/jpk/course/layout/newpage/index.jsp`; // 课程主页 ?courseId=
 
 async function getUserInfo() {
   return await sendRequest(userinfoUrl, (obj: Document) => {
@@ -339,12 +340,33 @@ async function visitLessonPage(lid: string) {
   });
 }
 
+async function getHwtContent(hwtid: string) {
+  return await sendRequest(
+    hwtContentUrl + `?hwtid=${hwtid}`,
+    (obj: Document) => {
+      return obj.querySelectorAll(".infotable>tbody>tr>td");
+    }
+  )
+    .then((res) => {
+      return {
+        title: res[0].innerText.trim(),
+        deadline: res[1].innerText.split(`\n`)[0],
+        score: res[2].innerText.trim(),
+        content: res[3].querySelectorAll("input")[0].value,
+      };
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 export default {
   getUserInfo: getUserInfo,
   getRemindInfo: getRemindInfo,
   getLessonInfo: getLessonInfo,
   getHwtInfo: getHwtInfo,
   getHwtDetail: getHwtDetail,
+  getHwtContent: getHwtContent,
   getNotifyList: getNotifyList,
   getInformList: getInformList,
   visitLessonPage: visitLessonPage,
