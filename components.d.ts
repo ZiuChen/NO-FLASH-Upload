@@ -15,13 +15,13 @@ declare module 'vue' {
     ElCollapse: typeof import('element-plus/es')['ElCollapse']
     ElCollapseItem: typeof import('element-plus/es')['ElCollapseItem']
     ElContainer: typeof import('element-plus/es')['ElContainer']
+    ElDescriptions: typeof import('element-plus/es')['ElDescriptions']
+    ElDescriptionsItem: typeof import('element-plus/es')['ElDescriptionsItem']
     ElDropdown: typeof import('element-plus/es')['ElDropdown']
     ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']
     ElDropdownMenu: typeof import('element-plus/es')['ElDropdownMenu']
-    ElEmpty: typeof import('element-plus/es')['ElEmpty']
     ElHeader: typeof import('element-plus/es')['ElHeader']
     ElIcon: typeof import('element-plus/es')['ElIcon']
-    ElInput: typeof import('element-plus/es')['ElInput']
     ElLink: typeof import('element-plus/es')['ElLink']
     ElMain: typeof import('element-plus/es')['ElMain']
     ElMenu: typeof import('element-plus/es')['ElMenu']
@@ -35,7 +35,6 @@ declare module 'vue' {
     ElTabPane: typeof import('element-plus/es')['ElTabPane']
     ElTabs: typeof import('element-plus/es')['ElTabs']
     ElTag: typeof import('element-plus/es')['ElTag']
-    ElTooltip: typeof import('element-plus/es')['ElTooltip']
     HeadBar: typeof import('./src/components/Common/HeadBar.vue')['default']
     HwtList: typeof import('./src/components/WelcomePage/HwtList.vue')['default']
     InformList: typeof import('./src/components/WelcomePage/InformList.vue')['default']
@@ -48,6 +47,7 @@ declare module 'vue' {
     SideBar: typeof import('./src/components/Common/SideBar.vue')['default']
     UserInfo: typeof import('./src/components/WelcomePage/UserInfo.vue')['default']
     WelcomeMain: typeof import('./src/components/WelcomePage/WelcomeMain.vue')['default']
+    WriteHwt: typeof import('./src/components/WriteHwt.vue')['default']
   }
 }
 

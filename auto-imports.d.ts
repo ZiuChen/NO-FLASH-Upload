@@ -11,13 +11,13 @@ declare global {
   const ElCollapse: typeof import('element-plus/es')['ElCollapse']
   const ElCollapseItem: typeof import('element-plus/es')['ElCollapseItem']
   const ElContainer: typeof import('element-plus/es')['ElContainer']
+  const ElDescriptions: typeof import('element-plus/es')['ElDescriptions']
+  const ElDescriptionsItem: typeof import('element-plus/es')['ElDescriptionsItem']
   const ElDropdown: typeof import('element-plus/es')['ElDropdown']
   const ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']
   const ElDropdownMenu: typeof import('element-plus/es')['ElDropdownMenu']
-  const ElEmpty: typeof import('element-plus/es')['ElEmpty']
   const ElHeader: typeof import('element-plus/es')['ElHeader']
   const ElIcon: typeof import('element-plus/es')['ElIcon']
-  const ElInput: typeof import('element-plus/es')['ElInput']
   const ElLink: typeof import('element-plus/es')['ElLink']
   const ElMain: typeof import('element-plus/es')['ElMain']
   const ElMenu: typeof import('element-plus/es')['ElMenu']
@@ -33,6 +33,5 @@ declare global {
   const ElTabPane: typeof import('element-plus/es')['ElTabPane']
   const ElTabs: typeof import('element-plus/es')['ElTabs']
   const ElTag: typeof import('element-plus/es')['ElTag']
-  const ElTooltip: typeof import('element-plus/es')['ElTooltip']
 }
 export {}

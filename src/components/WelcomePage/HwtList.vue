@@ -96,6 +96,7 @@ export default {
       loadingStatus: true,
       lessonPageUrl: `http://cc.bjtu.edu.cn:81/meol/jpk/course/layout/newpage/index.jsp?courseId=`,
       taskAnswerUrl: `http://cc.bjtu.edu.cn:81/meol/common/hw/student/taskanswer.jsp?hwtid=`,
+      hwtWriteUrl: `http://cc.bjtu.edu.cn:81/meol/common/hw/student/write.jsp?hwtid=`,
     };
   },
   watch: {
@@ -171,7 +172,7 @@ export default {
     },
     async handleSubmitClick(index, row) {
       console.log(index, row);
-      let url = `${this.taskAnswerUrl}${row.hwtID}`;
+      let url = `${this.hwtWriteUrl}${row.hwtID}`;
       window.open(url);
     },
     async handleTagClick(lid) {
