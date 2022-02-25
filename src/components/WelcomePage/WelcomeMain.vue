@@ -18,10 +18,10 @@
         <el-card class="user-info" shadow="always">
           <template #header>
             <div class="card-header">
-              <span>用户信息</span>
+              <span>课程列表</span>
             </div>
           </template>
-          <user-info></user-info>
+          <lesson-list></lesson-list>
         </el-card>
       </el-col>
     </el-row>
@@ -60,6 +60,7 @@ import UserInfo from "./UserInfo.vue";
 import Calender from "./Calender.vue";
 import InformList from "./InformList.vue";
 import NotifyList from "./NotifyList.vue";
+import LessonList from "./LessonList.vue";
 import getInfo from "../../ts/GetInfo";
 
 export default {
@@ -69,6 +70,7 @@ export default {
     Calender,
     InformList,
     NotifyList,
+    LessonList,
   },
   data() {
     return {
