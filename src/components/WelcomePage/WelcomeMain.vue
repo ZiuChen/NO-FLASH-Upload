@@ -15,13 +15,39 @@
         </el-card>
       </el-col>
       <el-col :span="8">
-        <el-card class="user-info" shadow="always">
+        <el-card class="lesson-list" shadow="always">
           <template #header>
             <div class="card-header">
               <span>课程列表</span>
+              <el-check-tag
+                size="small"
+                :checked="operationEnabled"
+                @change="toggleOperationEnabledStatus"
+              >
+                <template #default="">
+                  <el-icon>
+                    <svg
+                      t="1645760155626"
+                      class="icon"
+                      viewBox="0 0 1024 1024"
+                      version="1.1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      p-id="20883"
+                      width="200"
+                      height="200"
+                    >
+                      <path
+                        d="M810.666667 128a85.333333 85.333333 0 0 1 85.333333 85.333333v597.333334a85.333333 85.333333 0 0 1-85.333333 85.333333H213.333333a85.333333 85.333333 0 0 1-85.333333-85.333333V213.333333a85.333333 85.333333 0 0 1 85.333333-85.333333h597.333334m-98.133334 270.933333c9.386667-8.96 9.386667-23.893333 0-32.853333L657.92 311.466667a22.698667 22.698667 0 0 0-32.853333 0l-42.666667 42.666666 87.466667 87.466667 42.666666-42.666667M298.666667 637.44V725.333333h87.893333l258.56-258.56-87.893333-87.893333L298.666667 637.44z"
+                        fill=""
+                        p-id="20884"
+                      ></path>
+                    </svg>
+                  </el-icon>
+                </template>
+              </el-check-tag>
             </div>
           </template>
-          <lesson-list></lesson-list>
+          <lesson-list :operationStatus="this.operationEnabled"></lesson-list>
         </el-card>
       </el-col>
     </el-row>
@@ -78,6 +104,7 @@ export default {
       remindList: {},
       hwtEmpty: false, // cant use true
       notifyEmpty: false,
+      operationEnabled: false,
     };
   },
   created() {
@@ -97,10 +124,12 @@ export default {
     },
     async isEmpty() {
       await getInfo.getRemindInfo().then((res) => {
-        console.log(res);
         this.hwtEmpty = Object.keys(res.hwt).length === 0;
         this.notifyEmpty = Object.keys(res.notify).length === 0;
       });
+    },
+    toggleOperationEnabledStatus(val) {
+      this.operationEnabled = val;
     },
   },
 };
@@ -118,10 +147,12 @@ export default {
 }
 
 .card-header {
+  height: 1.3em;
   font-size: 1.1em;
   cursor: default;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   color: #005bac;
   font-weight: bold;
 }

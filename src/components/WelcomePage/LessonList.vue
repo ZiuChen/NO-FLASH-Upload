@@ -10,18 +10,14 @@
         课程名
         <!-- <el-button @click="toggleOperationEnabledStatus" size="small" circle>
         </el-button> -->
-        <el-tooltip
-          class="box-item"
-          effect="dark"
-          content="修改课程顺序"
-          placement="top"
+        <!-- <el-check-tag
+          class="table-header-check-tag"
+          size="small"
+          :checked="operationEnabled"
+          @change="toggleOperationEnabledStatus"
         >
-          <el-link
-            href=""
-            :underline="false"
-            @click="toggleOperationEnabledStatus"
-          >
-            <el-icon class="table-header-edit-button" size="20px">
+          <template #default="">
+            <el-icon>
               <svg
                 t="1645760155626"
                 class="icon"
@@ -39,8 +35,8 @@
                 ></path>
               </svg>
             </el-icon>
-          </el-link>
-        </el-tooltip>
+          </template>
+        </el-check-tag> -->
       </template>
       <template #default="scope">
         <el-link
@@ -127,6 +123,12 @@ export default {
   created() {
     this.updateLessonList();
   },
+  props: ["operationStatus"],
+  watch: {
+    operationStatus: function (val) {
+      this.operationEnabled = val;
+    },
+  },
   methods: {
     async updateLessonList() {
       this.lessonList = await getInfo.getLessonInfo().then((res) => {
@@ -153,15 +155,16 @@ export default {
           break;
       }
     },
-    toggleOperationEnabledStatus() {
-      this.operationEnabled = !this.operationEnabled;
+    toggleOperationEnabledStatus(status) {
+      this.operationEnabled = status;
+      //   this.operationEnabled = !this.operationEnabled;
     },
   },
 };
 </script>
 
 <style scoped>
-.table-header-edit-button {
-  color: var(--el-table-header-text-color);
+.table-header-check-tag {
+  zoom: 15%;
 }
 </style>
