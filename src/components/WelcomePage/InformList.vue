@@ -1,17 +1,24 @@
 <template>
-  <el-table :data="tableData" height="400px" style="width: 100%">
-    <el-table-column prop="notifyName" label="通知">
-      <template #default="scope">
-        <el-link
-          :underline="false"
-          :href="informUrl + scope.row.id"
-          target="_blank"
-          >{{ scope.row.notifyName }}</el-link
-        >
-      </template>
-    </el-table-column>
-    <el-table-column prop="pubTime" label="发布时间" />
-  </el-table>
+  <el-card class="inform-list" shadow="hover">
+    <template #header>
+      <div class="card-header">
+        <span>系统通知</span>
+      </div>
+    </template>
+    <el-table :data="tableData" height="400px" style="width: 100%">
+      <el-table-column prop="notifyName" label="通知">
+        <template #default="scope">
+          <el-link
+            :underline="false"
+            :href="informUrl + scope.row.id"
+            target="_blank"
+            >{{ scope.row.notifyName }}</el-link
+          >
+        </template>
+      </el-table-column>
+      <el-table-column prop="pubTime" label="发布时间" />
+    </el-table>
+  </el-card>
 </template>
 
 <script>

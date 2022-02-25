@@ -13,14 +13,7 @@
         <notify-list></notify-list>
       </el-col>
       <el-col :span="8">
-        <el-card class="inform-list" shadow="always">
-          <template #header>
-            <div class="card-header">
-              <span>系统通知</span>
-            </div>
-          </template>
-          <inform-list></inform-list>
-        </el-card>
+        <inform-list></inform-list>
       </el-col>
     </el-row>
   </div>
