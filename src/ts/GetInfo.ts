@@ -9,6 +9,7 @@ const hwtContentUrl = `${baseUrl}/common/hw/student/write.jsp`; // 作业提交�
 const notifyListUrl = `${baseUrl}/common/inform/index_stu.jsp`; // 通知列表(有已阅读信息) ?lid=
 const notifyMessageUrl = `${baseUrl}/jpk/course/layout/course_meswrap.jsp`; // 通知内容
 const lessonPageUrl = `${baseUrl}/jpk/course/layout/newpage/index.jsp`; // 课程主页 ?courseId=
+const lessonPageInfo = `${baseUrl}/jpk/course/layout/newpage/default_demonstrate.jsp`; // 课程信息 ?courseId=
 
 async function getUserInfo() {
   return await sendRequest(userinfoUrl, (obj: Document) => {
@@ -340,6 +341,37 @@ async function visitLessonPage(lid: string) {
   });
 }
 
+async function getLessonPageInfo(lid: string) {
+  return await sendRequest(
+    lessonPageInfo + `?courseId=${lid}`,
+    (obj: Document) => {
+      return obj;
+    }
+  )
+    .then(async (OuterRes) => {
+      return await visitLessonPage(lid).then((InnerRes) => {
+        return {
+          introduction: OuterRes.querySelector(".coursecomm .body p").innerText,
+          teacherInfo: {
+            name: InnerRes.querySelectorAll(
+              ".course_info .tutor .body li"
+            )[0].innerText.split("教师姓名：")[1],
+            academy: InnerRes.querySelectorAll(
+              ".course_info .tutor .body li"
+            )[1].innerText.split("所属院系：")[1],
+            selfIntroduce: InnerRes.querySelectorAll(
+              ".course_info .tutor .body li"
+            )[2].innerText.split("个人简介：")[1],
+          },
+          // TODO: 课程信息
+        };
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 async function getHwtContent(hwtid: string) {
   return await sendRequest(
     hwtContentUrl + `?hwtid=${hwtid}`,
@@ -374,4 +406,5 @@ export default {
   getNotifyList: getNotifyList,
   getInformList: getInformList,
   visitLessonPage: visitLessonPage,
+  getLessonPageInfo: getLessonPageInfo,
 };
