@@ -8,12 +8,12 @@ async function sendRequest(url: string, callBack: Function, options?: Object) {
           title: "免Flash文件上传",
           type: "error",
           dangerouslyUseHTMLString: true,
-          message: `吖，请求</br><a href="javascript:;">${url}</a></br>时出错了，${getErrorTips(
+          message: `吖，请求</br><a href="${url}">${url}</a></br>时出错了，${getErrorTips(
             url
           )}请检查网络后重试或联系开发者`,
           duration: 0,
           onClick: () => {
-            window.open(url);
+            // window.open(url);
             notify.close();
           },
         });

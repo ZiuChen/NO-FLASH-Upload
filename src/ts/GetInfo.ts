@@ -344,15 +344,19 @@ async function getHwtContent(hwtid: string) {
   return await sendRequest(
     hwtContentUrl + `?hwtid=${hwtid}`,
     (obj: Document) => {
-      return obj.querySelectorAll(".infotable>tbody>tr>td");
+      return obj;
     }
   )
     .then((res) => {
+      let table = res.querySelectorAll(".infotable>tbody>tr>td");
       return {
-        title: res[0].innerText.trim(),
-        deadline: res[1].innerText.split(`\n`)[0],
-        score: res[2].innerText.trim(),
-        content: res[3].querySelectorAll("input")[0].value,
+        // TODO: add only once submit
+        title: table[0].innerText.trim(),
+        deadline: table[1].innerText.split(`\n`)[0],
+        score: table[2].innerText.trim(),
+        content: table[3].querySelectorAll("input")[0].value,
+        hwtid: res.querySelector("input[name=hwtid]").attributes["value"].value,
+        hwaid: res.querySelector("input[name=hwaid]").attributes["value"].value,
       };
     })
     .catch((err) => {
