@@ -25,11 +25,10 @@ function main() {
       createApp(Main).use(router).mount("body");
     } else if (href.indexOf("write.jsp") !== -1) {
       log("enter page write.jsp");
-      removeTags();
-      LoadResource.loadCSS(mainStyle);
-      LoadResource.loadCSS(wangEditor);
-      console.log(document.querySelectorAll("body"));
-      createApp(WriteHwt).mount("body");
+      // removeTags();
+      // LoadResource.loadCSS(mainStyle);
+      // LoadResource.loadCSS(wangEditor);
+      // createApp(WriteHwt).mount("body");
     }
   } else {
     log("script version enabled");

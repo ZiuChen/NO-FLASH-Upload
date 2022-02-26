@@ -1,15 +1,47 @@
 <template>
-  <div>
-    <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-      <el-tab-pane label="Notify"> 课程通知 </el-tab-pane>
-      <el-tab-pane label="Config"> 课程作业 </el-tab-pane>
-      <el-tab-pane label="Role"> 课程资源 </el-tab-pane>
-    </el-tabs>
-  </div>
+  <div>Main</div>
 </template>
 
 <script>
-export default {};
+import getInfo from "../../ts/GetInfo";
+export default {
+  data() {
+    return {
+      lid: "",
+      lessonDetail: {},
+    };
+  },
+  mounted() {
+    this.getLessonDetail(this.$route.params.lid);
+    this.$watch(
+      () => this.$route.params,
+      (toParams, previousParams) => {
+        console.log(toParams, previousParams);
+        if (toParams.lid === undefined) return; // necessary
+        this.lid = toParams.lid;
+      }
+    );
+  },
+  watch: {
+    lid: function (val) {
+      this.getLessonDetail(val);
+    },
+  },
+  methods: {
+    async getLessonDetail(lid) {
+      console.log(lid);
+      this.lessonDetail = await getInfo
+        .getLessonPageInfo(lid)
+        .then((res) => {
+          return res;
+        })
+        .then((res) => {
+          console.log(this.lessonDetail);
+          return res;
+        });
+    },
+  },
+};
 </script>
 
 <style scoped></style>
