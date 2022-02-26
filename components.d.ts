@@ -15,6 +15,8 @@ declare module 'vue' {
     ElCollapse: typeof import('element-plus/es')['ElCollapse']
     ElCollapseItem: typeof import('element-plus/es')['ElCollapseItem']
     ElContainer: typeof import('element-plus/es')['ElContainer']
+    ElDescriptions: typeof import('element-plus/es')['ElDescriptions']
+    ElDescriptionsItem: typeof import('element-plus/es')['ElDescriptionsItem']
     ElDropdown: typeof import('element-plus/es')['ElDropdown']
     ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']
     ElDropdownMenu: typeof import('element-plus/es')['ElDropdownMenu']
@@ -33,8 +35,9 @@ declare module 'vue' {
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTag: typeof import('element-plus/es')['ElTag']
     HeadBar: typeof import('./src/components/Common/HeadBar.vue')['default']
+    HwtEditor: typeof import('./src/components/Lesson/LessonSubmit/HwtEditor.vue')['default']
+    HwtInfo: typeof import('./src/components/Lesson/LessonSubmit/HwtInfo.vue')['default']
     HwtList: typeof import('./src/components/WelcomePage/HwtList.vue')['default']
-    HwtSubmitPage: typeof import('./src/components/Lesson/LessonSubmit/HwtSubmitPage.vue')['default']
     InformList: typeof import('./src/components/WelcomePage/InformList.vue')['default']
     LessonHomework: typeof import('./src/components/Lesson/LessonInfo/LessonHomework.vue')['default']
     LessonIndex: typeof import('./src/components/Lesson/LessonIndex.vue')['default']
@@ -51,7 +54,7 @@ declare module 'vue' {
     SideBar: typeof import('./src/components/Common/SideBar.vue')['default']
     UserInfo: typeof import('./src/components/WelcomePage/UserInfo.vue')['default']
     WelcomeIndex: typeof import('./src/components/WelcomePage/WelcomeIndex.vue')['default']
-    'WriteHwt copy': typeof import('./src/components/WriteHwt copy.vue')['default']
+    'WriteHwt copy': typeof import('./src/components/Lesson/LessonSubmit/WriteHwt copy.vue')['default']
   }
 }
 
