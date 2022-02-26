@@ -5,6 +5,7 @@
         default-active="welcome"
         text-color="#7e8f9f"
         active-text-color="#005bac"
+        :default-openeds="['lesson']"
         @select="handleSelect"
       >
         <el-menu-item index="welcome">

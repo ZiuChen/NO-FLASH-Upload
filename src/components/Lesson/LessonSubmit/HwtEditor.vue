@@ -76,6 +76,7 @@ export default {
     },
     handleButtonReturn() {
       console.log("return");
+      this.$router.go(-1);
     },
     handleButtonReview() {
       window.open(
