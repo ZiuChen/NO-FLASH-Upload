@@ -5,7 +5,7 @@
         default-active="welcome"
         text-color="#7e8f9f"
         active-text-color="#005bac"
-        router
+        @select="handleSelect"
       >
         <el-menu-item index="welcome">
           <el-icon>
@@ -53,7 +53,7 @@
             <el-menu-item
               v-for="lesson in lessonInfo"
               :key="lesson.id"
-              :index="'lesson-' + lesson.id"
+              :index="lesson.id"
               >{{ lesson.name }}</el-menu-item
             >
           </el-menu-item-group>
@@ -119,6 +119,25 @@ export default {
   methods: {
     async getLessonInfo() {
       this.lessonInfo = await getInfo.getLessonInfo();
+    },
+    handleSelect(index, indexPath, item, routeResult) {
+      console.log(indexPath);
+      let rtn =
+        indexPath.length === 2
+          ? { path: `/${indexPath[0]}-${indexPath[1]}` }
+          : index;
+      this.$router.push(rtn);
+    },
+    handleMenuOpen(key, path) {
+      console.log("open");
+      console.log(key, path);
+    },
+    handleMenuClose(key, path) {
+      console.log("close");
+      console.log(key, path);
+    },
+    handleSubMenuOpen(p1, p2) {
+      console.log(p1, p2);
     },
   },
 };

@@ -1,8 +1,9 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 
-import welcome from "../components/WelcomePage/WelcomeMain.vue";
-import lesson from "../components/Lesson/LessonMain.vue";
+import welcome from "../components/WelcomePage/WelcomeIndex.vue";
+import lesson from "../components/Lesson/LessonIndex.vue";
 import profile from "../components/Profile/ProfileMain.vue";
+import lessonIndex from "../components/Lesson/LessonIndex.vue";
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -13,8 +14,14 @@ const router = createRouter({
       component: welcome,
     },
     {
-      path: "/lesson-:id",
+      path: "/lesson-:lid",
       component: lesson,
+      children: [
+        {
+          path: "main",
+          component: lessonIndex,
+        },
+      ],
     },
     {
       path: "/profile",
