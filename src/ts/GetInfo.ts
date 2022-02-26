@@ -277,7 +277,7 @@ async function getHwtInfo(lid: string) {
     });
 }
 
-async function getHwtDetail(hwtid: string) {
+async function getHwtSubmitStatus(hwtid: string) {
   return await sendRequest(
     hwtDetailUrl + `?hwtid=${hwtid}`,
     (obj: Document) => {
@@ -289,6 +289,21 @@ async function getHwtDetail(hwtid: string) {
   )
     .then((res) => {
       return res; // a boolean that whether submitted
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+async function getHwtSubmitContent(hwtid: string) {
+  return await sendRequest(
+    hwtDetailUrl + `?hwtid=${hwtid}`,
+    (obj: Document) => {
+      return obj.querySelectorAll(".text>input")[1].attributes["value"].value;
+    }
+  )
+    .then((res) => {
+      return res; // a string contain submit content
     })
     .catch((err) => {
       console.log(err);
@@ -401,10 +416,11 @@ export default {
   getRemindInfo: getRemindInfo,
   getLessonInfo: getLessonInfo,
   getHwtInfo: getHwtInfo,
-  getHwtDetail: getHwtDetail,
+  getHwtSubmitStatus: getHwtSubmitStatus,
   getHwtContent: getHwtContent,
   getNotifyList: getNotifyList,
   getInformList: getInformList,
   visitLessonPage: visitLessonPage,
   getLessonPageInfo: getLessonPageInfo,
+  getHwtSubmitContent: getHwtSubmitContent,
 };

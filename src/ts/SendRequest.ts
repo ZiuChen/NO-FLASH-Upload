@@ -1,6 +1,6 @@
 import getErrorTips from "./GetErrorTips";
 
-async function sendRequest(url: string, callBack: Function, options?: Object) {
+async function sendRequest(url: string, callBack?: Function, options?: Object) {
   let res = await fetch(url, options)
     .then((response) => {
       if (response.ok === false) {
@@ -21,21 +21,28 @@ async function sendRequest(url: string, callBack: Function, options?: Object) {
           `Request to ${url} rejected, with status ${response.status}`
         );
       }
-      return response.blob();
-    })
-    .then((blob) => {
-      return new Promise((resolve) => {
-        let reader = new FileReader();
-        reader.readAsText(blob, "GBK");
-        reader.onload = () => {
-          let data: any = reader.result;
-          let dom = new window.DOMParser().parseFromString(data, "text/html");
-          resolve(dom);
-        };
-      });
-    })
-    .then((response) => {
-      return callBack(response);
+      if (callBack === undefined) return response;
+      else {
+        return response
+          .blob()
+          .then((blob) => {
+            return new Promise((resolve) => {
+              let reader = new FileReader();
+              reader.readAsText(blob, "GBK");
+              reader.onload = () => {
+                let data: any = reader.result;
+                let dom = new window.DOMParser().parseFromString(
+                  data,
+                  "text/html"
+                );
+                resolve(dom);
+              };
+            });
+          })
+          .then((res) => {
+            return callBack(res);
+          });
+      }
     })
     .catch((error) => {
       console.error(error);
