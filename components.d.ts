@@ -15,8 +15,6 @@ declare module 'vue' {
     ElCollapse: typeof import('element-plus/es')['ElCollapse']
     ElCollapseItem: typeof import('element-plus/es')['ElCollapseItem']
     ElContainer: typeof import('element-plus/es')['ElContainer']
-    ElDescriptions: typeof import('element-plus/es')['ElDescriptions']
-    ElDescriptionsItem: typeof import('element-plus/es')['ElDescriptionsItem']
     ElDropdown: typeof import('element-plus/es')['ElDropdown']
     ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']
     ElDropdownMenu: typeof import('element-plus/es')['ElDropdownMenu']
@@ -37,6 +35,7 @@ declare module 'vue' {
     ElTag: typeof import('element-plus/es')['ElTag']
     HeadBar: typeof import('./src/components/Common/HeadBar.vue')['default']
     HwtList: typeof import('./src/components/WelcomePage/HwtList.vue')['default']
+    HwtSubmitPagePage: typeof import('./src/components/Lesson/HwtSubmitPage/HwtSubmitPagePage.vue')['default']
     InformList: typeof import('./src/components/WelcomePage/InformList.vue')['default']
     LessonList: typeof import('./src/components/WelcomePage/LessonList.vue')['default']
     LessonMain: typeof import('./src/components/Lesson/LessonMain.vue')['default']
@@ -48,6 +47,7 @@ declare module 'vue' {
     UserInfo: typeof import('./src/components/WelcomePage/UserInfo.vue')['default']
     WelcomeMain: typeof import('./src/components/WelcomePage/WelcomeMain.vue')['default']
     WriteHwt: typeof import('./src/components/WriteHwt.vue')['default']
+    'WriteHwt copy': typeof import('./src/components/WriteHwt copy.vue')['default']
   }
 }
 
