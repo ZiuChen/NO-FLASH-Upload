@@ -1,9 +1,17 @@
 <template>
   <div id="editor"></div>
   <div class="operation">
-    <el-button @click="handleButtonTest">测试</el-button>
+    <el-button @click="handleButtonTest">Debug</el-button>
     <el-button @click="handleButtonSubmit">提交</el-button>
     <el-button @click="handleButtonReturn">返回</el-button>
+    <el-tooltip
+      class="box-item"
+      effect="dark"
+      content="回到原版检查作业提交效果，此按钮将在未来删除"
+      placement="right-start"
+    >
+      <el-button @click="handleButtonReview">查看效果</el-button>
+    </el-tooltip>
   </div>
 </template>
 
@@ -68,6 +76,11 @@ export default {
     },
     handleButtonReturn() {
       console.log("return");
+    },
+    handleButtonReview() {
+      window.open(
+        `http://cc.bjtu.edu.cn:81/meol/common/hw/student/taskanswer.jsp?hwtid=${this.hwtContent.hwtid}`
+      );
     },
     handleButtonTest() {
       console.log(editor.txt.html());
