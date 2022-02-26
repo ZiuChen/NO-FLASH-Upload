@@ -5,7 +5,7 @@
         <span>课程主页</span>
       </div>
     </template>
-    <div>{{ this.lid }}</div>
+    <el-empty description="当前页面施工中..."></el-empty>
   </el-card>
 </template>
 

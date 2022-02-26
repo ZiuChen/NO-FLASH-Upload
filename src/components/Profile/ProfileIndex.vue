@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <h2>Profile</h2>
-    <h2>asdasdasdasd</h2>
-  </div>
+  <el-empty description="当前页面施工中..."></el-empty>
 </template>
 
 <script>
