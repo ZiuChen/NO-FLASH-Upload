@@ -172,8 +172,7 @@ export default {
     },
     async handleSubmitClick(index, row) {
       console.log(index, row);
-      let url = `${this.hwtWriteUrl}${row.hwtID}`;
-      window.open(url);
+      window.location.href = `http://cc.bjtu.edu.cn:81/meol/main.jsp#/lesson/${row.lid}/submit/${row.hwtID}`;
     },
     async handleTagClick(lid) {
       let url = `${this.lessonPageUrl}${lid}`;

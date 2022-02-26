@@ -15,7 +15,7 @@ const router = createRouter({
       component: WelcomeIndex,
     },
     {
-      path: "/lesson-:lid",
+      path: "/lesson/:lid",
       component: LessonIndex,
       children: [
         {
@@ -23,7 +23,7 @@ const router = createRouter({
           component: LessonInfo,
         },
         {
-          path: "submit",
+          path: "submit/:hwtid",
           component: LessonSubmit,
         },
       ],

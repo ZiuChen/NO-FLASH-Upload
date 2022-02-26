@@ -123,7 +123,7 @@ export default {
     handleSelect(index, indexPath, item, routeResult) {
       let rtn =
         indexPath.length === 2
-          ? { path: `/${indexPath[0]}-${indexPath[1]}/info` }
+          ? { path: `/${indexPath[0]}/${indexPath[1]}/info` }
           : { path: `/${index}` };
       this.$router.push(rtn);
     },

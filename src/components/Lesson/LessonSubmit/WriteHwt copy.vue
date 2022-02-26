@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import log from "../ts/Log";
-import getInfo from "../ts/GetInfo";
+// import log from "../../../ts/Log";
+// import getInfo from "../../../ts/GetInfo";
 export default {
   data() {
     return {};
