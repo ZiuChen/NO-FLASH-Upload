@@ -121,23 +121,11 @@ export default {
       this.lessonInfo = await getInfo.getLessonInfo();
     },
     handleSelect(index, indexPath, item, routeResult) {
-      console.log(indexPath);
       let rtn =
         indexPath.length === 2
-          ? { path: `/${indexPath[0]}-${indexPath[1]}` }
-          : index;
+          ? { path: `/${indexPath[0]}-${indexPath[1]}/info` }
+          : { path: `/${index}` };
       this.$router.push(rtn);
-    },
-    handleMenuOpen(key, path) {
-      console.log("open");
-      console.log(key, path);
-    },
-    handleMenuClose(key, path) {
-      console.log("close");
-      console.log(key, path);
-    },
-    handleSubMenuOpen(p1, p2) {
-      console.log(p1, p2);
     },
   },
 };

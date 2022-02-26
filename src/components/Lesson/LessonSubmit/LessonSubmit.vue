@@ -1,9 +1,11 @@
 <template>
-  <div>Homework</div>
+  <div>hahaha</div>
 </template>
 
 <script>
-export default {};
+export default {
+  components: {},
+};
 </script>
 
 <style scoped></style>
