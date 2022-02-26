@@ -3,7 +3,7 @@ import log from "./Log";
 import config from "./Config/Config";
 
 async function getVersionInfo() {
-  log(`script loaded: ${config.version}`);
+  log(`current userscript version: ${config.version}`);
   let content = sendRequest(config.greasyUrl, (obj: Document) => {
     return obj.querySelectorAll(".script-show-version>span")[1].textContent;
   }).then((res) => {

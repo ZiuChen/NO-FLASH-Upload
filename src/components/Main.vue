@@ -19,7 +19,7 @@
 <script>
 import HeadBar from "./Common/HeadBar.vue";
 import SideBar from "./Common/SideBar.vue";
-import WelcomeMain from "./WelcomePage/WelcomeMain.vue";
+import WelcomeMain from "./WelcomePage/WelcomeIndex.vue";
 export default {
   components: {
     HeadBar,

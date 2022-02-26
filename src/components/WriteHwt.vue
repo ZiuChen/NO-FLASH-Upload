@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <el-container class="add-class">
     <el-header>
       <head-bar></head-bar>
     </el-header>
@@ -15,7 +15,7 @@
 
 <script>
 import HeadBar from "./Common/HeadBar.vue";
-import MainPage from "./HwtSubmitPage/MainPage.vue";
+import MainPage from "./HwtSubmitPage/HwtSubmitPagePage.vue";
 export default {
   components: {
     HeadBar,
