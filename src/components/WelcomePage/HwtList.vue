@@ -30,17 +30,25 @@
       </div>
     </template>
     <el-table
-      height="400px"
+      ref="tableRef"
+      max-height="400px"
       :data="tableData"
-      :default-sort="{ prop: 'remain', order: 'ascending' }"
+      :default-sort="{ prop: 'date', order: 'descending' }"
       :row-class-name="tableRowClassName"
       style="width: 100%"
     >
       <el-table-column
         prop="remain"
         label="剩余时间"
-        sortable
         align="center"
+        :filters="[
+          { text: '今日截止', value: '今日截止' },
+          { text: '近期截止', value: '近期截止' },
+          { text: '未过期', value: '未过期' },
+          { text: '已过期', value: '已过期' },
+        ]"
+        :filter-method="filterRemain"
+        :filtered-value="checkedFilters"
         :formatter="remainDayFormatter"
       />
       <el-table-column prop="name" label="作业标题">
@@ -53,7 +61,7 @@
           >
         </template>
       </el-table-column>
-      <el-table-column prop="date" label="截止日期" />
+      <el-table-column prop="date" label="截止日期" sortable />
       <el-table-column
         prop="lesson"
         label="课程名"
@@ -62,6 +70,7 @@
         ><template #default="scope">
           <el-tag
             class="lesson-tag"
+            :title="scope.row.lesson"
             :type="getTagType()"
             @click="handleTagClick(scope.row.lid)"
             disable-transitions
@@ -93,6 +102,7 @@ export default {
     return {
       lessonList: [],
       tableData: [],
+      checkedFilters: ["近期截止"],
       loadingStatus: true,
       lessonPageUrl: `http://cc.bjtu.edu.cn:81/meol/jpk/course/layout/newpage/index.jsp?courseId=`,
       taskAnswerUrl: `http://cc.bjtu.edu.cn:81/meol/common/hw/student/taskanswer.jsp?hwtid=`,
@@ -122,6 +132,19 @@ export default {
     filterLesson(value, row) {
       return row.lesson === value;
     },
+    filterRemain(value, row) {
+      switch (value) {
+        case "今日截止":
+          return row.remain === 0;
+        case "近期截止":
+          return row.remain <= 15 && row.remain >= -3;
+        case "未过期":
+          return row.remain > 0;
+        case "已过期":
+          return row.remain < 0;
+      }
+      // return row.lesson === value;
+    },
     toFilterArray(hwtArray) {
       let rtnArray = [];
       hwtArray.forEach((item) => {
@@ -141,7 +164,7 @@ export default {
     tableDataFilter(tableObj, start, end) {
       // start: larger, end: smaller
       // won't add to tableData
-      // return true; // FIXME: REMOVE THIS
+      return true; // FIXME: REMOVE THIS
       if (tableObj.remain < start && tableObj.remain > end) return true;
       else false;
     },
