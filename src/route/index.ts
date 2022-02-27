@@ -18,6 +18,10 @@ const router = createRouter({
     {
       path: "/lesson/:lid",
       component: LessonIndex,
+      redirect: (to) => {
+        console.log(to);
+        return `${to.path}/info`;
+      },
       children: [
         {
           path: "info",
@@ -38,6 +42,24 @@ const router = createRouter({
       component: BugReportIndex,
     },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.length === 0) {
+    // no match
+    from.name ? next({ name: from.name }) : next("/");
+    let notify = ElNotification({
+      title: "免Flash文件上传",
+      type: "warning",
+      message: `未找到页面，已重定向。`,
+      onClick: () => {
+        notify.close();
+      },
+    });
+  } else {
+    // matched
+    next();
+  }
 });
 
 export default router;

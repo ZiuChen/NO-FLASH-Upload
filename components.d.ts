@@ -4,6 +4,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    BugReportIndex: typeof import('./src/components/BugReport/BugReportIndex.vue')['default']
     Calender: typeof import('./src/components/WelcomePage/Calender.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
@@ -55,7 +56,6 @@ declare module 'vue' {
     SideBar: typeof import('./src/components/Common/SideBar.vue')['default']
     UserInfo: typeof import('./src/components/WelcomePage/UserInfo.vue')['default']
     WelcomeIndex: typeof import('./src/components/WelcomePage/WelcomeIndex.vue')['default']
-    'WriteHwt copy': typeof import('./src/components/Lesson/LessonSubmit/WriteHwt copy.vue')['default']
   }
 }
 
