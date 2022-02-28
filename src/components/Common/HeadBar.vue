@@ -65,7 +65,6 @@ export default {
       this.userInfo = await getInfo.getUserInfo();
     },
     handleCommand(command) {
-      console.log(`${command}`);
       if (command === "exit") {
         window.location.href =
           "http://cc.bjtu.edu.cn:81/meol/popups/logout.jsp";

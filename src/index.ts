@@ -1,6 +1,5 @@
 import { createApp } from "vue";
 import Main from "./components/Main.vue";
-import WriteHwt from "./components/Lesson/WriteHwt.vue";
 import router from "./route";
 import checkUpdate from "./ts/CheckUpdate";
 import ConfigOperations from "./ts/Config/ConfigOperations";
@@ -22,12 +21,6 @@ function main() {
       removeTags();
       LoadResource.loadCSS(mainStyle);
       createApp(Main).use(router).mount("body");
-    } else if (href.indexOf("wasd") !== -1) {
-      // log("enter page write.jsp");
-      // removeTags();
-      // LoadResource.loadCSS(mainStyle);
-      // LoadResource.loadCSS(wangEditor);
-      // createApp(WriteHwt).mount("body");
     }
   } else {
     log("script version enabled");
@@ -40,13 +33,7 @@ function main() {
 
 function removeTags() {
   log("tags removed");
-  document
-    .querySelectorAll("head link, head script")
-    .forEach((n: HTMLElement) => {
-      n.remove();
-    });
-}
-
-function hide() {
-  document;
+  document.querySelectorAll("head link, head script").forEach((n) => {
+    n.remove();
+  });
 }

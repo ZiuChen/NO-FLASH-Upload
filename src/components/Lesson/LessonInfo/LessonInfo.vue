@@ -34,14 +34,6 @@ export default {
   data() {
     return {};
   },
-  mounted() {
-    // this.$watch(
-    //   () => this.$route.params,
-    //   (toParams, previousParams) => {
-    //     console.log(toParams, previousParams);
-    //   }
-    // );
-  },
   methods: {},
 };
 </script>

@@ -201,15 +201,10 @@ export default {
       });
     },
     async handleSubmitClick(index, row) {
-      console.log(index, row);
       this.$router.push(`/lesson/${row.lid}/submit/${row.hwtID}?able=true`);
-      // window.location.href = `http://cc.bjtu.edu.cn:81/meol/main.jsp#/lesson/${row.lid}/submit/${row.hwtID}`;
     },
     async handleReviewClick(index, row) {
-      console.log(index, row);
       this.$router.push(`/lesson/${row.lid}/submit/${row.hwtID}?able=false`);
-      // console.log(this.$router.push(`/lesson/${row.lid}/submit/${row.hwtID}`));
-      // window.location.href = `http://cc.bjtu.edu.cn:81/meol/main.jsp#/lesson/${row.lid}/submit/${row.hwtID}`;
     },
     async handleTagClick(lid) {
       let url = `${this.lessonPageUrl}${lid}`;
