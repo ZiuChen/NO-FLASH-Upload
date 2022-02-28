@@ -1,6 +1,6 @@
 {
   "name": "no-flash-upload",
-  "version": "2.0.0",
+  "version": "1.9.9",
   "description": "一个北京交通大学课程平台附件上传脚本",
   "main": "userscript.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ZiuChen/NO-FLASH-Upload.git"
+    "url": "https://github.com/ZiuChen/NO-FLASH-Upload"
   },
   "author": "ZiuChen",
   "license": "MIT",

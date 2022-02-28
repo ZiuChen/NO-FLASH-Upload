@@ -50,6 +50,7 @@ declare module 'vue' {
     LessonNotify: typeof import('./src/components/Lesson/LessonInfo/LessonNotify.vue')['default']
     LessonResource: typeof import('./src/components/Lesson/LessonInfo/LessonResource.vue')['default']
     LessonSubmit: typeof import('./src/components/Lesson/LessonSubmit/LessonSubmit.vue')['default']
+    Loading: typeof import('element-plus/es')['ElLoadingDirective']
     Main: typeof import('./src/components/Main.vue')['default']
     NotifyList: typeof import('./src/components/WelcomePage/NotifyList.vue')['default']
     NotifyListDetail: typeof import('./src/components/WelcomePage/NotifyListDetail.vue')['default']

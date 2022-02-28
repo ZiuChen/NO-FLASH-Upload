@@ -4,12 +4,11 @@ import type { Action } from "element-plus";
 
 async function checkUpdate() {
   await getVersionInfo().then((res) => {
-    console.log(res);
     if (res.need) {
       let notify = ElNotification({
         title: "免Flash文件上传",
         type: "warning",
-        message: `有新版本${res.lastest}，点击此处更新`,
+        message: `有新版本${res.lastest}，当前版本${res.current}。请点击此处更新`,
         duration: 0,
         onClick: () => {
           window.location.href = `${config.greasyUrl}/code/${config.scriptID}.user.js`;
