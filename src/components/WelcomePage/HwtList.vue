@@ -32,6 +32,7 @@
     <el-table
       ref="tableRef"
       height="400px"
+      v-loading="loadingStatus"
       :data="tableData"
       :default-sort="{ prop: 'date', order: 'descending' }"
       :row-class-name="tableRowClassName"
@@ -101,6 +102,7 @@
 
 <script>
 import getInfo from "../../ts/GetInfo";
+
 export default {
   created() {
     this.getLessonList();
