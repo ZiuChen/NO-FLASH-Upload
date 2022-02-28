@@ -33,13 +33,14 @@
         </template>
         <hwt-info :propHwtContent="hwtContent"></hwt-info>
         <hwt-editor
+          v-if="this.$route.query.able === 'true'"
           ref="editorObj"
           :propHwtContents="{
             hwtContent: hwtContent,
             hwtContentWithId: hwtContentWithId,
           }"
         ></hwt-editor>
-        <div class="operation">
+        <div v-if="this.$route.query.able === 'true'" class="operation">
           <el-button @click="handleButtonSubmit">提交</el-button>
           <el-button @click="handleButtonReturn">返回</el-button>
           <el-tooltip
@@ -91,6 +92,8 @@ export default {
     $route(to) {
       // if (to.path.indexOf("review") !== -1) return;
       if (this.$route.params.hwtid === undefined) return;
+      this.hwtContent = {};
+      this.hwtContentWithId = {};
       this.dataInit(this.$route.params.hwtid);
     },
   },
