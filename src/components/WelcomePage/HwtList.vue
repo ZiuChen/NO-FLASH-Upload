@@ -31,7 +31,7 @@
     </template>
     <el-table
       ref="tableRef"
-      max-height="400px"
+      height="400px"
       :data="tableData"
       :default-sort="{ prop: 'date', order: 'descending' }"
       :row-class-name="tableRowClassName"
@@ -83,9 +83,16 @@
         <template #default="scope">
           <el-button
             size="small"
+            v-if="scope.row.able"
             @click="handleSubmitClick(scope.$index, scope.row)"
-            >交作业</el-button
-          >
+            >交作业
+          </el-button>
+          <el-button
+            size="small"
+            v-if="!scope.row.able"
+            @click="handleReviewClick(scope.$index, scope.row)"
+            >看作业
+          </el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -195,7 +202,14 @@ export default {
     },
     async handleSubmitClick(index, row) {
       console.log(index, row);
-      window.location.href = `http://cc.bjtu.edu.cn:81/meol/main.jsp#/lesson/${row.lid}/submit/${row.hwtID}`;
+      this.$router.push(`/lesson/${row.lid}/submit/${row.hwtID}?able=true`);
+      // window.location.href = `http://cc.bjtu.edu.cn:81/meol/main.jsp#/lesson/${row.lid}/submit/${row.hwtID}`;
+    },
+    async handleReviewClick(index, row) {
+      console.log(index, row);
+      this.$router.push(`/lesson/${row.lid}/submit/${row.hwtID}?able=false`);
+      // console.log(this.$router.push(`/lesson/${row.lid}/submit/${row.hwtID}`));
+      // window.location.href = `http://cc.bjtu.edu.cn:81/meol/main.jsp#/lesson/${row.lid}/submit/${row.hwtID}`;
     },
     async handleTagClick(lid) {
       let url = `${this.lessonPageUrl}${lid}`;

@@ -42,7 +42,7 @@ export default {
 <style>
 .el-card {
   margin: 5px 10px 5px 10px;
-  height: 500px;
+  /* max-height: 1000px; */
 }
 
 .card-header {

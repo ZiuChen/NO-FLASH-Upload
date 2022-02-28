@@ -6,6 +6,7 @@ const lessonUrl = `${baseUrl}/lesson/blen.student.lesson.list.jsp`; // 课程列
 const hwtListUrl = `${baseUrl}/common/hw/student/hwtask.jsp`; // 课程作业
 const hwtDetailUrl = `${baseUrl}/common/hw/student/taskanswer.jsp`; // 课程作业详情 ?hwtid=
 const hwtContentUrl = `${baseUrl}/common/hw/student/write.jsp`; // 作业提交页
+const hwtReviewContentUrl = `${baseUrl}/common/hw/student/taskanswer.jsp`; // 作业查看结果页
 const notifyListUrl = `${baseUrl}/common/inform/index_stu.jsp`; // 通知列表(有已阅读信息) ?lid=
 const notifyMessageUrl = `${baseUrl}/jpk/course/layout/course_meswrap.jsp`; // 通知内容
 const lessonPageUrl = `${baseUrl}/jpk/course/layout/newpage/index.jsp`; // 课程主页 ?courseId=
@@ -172,105 +173,6 @@ async function getHwtInfo(lid: string) {
         arry.push(obj);
       });
       return arry;
-      // FIXME: Debugging
-      // FIXME: remove all lid
-      if (lid === "10625") {
-        return [
-          {
-            hwtID: "22195",
-            hwtName: "chap3作业",
-            lid: "10625",
-            date: "2022年3月31日",
-            Date: "2022-03-31T15:59:59.000Z",
-            remainTime: "34",
-            able: true,
-          },
-          {
-            hwtID: "20999",
-            hwtName: "chap2 作业",
-            lid: "10625",
-            date: "2022年2月26日",
-            Date: "2022-02-26T15:59:59.000Z",
-            remainTime: "1",
-            able: true,
-          },
-          {
-            hwtID: "20419",
-            hwtName: "chap1-3作业",
-            lid: "10625",
-            date: "2022年2月25日",
-            Date: "2022-02-25T15:59:59.000Z",
-            remainTime: "0",
-            able: true,
-          },
-          {
-            hwtID: "20166",
-            hwtName: "chap 1-2 作业",
-            lid: "10625",
-            date: "2022年2月24日",
-            Date: "2022-02-24T15:59:59.000Z",
-            remainTime: "-1",
-            able: true,
-          },
-        ];
-      } else if (lid === "16597") {
-        return [
-          {
-            hwtID: "31389",
-            hwtName: "第三次作业",
-            lid: "16597",
-            date: "2022年2月21日",
-            Date: "2022-02-21T15:59:59.000Z",
-            remainTime: "-3",
-            able: false,
-          },
-          {
-            hwtID: "31203",
-            hwtName: "第二次作业作业长文本作业长文本作业长文本作业长文本",
-            lid: "16597",
-            date: "2022年2月14日",
-            Date: "2022-02-14T15:59:59.000Z",
-            remainTime: "-10",
-            able: false,
-          },
-          {
-            hwtID: "30911",
-            hwtName: "第一次作业",
-            lid: "16597",
-            date: "2022年3月7日",
-            Date: "2022-03-07T15:59:59.000Z",
-            remainTime: "10",
-            able: true,
-          },
-          {
-            hwtID: "24041",
-            hwtName: "期末测试试卷提交",
-            lid: "16597",
-            date: "2022年4月26日",
-            Date: "2022-04-26T15:59:59.000Z",
-            remainTime: "60",
-            able: true,
-          },
-          {
-            hwtID: "14171",
-            hwtName: "第三章作业",
-            lid: "16597",
-            date: "2022年2月26日",
-            Date: "2022-02-26T15:59:59.000Z",
-            remainTime: "1",
-            able: true,
-          },
-          {
-            hwtID: "14170",
-            hwtName: "第二章作业",
-            lid: "16597",
-            date: "2022年3月17日",
-            Date: "2022-03-17T15:59:59.000Z",
-            remainTime: "20",
-            able: true,
-          },
-        ];
-      }
     })
     .catch((error) => {
       console.log(error);
@@ -297,7 +199,7 @@ async function getHwtSubmitStatus(hwtid: string) {
 
 async function getHwtSubmitContent(hwtid: string) {
   return await sendRequest(
-    hwtDetailUrl + `?hwtid=${hwtid}`,
+    hwtReviewContentUrl + `?hwtid=${hwtid}`,
     (obj: Document) => {
       return obj.querySelectorAll(".text>input")[1].attributes["value"].value;
     }
@@ -411,6 +313,35 @@ async function getHwtContent(hwtid: string) {
     });
 }
 
+async function getHwtReviewContent(hwtid: string) {
+  return await sendRequest(
+    hwtReviewContentUrl + `?hwtid=${hwtid}`,
+    (obj: Document) => {
+      return obj;
+    }
+  )
+    .then((res) => {
+      let table = res.querySelectorAll(".infotable>tbody>tr>td");
+      return {
+        // TODO: add evaluation results and comments
+        title: table[0].innerText.trim(),
+        deadline: table[1].innerText.split(`\n`)[0],
+        score: table[2].innerText.trim(),
+        getscore: table[3].innerText.trim(),
+        content: table[4].querySelectorAll("input")[0].value,
+        answer:
+          res.querySelectorAll(".text>input")[1] === undefined
+            ? undefined
+            : res.querySelectorAll(".text>input")[1].value,
+        results: undefined,
+        comments: undefined,
+      };
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 export default {
   getUserInfo: getUserInfo,
   getRemindInfo: getRemindInfo,
@@ -423,4 +354,5 @@ export default {
   visitLessonPage: visitLessonPage,
   getLessonPageInfo: getLessonPageInfo,
   getHwtSubmitContent: getHwtSubmitContent,
+  getHwtReviewContent: getHwtReviewContent,
 };
