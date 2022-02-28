@@ -7,6 +7,11 @@ const userConfig = {
     default: false,
     id: "back-to-old",
   },
+  "show-side-bar": {
+    value: true,
+    default: true,
+    id: "show-side-bar",
+  },
 };
 
 export default {

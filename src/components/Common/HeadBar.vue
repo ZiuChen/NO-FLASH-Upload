@@ -34,6 +34,9 @@
           </el-button>
           <template #dropdown>
             <el-dropdown-menu>
+              <el-dropdown-item command="sidebar"
+                >展示/隐藏侧栏</el-dropdown-item
+              >
               <el-dropdown-item command="old">返回旧版</el-dropdown-item>
               <el-dropdown-item command="exit">退出当前账号</el-dropdown-item>
             </el-dropdown-menu>
@@ -69,6 +72,12 @@ export default {
       } else if (command === "old") {
         ConfigOperations.setUserConfig("back-to-old", true);
         window.location.reload();
+      } else if (command === "sidebar") {
+        let status = ConfigOperations.readUserConfig()["show-side-bar"].value;
+        status
+          ? (document.querySelector(".el-aside").style.display = "none")
+          : (document.querySelector(".el-aside").style.display = "");
+        ConfigOperations.setUserConfig("show-side-bar", !status);
       }
     },
   },

@@ -4,7 +4,7 @@
       <head-bar></head-bar>
     </el-header>
     <el-container style="height: calc(100vh - 100px)">
-      <el-aside>
+      <el-aside v-show="status">
         <side-bar></side-bar>
       </el-aside>
       <el-scrollbar>
@@ -20,11 +20,20 @@
 import HeadBar from "./Common/HeadBar.vue";
 import SideBar from "./Common/SideBar.vue";
 import WelcomeMain from "./WelcomePage/WelcomeIndex.vue";
+import ConfigOperations from "../ts/Config/ConfigOperations";
 export default {
   components: {
     HeadBar,
     SideBar,
     WelcomeMain,
+  },
+  data() {
+    return {
+      status: true,
+    };
+  },
+  created() {
+    this.status = ConfigOperations.readUserConfig()["show-side-bar"].value;
   },
 };
 </script>
