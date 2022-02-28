@@ -36,6 +36,7 @@ declare module 'vue' {
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTag: typeof import('element-plus/es')['ElTag']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
+    ElUpload: typeof import('element-plus/es')['ElUpload']
     HeadBar: typeof import('./src/components/Common/HeadBar.vue')['default']
     HwtEditor: typeof import('./src/components/Lesson/LessonSubmit/HwtEditor.vue')['default']
     HwtInfo: typeof import('./src/components/Lesson/LessonSubmit/HwtInfo.vue')['default']

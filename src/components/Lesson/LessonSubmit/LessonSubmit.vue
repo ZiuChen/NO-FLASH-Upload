@@ -1,8 +1,5 @@
 <template>
   <el-row>
-    <el-col :span="10">
-      <hwt-list></hwt-list>
-    </el-col>
     <el-col :span="14">
       <el-card shadow="hover">
         <template #header>
@@ -45,20 +42,31 @@
         <div class="operation">
           <el-button @click="handleButtonSubmit">提交</el-button>
           <el-button @click="handleButtonReturn">返回</el-button>
-          <el-button @click="getEditorContent">Debug</el-button>
+          <el-tooltip
+            class="box-item"
+            effect="dark"
+            content="查看提交效果，此按钮将在未来被删除"
+            placement="right-start"
+          >
+            <el-button @click="handleButtonDebug">查看效果</el-button>
+          </el-tooltip>
         </div>
       </el-card>
+    </el-col>
+    <el-col :span="10">
+      <hwt-list></hwt-list>
     </el-col>
   </el-row>
 </template>
 
 <script>
 import getInfo from "../../../ts/GetInfo";
-import HwtInfo from "../LessonReview/HwtInfo.vue";
+import HwtInfo from "../LessonSubmit/HwtInfo.vue";
 import HwtEditor from "./HwtEditor.vue";
 import HwtList from "../../WelcomePage/HwtList.vue";
 import log from "../../../ts/Log";
 import sendRequest from "../../../ts/SendRequest";
+
 export default {
   components: {
     HwtInfo,
@@ -82,7 +90,7 @@ export default {
   watch: {
     $route(to) {
       // if (to.path.indexOf("review") !== -1) return;
-      console.log(to);
+      if (this.$route.params.hwtid === undefined) return;
       this.dataInit(this.$route.params.hwtid);
     },
   },
@@ -106,19 +114,30 @@ export default {
     },
     getEditorContent() {
       let editor = this.$refs.editorObj.editorObj;
-      console.log(editor.txt.html());
       return editor.txt.html();
     },
     handleButtonSubmit() {
       log("hwt submit trigger");
       let url = `http://cc.bjtu.edu.cn:81/meol/common/hw/student/write.do.jsp`;
-      let formData = new FormData();
-      formData.append("hwtid", this.hwtContentWithId.hwtid);
-      formData.append("hwaid", this.hwtContentWithId.hwaid);
-      formData.append("IPT_BODY", this.getEditorContent());
+      const GBK = window.GBK;
+      var details = {
+        hwtid: this.hwtContentWithId.hwtid,
+        hwaid: this.hwtContentWithId.hwaid,
+        IPT_BODY: this.getEditorContent(),
+      };
+      var formBody = [];
+      for (var property in details) {
+        var encodedKey = GBK.URI.encodeURIComponent(property);
+        var encodedValue = GBK.URI.encodeURIComponent(details[property]);
+        formBody.push(encodedKey + "=" + encodedValue);
+      }
+      formBody = formBody.join("&");
       sendRequest(url, undefined, {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: formBody,
       }).then((res) => {
         if (res.ok === true) {
           log("hwt submit successfully");
@@ -135,8 +154,12 @@ export default {
       });
     },
     handleButtonReturn() {
-      console.log("return");
       this.$router.go(-1);
+    },
+    handleButtonDebug() {
+      window.open(
+        `http://cc.bjtu.edu.cn:81/meol/common/hw/student/taskanswer.jsp?hwtid=${this.hwtContentWithId.hwtid}`
+      );
     },
   },
 };

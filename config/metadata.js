@@ -15,6 +15,7 @@ module.exports = {
   match: ["*://cc.bjtu.edu.cn:81/meol*"],
   require: [
     "https://cdn.jsdelivr.net/npm/wangeditor@latest/dist/wangEditor.min.js",
+    "https://cdn.jsdelivr.net/npm/gbk.js@0.3.0/dist/gbk.min.js",
   ],
   grant: [],
   license: "MIT",
