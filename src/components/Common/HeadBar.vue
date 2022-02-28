@@ -13,27 +13,33 @@
       </div>
       <div class="operation">
         <el-dropdown @command="handleCommand">
-          <el-button class="el-dropdown-link" plain>
-            <el-icon
-              ><svg
-                t="1645608428232"
-                class="icon"
-                viewBox="0 0 1024 1024"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                p-id="20733"
-                width="200"
-                height="200"
-              >
-                <path
-                  d="M128 256h768v85.333333H128V256m0 213.333333h768v85.333334H128v-85.333334m0 213.333334h768v85.333333H128v-85.333333z"
-                  fill=""
-                  p-id="20734"
-                ></path></svg
-            ></el-icon>
-          </el-button>
+          <el-badge :is-dot="needUpdate">
+            <el-button class="el-dropdown-link" plain>
+              <el-icon
+                ><svg
+                  t="1645608428232"
+                  class="icon"
+                  viewBox="0 0 1024 1024"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  p-id="20733"
+                  width="200"
+                  height="200"
+                >
+                  <path
+                    d="M128 256h768v85.333333H128V256m0 213.333333h768v85.333334H128v-85.333334m0 213.333334h768v85.333333H128v-85.333333z"
+                    fill=""
+                    p-id="20734"
+                  ></path></svg
+              ></el-icon>
+            </el-button>
+          </el-badge>
+
           <template #dropdown>
             <el-dropdown-menu>
+              <el-dropdown-item command="check">
+                <el-badge :is-dot="needUpdate"> 检查更新 </el-badge>
+              </el-dropdown-item>
               <el-dropdown-item command="sidebar"
                 >展示/隐藏侧栏</el-dropdown-item
               >
@@ -50,19 +56,28 @@
 <script>
 import getInfo from "../../ts/GetInfo";
 import ConfigOperations from "../../ts/Config/ConfigOperations";
+import CheckUpdate from "../../ts/CheckUpdate";
+import getVersionInfo from "../../ts/GetVersionInfo";
 
 export default {
   data() {
     return {
       userInfo: {},
+      needUpdate: false,
     };
   },
   created() {
     this.getUserInfo();
+    this.getVersionInfo();
   },
   methods: {
     async getUserInfo() {
       this.userInfo = await getInfo.getUserInfo();
+    },
+    async getVersionInfo() {
+      this.needUpdate = await getVersionInfo().then((res) => {
+        return res.need;
+      });
     },
     handleCommand(command) {
       if (command === "exit") {
@@ -77,6 +92,8 @@ export default {
           ? (document.querySelector(".el-aside").style.display = "none")
           : (document.querySelector(".el-aside").style.display = "");
         ConfigOperations.setUserConfig("show-side-bar", !status);
+      } else if (command === "check") {
+        CheckUpdate();
       }
     },
   },

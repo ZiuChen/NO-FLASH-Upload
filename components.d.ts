@@ -7,6 +7,7 @@ declare module 'vue' {
     BugReportIndex: typeof import('./src/components/BugReport/BugReportIndex.vue')['default']
     Calender: typeof import('./src/components/WelcomePage/Calender.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
+    ElBadge: typeof import('element-plus/es')['ElBadge']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElButtonGroup: typeof import('element-plus/es')['ElButtonGroup']
     ElCalendar: typeof import('element-plus/es')['ElCalendar']

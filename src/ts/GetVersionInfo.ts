@@ -23,10 +23,8 @@ async function getVersionInfo() {
         weightNow += (index + 1) * Math.pow(10, index + 1) * parseInt(value);
       });
     if (weightLastest > weightNow) {
-      log("need update");
       return { need: true, current: config.version, lastest: res };
     } else {
-      log("version checked");
       return { need: false, current: config.version, lastest: res };
     }
   });

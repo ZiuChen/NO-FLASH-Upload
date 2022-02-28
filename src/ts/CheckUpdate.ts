@@ -29,6 +29,7 @@ async function checkUpdate() {
           );
         },
       });
+      return true; // need update
     } else {
       // if(localStorage.getItem("config-update") !== "true") return
       let notify = ElNotification({
@@ -39,6 +40,7 @@ async function checkUpdate() {
           notify.close();
         },
       });
+      return false; // don't need update
     }
   });
 }
