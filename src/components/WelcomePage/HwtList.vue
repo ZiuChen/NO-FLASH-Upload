@@ -32,7 +32,6 @@
     <el-table
       ref="tableRef"
       height="400px"
-      v-loading="loadingStatus"
       :data="tableData"
       :default-sort="{ prop: 'date', order: 'descending' }"
       :row-class-name="tableRowClassName"
@@ -203,6 +202,7 @@ export default {
       });
     },
     async handleSubmitClick(index, row) {
+      console.log(`/lesson/${row.lid}/submit/${row.hwtID}?able=true`);
       this.$router.push(`/lesson/${row.lid}/submit/${row.hwtID}?able=true`);
     },
     async handleReviewClick(index, row) {
