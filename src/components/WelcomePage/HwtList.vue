@@ -188,7 +188,7 @@ export default {
       } else if (row.remain === 0) {
         return `今日截止`;
       } else if (row.remain > 0) {
-        return `还有${row.remain}天截止`;
+        return `${row.remain}天`;
       }
     },
     async getLessonList() {
