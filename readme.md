@@ -1,13 +1,15 @@
-<div align="center"><h1>免Flash文件上传</h1></div>
+<center>
+<h1>免Flash文件上传</h1>
 <div align="center">
-一个北京交通大学课程平台附件上传脚本。
+北京交通大学课程平台功能增强脚本，实现信息聚合，附件上传，让你高效处理课程信息。
 </div>
 </br>
-<div align="center"><a href="https://github.com/ZiuChen/NO-FLASH-Upload"><img src="https://img.shields.io/badge/Github-black?logo=github"></img></a>
+<a href="https://github.com/ZiuChen/NO-FLASH-Upload"><img src="https://img.shields.io/badge/Github-black?logo=github"></img></a>
 <a href="https://gitee.com/ziuc/NO-FLASH-Upload"><img src="https://img.shields.io/static/v1?label=Gitee&message=%E9%95%9C%E5%83%8F&color=c71d23&style=flat-square&logo=gitee&logoColor=c71d23"></img></a>
 <img src="https://img.shields.io/static/v1?label=Node.js&message=v14.16&color=339933&style=flat-square&logo=node.js&logoColor=ffffff"></img>
 <img src="https://img.shields.io/static/v1?label=Vue.js&message=v3.2&color=4FC08D&style=flat-square&logo=vue.js&logoColor=ffffff"></img>
-<img src="https://img.shields.io/badge/%20License-MIT-yellow?style=flat-square&labelColor=black"></img></div>
+<img src="https://img.shields.io/badge/%20License-MIT-yellow?style=flat-square&labelColor=black"></img>
+</center>
 
 
 ## 🚀 初衷
