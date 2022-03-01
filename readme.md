@@ -40,7 +40,7 @@
   
 ## ❤️ 感谢捐助
 
-**如果觉得脚本帮到了你，可以在[脚本发布页](https://greasyfork.org/zh-CN/scripts/432056)好评或通过[捐助二维码](https://gitee.com/ziuc/utool-filebed/raw/master/Buy%20me%20a%20coffee.png)赞赏我，这将鼓励我继续维护这个脚本。**
+**如果觉得脚本帮到了你，可以通过[捐助二维码](https://gitee.com/ziuc/utool-filebed/raw/master/Buy%20me%20a%20coffee.png)赞赏我，这将鼓励我继续维护这个脚本。**
 
 `*柒：￥1.00(微信)`
 `*秸：￥1.00(微信)`
@@ -55,8 +55,6 @@
 
 <a href="https://gitee.com/ziuc/utool-filebed/raw/master/Buy%20me%20a%20coffee.png"><img alt="捐赠二维码" width="65%" src="https://raw.githubusercontent.com/ZiuChen/NO-FLASH-Upload/v2.x-Vue/doc/img/Buy%20me%20a%20coffee.png"></img></a>
 ## 📎 相关链接
-
-[脚本发布页 *(Greasy Fork)*](https://greasyfork.org/zh-CN/scripts/432056)
 
 [更新日志](doc/update_log.md)
 
