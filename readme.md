@@ -1,4 +1,6 @@
+<div align="center">
 <center>
+<div align="center">
 <h1>免Flash文件上传</h1>
 <div align="center">
 北京交通大学课程平台功能增强脚本，实现信息聚合，附件上传，让你高效处理课程信息。
@@ -9,8 +11,9 @@
 <img src="https://img.shields.io/static/v1?label=Node.js&message=v14.16&color=339933&style=flat-square&logo=node.js&logoColor=ffffff"></img>
 <img src="https://img.shields.io/static/v1?label=Vue.js&message=v3.2&color=4FC08D&style=flat-square&logo=vue.js&logoColor=ffffff"></img>
 <img src="https://img.shields.io/badge/%20License-MIT-yellow?style=flat-square&labelColor=black"></img>
+</div>
 </center>
-
+</div>
 
 ## 🚀 初衷
 
