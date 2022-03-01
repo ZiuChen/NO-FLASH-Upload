@@ -1,9 +1,16 @@
 <template>
-  <el-calendar v-model="currentDate">
-    <template #header="{ date }">
-      <span>{{ date }}</span>
+  <el-card class="calender" shadow="hover">
+    <template #header>
+      <div class="card-header">
+        <span>日历</span>
+      </div>
     </template>
-  </el-calendar>
+    <el-calendar v-model="currentDate">
+      <template #header="{ date }">
+        <span>{{ date }}</span>
+      </template>
+    </el-calendar>
+  </el-card>
 </template>
 
 <script>

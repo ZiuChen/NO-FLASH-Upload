@@ -16,6 +16,14 @@
         <inform-list></inform-list>
       </el-col>
     </el-row>
+    <el-row>
+      <el-col :span="16">
+        <user-info></user-info>
+      </el-col>
+      <el-col :span="8">
+        <calender></calender>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -42,7 +50,7 @@ export default {
 <style>
 .el-card {
   margin: 5px 10px 5px 10px;
-  /* max-height: 1000px; */
+  max-height: 1000px;
 }
 
 .card-header {
