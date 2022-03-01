@@ -19,14 +19,14 @@
 
 由于课程平台使用的`THEOL清华教育在线`系统版本过旧，其基于`Flash`的附件上传功能不再在主流浏览器上被支持，故编写此脚本以实现信息汇总、附件上传等功能。
 
-本脚本于2021年9月7日发布，目前已在[*Greasy Fork*平台](https://greasyfork.org/zh-CN/scripts/432056)被安装近千次，活跃用户350+。
+本脚本于2021年9月7日发布，目前已在[*Greasy Fork*](https://greasyfork.org/zh-CN/scripts/432056)被安装近千次，日检查更新次数`~400`。
 
 ## 🔰 开始使用
 
   1. 在任一浏览器上安装[`Tampermonkey`](https://www.tampermonkey.net/)脚本管理器。
-  2. 访问[`GreasyFork`](https://greasyfork.org/zh-CN/scripts/432056)安装脚本。
+  2. [`点击此处`](https://raw.githubusercontent.com/ZiuChen/NO-FLASH-Upload/v2.x-Vue/publish/index.prod.user.js)安装脚本。
 
-  新版具有更好的稳定性，**请尽量保持脚本更新，使用最新版本**。使用中遇到任何问题，欢迎在`GreasyFork`或`Github`反馈交流。
+  新版具有更好的稳定性，**请尽量保持脚本更新，使用最新版本**。使用中遇到任何问题，欢迎在[`Github Issues`](https://github.com/ZiuChen/NO-FLASH-Upload/issues)或[`Gitee Issues`](https://gitee.com/ziuc/NO-FLASH-Upload/issues)反馈交流。
 
 ## 🏗️ 参与开发
 
