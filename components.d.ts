@@ -4,7 +4,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    BugReportIndex: typeof import('./src/components/BugReport/BugReportIndex.vue')['default']
+    AboutIndex: typeof import('./src/components/About/AboutIndex.vue')['default']
     Calender: typeof import('./src/components/WelcomePage/Calender.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElBadge: typeof import('element-plus/es')['ElBadge']
@@ -51,7 +51,6 @@ declare module 'vue' {
     LessonNotify: typeof import('./src/components/Lesson/LessonInfo/LessonNotify.vue')['default']
     LessonResource: typeof import('./src/components/Lesson/LessonInfo/LessonResource.vue')['default']
     LessonSubmit: typeof import('./src/components/Lesson/LessonSubmit/LessonSubmit.vue')['default']
-    Loading: typeof import('element-plus/es')['ElLoadingDirective']
     Main: typeof import('./src/components/Main.vue')['default']
     NotifyList: typeof import('./src/components/WelcomePage/NotifyList.vue')['default']
     NotifyListDetail: typeof import('./src/components/WelcomePage/NotifyListDetail.vue')['default']
