@@ -6,8 +6,8 @@
       </div>
     </template>
     <el-calendar v-model="currentDate">
-      <template #header="{ date }">
-        <span>{{ date }}</span>
+      <template #header="">
+        <span>今日：{{ currentDate.toLocaleDateString() }}</span>
       </template>
     </el-calendar>
   </el-card>
