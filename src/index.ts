@@ -19,6 +19,9 @@ function main() {
       log("enter page main.jsp");
       checkUpdate();
       removeTags();
+      LoadResource.loadLINK(
+        `https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/css/mdui.min.css`
+      );
       LoadResource.loadCSS(mainStyle);
       createApp(Main).use(router).mount("body");
     }

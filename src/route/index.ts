@@ -5,7 +5,7 @@ import LessonIndex from "../components/Lesson/LessonIndex.vue";
 import LessonInfo from "../components/Lesson/LessonInfo/LessonInfo.vue";
 import LessonSubmit from "../components/Lesson/LessonSubmit/LessonSubmit.vue";
 import ProfileIndex from "../components/Profile/ProfileIndex.vue";
-import BugReportIndex from "../components/BugReport/BugReportIndex.vue";
+import AboutIndex from "../components/About/AboutIndex.vue";
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -38,8 +38,8 @@ const router = createRouter({
       component: ProfileIndex,
     },
     {
-      path: "/bug-report",
-      component: BugReportIndex,
+      path: "/about",
+      component: AboutIndex,
     },
   ],
 });

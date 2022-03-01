@@ -4,6 +4,16 @@ function loadJS(url: string) {
     .append(DOMParse(`<script type="text/javascript" src="${url}"></script>`));
 }
 
+function loadLINK(link: string) {
+  document
+    .querySelectorAll("head")[0]
+    .append(
+      DOMParse(
+        `<link class="append-style" type="text/css" rel="stylesheet" href="${link}"></link>`
+      )
+    );
+}
+
 function loadCSS(css: string) {
   document
     .querySelectorAll("head")[0]
@@ -16,4 +26,4 @@ function DOMParse(string: string) {
   return div.firstChild;
 }
 
-export default { loadCSS: loadCSS, loadJS: loadJS };
+export default { loadCSS: loadCSS, loadJS: loadJS, loadLINK: loadLINK };
