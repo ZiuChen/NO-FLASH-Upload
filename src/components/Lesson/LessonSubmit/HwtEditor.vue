@@ -81,7 +81,6 @@ export default {
         "link",
         "list",
         "justify",
-        "emoticon",
         "image",
         "video",
         "table",
@@ -106,7 +105,8 @@ export default {
         ).then((res) => {
           if (res.ok === true) {
             res.text().then((resURL) => {
-              insertImgFn(resURL);
+              console.log(resURL);
+              insertImgFn("/meol/" + resURL);
             });
           }
         });
@@ -125,7 +125,7 @@ export default {
         ).then((res) => {
           if (res.ok === true) {
             res.text().then((resURL) => {
-              insertVideoFn(`http://cc.bjtu.edu.cn:81/meol/` + resURL);
+              insertVideoFn("/meol/" + resURL);
             });
           }
         });
