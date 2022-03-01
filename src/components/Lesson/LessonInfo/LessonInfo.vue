@@ -40,8 +40,7 @@ export default {
 
 <style scoped>
 .el-card {
-  margin: 5px 10px 5px 10px;
-  height: 500px;
+  margin: 2px 10px 2px 10px;
 }
 
 .card-header {

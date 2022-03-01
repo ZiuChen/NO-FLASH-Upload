@@ -49,8 +49,8 @@ export default {
 
 <style>
 .el-card {
-  margin: 5px 10px 5px 10px;
-  max-height: 1000px;
+  margin: 2px 10px 2px 10px;
+  /* max-height: 1000px; */
 }
 
 .card-header {
