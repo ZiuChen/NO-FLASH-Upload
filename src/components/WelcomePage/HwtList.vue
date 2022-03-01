@@ -51,7 +51,7 @@
         :filtered-value="checkedFilters"
         :formatter="remainDayFormatter"
       />
-      <el-table-column prop="name" label="作业标题">
+      <el-table-column prop="name" label="作业标题" align="center">
         <template #default="scope">
           <el-link
             :href="taskAnswerUrl + scope.row.hwtID"
@@ -61,17 +61,18 @@
           >
         </template>
       </el-table-column>
-      <el-table-column prop="date" label="截止日期" sortable />
+      <el-table-column prop="date" label="截止日期" align="center" sortable />
       <el-table-column
         prop="lesson"
         label="课程名"
+        align="center"
         :filters="toFilterArray(lessonList)"
         :filter-method="filterLesson"
         ><template #default="scope">
           <el-tag
             class="lesson-tag"
             :title="scope.row.lesson"
-            :type="getTagType()"
+            type="success"
             @click="handleTagClick(scope.row.lid)"
             disable-transitions
           >
@@ -119,7 +120,6 @@ export default {
   },
   watch: {
     lessonList: async function (val) {
-      this.lessonList = val;
       // Async Trap: cannot async in forEach
       for (let remindHwt of this.lessonList) {
         await getInfo.visitLessonPage(remindHwt.id).then(async () => {
@@ -163,28 +163,23 @@ export default {
       });
       return rtnArray;
     },
-    getTagType() {
-      let types = ["success", "info", "warning", "danger"];
-      // return types[Math.floor(Math.random() * 4)];
-      return types[0];
-    },
-    // TODO: move this to before request
     tableDataFilter(tableObj, start, end) {
       // start: larger, end: smaller
       // won't add to tableData
-      return true; // FIXME: REMOVE THIS
       if (tableObj.remain < start && tableObj.remain > end) return true;
       else false;
     },
     tableRowClassName({ row, rowIndex }) {
-      if (row.remain <= 3 && row.remain > 0) {
-        return "warning-row";
-      } else if (row.remain < 0) {
+      if (row.able === false) {
         return "info-row";
-      } else if (row.remain === 0) {
-        return "danger-row";
       } else {
-        return "success-row";
+        if (row.remain <= 3 && row.remain > 0) {
+          return "warning-row";
+        } else if (row.remain === 0) {
+          return "danger-row";
+        } else {
+          return "success-row";
+        }
       }
     },
     remainDayFormatter(row, column) {
@@ -202,7 +197,6 @@ export default {
       });
     },
     async handleSubmitClick(index, row) {
-      console.log(`/lesson/${row.lid}/submit/${row.hwtID}?able=true`);
       this.$router.push(`/lesson/${row.lid}/submit/${row.hwtID}?able=true`);
     },
     async handleReviewClick(index, row) {
@@ -214,25 +208,18 @@ export default {
     },
     async hwtObj2TableObj(hwtObj, remindHwt) {
       let tableObj = {
-        remain: 0,
-        name: "",
-        date: "",
-        lesson: "",
-        lid: "",
-        hwtID: "",
-        able: false,
+        remain: parseFloat(hwtObj.remainTime),
+        name: hwtObj.hwtName,
+        date: hwtObj.date,
+        hwtID: hwtObj.hwtID,
+        able: hwtObj.able,
+        lesson: remindHwt.name,
+        lid: remindHwt.id,
       };
-      tableObj.remain = parseFloat(hwtObj.remainTime);
-      tableObj.name = hwtObj.hwtName;
-      tableObj.date = hwtObj.date;
-      tableObj.lesson = remindHwt.name;
-      tableObj.lid = remindHwt.id;
-      tableObj.hwtID = hwtObj.hwtID;
-      tableObj.able = hwtObj.able;
       return tableObj;
     },
     async appendTableData(tableObj) {
-      if (this.tableDataFilter(tableObj, 25, -3)) {
+      if (this.tableDataFilter(tableObj, 365, -365)) {
         this.tableData.push(tableObj);
       } else {
         // do nothing
