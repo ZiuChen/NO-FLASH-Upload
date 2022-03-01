@@ -4,8 +4,8 @@ import config from "./Config/Config";
 
 async function getVersionInfo() {
   log(`current userscript version: ${config.version}`);
-  let content = sendRequest(config.greasyUrl, (obj: Document) => {
-    return obj.querySelectorAll(".script-show-version>span")[1].textContent;
+  let content = sendRequest(config.githubJsonUrl, (obj: Document) => {
+    return JSON.parse(obj.querySelector("body").innerText).version;
   }).then((res) => {
     let weightLastest = 0;
     let weightNow = 0;

@@ -38,7 +38,8 @@
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item command="check">
-                <el-badge :is-dot="needUpdate"> 检查更新 </el-badge>
+                检查更新
+                <el-badge :is-dot="needUpdate"></el-badge>
               </el-dropdown-item>
               <el-dropdown-item command="sidebar"
                 >展示/隐藏侧栏</el-dropdown-item
