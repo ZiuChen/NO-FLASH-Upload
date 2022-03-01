@@ -5,10 +5,6 @@ const webpackConfig = {
   resolve: {
     extensions: [".js", ".ts"],
   },
-  optimization: {
-    minimize: false,
-    moduleIds: "named",
-  },
   entry: "./src/index.ts",
   output: {
     publicPath: path.resolve(__dirname, "../dist"),

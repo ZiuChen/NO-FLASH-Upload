@@ -21,6 +21,10 @@ const cfg = merge(webpackConfig, {
     debug: webpackConfig.entry,
     dev: path.resolve(__dirname, "./dev.js"), // Generate index.dev.user.js
   },
+  optimization: {
+    minimize: false,
+    moduleIds: "named",
+  },
   output: {
     filename: "index.[name].user.js",
     path: path.resolve(__dirname, "../dist"),
