@@ -65,39 +65,7 @@ async function getRemindInfo() {
           }
         });
       });
-      // return obj;
-      // FIXME: Debugging
-      return {
-        notify: [
-          {
-            name: "电子测量",
-            id: "19003",
-            type: "info",
-          },
-          {
-            name: "传感器与检测技术",
-            id: "20697",
-            type: "info",
-          },
-          {
-            name: "现代控制理论",
-            id: "10625",
-            type: "info",
-          },
-        ],
-        hwt: [
-          {
-            name: "现代控制理论",
-            id: "10625",
-            type: "info",
-          },
-          {
-            name: "计算机控制系统",
-            id: "16597",
-            type: "info",
-          },
-        ],
-      };
+      return obj;
     })
     .catch((error) => {
       console.log(error);
