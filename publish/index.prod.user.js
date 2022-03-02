@@ -3,8 +3,8 @@
 // @name:en          NO-FLASH-Upload
 // @description      北京交通大学课程平台功能增强脚本，实现信息聚合，附件上传，让你高效处理课程信息。
 // @description:en   Beijing Jiaotong University curriculum platform function enhancements, information aggregation, accessories uploading, allowing you to efficient course information.
-// @updateURL        https://raw.githubusercontent.com/ZiuChen/NO-FLASH-Upload/v2.x-Vue/publish/index.prod.user.js
-// @downloadURL      https://raw.githubusercontent.com/ZiuChen/NO-FLASH-Upload/v2.x-Vue/publish/index.prod.user.js
+// @updateURL        https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/publish/index.prod.user.js
+// @downloadURL      https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/publish/index.prod.user.js
 // @version          1.9.9
 // @author           ZiuChen
 // @source           https://github.com/ZiuChen/NO-FLASH-Upload
@@ -2441,7 +2441,7 @@ a.push([e.id,'@charset "UTF-8";.el-upload{display:inline-block;text-align:center
 // Exports
 /* harmony default export */const i=a;
 /***/},
-/***/"./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[9].use[0]!./src/components/About/AboutIndex.vue?vue&type=style&index=0&id=1571e421&scoped=true&lang=css":
+/***/"./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[9].use[0]!./src/components/About/AboutIndex.vue?vue&type=style&index=0&id=528b9660&scoped=true&lang=css":
 /***/(e,t,o)=>{"use strict";
 /* harmony export */o.d(t,{
 /* harmony export */Z:()=>i
@@ -2449,7 +2449,7 @@ a.push([e.id,'@charset "UTF-8";.el-upload{display:inline-block;text-align:center
 /* harmony import */var l=o("./node_modules/css-loader/dist/runtime/noSourceMaps.js"),n=o.n(l),r=o("./node_modules/css-loader/dist/runtime/api.js"),a=o.n(r)()(n());
 /* harmony import */
 // Module
-a.push([e.id,"\n.title[data-v-1571e421] {\r\n  display: inline;\n}\n.description span[data-v-1571e421] {\r\n  color: #909399;\n}\n.el-icon[data-v-1571e421] {\r\n  margin-right: 5px;\n}\n.button-block[data-v-1571e421] {\r\n  margin-top: 20px;\r\n  margin-bottom: 20px;\n}\n.el-card[data-v-1571e421] {\r\n  display: flex;\r\n  justify-content: center;\n}\r\n",""]);
+a.push([e.id,"\n.title[data-v-528b9660] {\r\n  display: inline;\n}\n.description span[data-v-528b9660] {\r\n  color: #909399;\n}\n.el-icon[data-v-528b9660] {\r\n  margin-right: 5px;\n}\n.button-block[data-v-528b9660] {\r\n  margin-top: 20px;\r\n  margin-bottom: 20px;\n}\n.el-card[data-v-528b9660] {\r\n  display: flex;\r\n  justify-content: center;\n}\r\n",""]);
 // Exports
 /* harmony default export */const i=a;
 /***/},
@@ -4833,7 +4833,7 @@ const km=Ya(wm),jm=e=>(So("data-v-7638b672"),e=e(),Co(),e),Sm=jm((()=>zn("div",{
 /* HOISTED */))),Am=Ln(" 检查更新 "),Tm=Ln("展示/隐藏侧栏"),zm=Ln("返回旧版"),Mm=Ln("退出当前账号");
 //# sourceMappingURL=index.mjs.map
 // CONCATENATED MODULE: ./src/ts/Config/Config.ts
-const{version:Im,repository:Pm,description:$m}=o("./package.json"),Lm="432056",Rm={version:Im,description:$m,scriptID:Lm,greasyUrl:"https://greasyfork.org/zh-CN/scripts/432056",githubJsonUrl:"https://raw.githubusercontent.com/ZiuChen/NO-FLASH-Upload/v2.x-Vue/package.json",githubUrl:Pm.url,userConfig:{"back-to-old":{value:!1,default:!1,id:"back-to-old"},"show-side-bar":{value:!0,default:!0,id:"show-side-bar"}}};
+const{version:Im,repository:Pm,description:$m}=o("./package.json"),Lm="432056",Rm={version:Im,description:$m,scriptID:Lm,greasyUrl:"https://greasyfork.org/zh-CN/scripts/432056",delivrUpdateUrl:"https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/publish/index.prod.user.js",delivrJsonUrl:"https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/package.json",githubJsonUrl:"https://raw.githubusercontent.com/ZiuChen/NO-FLASH-Upload/v2.x-Vue/package.json",githubUrl:Pm.url,userConfig:{"back-to-old":{value:!1,default:!1,id:"back-to-old"},"show-side-bar":{value:!0,default:!0,id:"show-side-bar"}}};
 /* harmony default export */const Dm=// CONCATENATED MODULE: ./src/ts/Log.ts
 function(e){console.log(`%c[免Flash文件上传] ${e}`,"color: #005bac")};function Fm(){return JSON.parse(localStorage.getItem("config"))}function Nm(e){localStorage.setItem("config",JSON.stringify(e)),Dm("config updated")}
 /* harmony default export */const Bm={initConfig:// CONCATENATED MODULE: ./src/ts/Config/ConfigOperations.ts
@@ -4883,9 +4883,9 @@ var Hb=o("./node_modules/css-loader/dist/cjs.js!./node_modules/element-plus/them
 var Vb=o("./node_modules/css-loader/dist/cjs.js!./node_modules/element-plus/theme-chalk/el-overlay.css"),Wb={};Wb.styleTagTransform=$a(),Wb.setAttributes=za(),Wb.insert=Aa().bind(null,"head"),Wb.domAPI=Ea(),Wb.insertStyleElement=Ia();Sa()(Vb/* default */.Z,Wb);
 /* harmony default export */Vb/* default */.Z&&Vb/* default.locals */.Z.locals&&Vb/* default.locals */.Z.locals;
 /* harmony default export */const Ub=// CONCATENATED MODULE: ./src/ts/GetVersionInfo.ts
-async function(){return Dm(`current userscript version: ${Rm.version}`),hf(Rm.githubJsonUrl,(e=>JSON.parse(e.querySelector("body").innerText).version),{cache:"no-cache"}).then((e=>{let t=0,o=0;return e.split(".").reverse().forEach(((e,o)=>{t+=(o+1)*Math.pow(10,o+1)*parseInt(e)})),Rm.version.split(".").reverse().forEach(((e,t)=>{o+=(t+1)*Math.pow(10,t+1)*parseInt(e)})),t>o?{need:!0,current:Rm.version,lastest:e}:{need:!1,current:Rm.version,lastest:e}}))};
+async function(){return Dm(`current userscript version: ${Rm.version}`),hf(Rm.delivrJsonUrl,(e=>JSON.parse(e.querySelector("body").innerText).version),{cache:"no-cache"}).then((e=>{let t=0,o=0;return e.split(".").reverse().forEach(((e,o)=>{t+=(o+1)*Math.pow(10,o+1)*parseInt(e)})),Rm.version.split(".").reverse().forEach(((e,t)=>{o+=(t+1)*Math.pow(10,t+1)*parseInt(e)})),t>o?{need:!0,current:Rm.version,lastest:e}:{need:!1,current:Rm.version,lastest:e}}))};
 /* harmony default export */const Kb=// CONCATENATED MODULE: ./src/ts/CheckUpdate.ts
-async function(){await Ub().then((e=>{if(e.need){let t=af({title:"免Flash文件上传",type:"warning",message:`有新版本${e.lastest}，当前版本${e.current}。请点击此处更新`,duration:0,onClick:()=>{window.location.href=`${Rm.greasyUrl}/code/${Rm.scriptID}.user.js`,t.close(),Fb.alert("请在弹出的网页中更新脚本，更新后点击“ OK ”重新加载此页面","提示",{confirmButtonText:"OK",callback:e=>{if("confirm"!==e)return!1;window.location.reload()}})}});return!0;// need update
+async function(){await Ub().then((e=>{if(e.need){let t=af({title:"免Flash文件上传",type:"warning",message:`有新版本${e.lastest}，当前版本${e.current}。请点击此处更新`,duration:0,onClick:()=>{window.location.href=Rm.delivrUpdateUrl,t.close(),Fb.alert("请在弹出的网页中更新脚本，更新后点击“ OK ”重新加载此页面","提示",{confirmButtonText:"OK",callback:e=>{if("confirm"!==e)return!1;window.location.reload()}})}});return!0;// need update
 }{
 // if(localStorage.getItem("config-update") !== "true") return
 let t=af({title:"免Flash文件上传",type:"success",message:`版本已是最新：${e.current}`,onClick:()=>{t.close()}});return!1;// don't need update
@@ -6117,15 +6117,15 @@ var OS=o("./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/dist/s
 /* unplugin-vue-components disabled */ /* harmony default export */const zS={},MS=(0,Mf/* default */.Z)(zS,[["render",// CONCATENATED MODULE: ./node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[14].use[0]!./node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[15].use[0]!./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[4]!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[9].use[0]!./src/components/Profile/ProfileIndex.vue?vue&type=template&id=adbbd27c
 /* unplugin-vue-components disabled */
 function(e,t,o,l,n,r){const a=Ik;return yn(),Sn(a,{description:"当前页面施工中..."})}]])
-/* harmony default export */,IS=e=>(So("data-v-1571e421"),e=e(),Co(),e),PS={class:"title",align:"center"},$S=Ln(" 免Flash文件上传"),LS={class:"description",align:"center"},RS={class:"button-block",align:"center"},DS=IS((()=>zn("svg",{t:"1646098546718",class:"icon",viewBox:"0 0 1024 1024",version:"1.1",xmlns:"http://www.w3.org/2000/svg","p-id":"21783",width:"200",height:"200"},[zn("path",{d:"M170.666667 85.333333h682.666666a85.333333 85.333333 0 0 1 85.333334 85.333334v682.666666a85.333333 85.333333 0 0 1-85.333334 85.333334h-219.733333c-14.933333-3.413333-14.933333-32.426667-14.933333-42.666667v-116.906667c0-39.68-14.08-65.706667-29.44-78.933333 95.146667-10.666667 194.986667-46.506667 194.986666-209.493333 0-47.36-16.213333-85.333333-43.946666-115.626667 4.266667-10.666667 19.2-55.04-4.266667-112.64 0 0-35.84-11.52-117.333333 43.52-33.706667-9.386667-70.4-14.08-106.666667-14.08-36.266667 0-72.96 4.693333-106.666667 14.08-81.493333-55.04-117.333333-43.52-117.333333-43.52-23.466667 57.6-8.533333 101.973333-4.266667 112.64-27.733333 30.293333-43.946667 68.266667-43.946666 115.626667 0 162.56 99.413333 199.253333 194.133333 209.92-11.946667 10.666667-23.04 29.44-26.88 57.173333-24.32 10.24-87.04 29.44-124.16-35.413333 0 0-22.613333-40.96-65.28-43.946667 0 0-41.813333-0.853333-4.266667 25.6 0 0 29.013333 13.226667 48.64 62.72 0 0 25.173333 82.773333 143.36 57.173333V896c0 10.24 0 39.253333-15.36 42.666667H170.666667a85.333333 85.333333 0 0 1-85.333334-85.333334V170.666667a85.333333 85.333333 0 0 1 85.333334-85.333334z",fill:"","p-id":"21784"})],-1
+/* harmony default export */,IS=e=>(So("data-v-528b9660"),e=e(),Co(),e),PS={class:"title",align:"center"},$S=Ln(" 免Flash文件上传"),LS={class:"description",align:"center"},RS={class:"button-block",align:"center"},DS=IS((()=>zn("svg",{t:"1646098546718",class:"icon",viewBox:"0 0 1024 1024",version:"1.1",xmlns:"http://www.w3.org/2000/svg","p-id":"21783",width:"200",height:"200"},[zn("path",{d:"M170.666667 85.333333h682.666666a85.333333 85.333333 0 0 1 85.333334 85.333334v682.666666a85.333333 85.333333 0 0 1-85.333334 85.333334h-219.733333c-14.933333-3.413333-14.933333-32.426667-14.933333-42.666667v-116.906667c0-39.68-14.08-65.706667-29.44-78.933333 95.146667-10.666667 194.986667-46.506667 194.986666-209.493333 0-47.36-16.213333-85.333333-43.946666-115.626667 4.266667-10.666667 19.2-55.04-4.266667-112.64 0 0-35.84-11.52-117.333333 43.52-33.706667-9.386667-70.4-14.08-106.666667-14.08-36.266667 0-72.96 4.693333-106.666667 14.08-81.493333-55.04-117.333333-43.52-117.333333-43.52-23.466667 57.6-8.533333 101.973333-4.266667 112.64-27.733333 30.293333-43.946667 68.266667-43.946666 115.626667 0 162.56 99.413333 199.253333 194.133333 209.92-11.946667 10.666667-23.04 29.44-26.88 57.173333-24.32 10.24-87.04 29.44-124.16-35.413333 0 0-22.613333-40.96-65.28-43.946667 0 0-41.813333-0.853333-4.266667 25.6 0 0 29.013333 13.226667 48.64 62.72 0 0 25.173333 82.773333 143.36 57.173333V896c0 10.24 0 39.253333-15.36 42.666667H170.666667a85.333333 85.333333 0 0 1-85.333334-85.333334V170.666667a85.333333 85.333333 0 0 1 85.333334-85.333334z",fill:"","p-id":"21784"})],-1
 /* HOISTED */))),FS=Ln("主页"),NS=IS((()=>zn("svg",{t:"1646098492774",class:"icon",viewBox:"0 0 1024 1024",version:"1.1",xmlns:"http://www.w3.org/2000/svg","p-id":"21633",width:"200",height:"200"},[zn("path",{d:"M853.333333 85.333333H170.666667a85.333333 85.333333 0 0 0-85.333334 85.333334v768l170.666667-170.666667h597.333333a85.333333 85.333333 0 0 0 85.333334-85.333333V170.666667a85.333333 85.333333 0 0 0-85.333334-85.333334M256 384h512v85.333333H256m341.333333 128H256v-85.333333h341.333333m170.666667-170.666667H256V256h512",fill:"","p-id":"21634"})],-1
 /* HOISTED */))),BS=Ln(" 反馈"),HS=IS((()=>zn("svg",{t:"1646098584201",class:"icon",viewBox:"0 0 1024 1024",version:"1.1",xmlns:"http://www.w3.org/2000/svg","p-id":"21933",width:"200",height:"200"},[zn("path",{d:"M512 910.933333l-61.866667-56.32C230.4 655.36 85.333333 523.52 85.333333 362.666667 85.333333 230.826667 188.586667 128 320 128c74.24 0 145.493333 34.56 192 88.746667C558.506667 162.56 629.76 128 704 128 835.413333 128 938.666667 230.826667 938.666667 362.666667c0 160.853333-145.066667 292.693333-364.8 491.946666L512 910.933333z",fill:"","p-id":"21934"})],-1
 /* HOISTED */))),ZS=Ln(" 捐赠");// CONCATENATED MODULE: ./node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[14].use[0]!./node_modules/unplugin/dist/webpack/loaders/transform.js??ruleSet[1].rules[15].use[0]!./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[9].use[0]!./src/components/About/AboutIndex.vue?vue&type=script&lang=js
 /* unplugin-vue-components disabled */
-/* harmony default export */const VS={data:()=>({config:Rm,iconSize:18,donateUrl:"https://raw.githubusercontent.com/ZiuChen/NO-FLASH-Upload/v2.x-Vue/doc/img/Buy%20me%20a%20coffee.png"}),methods:{handleButtonClick(e){window.open(e)}}};// CONCATENATED MODULE: ./src/components/About/AboutIndex.vue?vue&type=script&lang=js
+/* harmony default export */const VS={data:()=>({config:Rm,iconSize:18,donateUrl:"https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/Buy%20me%20a%20coffee.png"}),methods:{handleButtonClick(e){window.open(e)}}};// CONCATENATED MODULE: ./src/components/About/AboutIndex.vue?vue&type=script&lang=js
 /* unplugin-vue-components disabled */
-// EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[9].use[0]!./src/components/About/AboutIndex.vue?vue&type=style&index=0&id=1571e421&scoped=true&lang=css
-var WS=o("./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[9].use[0]!./src/components/About/AboutIndex.vue?vue&type=style&index=0&id=1571e421&scoped=true&lang=css"),US={};US.styleTagTransform=$a(),US.setAttributes=za(),US.insert=Aa().bind(null,"head"),US.domAPI=Ea(),US.insertStyleElement=Ia();Sa()(WS/* default */.Z,US);
+// EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[9].use[0]!./src/components/About/AboutIndex.vue?vue&type=style&index=0&id=528b9660&scoped=true&lang=css
+var WS=o("./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/vue-loader/dist/index.js??ruleSet[1].rules[9].use[0]!./src/components/About/AboutIndex.vue?vue&type=style&index=0&id=528b9660&scoped=true&lang=css"),US={};US.styleTagTransform=$a(),US.setAttributes=za(),US.insert=Aa().bind(null,"head"),US.domAPI=Ea(),US.insertStyleElement=Ia();Sa()(WS/* default */.Z,US);
 /* harmony default export */WS/* default */.Z&&WS/* default.locals */.Z.locals&&WS/* default.locals */.Z.locals;const KS=(0,Mf/* default */.Z)(VS,[["render",function(e,t,o,l,n,r){const a=Zx,i=hs,s=dh,c=ng;return yn(),Sn(c,null,{default:Eo((()=>[zn("div",PS,[zn("h2",null,[$S,Mn(a,{type:"success"},{default:Eo((()=>[Ln(f(n.config.version),1
 /* TEXT */)])),_:1
 /* STABLE */})])]),zn("div",LS,[zn("span",null,f(n.config.description),1
@@ -6139,7 +6139,7 @@ var WS=o("./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/dist/s
 /* STABLE */},8
 /* PROPS */,["size"]),ZS])),_:1
 /* STABLE */})])])),_:1
-/* STABLE */})}],["__scopeId","data-v-1571e421"]])
+/* STABLE */})}],["__scopeId","data-v-528b9660"]])
 /* harmony default export */,qS=function(e){const t=ow(e.routes,e),o=e.parseQuery||Sw,l=e.stringifyQuery||Cw,n=e.history,r=Ow(),a=Ow(),i=Ow(),s=jt(Z_);let c=Z_;// leave the scrollRestoration if no scrollBehavior is provided
 v_&&e.scrollBehavior&&"scrollRestoration"in history&&(history.scrollRestoration="manual");const d=x_.bind(null,(e=>""+e)),u=x_.bind(null,kw),p=// @ts-expect-error: intentionally avoid the type check
 x_.bind(null,jw);function f(e,r){if(

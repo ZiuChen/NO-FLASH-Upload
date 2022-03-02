@@ -24,7 +24,7 @@
 ## 🔰 开始使用
 
   1. 在任一浏览器上安装[`Tampermonkey`](https://www.tampermonkey.net/)脚本管理器。
-  2. [`点击此处`](https://raw.githubusercontent.com/ZiuChen/NO-FLASH-Upload/v2.x-Vue/publish/index.prod.user.js)安装脚本。
+  2. [`点击此处`](https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/publish/index.prod.user.js)安装脚本。[`备用链接`](https://gitee.com/ziuc/NO-FLASH-Upload/raw/master/publish/index.prod.user.js)
 
   新版具有更好的稳定性，**请尽量保持脚本更新，使用最新版本**。使用中遇到任何问题，欢迎在[`Github Issues`](https://github.com/ZiuChen/NO-FLASH-Upload/issues)或[`Gitee Issues`](https://gitee.com/ziuc/NO-FLASH-Upload/issues)反馈交流。
 

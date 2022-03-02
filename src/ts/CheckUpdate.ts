@@ -11,7 +11,7 @@ async function checkUpdate() {
         message: `有新版本${res.lastest}，当前版本${res.current}。请点击此处更新`,
         duration: 0,
         onClick: () => {
-          window.location.href = `${config.greasyUrl}/code/${config.scriptID}.user.js`;
+          window.location.href = config.delivrUpdateUrl;
           notify.close();
           ElMessageBox.alert(
             `请在弹出的网页中更新脚本，更新后点击“ OK ”重新加载此页面`,

@@ -83,7 +83,7 @@ export default {
     return {
       config: config,
       iconSize: 18,
-      donateUrl: `https://raw.githubusercontent.com/ZiuChen/NO-FLASH-Upload/v2.x-Vue/doc/img/Buy%20me%20a%20coffee.png`,
+      donateUrl: `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/Buy%20me%20a%20coffee.png`,
     };
   },
   methods: {
