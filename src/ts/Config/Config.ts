@@ -1,6 +1,7 @@
 const { version, repository, description } = require("../../../package.json");
 const scriptID = "432056";
 const greasyUrl = `https://greasyfork.org/zh-CN/scripts/${scriptID}`;
+const tencentUrl = `https://wj.qq.com/s2/9790218/23fe/`;
 const githubJsonUrl = `https://raw.githubusercontent.com/ZiuChen/NO-FLASH-Upload/v2.x-Vue/package.json`;
 const delivrUpdateUrl = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/publish/index.prod.user.js`;
 const delivrJsonUrl = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/package.json`;
@@ -23,6 +24,7 @@ export default {
   description: description,
   scriptID: scriptID,
   greasyUrl: greasyUrl,
+  tencentUrl: tencentUrl,
   delivrUpdateUrl: delivrUpdateUrl,
   delivrJsonUrl: delivrJsonUrl,
   githubJsonUrl: githubJsonUrl,
