@@ -30,7 +30,7 @@
             ></path></svg></el-icon
         >主页</el-button
       >
-      <el-button @click="handleButtonClick(config.githubUrl + '/issues')">
+      <el-button @click="handleButtonClick(config.tencentUrl)">
         <el-icon :size="iconSize">
           <svg
             t="1646098492774"
