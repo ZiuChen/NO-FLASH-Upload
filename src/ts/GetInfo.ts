@@ -3,11 +3,11 @@ const baseUrl = `http://cc.bjtu.edu.cn:81/meol`;
 const userinfoUrl = `${baseUrl}/welcomepage/student/index.jsp`; // 个人信息
 const reminderUrl = `${baseUrl}/welcomepage/student/interaction_reminder.jsp`; // 互动提醒
 const lessonUrl = `${baseUrl}/lesson/blen.student.lesson.list.jsp`; // 课程列表
-const hwtListUrl = `${baseUrl}/common/hw/student/hwtask.jsp`; // 课程作业
-const hwtDetailUrl = `${baseUrl}/common/hw/student/taskanswer.jsp`; // 课程作业详情 ?hwtid=
-const hwtContentUrl = `${baseUrl}/common/hw/student/write.jsp`; // 作业提交页
+const hwtListUrl = `${baseUrl}/common/hw/student/hwtask.jsp`; // 课程作业列表
+const hwtDetailUrl = `${baseUrl}/common/hw/student/taskanswer.jsp`; // 课程作业查看结果 ?hwtid=
+const hwtContentUrl = `${baseUrl}/common/hw/student/write.jsp`; // 作业提交
 const hwtReviewContentUrl = `${baseUrl}/common/hw/student/taskanswer.jsp`; // 作业查看结果页
-const notifyListUrl = `${baseUrl}/common/inform/index_stu.jsp`; // 通知列表(有已阅读信息) ?lid=
+const notifyListUrl = `${baseUrl}/common/inform/index_stu.jsp`; // 课程通知列表(有已阅读信息) ?lid=
 const notifyMessageUrl = `${baseUrl}/jpk/course/layout/course_meswrap.jsp`; // 通知内容
 const lessonPageUrl = `${baseUrl}/jpk/course/layout/newpage/index.jsp`; // 课程主页 ?courseId=
 const lessonPageInfo = `${baseUrl}/jpk/course/layout/newpage/default_demonstrate.jsp`; // 课程信息 ?courseId=
@@ -86,11 +86,13 @@ async function getLessonInfo() {
           academy: "",
           teacher: "",
         };
-        let course = item.firstElementChild
-          .firstElementChild as HTMLAnchorElement;
-        let academy = item.children[1] as HTMLTableCellElement;
-        let teacher = item.children[2] as HTMLTableCellElement;
-        obj.id = course.getAttribute("href").split("lid=")[1];
+        let course = item.querySelectorAll("td a")[0] as HTMLTableCellElement;
+        let academy = item.children[2] as HTMLTableCellElement;
+        let teacher = item.children[3] as HTMLTableCellElement;
+        obj.id = course
+          .getAttribute("onclick")
+          .split("courseId=")[1]
+          .split("','")[0];
         obj.name = course.innerText.split("\n")[0].trim();
         obj.academy = academy.innerText.split("\n")[0];
         obj.teacher = teacher.innerText.split("\n")[0];
@@ -104,47 +106,45 @@ async function getLessonInfo() {
 }
 
 async function getHwtInfo(lid: string) {
-  return await sendRequest(hwtListUrl, (obj: Document) => {
-    return obj.querySelectorAll("tbody>tr");
-  })
-    .then((res) => {
-      // TODO: add hadSubmit
-      let arry: object[] = [];
-      res.forEach((item: Document, index: number) => {
-        if (index === 0) return;
+  return await sendRequest(
+    `http://cc.bjtu.edu.cn:81/meol/hw/stu/hwStuHwtList.do?courseId=${lid}`,
+    undefined
+  ).then((res) => {
+    return res.json().then((res: any) => {
+      console.log(res);
+      if (res.datas.hwtList === undefined) return [];
+      let lid = res.datas.courseId;
+      let array: object[] = [];
+      res.datas.hwtList.forEach((item: any) => {
         let obj = {
           hwtID: "",
           hwtName: "",
           lid: lid,
           date: "",
-          Date: new Date(),
+          Date: new Date(res.deadLine),
           remainTime: "",
           able: false,
+          teacherName: "",
         };
-        let hwt = item.querySelectorAll(".infolist")[0] as HTMLAnchorElement;
-        let deadline = item.children[1] as HTMLTableCellElement;
-        obj.hwtID = hwt.getAttribute("href").split("hwtid=")[1];
-        obj.hwtName = hwt.innerText.split("\n")[0].trim();
-        obj.date = deadline.innerText.split("\n")[0];
-        obj.Date = new Date(
-          `${obj.date.split("年")[0]},${
-            obj.date.split("年")[1].split("月")[0]
-          },${obj.date.split("年")[1].split("月")[1].split("日")[0]},23:59:59`
-        );
+        // obj.lid = res.
+        obj.teacherName = item.realName;
+        obj.able = item.submitStruts;
+        obj.hwtName = item.title;
+        obj.hwtID = item.id.toString();
+        obj.date = item.deadLine;
+        obj.Date = new Date(item.deadLine);
         obj.remainTime = parseInt(
           (
             (obj.Date.getTime() - new Date().getTime()) /
             (24 * 60 * 60 * 1000)
           ).toString()
         ).toString();
-        obj.able = item.children[5].childElementCount !== 0;
-        arry.push(obj);
+        array.push(obj);
       });
-      return arry;
-    })
-    .catch((error) => {
-      console.log(error);
+      console.log(array);
+      return array;
     });
+  });
 }
 
 async function getHwtSubmitStatus(hwtid: string) {
