@@ -32,12 +32,7 @@
       </div>
     </template>
     <el-table :data="lessonList" height="400px" style="width: 100%">
-      <el-table-column
-        prop="name"
-        label="课程名"
-        :show-overflow-tooltip="true"
-        width="150px"
-      >
+      <el-table-column prop="name" label="课程名" :show-overflow-tooltip="true">
         <template #default="scope">
           <el-link
             :underline="false"
@@ -47,8 +42,8 @@
           >
         </template>
       </el-table-column>
-      <el-table-column prop="teacher" label="教师" />
-      <el-table-column prop="academy" label="学院" />
+      <el-table-column prop="teacher" label="教师" align="center" />
+      <el-table-column prop="academy" label="学院" align="center" />
       <el-table-column
         v-if="this.operationEnabled"
         prop="operation"

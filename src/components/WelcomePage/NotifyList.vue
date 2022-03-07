@@ -30,18 +30,37 @@
       </div>
     </template>
     <!-- <el-empty v-if="notifyEmpty" description="没有未读通知哦~"></el-empty> -->
-    <el-scrollbar height="400px">
-      <el-collapse>
-        <el-collapse-item
-          :key="lesson.id"
-          v-for="lesson in notifies"
-          :title="lesson.name"
-          :name="lesson.id"
-        >
-          <notify-list-detail :lid="lesson.id"></notify-list-detail>
-        </el-collapse-item>
-      </el-collapse>
-    </el-scrollbar>
+    <el-table
+      :data="tableData"
+      height="400px"
+      :default-sort="{ prop: 'pubTime', order: 'descending' }"
+      style="width: 100%"
+    >
+      <el-table-column prop="notifyName" label="通知名" width="200px">
+        <template #default="scope">
+          <el-link
+            :href="`http://cc.bjtu.edu.cn:81/meol/jpk/course/layout/course_meswrap.jsp?courseId=${scope.row.lid}&nid=${scope.row.nid}`"
+            :underline="false"
+            target="_blank"
+            >{{ scope.row.notifyName }}</el-link
+          >
+        </template>
+      </el-table-column>
+      <el-table-column prop="lessonName" label="课程名" align="center" />
+      <el-table-column
+        prop="hadRead"
+        label="阅读状态"
+        align="center"
+        :formatter="hadReadformatter"
+        :filters="[
+          { text: '已阅读', value: 'true' },
+          { text: '未阅读', value: 'false' },
+        ]"
+        :filter-method="hadReadfilterHandler"
+        :filtered-value="checkedFilters"
+      />
+      <el-table-column prop="pubTime" label="发布时间" sortable="" />
+    </el-table>
   </el-card>
 </template>
 
@@ -58,20 +77,45 @@ export default {
   data() {
     return {
       notifies: [],
+      tableData: [],
+      checkedFilters: ["false"],
       loadingStatus: true,
     };
   },
   methods: {
     async getRemindNotifies() {
-      this.notifies = await getInfo.getRemindInfo().then((res) => {
+      this.notifies = await getInfo.getRemindInfo().then(async (res) => {
         this.loadingStatus = false;
-        return res.notify;
+        for (let lesson of res.notify) {
+          await getInfo.getNotifyList(lesson.id).then((notifies) => {
+            notifies.forEach((notify) => {
+              this.tableData.push({
+                lid: lesson.id,
+                lessonName: lesson.name,
+                notifyName: notify.notifyName,
+                pubTime: notify.pubTime,
+                nid: notify.id,
+                hadRead: notify.hadRead,
+              });
+            });
+          });
+        }
       });
     },
     async refreshNotifyList() {
       this.loadingStatus = true;
       this.notifies = [];
       this.getRemindNotifies();
+    },
+    hadReadfilterHandler(value, row, column) {
+      return row.hadRead.toString() === value;
+    },
+    hadReadformatter(row, column) {
+      if (row.hadRead === true) {
+        return "已阅读";
+      } else {
+        return "未阅读";
+      }
     },
   },
 };
