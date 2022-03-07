@@ -29,7 +29,7 @@
           </el-icon>
           <span>主页</span>
         </el-menu-item>
-        <el-sub-menu class="mdui-ripple" index="lesson">
+        <el-sub-menu class="mdui-ripple" index="lesson" v-if="false">
           <template #title>
             <el-icon :size="iconSize">
               <svg

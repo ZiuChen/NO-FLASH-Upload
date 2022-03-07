@@ -90,6 +90,7 @@ export default {
         "redo",
       ];
       editor.config.height = 240;
+      editor.config.zIndex = 99;
       editor.config.uploadImgServer = "/upload-img";
       editor.config.customUploadImg = function (resultFiles, insertImgFn) {
         let formData = new FormData();
