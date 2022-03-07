@@ -29,10 +29,9 @@ function initConfig() {
   }
 }
 
-function setUserConfig(id: string, value: boolean | object | string) {
+function setUserConfig(id: string, value: boolean | object | string | number) {
   let currentConfig = readConfig();
-  let currentUserConfig = currentConfig.userConfig;
-  currentUserConfig[id].value = value;
+  currentConfig.userConfig[id].value = value;
   updateConfig(currentConfig);
 }
 
@@ -41,7 +40,18 @@ function readConfig() {
 }
 
 function readUserConfig() {
-  return JSON.parse(localStorage.getItem("config")).userConfig;
+  return readConfig().userConfig;
+}
+
+function readUserConfigWithFilter(type: string) {
+  let userConfig = readConfig().userConfig;
+  let rtnArray: object[] = [];
+  Object.keys(userConfig).forEach((key) => {
+    if (userConfig[key].type === type) {
+      rtnArray.push(userConfig[key]);
+    }
+  });
+  return rtnArray;
 }
 
 function updateConfig(config: object) {
@@ -53,6 +63,7 @@ export default {
   initConfig: initConfig,
   readConfig: readConfig,
   readUserConfig: readUserConfig,
+  readUserConfigWithFilter: readUserConfigWithFilter,
   updateConfig: updateConfig,
   setUserConfig: setUserConfig,
 };

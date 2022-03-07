@@ -111,7 +111,6 @@ async function getHwtInfo(lid: string) {
     undefined
   ).then((res) => {
     return res.json().then((res: any) => {
-      console.log(res);
       if (res.datas.hwtList === undefined) return [];
       let lid = res.datas.courseId;
       let array: object[] = [];

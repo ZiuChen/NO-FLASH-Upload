@@ -1,27 +1,22 @@
 <template>
   <div>
     <el-row>
-      <el-col :span="24">
+      <el-col :span="this.userConfig['hwt-list-card-size'].value">
         <hwt-list></hwt-list>
       </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="12">
+      <el-col :span="this.userConfig['notify-list-card-size'].value">
         <notify-list></notify-list>
       </el-col>
-
-      <el-col :span="12">
+      <el-col :span="this.userConfig['notify-list-card-size'].value">
         <lesson-list></lesson-list>
       </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="8">
+      <el-col :span="this.userConfig['inform-list-card-size'].value">
         <inform-list></inform-list>
       </el-col>
-      <el-col :span="8">
+      <el-col :span="this.userConfig['user-info-card-size'].value">
         <user-info></user-info>
       </el-col>
-      <el-col :span="8">
+      <el-col :span="this.userConfig['calender-card-size'].value">
         <calender></calender>
       </el-col>
     </el-row>
@@ -35,7 +30,7 @@ import Calender from "./Calender.vue";
 import InformList from "./InformList.vue";
 import NotifyList from "./NotifyList.vue";
 import LessonList from "./LessonList.vue";
-
+import configOperations from "../../ts/Config/ConfigOperations";
 export default {
   components: {
     HwtList,
@@ -44,6 +39,14 @@ export default {
     InformList,
     NotifyList,
     LessonList,
+  },
+  created() {
+    this.userConfig = configOperations.readUserConfig();
+  },
+  data() {
+    return {
+      userConfig: configOperations.readUserConfig(),
+    };
   },
 };
 </script>
