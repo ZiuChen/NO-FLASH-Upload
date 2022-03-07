@@ -80,6 +80,13 @@
           >
         </template>
       </el-table-column>
+      <el-table-column label="允许提交" align="center">
+        <template #default="scope">
+          <el-tag :type="ableFormatter(scope.row.able).tag" disable-transitions>
+            {{ ableFormatter(scope.row.able).text }}</el-tag
+          >
+        </template>
+      </el-table-column>
       <el-table-column label="操作" align="center">
         <template #default="scope">
           <el-button
@@ -101,7 +108,6 @@
 </template>
 
 <script>
-import getInfo from "../../ts/GetInfo";
 import API from "../../ts/API";
 
 export default {
@@ -143,7 +149,7 @@ export default {
         case "今日截止":
           return row.remain === 0;
         case "近期截止":
-          return row.remain <= 15 && row.remain >= -3;
+          return row.remain <= 25 && row.remain >= -5;
         case "未过期":
           return row.remain > 0;
         case "已过期":
@@ -186,7 +192,20 @@ export default {
       } else if (row.remain === 0) {
         return `今日截止`;
       } else if (row.remain > 0) {
-        return `还有${row.remain}天`;
+        return `还有${row.remain}天截止`;
+      }
+    },
+    ableFormatter(able) {
+      if (able === true) {
+        return {
+          text: "允许提交",
+          tag: "success",
+        };
+      } else {
+        return {
+          text: "禁止提交",
+          tag: "info",
+        };
       }
     },
     async getLessonList() {
