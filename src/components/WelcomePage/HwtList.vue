@@ -102,6 +102,7 @@
 
 <script>
 import getInfo from "../../ts/GetInfo";
+import API from "../../ts/API";
 
 export default {
   created() {
@@ -121,16 +122,13 @@ export default {
   watch: {
     lessonList: async function (val) {
       // Async Trap: cannot async in forEach
-      for (let remindHwt of this.lessonList) {
-        await getInfo.visitLessonPage(remindHwt.id).then(async () => {
-          await getInfo.getHwtInfo(remindHwt.id).then((res) => {
-            res.forEach((item) => {
-              this.hwtObj2TableObj(item, remindHwt).then((res) => {
-                this.appendTableData(res);
-              });
+      for (let lesson of this.lessonList) {
+        await API.getHwtList(lesson.id).then((hwtList) => {
+          for (let hwt of hwtList) {
+            this.hwtObj2TableObj(lesson, hwt).then((tableObject) => {
+              this.appendTableData(tableObject);
             });
-            return res;
-          });
+          }
         });
       }
       this.loadingStatus = false;
@@ -188,13 +186,11 @@ export default {
       } else if (row.remain === 0) {
         return `今日截止`;
       } else if (row.remain > 0) {
-        return `${row.remain}天`;
+        return `还有${row.remain}天`;
       }
     },
     async getLessonList() {
-      this.lessonList = await getInfo.getLessonInfo().then((res) => {
-        return res;
-      });
+      this.lessonList = await API.getLessonList();
     },
     async handleSubmitClick(index, row) {
       this.$router.push(`/lesson/${row.lid}/submit/${row.hwtID}?able=true`);
@@ -206,21 +202,24 @@ export default {
       let url = `${this.lessonPageUrl}${lid}`;
       window.open(url);
     },
-    async hwtObj2TableObj(hwtObj, remindHwt) {
-      let tableObj = {
-        remain: parseFloat(hwtObj.remainTime),
-        name: hwtObj.hwtName,
-        date: hwtObj.date,
-        hwtID: hwtObj.hwtID,
-        able: hwtObj.able,
-        lesson: remindHwt.name,
-        lid: remindHwt.id,
+    async hwtObj2TableObj(lesson, hwt) {
+      return {
+        lid: lesson.id,
+        lesson: lesson.name,
+        hwtID: hwt.id,
+        name: hwt.title,
+        date: hwt.deadLine,
+        remain: hwt.remain,
+        able: hwt.able,
+        publisher: hwt.publisher,
+        mutualTask: hwt.mutualTask,
+        answerStatus: hwt.answerStatus,
+        showGrade: hwt.showGrade, // answerStatus == true || submitStruts == false
       };
-      return tableObj;
     },
-    async appendTableData(tableObj) {
-      if (this.tableDataFilter(tableObj, 365, -365)) {
-        this.tableData.push(tableObj);
+    async appendTableData(tableObject) {
+      if (this.tableDataFilter(tableObject, 365, -365)) {
+        this.tableData.push(tableObject);
       } else {
         // do nothing
       }

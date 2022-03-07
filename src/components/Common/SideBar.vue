@@ -55,7 +55,7 @@
           <el-menu-item-group title="所有课程">
             <el-menu-item
               class="mdui-ripple"
-              v-for="lesson in lessonInfo"
+              v-for="lesson in lessonList"
               :key="lesson.id"
               :index="lesson.id"
               >{{ lesson.name }}</el-menu-item
@@ -109,20 +109,20 @@
 </template>
 
 <script>
-import getInfo from "../../ts/GetInfo";
+import API from "../../ts/API";
 export default {
   data() {
     return {
-      lessonInfo: [],
+      lessonList: [],
       iconSize: 18,
     };
   },
   mounted() {
-    this.getLessonInfo();
+    this.getLessonList();
   },
   methods: {
-    async getLessonInfo() {
-      this.lessonInfo = await getInfo.getLessonInfo();
+    async getLessonList() {
+      this.lessonList = await API.getLessonList();
     },
     handleSelect(index, indexPath, item, routeResult) {
       let rtn =

@@ -60,7 +60,7 @@
           <el-button-group>
             <el-button
               type="primary"
-              @click="handleButtonClick('up', scope.row.id)"
+              @click="handleButtonClick(scope.row.id, 'up')"
               ><el-icon
                 ><svg
                   t="1645760757857"
@@ -80,7 +80,7 @@
             ></el-button>
             <el-button
               type="primary"
-              @click="handleButtonClick('down', scope.row.id)"
+              @click="handleButtonClick(scope.row.id, 'down')"
             >
               <el-icon>
                 <svg
@@ -109,7 +109,7 @@
 </template>
 
 <script>
-import getInfo from "../../ts/GetInfo";
+import API from "../../ts/API";
 import sendRequest from "../../ts/SendRequest";
 export default {
   data() {
@@ -132,29 +132,12 @@ export default {
   },
   methods: {
     async updateLessonList() {
-      this.lessonList = await getInfo.getLessonInfo().then((res) => {
-        return res;
-      });
+      this.lessonList = await API.getLessonList();
     },
-    async handleButtonClick(type, lid) {
-      switch (type) {
-        case "up":
-          sendRequest(`${this.lessonUPUrl}${lid}`, (obj) => {
-            // do nothing
-            return obj;
-          }).then(async (res) => {
-            return await this.updateLessonList();
-          });
-          break;
-        case "down":
-          sendRequest(`${this.lessonDOWNUrl}${lid}`, (obj) => {
-            // do nothing
-            return obj;
-          }).then(async (res) => {
-            return await this.updateLessonList();
-          });
-          break;
-      }
+    async handleButtonClick(courseId, action) {
+      return await API.lessonOrderOperation(courseId, action).then((res) => {
+        return this.updateLessonList();
+      });
     },
     toggleOperationEnabledStatus(status) {
       this.operationEnabled = status;
