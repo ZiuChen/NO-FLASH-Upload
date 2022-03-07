@@ -8,7 +8,7 @@ interface json {
 }
 
 async function getHwtList(courseId: string) {
-  let url = `http://cc.bjtu.edu.cn:81/meol/hw/stu/hwStuHwtList.do?courseId=${courseId}`; // 19003
+  let url = `http://cc.bjtu.edu.cn:81/meol/hw/stu/hwStuHwtList.do?courseId=${courseId}&pagingNumberPer=100`;
   return await sendRequest(url, undefined).then((response) => {
     return response.json().then((json: json) => {
       let rtnArray: object[] = [];
@@ -23,11 +23,11 @@ async function getHwtList(courseId: string) {
             (new Date(item.deadLine).getTime() - new Date().getTime()) /
               (24 * 60 * 60 * 1000)
           ),
-          able: item.submitStruts,
+          able: item.submitStruts, // 是否允许提交
           publisher: item.realName,
           mutualTask: item.mutualTask,
           answerStatus: item.answerStatus,
-          showGrade: item.showGrade, // answerStatus == true || submitStruts == false
+          showGrade: item.showGrade, // answerStatus == true || able == false
         });
       });
       return rtnArray;
