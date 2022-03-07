@@ -10,6 +10,33 @@
         {{ config.description }}
       </span>
     </div>
+    <div class="badges">
+      <a href="https://github.com/ZiuChen/NO-FLASH-Upload">
+        <img
+          src="https://img.shields.io/badge/Github-black?logo=github"
+          alt=""
+        />
+      </a>
+      <a href="https://gitee.com/ziuc/NO-FLASH-Upload">
+        <img
+          src="https://img.shields.io/static/v1?label=Gitee&message=%E9%95%9C%E5%83%8F&color=c71d23&style=flat-square&logo=gitee&logoColor=c71d23"
+          alt=""
+        />
+      </a>
+
+      <img
+        src="https://img.shields.io/static/v1?label=Node.js&message=v14.16&color=339933&style=flat-square&logo=node.js&logoColor=ffffff"
+        alt=""
+      />
+      <img
+        src="https://img.shields.io/static/v1?label=Vue.js&message=v3.2&color=4FC08D&style=flat-square&logo=vue.js&logoColor=ffffff"
+        alt=""
+      />
+      <img
+        src="https://img.shields.io/badge/%20License-MIT-yellow?style=flat-square&labelColor=black"
+        alt=""
+      />
+    </div>
     <div class="button-block" align="center">
       <el-button @click="handleButtonClick(config.githubUrl)">
         <el-icon :size="iconSize"
@@ -98,8 +125,21 @@ export default {
 .title {
   display: inline;
 }
-.description span {
+
+.description {
   color: #909399;
+  padding-bottom: 10px;
+}
+
+.badges {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.badges img {
+  padding-top: 10px;
+  padding-right: 5px;
 }
 
 .el-icon {
@@ -107,12 +147,14 @@ export default {
 }
 
 .button-block {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .el-card {
   display: flex;
+  height: calc(50vh);
+  align-items: center;
   justify-content: center;
 }
 </style>

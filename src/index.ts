@@ -27,7 +27,7 @@ function main() {
     }
   } else {
     log("script version enabled");
-    if (href.indexOf("main.jsp") !== -1) {
+    if (href.indexOf("personal.do") !== -1) {
       checkUpdate();
       CheckUsingOld();
     }
