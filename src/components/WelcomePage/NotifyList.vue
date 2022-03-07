@@ -66,11 +66,7 @@
 
 <script>
 import getInfo from "../../ts/GetInfo";
-import NotifyListDetail from "./NotifyListDetail.vue";
 export default {
-  components: {
-    NotifyListDetail,
-  },
   created() {
     this.getRemindNotifies();
   },
