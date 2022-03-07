@@ -62,6 +62,7 @@
 
 <script>
 import getInfo from "../../../ts/GetInfo";
+import API from "../../../ts/API";
 import HwtInfo from "../LessonSubmit/HwtInfo.vue";
 import HwtEditor from "./HwtEditor.vue";
 import HwtList from "../../WelcomePage/HwtList.vue";
@@ -80,6 +81,7 @@ export default {
       hwtid: "",
       hwtContent: {},
       hwtContentWithId: {}, // hwtid & hwaid
+      manySubmitStatus: false,
       loadingStatus: true,
     };
   },
@@ -99,6 +101,21 @@ export default {
   },
   methods: {
     async dataInit(hwtid) {
+      await API.getHwtReview(this.lid, this.hwtid).then((res) => {
+        res.json().then((res) => {
+          this.manySubmitStatus = res.datas.manySubmitStatus;
+          if (res.datas.manySubmitStatus === false) {
+            let notify = ElNotification({
+              title: "免Flash文件上传",
+              type: "warning",
+              message: `注意，该作业不允许重复提交`,
+              onClick: () => {
+                notify.close();
+              },
+            });
+          }
+        });
+      });
       await getInfo.getHwtReviewContent(hwtid).then((res) => {
         this.hwtContent = res;
         this.loadingStatus = false;
@@ -121,40 +138,53 @@ export default {
     },
     handleButtonSubmit() {
       log("hwt submit trigger");
-      let url = `http://cc.bjtu.edu.cn:81/meol/common/hw/student/write.do.jsp`;
-      const GBK = window.GBK;
-      var details = {
-        hwtid: this.hwtContentWithId.hwtid,
-        hwaid: this.hwtContentWithId.hwaid,
-        IPT_BODY: this.getEditorContent(),
-      };
-      var formBody = [];
-      for (var property in details) {
-        var encodedKey = GBK.URI.encodeURIComponent(property);
-        var encodedValue = GBK.URI.encodeURIComponent(details[property]);
-        formBody.push(encodedKey + "=" + encodedValue);
-      }
-      formBody = formBody.join("&");
-      sendRequest(url, undefined, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: formBody,
-      }).then((res) => {
-        if (res.ok === true) {
-          log("hwt submit successfully");
-          this.refreshTable();
-          let notify = ElNotification({
-            title: "免Flash文件上传",
-            type: "success",
-            message: `作业已成功提交`,
-            onClick: () => {
-              notify.close();
-            },
+      this.manySubmitStatus = false;
+      if (this.manySubmitStatus === false) {
+        ElMessageBox.confirm(`该作业不允许重复提交，确定提交作业吗？`, "警告", {
+          confirmButtonText: "OK",
+          cancelButtonText: "Cancel",
+        })
+          .then((res) => {
+            log("submit confirmed");
+            let url = `http://cc.bjtu.edu.cn:81/meol/common/hw/student/write.do.jsp`;
+            const GBK = window.GBK;
+            var details = {
+              hwtid: this.hwtContentWithId.hwtid,
+              hwaid: this.hwtContentWithId.hwaid,
+              IPT_BODY: this.getEditorContent(),
+            };
+            var formBody = [];
+            for (var property in details) {
+              var encodedKey = GBK.URI.encodeURIComponent(property);
+              var encodedValue = GBK.URI.encodeURIComponent(details[property]);
+              formBody.push(encodedKey + "=" + encodedValue);
+            }
+            formBody = formBody.join("&");
+            sendRequest(url, undefined, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+              },
+              body: formBody,
+            }).then((res) => {
+              if (res.ok === true) {
+                log("hwt submit successfully");
+                this.refreshTable();
+                let notify = ElNotification({
+                  title: "免Flash文件上传",
+                  type: "success",
+                  message: `作业已成功提交`,
+                  onClick: () => {
+                    notify.close();
+                  },
+                });
+              }
+            });
+          })
+          .catch((res) => {
+            log("submit canceled");
           });
-        }
-      });
+      }
     },
     handleButtonReturn() {
       this.$router.go(-1);
