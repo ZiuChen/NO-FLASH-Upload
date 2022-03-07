@@ -42,11 +42,12 @@
       </el-table-column>
       <el-table-column prop="teacher" label="教师" align="center" />
       <el-table-column prop="academy" label="学院" align="center" />
-      <el-table-column prop="id" label="操作" align="center" min-width="150px">
+      <el-table-column prop="id" label="操作" align="center" min-width="100px">
         <template #default="scope">
           <el-button-group>
             <el-button
               type="primary"
+              plain
               @click="handleButtonClick(scope.row.id, 'up')"
               ><el-icon
                 ><svg
@@ -67,6 +68,7 @@
             ></el-button>
             <el-button
               type="primary"
+              plain
               @click="handleButtonClick(scope.row.id, 'down')"
             >
               <el-icon>

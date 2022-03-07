@@ -80,6 +80,7 @@ export default {
   },
   methods: {
     async getRemindNotifies() {
+      this.tableData = [];
       this.notifies = await getInfo.getRemindInfo().then(async (res) => {
         this.loadingStatus = false;
         for (let lesson of res.notify) {
