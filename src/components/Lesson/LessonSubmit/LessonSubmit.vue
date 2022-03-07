@@ -136,54 +136,58 @@ export default {
       let editor = this.$refs.editorObj.editorObj;
       return editor.txt.html();
     },
+    hwtSubmit() {
+      log("submit confirmed");
+      let url = `http://cc.bjtu.edu.cn:81/meol/common/hw/student/write.do.jsp`;
+      const GBK = window.GBK;
+      var details = {
+        hwtid: this.hwtContentWithId.hwtid,
+        hwaid: this.hwtContentWithId.hwaid,
+        IPT_BODY: this.getEditorContent(),
+      };
+      var formBody = [];
+      for (var property in details) {
+        var encodedKey = GBK.URI.encodeURIComponent(property);
+        var encodedValue = GBK.URI.encodeURIComponent(details[property]);
+        formBody.push(encodedKey + "=" + encodedValue);
+      }
+      formBody = formBody.join("&");
+      sendRequest(url, undefined, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: formBody,
+      }).then((res) => {
+        if (res.ok === true) {
+          log("hwt submit successfully");
+          this.refreshTable();
+          let notify = ElNotification({
+            title: "免Flash文件上传",
+            type: "success",
+            message: `作业已成功提交`,
+            onClick: () => {
+              notify.close();
+            },
+          });
+        }
+      });
+    },
     handleButtonSubmit() {
       log("hwt submit trigger");
-      this.manySubmitStatus = false;
       if (this.manySubmitStatus === false) {
         ElMessageBox.confirm(`该作业不允许重复提交，确定提交作业吗？`, "警告", {
           confirmButtonText: "OK",
           cancelButtonText: "Cancel",
         })
           .then((res) => {
-            log("submit confirmed");
-            let url = `http://cc.bjtu.edu.cn:81/meol/common/hw/student/write.do.jsp`;
-            const GBK = window.GBK;
-            var details = {
-              hwtid: this.hwtContentWithId.hwtid,
-              hwaid: this.hwtContentWithId.hwaid,
-              IPT_BODY: this.getEditorContent(),
-            };
-            var formBody = [];
-            for (var property in details) {
-              var encodedKey = GBK.URI.encodeURIComponent(property);
-              var encodedValue = GBK.URI.encodeURIComponent(details[property]);
-              formBody.push(encodedKey + "=" + encodedValue);
-            }
-            formBody = formBody.join("&");
-            sendRequest(url, undefined, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-              },
-              body: formBody,
-            }).then((res) => {
-              if (res.ok === true) {
-                log("hwt submit successfully");
-                this.refreshTable();
-                let notify = ElNotification({
-                  title: "免Flash文件上传",
-                  type: "success",
-                  message: `作业已成功提交`,
-                  onClick: () => {
-                    notify.close();
-                  },
-                });
-              }
-            });
+            this.hwtSubmit();
           })
           .catch((res) => {
             log("submit canceled");
           });
+      } else {
+        this.hwtSubmit();
       }
     },
     handleButtonReturn() {
