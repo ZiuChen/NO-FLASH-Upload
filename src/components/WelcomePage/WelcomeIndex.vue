@@ -1,23 +1,24 @@
 <template>
   <div>
     <el-row>
-      <el-col :span="16">
+      <el-col :span="24">
         <hwt-list></hwt-list>
       </el-col>
-      <el-col :span="8">
+    </el-row>
+    <el-row>
+      <el-col :span="12">
+        <notify-list></notify-list>
+      </el-col>
+
+      <el-col :span="12">
         <lesson-list></lesson-list>
       </el-col>
     </el-row>
     <el-row>
-      <el-col :span="16">
-        <notify-list></notify-list>
-      </el-col>
       <el-col :span="8">
         <inform-list></inform-list>
       </el-col>
-    </el-row>
-    <el-row>
-      <el-col :span="16">
+      <el-col :span="8">
         <user-info></user-info>
       </el-col>
       <el-col :span="8">
@@ -49,7 +50,7 @@ export default {
 
 <style>
 .el-card {
-  margin: 2px 10px 2px 10px;
+  margin: 10px 10px 10px 10px;
   /* max-height: 1000px; */
 }
 
