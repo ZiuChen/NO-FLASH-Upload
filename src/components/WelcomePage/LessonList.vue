@@ -3,32 +3,30 @@
     <template #header>
       <div class="card-header">
         <span>课程列表</span>
-        <el-check-tag
-          size="small"
-          :checked="operationEnabled"
-          @change="toggleOperationEnabledStatus"
+        <el-button
+          :loading="loadingStatus"
+          :disabled="loadingStatus"
+          @click="updateLessonList"
+          circle
         >
-          <template #default="">
-            <el-icon>
-              <svg
-                t="1645760155626"
-                class="icon"
-                viewBox="0 0 1024 1024"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                p-id="20883"
-                width="200"
-                height="200"
-              >
-                <path
-                  d="M810.666667 128a85.333333 85.333333 0 0 1 85.333333 85.333333v597.333334a85.333333 85.333333 0 0 1-85.333333 85.333333H213.333333a85.333333 85.333333 0 0 1-85.333333-85.333333V213.333333a85.333333 85.333333 0 0 1 85.333333-85.333333h597.333334m-98.133334 270.933333c9.386667-8.96 9.386667-23.893333 0-32.853333L657.92 311.466667a22.698667 22.698667 0 0 0-32.853333 0l-42.666667 42.666666 87.466667 87.466667 42.666666-42.666667M298.666667 637.44V725.333333h87.893333l258.56-258.56-87.893333-87.893333L298.666667 637.44z"
-                  fill=""
-                  p-id="20884"
-                ></path>
-              </svg>
-            </el-icon>
-          </template>
-        </el-check-tag>
+          <el-icon
+            ><svg
+              t="1645775950545"
+              class="icon"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="21783"
+              width="200"
+              height="200"
+            >
+              <path
+                d="M753.066667 270.933333A339.541333 339.541333 0 0 0 512 170.666667a341.333333 341.333333 0 0 0-341.333333 341.333333 341.333333 341.333333 0 0 0 341.333333 341.333333c159.146667 0 291.84-108.8 329.813333-256h-88.746666A255.573333 255.573333 0 0 1 512 768a256 256 0 0 1-256-256 256 256 0 0 1 256-256c70.826667 0 133.973333 29.44 180.053333 75.946667L554.666667 469.333333h298.666666V170.666667l-100.266666 100.266666z"
+                fill=""
+                p-id="21784"
+              ></path></svg
+          ></el-icon>
+        </el-button>
       </div>
     </template>
     <el-table :data="lessonList" height="400px" style="width: 100%">
@@ -44,13 +42,7 @@
       </el-table-column>
       <el-table-column prop="teacher" label="教师" align="center" />
       <el-table-column prop="academy" label="学院" align="center" />
-      <el-table-column
-        v-if="this.operationEnabled"
-        prop="operation"
-        label="操作"
-        fixed="right"
-        min-width="150px"
-      >
+      <el-table-column prop="id" label="操作" align="center" min-width="150px">
         <template #default="scope">
           <el-button-group>
             <el-button
@@ -105,37 +97,29 @@
 
 <script>
 import API from "../../ts/API";
-import sendRequest from "../../ts/SendRequest";
 export default {
   data() {
     return {
       lessonList: [],
-      operationEnabled: false,
+      loadingStatus: true,
       lessonPageUrl: `http://cc.bjtu.edu.cn:81/meol/jpk/course/layout/newpage/index.jsp?courseId=`,
-      lessonUPUrl: `http://cc.bjtu.edu.cn:81/meol/lesson/blen.student.lesson.list.jsp?ACTION=LESSUP&lid=`,
-      lessonDOWNUrl: `http://cc.bjtu.edu.cn:81/meol/lesson/blen.student.lesson.list.jsp?ACTION=LESSDOWN&lid=`,
     };
   },
   created() {
     this.updateLessonList();
   },
-  props: ["operationStatus"],
-  watch: {
-    operationStatus: function (val) {
-      this.operationEnabled = val;
-    },
-  },
   methods: {
     async updateLessonList() {
-      this.lessonList = await API.getLessonList();
+      this.loadingStatus = true;
+      this.lessonList = await API.getLessonList().then((res) => {
+        this.loadingStatus = false;
+        return res;
+      });
     },
     async handleButtonClick(courseId, action) {
       return await API.lessonOrderOperation(courseId, action).then((res) => {
         return this.updateLessonList();
       });
-    },
-    toggleOperationEnabledStatus(status) {
-      this.operationEnabled = status;
     },
   },
 };
