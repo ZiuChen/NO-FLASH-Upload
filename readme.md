@@ -30,10 +30,9 @@
 
   ## 📸 效果展示
 
-  ![homepage](https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/HomePage.jpg)
+<img alt="homepage" width="80%" src="https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/HomePage.jpg"></img>
 
-  ![submissionpage](https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/SubmissionPage.jpg)
-
+<img alt="submissionpage" width="80%" src="https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/SubmissionPage.jpg"></img>
 ## 🏗️ 参与开发
 
   1. `Fork`[本仓库](https://github.com/ZiuChen/NO-FLASH-Upload)并`clone`到本地。
