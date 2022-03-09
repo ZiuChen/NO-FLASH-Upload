@@ -28,6 +28,12 @@
 
   新版具有更好的稳定性，**请尽量保持脚本更新，使用最新版本**。使用中遇到任何问题，欢迎在[`Github Issues`](https://github.com/ZiuChen/NO-FLASH-Upload/issues)或[`Gitee Issues`](https://gitee.com/ziuc/NO-FLASH-Upload/issues)反馈交流。
 
+  ## 📸 效果展示
+
+  ![homepage](https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/HomePage.jpg)
+
+  ![submissionpage](https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/SubmissionPage.jpg)
+
 ## 🏗️ 参与开发
 
   1. `Fork`[本仓库](https://github.com/ZiuChen/NO-FLASH-Upload)并`clone`到本地。
