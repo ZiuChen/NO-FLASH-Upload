@@ -6,6 +6,22 @@ function initConfig() {
     localStorage.setItem("config", JSON.stringify(config));
     return;
   }
+  initScriptConfig();
+  initUserConfig();
+}
+
+function initScriptConfig() {
+  let defaultScriptConfig = config;
+  let currentScriptConfig = readConfig();
+  let defaultKeys = Object.keys(defaultScriptConfig);
+  defaultKeys.forEach((key) => {
+    if (key === "userConfig") return;
+    currentScriptConfig[key] = defaultScriptConfig[key];
+  });
+  updateConfig(currentScriptConfig);
+}
+
+function initUserConfig() {
   let currentConfig = readConfig();
   let currentUserConfig = currentConfig.userConfig;
   let currentUserConfigs = Object.getOwnPropertyNames(currentUserConfig);
