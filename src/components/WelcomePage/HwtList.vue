@@ -33,7 +33,7 @@
       ref="tableRef"
       height="400px"
       :data="tableData"
-      :default-sort="{ prop: 'date', order: 'descending' }"
+      :default-sort="{ prop: 'date', order: 'ascending' }"
       :row-class-name="tableRowClassName"
       style="width: 100%"
     >
@@ -149,7 +149,7 @@ export default {
         case "今日截止":
           return row.remain === 0;
         case "近期截止":
-          return row.remain <= 25 && row.remain >= -5;
+          return row.remain <= 15 && row.remain >= -3;
         case "未过期":
           return row.remain > 0;
         case "已过期":
