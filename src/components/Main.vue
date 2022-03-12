@@ -33,7 +33,8 @@ export default {
     };
   },
   created() {
-    this.status = ConfigOperations.readUserConfig()["show-side-bar"].value;
+    this.status =
+      ConfigOperations.readUserConfig()["config-show-side-bar"].value;
   },
 };
 </script>

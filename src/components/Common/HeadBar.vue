@@ -88,11 +88,12 @@ export default {
         ConfigOperations.setUserConfig("back-to-old", true);
         window.location.reload();
       } else if (command === "sidebar") {
-        let status = ConfigOperations.readUserConfig()["show-side-bar"].value;
+        let status =
+          ConfigOperations.readUserConfig()["config-show-side-bar"].value;
         status
           ? (document.querySelector(".el-aside").style.display = "none")
           : (document.querySelector(".el-aside").style.display = "");
-        ConfigOperations.setUserConfig("show-side-bar", !status);
+        ConfigOperations.setUserConfig("config-show-side-bar", !status);
       } else if (command === "check") {
         CheckUpdate();
       }

@@ -13,7 +13,7 @@ main();
 
 function main() {
   const href = window.location.href;
-  if (ConfigOperations.readUserConfig()["back-to-old"].value === false) {
+  if (ConfigOperations.readUserConfig()["config-back-to-old"].value === false) {
     log("vue version enabled");
     if (href.indexOf("personal.do") !== -1) {
       log("enter page personal.do");

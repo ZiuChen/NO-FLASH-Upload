@@ -7,53 +7,53 @@ const delivrUpdateUrl = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@mas
 const delivrJsonUrl = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/package.json`;
 
 const userConfig = {
-  "back-to-old": {
+  "config-back-to-old": {
     value: false,
     default: false,
-    id: "back-to-old",
-    type: "config",
+    name: "回到旧版",
+    type: "switch",
   },
-  "show-side-bar": {
+  "config-show-side-bar": {
     value: true,
     default: true,
-    id: "show-side-bar",
-    type: "config",
+    name: "显示/隐藏侧栏",
+    type: "switch",
   },
-  "hwt-list-card-size": {
+  "config-recent-range": {
+    value: [15, -3],
+    default: [15, -3],
+    name: "近期截止范围",
+    type: "input-number",
+  },
+  "config-card-size-hwt-list": {
     value: 24,
     default: 24,
-    id: "hwt-list-card-size",
-    type: "card-size",
+    name: "作业列表卡片大小",
+    type: "input-number",
   },
-  "notify-list-card-size": {
+  "config-card-size-notify-list": {
     value: 12,
     default: 12,
-    id: "notify-list-card-size",
-    type: "card-size",
+    name: "通知列表卡片大小",
+    type: "input-number",
   },
-  "lesson-list-card-size": {
+  "config-card-size-lesson-list": {
     value: 12,
     default: 12,
-    id: "lesson-list-card-size",
-    type: "card-size",
+    name: "课程列表卡片大小",
+    type: "input-number",
   },
-  "inform-list-card-size": {
+  "config-card-size-inform-list": {
     value: 8,
     default: 8,
-    id: "inform-list-card-size",
-    type: "card-size",
+    name: "系统通知卡片大小",
+    type: "input-number",
   },
-  "user-info-card-size": {
+  "config-card-size-user-info": {
     value: 8,
     default: 8,
-    id: "user-info-card-size",
-    type: "card-size",
-  },
-  "calender-card-size": {
-    value: 8,
-    default: 8,
-    id: "calender-card-size",
-    type: "card-size",
+    name: "用户信息卡片大小",
+    type: "input-number",
   },
 };
 

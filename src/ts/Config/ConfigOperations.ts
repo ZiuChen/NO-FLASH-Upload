@@ -60,7 +60,7 @@ function readUserConfig() {
 }
 
 function readUserConfigWithFilter(type: string) {
-  let userConfig = readConfig().userConfig;
+  let userConfig = readUserConfig();
   let rtnArray: object[] = [];
   Object.keys(userConfig).forEach((key) => {
     if (userConfig[key].type === type) {

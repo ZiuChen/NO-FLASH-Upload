@@ -1,19 +1,19 @@
 <template>
   <div>
     <el-row>
-      <el-col :span="this.userConfig['hwt-list-card-size'].value">
+      <el-col :span="this.userConfig['config-card-size-hwt-list'].value">
         <hwt-list></hwt-list>
       </el-col>
-      <el-col :span="this.userConfig['notify-list-card-size'].value">
+      <el-col :span="this.userConfig['config-card-size-notify-list'].value">
         <notify-list></notify-list>
       </el-col>
-      <el-col :span="this.userConfig['notify-list-card-size'].value">
+      <el-col :span="this.userConfig['config-card-size-notify-list'].value">
         <lesson-list></lesson-list>
       </el-col>
-      <el-col :span="this.userConfig['inform-list-card-size'].value">
+      <el-col :span="this.userConfig['config-card-size-inform-list'].value">
         <inform-list></inform-list>
       </el-col>
-      <el-col :span="this.userConfig['user-info-card-size'].value">
+      <el-col :span="this.userConfig['config-card-size-user-info'].value">
         <user-info></user-info>
       </el-col>
     </el-row>
