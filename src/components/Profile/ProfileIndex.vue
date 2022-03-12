@@ -74,8 +74,6 @@ export default {
           return "系统通知";
         case "user-info-card-size":
           return "用户信息";
-        case "calender-card-size":
-          return "日历";
       }
     },
   },

@@ -16,9 +16,6 @@
       <el-col :span="this.userConfig['user-info-card-size'].value">
         <user-info></user-info>
       </el-col>
-      <el-col :span="this.userConfig['calender-card-size'].value">
-        <calender></calender>
-      </el-col>
     </el-row>
   </div>
 </template>
@@ -26,7 +23,6 @@
 <script>
 import HwtList from "./HwtList.vue";
 import UserInfo from "./UserInfo.vue";
-import Calender from "./Calender.vue";
 import InformList from "./InformList.vue";
 import NotifyList from "./NotifyList.vue";
 import LessonList from "./LessonList.vue";
@@ -35,7 +31,6 @@ export default {
   components: {
     HwtList,
     UserInfo,
-    Calender,
     InformList,
     NotifyList,
     LessonList,

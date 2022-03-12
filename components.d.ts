@@ -5,12 +5,10 @@
 declare module 'vue' {
   export interface GlobalComponents {
     AboutIndex: typeof import('./src/components/About/AboutIndex.vue')['default']
-    Calender: typeof import('./src/components/WelcomePage/Calender.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElBadge: typeof import('element-plus/es')['ElBadge']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElButtonGroup: typeof import('element-plus/es')['ElButtonGroup']
-    ElCalendar: typeof import('element-plus/es')['ElCalendar']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElCol: typeof import('element-plus/es')['ElCol']
     ElContainer: typeof import('element-plus/es')['ElContainer']
