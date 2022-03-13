@@ -151,7 +151,7 @@ export default {
         case "近期截止":
           return row.remain <= 15 && row.remain >= -3;
         case "未过期":
-          return row.remain > 0;
+          return row.remain >= 0;
         case "已过期":
           return row.remain < 0;
       }
