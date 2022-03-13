@@ -85,7 +85,7 @@ export default {
         window.location.href =
           "http://cc.bjtu.edu.cn:81/meol/popups/logout.jsp";
       } else if (command === "old") {
-        ConfigOperations.setUserConfig("back-to-old", true);
+        ConfigOperations.setUserConfig("config-back-to-old", true);
         window.location.reload();
       } else if (command === "sidebar") {
         let status =
