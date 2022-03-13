@@ -1,19 +1,19 @@
 <template>
   <div>
     <el-row>
-      <el-col :span="this.userConfig['config-card-size-hwt-list'].value">
+      <el-col :span="24">
         <hwt-list></hwt-list>
       </el-col>
-      <el-col :span="this.userConfig['config-card-size-notify-list'].value">
+      <el-col :span="12">
         <notify-list></notify-list>
       </el-col>
-      <el-col :span="this.userConfig['config-card-size-notify-list'].value">
+      <el-col :span="12">
         <lesson-list></lesson-list>
       </el-col>
-      <el-col :span="this.userConfig['config-card-size-inform-list'].value">
+      <el-col :span="12">
         <inform-list></inform-list>
       </el-col>
-      <el-col :span="this.userConfig['config-card-size-user-info'].value">
+      <el-col :span="12">
         <user-info></user-info>
       </el-col>
     </el-row>
@@ -26,7 +26,6 @@ import UserInfo from "./UserInfo.vue";
 import InformList from "./InformList.vue";
 import NotifyList from "./NotifyList.vue";
 import LessonList from "./LessonList.vue";
-import configOperations from "../../ts/Config/ConfigOperations";
 export default {
   components: {
     HwtList,
@@ -34,14 +33,6 @@ export default {
     InformList,
     NotifyList,
     LessonList,
-  },
-  created() {
-    this.userConfig = configOperations.readUserConfig();
-  },
-  data() {
-    return {
-      userConfig: configOperations.readUserConfig(),
-    };
   },
 };
 </script>

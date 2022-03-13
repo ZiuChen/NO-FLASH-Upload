@@ -25,36 +25,6 @@ const userConfig = {
     name: "近期截止范围",
     type: "input-number",
   },
-  "config-card-size-hwt-list": {
-    value: 24,
-    default: 24,
-    name: "作业列表卡片大小",
-    type: "input-number",
-  },
-  "config-card-size-notify-list": {
-    value: 12,
-    default: 12,
-    name: "通知列表卡片大小",
-    type: "input-number",
-  },
-  "config-card-size-lesson-list": {
-    value: 12,
-    default: 12,
-    name: "课程列表卡片大小",
-    type: "input-number",
-  },
-  "config-card-size-inform-list": {
-    value: 8,
-    default: 8,
-    name: "系统通知卡片大小",
-    type: "input-number",
-  },
-  "config-card-size-user-info": {
-    value: 8,
-    default: 8,
-    name: "用户信息卡片大小",
-    type: "input-number",
-  },
 };
 
 export default {
