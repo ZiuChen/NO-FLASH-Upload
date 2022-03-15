@@ -109,6 +109,7 @@
 
 <script>
 import API from "../../ts/API";
+import ConfigOperations from "../../ts/Config/ConfigOperations";
 
 export default {
   created() {
@@ -145,11 +146,13 @@ export default {
       return row.lesson === value;
     },
     filterRemain(value, row) {
+      let range =
+        ConfigOperations.readUserConfig()["config-recent-range"].value;
       switch (value) {
         case "今日截止":
           return row.remain === 0;
         case "近期截止":
-          return row.remain <= 15 && row.remain >= -3;
+          return row.remain <= range.max && row.remain >= range.min;
         case "未过期":
           return row.remain >= 0;
         case "已过期":
