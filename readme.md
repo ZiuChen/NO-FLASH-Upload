@@ -28,7 +28,7 @@
 
   新版具有更好的稳定性，**请尽量保持脚本更新，使用最新版本**。使用中遇到任何问题，欢迎在[`Github Issues`](https://github.com/ZiuChen/NO-FLASH-Upload/issues)或[`Gitee Issues`](https://gitee.com/ziuc/NO-FLASH-Upload/issues)反馈交流。
 
-  ## 📸 效果展示
+## 📸 效果展示
 
 <img alt="homepage" width="80%" src="https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/HomePage.jpg"></img>
 
@@ -47,16 +47,17 @@
 
 **如果觉得脚本帮到了你，可以通过[捐助二维码](https://gitee.com/ziuc/utool-filebed/raw/master/Buy%20me%20a%20coffee.png)赞赏我，这将鼓励我继续维护这个脚本。**
 
-`*柒：￥1.00(微信)`
-`*秸：￥1.00(微信)`
-`Q*t：￥1.00(微信)`
-`*纸：￥1.00(微信)`
-`h*z：￥1.00(微信)`
-`*方：￥1.00(微信)`
-`kindergarten：￥1.00(微信)`
-`**国：￥5.00(支付宝)`
-`****.**克：￥1.00(支付宝)`
+`枫-林-晚：￥5.00(微信)`
 `**睿：￥1.00(支付宝)`
+`****.**克：￥1.00(支付宝)`
+`**国：￥5.00(支付宝)`
+`kindergarten：￥1.00(微信)`
+`*方：￥1.00(微信)`
+`h*z：￥1.00(微信)`
+`*纸：￥1.00(微信)`
+`Q*t：￥1.00(微信)`
+`*秸：￥1.00(微信)`
+`*柒：￥1.00(微信)`
 
 <a href="https://gitee.com/ziuc/utool-filebed/raw/master/Buy%20me%20a%20coffee.png"><img alt="捐赠二维码" width="65%" src="https://raw.githubusercontent.com/ZiuChen/NO-FLASH-Upload/v2.x-Vue/doc/img/Buy%20me%20a%20coffee.png"></img></a>
 ## 📎 相关链接
