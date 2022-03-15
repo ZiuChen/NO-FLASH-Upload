@@ -8,26 +8,30 @@
     <div class="config">
       <span>{{ userConfig["config-recent-range"].name }}</span>
       <div class="input-number-group">
-        <el-input-number
-          v-model="recentRangeStatus.max"
-          :min="0"
-          :max="365"
-          size="small"
-          controls-position="right"
-          @change="
-            handleChange($event, { id: 'config-recent-range', order: 'max' })
-          "
-        />
-        <el-input-number
-          v-model="recentRangeStatus.min"
-          :min="-365"
-          :max="0"
-          size="small"
-          controls-position="right"
-          @change="
-            handleChange($event, { id: 'config-recent-range', order: 'min' })
-          "
-        />
+        <div>
+          最远日期
+          <el-input-number
+            v-model="recentRangeStatus.max"
+            :min="0"
+            :max="365"
+            size="small"
+            @change="
+              handleChange($event, { id: 'config-recent-range', order: 'max' })
+            "
+          />
+        </div>
+        <div>
+          最近日期
+          <el-input-number
+            v-model="recentRangeStatus.min"
+            :min="-365"
+            :max="0"
+            size="small"
+            @change="
+              handleChange($event, { id: 'config-recent-range', order: 'min' })
+            "
+          />
+        </div>
       </div>
     </div>
   </el-card>

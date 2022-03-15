@@ -56,7 +56,7 @@ export default {
     async watchCallBack(val) {
       this.hwtContent = val.hwtContent;
       this.hwtContentWithId = val.hwtContentWithId;
-      this.submitContent = this.hwtContent.answer;
+      this.submitContent = this.hwtContent.hwaAnswer;
       this.initEditor();
       editor.txt.html(this.submitContent);
     },

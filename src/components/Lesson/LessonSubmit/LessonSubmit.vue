@@ -103,6 +103,9 @@ export default {
     async dataInit(hwtid) {
       await API.getHwtReview(this.lid, this.hwtid).then((res) => {
         res.json().then((res) => {
+          this.hwtContent = res.datas;
+          this.loadingStatus = false;
+
           this.manySubmitStatus = res.datas.manySubmitStatus;
           if (res.datas.manySubmitStatus === false) {
             let notify = ElNotification({
@@ -114,13 +117,14 @@ export default {
               },
             });
           }
+          return res;
         });
       });
-      await getInfo.getHwtReviewContent(hwtid).then((res) => {
-        this.hwtContent = res;
-        this.loadingStatus = false;
-        return res;
-      });
+      // await getInfo.getHwtReviewContent(hwtid).then((res) => {
+      //   this.hwtContent = res;
+      //   this.loadingStatus = false;
+      //   return res;
+      // });
       if (this.$route.query.able === "true") {
         await getInfo.getHwtContent(hwtid).then((res) => {
           this.hwtContentWithId = res;
