@@ -7,7 +7,7 @@ interface json {
   };
 }
 
-async function getHwtList(courseId: string) {
+export default async function getHwtList(courseId: string) {
   let url = `http://cc.bjtu.edu.cn:81/meol/hw/stu/hwStuHwtList.do?courseId=${courseId}&pagingNumberPer=100`;
   return await sendRequest(url, undefined).then((response) => {
     return response.json().then((json: json) => {
@@ -34,5 +34,3 @@ async function getHwtList(courseId: string) {
     });
   });
 }
-
-export default getHwtList;

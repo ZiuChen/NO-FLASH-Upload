@@ -1,6 +1,6 @@
 import sendRequest from "../SendRequest";
 
-async function getLessonList() {
+export default async function getLessonList() {
   let url = `http://cc.bjtu.edu.cn:81/meol/lesson/blen.student.lesson.list.jsp`;
   return await sendRequest(url, (doc: Document) => {
     return doc.querySelectorAll("tbody > tr");
@@ -24,5 +24,3 @@ async function getLessonList() {
     return rtnArray;
   });
 }
-
-export default getLessonList;

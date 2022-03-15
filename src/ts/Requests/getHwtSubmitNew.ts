@@ -1,11 +1,11 @@
 import sendRequest from "../SendRequest";
 
-async function getHwtReview(courseId: string, hwtId: string) {
-  let url = `http://cc.bjtu.edu.cn:81/meol/hw/stu/hwTaskAnswerView.do?courseId=${courseId}&hwtId=${hwtId}`;
+export default async function getHwtDetailNew(courseId: string, hwtId: string) {
+  let url = `http://cc.bjtu.edu.cn:81/meol/hw/stu/hwStuSubmit.do?courseId=${courseId}&hwtId=${hwtId}`;
   return await sendRequest(url, undefined);
   return {
     datas: {
-      hwaAnswer: "", // 回答内容
+      answer: "", // 回答内容
       content: "", // 题目
       deadLine: "", // 截止日期
       finishTime: "", // 最近提交日期
@@ -20,5 +20,3 @@ async function getHwtReview(courseId: string, hwtId: string) {
     status: 1,
   };
 }
-
-export default getHwtReview;

@@ -1,13 +1,15 @@
 import getHwtList from "./Requests/getHwtList";
-import getHwtSubmit from "./Requests/getHwtSubmit";
-import getHwtReview from "./Requests/getHwtReview";
+import getHwtSubmitNew from "./Requests/getHwtSubmitNew";
+import getHwtReviewNew from "./Requests/getHwtReviewNew";
+import getHwtReviewOld from "./Requests/getHwtReviewOld";
 import getLessonList from "./Requests/getLessonList";
 import lessonOrderOperation from "./Requests/lessonOrderOperation";
 
 export default {
   getHwtList: getHwtList,
-  getHwtSubmit: getHwtSubmit,
-  getHwtReview: getHwtReview,
+  getHwtSubmitNew: getHwtSubmitNew,
+  getHwtReviewNew: getHwtReviewNew,
+  getHwtReviewOld: getHwtReviewOld,
   getLessonList: getLessonList,
   lessonOrderOperation: lessonOrderOperation,
 };
