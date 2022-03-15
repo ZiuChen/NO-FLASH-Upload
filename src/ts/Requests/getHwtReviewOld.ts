@@ -10,7 +10,6 @@ export default async function getHwtReviewOld(hwtid: string) {
     .then((res) => {
       let table = res.querySelectorAll(".infotable>tbody>tr>td");
       return {
-        // TODO: add evaluation results and comments
         title: table[0].innerText.trim(),
         deadLine: table[1].innerText.split(`\n`)[0],
         fullMark: table[2].innerText.trim(),

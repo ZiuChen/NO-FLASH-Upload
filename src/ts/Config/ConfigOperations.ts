@@ -73,14 +73,6 @@ function readUserConfigWithFilter(type: string) {
 function updateConfig(config: object) {
   localStorage.setItem("config", JSON.stringify(config));
   log("config updated");
-  let notify = ElNotification({
-    title: "免Flash文件上传",
-    type: "success",
-    message: `设置已更新，部分设置需要刷新后生效。`,
-    onClick: () => {
-      notify.close();
-    },
-  });
 }
 
 export default {

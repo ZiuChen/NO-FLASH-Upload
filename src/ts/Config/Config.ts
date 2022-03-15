@@ -24,7 +24,7 @@ const userConfig = {
   "config-recent-range": {
     value: { min: -3, max: 15 },
     default: { min: -3, max: 15 },
-    name: "默认展示范围",
+    name: "近期截止显示范围",
     id: "config-recent-range",
     type: "input-number",
   },
