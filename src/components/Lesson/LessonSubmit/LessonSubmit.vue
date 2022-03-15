@@ -61,13 +61,12 @@
 </template>
 
 <script>
-import getInfo from "../../../ts/GetInfo";
 import API from "../../../ts/API";
+import log from "../../../ts/Log";
+import sendRequest from "../../../ts/SendRequest";
 import HwtInfo from "../LessonSubmit/HwtInfo.vue";
 import HwtEditor from "./HwtEditor.vue";
 import HwtList from "../../WelcomePage/HwtList.vue";
-import log from "../../../ts/Log";
-import sendRequest from "../../../ts/SendRequest";
 
 export default {
   components: {
@@ -101,32 +100,19 @@ export default {
   },
   methods: {
     async dataInit(hwtid) {
-      await API.getHwtReview(this.lid, this.hwtid).then((res) => {
+      await API.getHwtReviewNew(this.lid, this.hwtid).then((res) => {
         res.json().then((res) => {
-          this.hwtContent = res.datas;
-          this.loadingStatus = false;
-
           this.manySubmitStatus = res.datas.manySubmitStatus;
-          if (res.datas.manySubmitStatus === false) {
-            let notify = ElNotification({
-              title: "免Flash文件上传",
-              type: "warning",
-              message: `注意，该作业不允许重复提交`,
-              onClick: () => {
-                notify.close();
-              },
-            });
-          }
           return res;
         });
       });
-      // await getInfo.getHwtReviewContent(hwtid).then((res) => {
-      //   this.hwtContent = res;
-      //   this.loadingStatus = false;
-      //   return res;
-      // });
+      await API.getHwtReviewOld(hwtid).then((res) => {
+        this.hwtContent = res;
+        this.loadingStatus = false;
+        return res;
+      });
       if (this.$route.query.able === "true") {
-        await getInfo.getHwtContent(hwtid).then((res) => {
+        await API.getHwtSubmitOld(hwtid).then((res) => {
           this.hwtContentWithId = res;
           return res;
         });
