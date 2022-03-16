@@ -10,11 +10,8 @@
       <el-col :span="12">
         <lesson-list></lesson-list>
       </el-col>
-      <el-col :span="12">
+      <el-col :span="24">
         <inform-list></inform-list>
-      </el-col>
-      <el-col :span="12">
-        <user-info></user-info>
       </el-col>
     </el-row>
   </div>
@@ -22,14 +19,12 @@
 
 <script>
 import HwtList from "./HwtList.vue";
-import UserInfo from "./UserInfo.vue";
 import InformList from "./InformList.vue";
 import NotifyList from "./NotifyList.vue";
 import LessonList from "./LessonList.vue";
 export default {
   components: {
     HwtList,
-    UserInfo,
     InformList,
     NotifyList,
     LessonList,
