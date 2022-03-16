@@ -37,7 +37,6 @@
           ref="editorObj"
           :propHwtContents="{
             hwtContent: hwtContent,
-            hwtContentWithId: hwtContentWithId,
           }"
         ></hwt-editor>
         <div v-if="this.$route.query.able === 'true'" class="operation">
@@ -124,7 +123,7 @@ export default {
     },
     getEditorContent() {
       let editor = this.$refs.editorObj.editorObj;
-      return editor.txt.html();
+      return editor.getHtml();
     },
     hwtSubmit() {
       log("submit confirmed");

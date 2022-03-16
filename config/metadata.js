@@ -17,7 +17,6 @@ module.exports = {
   match: ["*://cc.bjtu.edu.cn:81/meol*"],
   namespace: "https://greasyfork.org/zh-CN/users/605474",
   require: [
-    "https://cdn.jsdelivr.net/npm/wangeditor@4.7.12/dist/wangEditor.min.js",
     "https://cdn.jsdelivr.net/npm/gbk.js@0.3.0/dist/gbk.min.js",
     "https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js",
   ],
