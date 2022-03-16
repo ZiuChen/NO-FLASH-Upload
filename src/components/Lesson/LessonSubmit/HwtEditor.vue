@@ -15,10 +15,16 @@
 import sendRequest from "../../../ts/SendRequest";
 import "@wangeditor/editor/dist/css/style.css";
 import { createEditor, createToolbar, Boot } from "@wangeditor/editor";
-
+let editor = null;
 export default {
   mounted() {
     this.initEditor();
+  },
+  beforeDestroy() {
+    console.log("beforeDestroy");
+  },
+  destroyed() {
+    console.log("destroyed");
   },
   data() {
     return {
@@ -37,28 +43,35 @@ export default {
   props: ["propHwtContents"],
   methods: {
     initEditor() {
-      class ButtonMenuClass {
-        title = "上传附件";
-        iconSvg = "";
-        tag = "button";
-        getValue() {}
-        isActive() {
-          return false;
+      if (editor !== null) {
+        // 非null则销毁重新创建
+        editor.destroy();
+        editor = null;
+      } else {
+        // 只注册一次：editor为null时注册
+        class ButtonMenuClass {
+          title = "上传附件";
+          iconSvg = "";
+          tag = "button";
+          getValue() {}
+          isActive() {
+            return false;
+          }
+          isDisabled() {
+            return false;
+          }
+          exec(editor, value) {
+            document.querySelector("#upload-trigger input").click();
+          }
         }
-        isDisabled() {
-          return false;
-        }
-        exec(editor, value) {
-          document.querySelector("#upload-trigger input").click();
-        }
+        const buttonMenu = {
+          key: "attachment",
+          factory() {
+            return new ButtonMenuClass();
+          },
+        };
+        Boot.registerMenu(buttonMenu);
       }
-      const buttonMenu = {
-        key: "attachment",
-        factory() {
-          return new ButtonMenuClass();
-        },
-      };
-      Boot.registerMenu(buttonMenu);
       const editorConfig = {
         placeholder: "请输入内容...",
         onChange: (editor) => {
@@ -118,7 +131,7 @@ export default {
         },
       };
       // 创建编辑器
-      const editor = createEditor({
+      editor = createEditor({
         selector: "#editor-container",
         config: editorConfig,
         html: this.submitContent,
