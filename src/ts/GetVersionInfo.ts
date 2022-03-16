@@ -5,7 +5,7 @@ import config from "./Config/Config";
 async function getVersionInfo() {
   log(`current userscript version: ${config.version}`);
   let content = sendRequest(
-    config.delivrJsonUrl,
+    config.updateInfo,
     (obj: Document) => {
       return JSON.parse(obj.querySelector("body").innerText).version;
     },
