@@ -26,7 +26,7 @@ export default async function getHwtList(courseId: string) {
           able: item.submitStruts, // 是否允许提交
           publisher: item.realName,
           mutualTask: item.mutualTask,
-          answerStatus: item.answerStatus,
+          answerStatus: item.answerStatus, // 是否已经提交，未提交为undefined，已经提交为true，过期为false
           showGrade: item.showGrade, // answerStatus == true || able == false
         });
       });

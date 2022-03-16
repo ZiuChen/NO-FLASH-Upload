@@ -19,7 +19,6 @@ const router = createRouter({
       path: "/lesson/:lid",
       component: LessonIndex,
       redirect: (to) => {
-        console.log(to);
         return `${to.path}/info`;
       },
       children: [
