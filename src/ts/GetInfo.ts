@@ -292,11 +292,11 @@ async function getHwtReviewContent(hwtid: string) {
       return {
         // TODO: add evaluation results and comments
         title: table[0].innerText.trim(),
-        deadline: table[1].innerText.split(`\n`)[0],
-        score: table[2].innerText.trim(),
-        getscore: table[3].innerText.trim(),
+        deadLine: table[1].innerText.split(`\n`)[0],
+        fullMark: table[2].innerText.trim(),
+        score: table[3].innerText.trim(),
         content: table[4].querySelectorAll("input")[0].value,
-        answer:
+        hwaAnswer:
           res.querySelectorAll(".text>input")[1] === undefined
             ? undefined
             : res.querySelectorAll(".text>input")[1].value,

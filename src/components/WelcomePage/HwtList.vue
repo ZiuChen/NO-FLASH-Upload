@@ -31,9 +31,8 @@
     </template>
     <el-table
       ref="tableRef"
-      height="400px"
       :data="tableData"
-      :default-sort="{ prop: 'date', order: 'ascending' }"
+      :default-sort="{ prop: 'remain', order: 'ascending' }"
       :row-class-name="tableRowClassName"
       style="width: 100%"
     >
@@ -50,6 +49,7 @@
         :filter-method="filterRemain"
         :filtered-value="checkedFilters"
         :formatter="remainDayFormatter"
+        sortable
       />
       <el-table-column prop="name" label="作业标题" align="center">
         <template #default="scope">
@@ -61,7 +61,13 @@
           >
         </template>
       </el-table-column>
-      <el-table-column prop="date" label="截止日期" align="center" sortable />
+      <el-table-column
+        prop="date"
+        label="截止日期"
+        align="center"
+        sortable
+        v-if="false"
+      />
       <el-table-column
         prop="lesson"
         label="课程名"
@@ -80,10 +86,20 @@
           >
         </template>
       </el-table-column>
-      <el-table-column label="允许提交" align="center">
+      <el-table-column label="能否提交" align="center">
         <template #default="scope">
           <el-tag :type="ableFormatter(scope.row.able).tag" disable-transitions>
             {{ ableFormatter(scope.row.able).text }}</el-tag
+          >
+        </template>
+      </el-table-column>
+      <el-table-column label="提交状态" align="center">
+        <template #default="scope">
+          <el-tag
+            :type="hadFormatter(scope.row.answerStatus).tag"
+            disable-transitions
+          >
+            {{ hadFormatter(scope.row.answerStatus).text }}</el-tag
           >
         </template>
       </el-table-column>
@@ -207,6 +223,24 @@ export default {
       } else {
         return {
           text: "禁止提交",
+          tag: "info",
+        };
+      }
+    },
+    hadFormatter(had) {
+      if (had === undefined) {
+        return {
+          text: "未提交",
+          tag: "warning",
+        };
+      } else if (had === true) {
+        return {
+          text: "已提交",
+          tag: "success",
+        };
+      } else if (had === false) {
+        return {
+          text: "已过期",
           tag: "info",
         };
       }
