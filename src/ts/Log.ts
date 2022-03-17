@@ -1,4 +1,5 @@
 function log(msg: string) {
-    console.log(`%c[免Flash文件上传] ${msg}`,"color: #005bac")
+  let time = new Date().toLocaleTimeString();
+  console.log(`%c[${time}][NOFLASHUPLOAD] ${msg}`, "color: #005bac");
 }
-export default log
+export default log;
