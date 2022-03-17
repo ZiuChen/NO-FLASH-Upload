@@ -32,7 +32,7 @@
     <el-table
       ref="tableRef"
       :data="tableData"
-      :default-sort="{ prop: 'remain', order: 'ascending' }"
+      :default-sort="{ prop: 'remain', order: configSort }"
       :row-class-name="tableRowClassName"
       style="width: 100%"
     >
@@ -143,6 +143,10 @@ export default {
       tableData: [],
       checkedFilters: ["近期截止"],
       loadingStatus: true,
+      configRange:
+        ConfigOperations.readUserConfig()["config-hwt-recent-range"].value,
+      configSort:
+        ConfigOperations.readUserConfig()["config-hwt-default-sort"].value,
       lessonPageUrl: `http://cc.bjtu.edu.cn:81/meol/jpk/course/layout/newpage/index.jsp?courseId=`,
       taskAnswerUrl: `http://cc.bjtu.edu.cn:81/meol/common/hw/student/taskanswer.jsp?hwtid=`,
       hwtWriteUrl: `http://cc.bjtu.edu.cn:81/meol/common/hw/student/write.jsp?hwtid=`,
@@ -168,13 +172,14 @@ export default {
       return row.lesson === value;
     },
     filterRemain(value, row) {
-      let range =
-        ConfigOperations.readUserConfig()["config-recent-range"].value;
       switch (value) {
         case "今日截止":
           return row.remain === 0;
         case "近期截止":
-          return row.remain <= range.max && row.remain >= range.min;
+          return (
+            row.remain <= this.configRange.max &&
+            row.remain >= this.configRange.min
+          );
         case "未过期":
           return row.remain >= 0;
         case "已过期":

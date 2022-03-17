@@ -27,12 +27,19 @@ const userConfig = {
     id: "config-background-color",
     type: "input",
   },
-  "config-recent-range": {
+  "config-hwt-recent-range": {
     value: { min: -3, max: 15 },
     default: { min: -3, max: 15 },
     name: "近期截止显示范围",
-    id: "config-recent-range",
+    id: "config-hwt-recent-range",
     type: "input-number",
+  },
+  "config-hwt-default-sort": {
+    value: "ascending",
+    default: "ascending",
+    name: "默认排序方式",
+    id: "config-hwt-default-sort",
+    type: "input",
   },
   "config-hwtlist-show": {
     value: true,
