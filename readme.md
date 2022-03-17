@@ -43,25 +43,26 @@
   
   **注意：** 目前项目有两个分支：旧的`script`分支与新的`Vue`分支，分别对应`1.x`版本与`2.x`版本，`1.x`版本将只提供缺陷修复，基本不再提供新功能。
   
-## ❤️ 感谢捐助
+## ❤️ 感谢捐赠
 
-**如果觉得脚本帮到了你，可以通过[捐助二维码](https://gitee.com/ziuc/utool-filebed/raw/master/Buy%20me%20a%20coffee.png)赞赏我，这将鼓励我继续维护这个脚本。**
+**如果觉得脚本帮到了你，可以通过[捐赠二维码](https://gitee.com/ziuc/utool-filebed/raw/master/Buy%20me%20a%20coffee.png)赞赏我，这将鼓励我继续维护这个脚本。**
 
-`枫-林-晚：￥5.00(微信)`
-`**睿：￥1.00(支付宝)`
-`****.**克：￥1.00(支付宝)`
-`**国：￥5.00(支付宝)`
-`kindergarten：￥1.00(微信)`
-`*方：￥1.00(微信)`
-`h*z：￥1.00(微信)`
-`*纸：￥1.00(微信)`
-`Q*t：￥1.00(微信)`
-`*秸：￥1.00(微信)`
-`*柒：￥1.00(微信)`
+[【定期更新】感谢捐赠名单❤](https://docs.qq.com/sheet/DRWFjSFlKWFplSldi)
 
 <a href="https://gitee.com/ziuc/utool-filebed/raw/master/Buy%20me%20a%20coffee.png"><img alt="捐赠二维码" width="65%" src="https://raw.githubusercontent.com/ZiuChen/NO-FLASH-Upload/v2.x-Vue/doc/img/Buy%20me%20a%20coffee.png"></img></a>
+## 🧱 第三方开源组件
+
+感谢这些组件帮助我极大地提升了开发效率：
+
+ - [Vue](https://cn.vuejs.org/)
+ - [Element Plus](http://element-plus.gitee.io/)
+ - [wangEditor](https://www.wangeditor.com/)
+ - [GBK.js](https://github.com/cnwhy/GBK.js)
+ - [MDUI](https://www.mdui.org/)
+
 ## 📎 相关链接
 
-[更新日志](doc/update_log.md)
-
-[`v1.x`脚本介绍](doc/usage_old.md)
+[`更新日志`](doc/update_log.md)
+[`腾讯问卷反馈链接`](https://wj.qq.com/s2/9790218/23fe/)
+[`v1.x脚本介绍`](doc/usage_old.md)
+[`v1.x更新日志`](doc/update_log_old.md)
