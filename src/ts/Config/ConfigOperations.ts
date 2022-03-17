@@ -51,6 +51,14 @@ function setUserConfig(id: string, value: boolean | object | string | number) {
   updateConfig(currentConfig);
 }
 
+function getDefaultConfig() {
+  return config;
+}
+
+function getDefaultUserConfig() {
+  return config.userConfig;
+}
+
 function readConfig() {
   return JSON.parse(localStorage.getItem("config"));
 }
@@ -75,6 +83,28 @@ function updateConfig(config: object) {
   log("config updated");
 }
 
+function updateUserConfig(userConfig: object) {
+  let currentConfig = readConfig();
+  currentConfig.userConfig = userConfig;
+  localStorage.setItem("config", JSON.stringify(currentConfig));
+  log("userConfig updated");
+}
+
+function restoreUserConfig() {
+  updateUserConfig(getDefaultUserConfig());
+  log("userConfig restored");
+}
+
+function exportUserConfig() {
+  let blob = new Blob([JSON.stringify(readUserConfig())], {
+    type: "text/json",
+  });
+  let a = document.createElement("a");
+  a.download = `[NOFLASHUPLOAD] setting.json`;
+  a.href = window.URL.createObjectURL(blob);
+  a.click();
+}
+
 export default {
   initConfig: initConfig,
   readConfig: readConfig,
@@ -82,4 +112,6 @@ export default {
   readUserConfigWithFilter: readUserConfigWithFilter,
   updateConfig: updateConfig,
   setUserConfig: setUserConfig,
+  restoreUserConfig: restoreUserConfig,
+  exportUserConfig: exportUserConfig,
 };

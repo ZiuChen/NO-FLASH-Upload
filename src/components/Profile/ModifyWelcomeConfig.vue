@@ -33,6 +33,20 @@
         @change="handleChange($event, { id: 'config-informlist-show' })"
       />
     </div>
+    <div class="config">
+      <span>{{ userConfig["config-lessontoplist-show"].name }}</span>
+      <el-switch
+        v-model="lessontoplistShow"
+        @change="handleChange($event, { id: 'config-lessontoplist-show' })"
+      />
+    </div>
+    <div class="config">
+      <span>{{ userConfig["config-userinfo-show"].name }}</span>
+      <el-switch
+        v-model="userinfoShow"
+        @change="handleChange($event, { id: 'config-userinfo-show' })"
+      />
+    </div>
   </el-card>
 </template>
 
@@ -50,6 +64,8 @@ export default {
       notifylistShow: false,
       lessonlistShow: false,
       informlistShow: false,
+      lessontoplistShow: false,
+      userinfoShow: false,
     };
   },
   methods: {
@@ -59,6 +75,9 @@ export default {
       this.notifylistShow = this.userConfig["config-notifylist-show"].value;
       this.lessonlistShow = this.userConfig["config-lessonlist-show"].value;
       this.informlistShow = this.userConfig["config-informlist-show"].value;
+      this.lessontoplistShow =
+        this.userConfig["config-lessontoplist-show"].value;
+      this.userinfoShow = this.userConfig["config-userinfo-show"].value;
     },
     handleChange(status, payload) {
       ConfigOperations.setUserConfig(payload.id, status);

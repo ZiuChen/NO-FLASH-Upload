@@ -2,22 +2,30 @@
   <div>
     <el-row>
       <el-col :span="24">
-        <hwt-list v-if="userConfig['config-hwtlist-show'].value"></hwt-list>
+        <HwtList v-if="userConfig['config-hwtlist-show'].value"></HwtList>
       </el-col>
       <el-col :span="12">
-        <notify-list
+        <NotifyList
           v-if="userConfig['config-notifylist-show'].value"
-        ></notify-list>
+        ></NotifyList>
       </el-col>
       <el-col :span="12">
-        <inform-list
+        <InformList
           v-if="userConfig['config-informlist-show'].value"
-        ></inform-list>
+        ></InformList>
       </el-col>
       <el-col :span="24">
-        <lesson-list
+        <LessonList
           v-if="userConfig['config-lessonlist-show'].value"
-        ></lesson-list>
+        ></LessonList>
+      </el-col>
+      <el-col :span="12">
+        <LessonTopList
+          v-if="userConfig['config-lessontoplist-show'].value"
+        ></LessonTopList>
+      </el-col>
+      <el-col :span="12">
+        <UserInfo v-if="userConfig['config-userinfo-show'].value"></UserInfo>
       </el-col>
     </el-row>
   </div>
@@ -29,6 +37,8 @@ import HwtList from "./HwtList.vue";
 import InformList from "./InformList.vue";
 import NotifyList from "./NotifyList.vue";
 import LessonList from "./LessonList.vue";
+import LessonTopList from "./LessonTopList.vue";
+import UserInfo from "./UserInfo.vue";
 
 export default {
   components: {
@@ -36,6 +46,8 @@ export default {
     InformList,
     NotifyList,
     LessonList,
+    LessonTopList,
+    UserInfo,
   },
   data() {
     return {
