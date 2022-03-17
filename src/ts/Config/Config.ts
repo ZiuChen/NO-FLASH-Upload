@@ -27,6 +27,34 @@ const userConfig = {
     id: "config-recent-range",
     type: "input-number",
   },
+  "config-hwtlist-show": {
+    value: true,
+    default: true,
+    name: "显示作业列表卡片",
+    id: "config-hwtlist-show",
+    type: "switch",
+  },
+  "config-notifylist-show": {
+    value: true,
+    default: true,
+    name: "显示未读通知卡片",
+    id: "config-notifylist-show",
+    type: "switch",
+  },
+  "config-lessonlist-show": {
+    value: true,
+    default: true,
+    name: "显示课程列表卡片",
+    id: "config-lessonlist-show",
+    type: "switch",
+  },
+  "config-informlist-show": {
+    value: true,
+    default: true,
+    name: "显示系统通知卡片",
+    id: "config-informlist-show",
+    type: "switch",
+  },
 };
 
 export default {

@@ -2,32 +2,45 @@
   <div>
     <el-row>
       <el-col :span="24">
-        <hwt-list></hwt-list>
+        <hwt-list v-if="userConfig['config-hwtlist-show'].value"></hwt-list>
       </el-col>
       <el-col :span="12">
-        <notify-list></notify-list>
+        <notify-list
+          v-if="userConfig['config-notifylist-show'].value"
+        ></notify-list>
       </el-col>
       <el-col :span="12">
-        <lesson-list></lesson-list>
+        <inform-list
+          v-if="userConfig['config-informlist-show'].value"
+        ></inform-list>
       </el-col>
       <el-col :span="24">
-        <inform-list></inform-list>
+        <lesson-list
+          v-if="userConfig['config-lessonlist-show'].value"
+        ></lesson-list>
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
+import ConfigOperations from "../../ts/Config/ConfigOperations";
 import HwtList from "./HwtList.vue";
 import InformList from "./InformList.vue";
 import NotifyList from "./NotifyList.vue";
 import LessonList from "./LessonList.vue";
+
 export default {
   components: {
     HwtList,
     InformList,
     NotifyList,
     LessonList,
+  },
+  data() {
+    return {
+      userConfig: ConfigOperations.readUserConfig(),
+    };
   },
 };
 </script>
