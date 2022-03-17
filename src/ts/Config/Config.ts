@@ -55,6 +55,20 @@ const userConfig = {
     id: "config-informlist-show",
     type: "switch",
   },
+  "config-lessontoplist-show": {
+    value: false,
+    default: false,
+    name: "显示访问排行卡片",
+    id: "config-lessontoplist-show",
+    type: "switch",
+  },
+  "config-userinfo-show": {
+    value: false,
+    default: false,
+    name: "显示用户信息卡片",
+    id: "config-userinfo-show",
+    type: "switch",
+  },
 };
 
 export default {

@@ -4,20 +4,22 @@ export default async function getUserInfo() {
   return await sendRequest(
     `http://cc.bjtu.edu.cn:81/meol/welcomepage/student/index.jsp`,
     (obj: Document) => {
-      return obj.querySelectorAll(".userinfobody>ul>li");
+      return obj;
     }
   )
     .then((res) => {
-      let obj: object = {
-        name: "",
-        loginTime: "",
-        onlineTime: "",
-        loginTimes: "",
+      let lis = res.querySelectorAll(".userinfobody>ul>li");
+      return {
+        name: lis[0].innerText.split("：")[1].trim(),
+        loginTime: lis[1].innerText.split("：")[1].trim(),
+        onlineTime: lis[2].innerText.split("：")[1].trim(),
+        loginTimes: lis[3].innerText.split("：")[1].trim(),
+        SID: res
+          .querySelector(".info")
+          .getAttribute("href")
+          .split("?SID=")[1]
+          .split("&from=")[0],
       };
-      res.forEach((item: { innerText: string }, index: string | number) => {
-        obj[Object.keys(obj)[index]] = item.innerText.split("：")[1].trim();
-      });
-      return obj;
     })
     .catch((error) => {
       console.log(error);
