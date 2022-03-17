@@ -9,6 +9,7 @@ import getLessonList from "./Requests/getLessonList";
 import getNotifyList from "./Requests/getNotifyList";
 import getInformList from "./Requests/getInformList";
 import lessonOrderOperation from "./Requests/lessonOrderOperation";
+import getLoginStatus from "./Requests/getLoginStatus";
 
 export default {
   getUserInfo: getUserInfo,
@@ -22,4 +23,5 @@ export default {
   getNotifyList: getNotifyList,
   getInformList: getInformList,
   lessonOrderOperation: lessonOrderOperation,
+  getLoginStatus: getLoginStatus,
 };

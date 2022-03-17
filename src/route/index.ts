@@ -7,6 +7,8 @@ import LessonSubmit from "../components/Lesson/LessonSubmit/LessonSubmit.vue";
 import ProfileIndex from "../components/Profile/ProfileIndex.vue";
 import AboutIndex from "../components/About/AboutIndex.vue";
 
+import API from "../ts/API";
+
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
@@ -44,6 +46,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  API.getLoginStatus();
   if (to.matched.length === 0) {
     // no match
     from.name ? next({ name: from.name }) : next("/");
