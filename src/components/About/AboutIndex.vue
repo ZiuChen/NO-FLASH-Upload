@@ -1,17 +1,35 @@
 <template>
-  <script-info-card></script-info-card>
-  <update-log-card></update-log-card>
+  <el-row>
+    <el-col :span="24">
+      <ScriptInfoCard></ScriptInfoCard>
+    </el-col>
+  </el-row>
+  <el-row>
+    <el-col :span="12">
+      <UpdateLogCard></UpdateLogCard>
+    </el-col>
+    <el-col :span="12">
+      <DonateCard></DonateCard>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
 import ScriptInfoCard from "./ScriptInfoCard.vue";
 import UpdateLogCard from "./UpdateLogCard.vue";
+import DonateCard from "./DonateCard.vue";
 export default {
   components: {
     ScriptInfoCard,
     UpdateLogCard,
+    DonateCard,
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.el-card {
+  margin: 10px 10px 10px 10px;
+  /* max-height: 1000px; */
+}
+</style>
