@@ -12,6 +12,7 @@ export default async function getLessonList() {
       let academy = item.children[2] as HTMLTableCellElement;
       let teacher = item.children[3] as HTMLTableCellElement;
       rtnArray.push({
+        number: item.querySelector("td").innerText,
         id: course
           .getAttribute("onclick")
           .split("courseId=")[1]
