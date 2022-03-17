@@ -20,12 +20,6 @@ export default {
   mounted() {
     this.initEditor();
   },
-  beforeDestroy() {
-    console.log("beforeDestroy");
-  },
-  destroyed() {
-    console.log("destroyed");
-  },
   data() {
     return {
       editorObj: {},
@@ -51,7 +45,7 @@ export default {
         // 只注册一次：editor为null时注册
         class ButtonMenuClass {
           title = "上传附件";
-          iconSvg = "";
+          iconSvg = `<svg t="1647484105757" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="30375" width="200" height="200"><path d="M950.877407 878.109433H73.406289a72.980745 72.980745 0 0 0 0 145.890567H950.877407a72.980745 72.980745 0 0 0 0-145.890567zM170.713949 439.728494h158.727802v296.249342a69.079928 69.079928 0 0 0 69.009004 69.079928h227.949577a69.079928 69.079928 0 0 0 69.150852-69.009004V439.728494h158.656878a35.036432 35.036432 0 0 0 25.745394-58.725031L538.100014 11.205984a35.461975 35.461975 0 0 0-51.490788 0L145.110403 381.003463A35.036432 35.036432 0 0 0 170.713949 439.728494z" fill="#707070" p-id="30376"></path></svg>`;
           tag = "button";
           getValue() {}
           isActive() {
@@ -126,7 +120,7 @@ export default {
       const toolbarConfig = {
         excludeKeys: ["blockquote", "insertTable", "codeBlock", "fullScreen"],
         insertKeys: {
-          index: 29,
+          index: 26,
           keys: ["attachment"],
         },
       };
@@ -135,14 +129,14 @@ export default {
         selector: "#editor-container",
         config: editorConfig,
         html: this.submitContent,
-        mode: "simple",
+        mode: "default",
       });
       // 创建工具栏
       const toolbar = createToolbar({
         editor,
         config: toolbarConfig,
         selector: "#toolbar-container",
-        mode: "simple",
+        mode: "default",
       });
       this.editorObj = editor; // 编辑器对象传递给父组件执行上传
     },
