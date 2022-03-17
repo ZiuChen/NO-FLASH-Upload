@@ -10,27 +10,7 @@
 </template>
 
 <script>
-import getInfo from "../../../ts/GetInfo";
-export default {
-  data() {
-    return {
-      lid: "",
-      lessonDetail: {},
-    };
-  },
-  methods: {
-    async getLessonDetail(lid) {
-      this.lessonDetail = await getInfo
-        .getLessonPageInfo(lid)
-        .then((res) => {
-          return res;
-        })
-        .then((res) => {
-          return res;
-        });
-    },
-  },
-};
+export default {};
 </script>
 
 <style scoped></style>

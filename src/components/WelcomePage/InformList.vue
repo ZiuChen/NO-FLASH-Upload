@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import getInfo from "../../ts/GetInfo";
+import API from "../../ts/API";
 export default {
   data() {
     return {
@@ -62,7 +62,7 @@ export default {
     async getInformList() {
       this.tableData = [];
       this.loadingStatus = true;
-      this.tableData = await getInfo.getInformList().then((res) => {
+      this.tableData = await API.getInformList().then((res) => {
         this.loadingStatus = false;
         return res;
       });

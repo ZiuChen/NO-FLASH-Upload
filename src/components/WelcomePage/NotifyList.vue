@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import getInfo from "../../ts/GetInfo";
+import API from "../../ts/API";
 export default {
   created() {
     this.getRemindNotifies();
@@ -92,10 +92,10 @@ export default {
   methods: {
     async getRemindNotifies() {
       this.tableData = [];
-      this.notifies = await getInfo.getRemindInfo().then(async (res) => {
+      this.notifies = await API.getRemindInfo().then(async (res) => {
         this.loadingStatus = false;
         for (let lesson of res.notify) {
-          await getInfo.getNotifyList(lesson.id).then((notifies) => {
+          await API.getNotifyList(lesson.id).then((notifies) => {
             notifies.forEach((notify) => {
               this.tableData.push({
                 lid: lesson.id,

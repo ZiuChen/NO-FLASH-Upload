@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import getInfo from "../../ts/GetInfo";
+import API from "../../ts/API";
 import ConfigOperations from "../../ts/Config/ConfigOperations";
 import CheckUpdate from "../../ts/CheckUpdate";
 import getVersionInfo from "../../ts/GetVersionInfo";
@@ -73,7 +73,7 @@ export default {
   },
   methods: {
     async getUserInfo() {
-      this.userInfo = await getInfo.getUserInfo();
+      this.userInfo = await API.getUserInfo();
     },
     async getVersionInfo() {
       this.needUpdate = await getVersionInfo().then((res) => {
