@@ -22,6 +22,9 @@ function main() {
       LoadResource.loadLINK(
         `https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/css/mdui.min.css`
       );
+      LoadResource.loadLINK(
+        "https://cdn.jsdelivr.net/npm/@wangeditor/editor@latest/dist/css/style.css"
+      );
       LoadResource.loadCSS(mainStyle);
       createApp(Main).use(router).mount("body");
     }

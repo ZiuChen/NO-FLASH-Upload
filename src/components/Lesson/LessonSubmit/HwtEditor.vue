@@ -13,7 +13,6 @@
 
 <script>
 import sendRequest from "../../../ts/SendRequest";
-import "@wangeditor/editor/dist/css/style.css";
 import { createEditor, createToolbar, Boot } from "@wangeditor/editor";
 let editor = null;
 export default {
