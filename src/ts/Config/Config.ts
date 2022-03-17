@@ -20,6 +20,13 @@ const userConfig = {
     id: "config-show-side-bar",
     type: "switch",
   },
+  "config-background-color": {
+    value: "#f0f8ff",
+    default: "#f0f8ff",
+    name: "背景颜色",
+    id: "config-background-color",
+    type: "input",
+  },
   "config-recent-range": {
     value: { min: -3, max: 15 },
     default: { min: -3, max: 15 },

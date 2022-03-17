@@ -4,11 +4,11 @@
       <head-bar></head-bar>
     </el-header>
     <el-container style="height: calc(100vh - 100px)">
-      <el-aside v-show="status">
+      <el-aside v-show="sideBarStatus">
         <side-bar></side-bar>
       </el-aside>
       <el-scrollbar>
-        <el-main>
+        <el-main :style="'background-color:' + backGroundColor">
           <router-view></router-view>
         </el-main>
       </el-scrollbar>
@@ -29,12 +29,15 @@ export default {
   },
   data() {
     return {
-      status: true,
+      sideBarStatus: true,
+      backGroundColor: "",
     };
   },
   created() {
-    this.status =
+    this.sideBarStatus =
       ConfigOperations.readUserConfig()["config-show-side-bar"].value;
+    this.backGroundColor =
+      ConfigOperations.readUserConfig()["config-background-color"].value;
   },
 };
 </script>

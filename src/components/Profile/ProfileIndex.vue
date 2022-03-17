@@ -6,6 +6,9 @@
     <el-col :span="8">
       <ModifyHwtListConfig></ModifyHwtListConfig>
     </el-col>
+    <el-col :span="8">
+      <ModifyUserConfig></ModifyUserConfig>
+    </el-col>
   </el-row>
   <el-divider />
   <el-row class="button-group">
@@ -18,10 +21,12 @@
 import configOperations from "../../ts/Config/ConfigOperations";
 import ModifyWelcomeConfig from "./ModifyWelcomeConfig.vue";
 import ModifyHwtListConfig from "./ModifyHwtListConfig.vue";
+import ModifyUserConfig from "./ModifyHwtListConfig.vue";
 export default {
   components: {
     ModifyWelcomeConfig,
     ModifyHwtListConfig,
+    ModifyUserConfig,
   },
   methods: {
     handleRestore() {

@@ -19,6 +19,13 @@
         @change="handleChange($event, 'config-show-side-bar')"
       />
     </div>
+    <div class="config">
+      <span>{{ userConfig["config-background-color"].name }}</span>
+      <el-color-picker
+        v-model="backGroundColor"
+        @change="handleChange($event, 'config-background-color')"
+      />
+    </div>
   </el-card>
 </template>
 
@@ -34,6 +41,7 @@ export default {
       userConfig: {},
       backToOldStatus: false,
       showSideBarStatus: false,
+      backGroundColor: "",
     };
   },
   methods: {
@@ -41,9 +49,18 @@ export default {
       this.userConfig = ConfigOperations.readUserConfig();
       this.backToOldStatus = this.userConfig["config-back-to-old"].value;
       this.showSideBarStatus = this.userConfig["config-show-side-bar"].value;
+      this.backGroundColor = this.userConfig["config-background-color"].value;
     },
     handleChange(status, param) {
       ConfigOperations.setUserConfig(param, status);
+      let notify = ElNotification({
+        title: "免Flash文件上传",
+        type: "success",
+        message: `修改了用户设置，刷新后生效`,
+        onClick: () => {
+          notify.close();
+        },
+      });
     },
   },
 };
