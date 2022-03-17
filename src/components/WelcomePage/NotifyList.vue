@@ -36,7 +36,7 @@
       :default-sort="{ prop: 'pubTime', order: 'descending' }"
       style="width: 100%"
     >
-      <el-table-column prop="notifyName" label="通知名" width="200px">
+      <el-table-column prop="notifyName" label="通知名" width="150px">
         <template #default="scope">
           <el-link
             :href="`http://cc.bjtu.edu.cn:81/meol/jpk/course/layout/course_meswrap.jsp?courseId=${scope.row.lid}&nid=${scope.row.nid}`"
@@ -46,7 +46,12 @@
           >
         </template>
       </el-table-column>
-      <el-table-column prop="lessonName" label="课程名" align="center" />
+      <el-table-column
+        prop="lessonName"
+        label="课程名"
+        width="150px"
+        align="center"
+      />
       <el-table-column
         prop="hadRead"
         label="阅读状态"
@@ -59,7 +64,13 @@
         :filter-method="hadReadfilterHandler"
         :filtered-value="checkedFilters"
       />
-      <el-table-column prop="pubTime" label="发布时间" sortable="" />
+      <el-table-column
+        prop="pubTime"
+        label="发布时间"
+        align="right"
+        width="180px"
+        sortable
+      />
     </el-table>
   </el-card>
 </template>

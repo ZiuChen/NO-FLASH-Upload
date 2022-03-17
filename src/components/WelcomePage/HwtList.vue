@@ -49,15 +49,31 @@
         :filter-method="filterRemain"
         :filtered-value="checkedFilters"
         :formatter="remainDayFormatter"
+        min-width="120px"
         sortable
       />
-      <el-table-column prop="name" label="作业标题" align="center">
+      <el-table-column
+        prop="name"
+        label="作业标题"
+        align="center"
+        min-width="150px"
+      >
         <template #default="scope">
           <el-link
-            :href="taskAnswerUrl + scope.row.hwtID"
+            @click="handleHwtNameClick(scope.$index, scope.row)"
             :underline="false"
             target="_blank"
             >{{ scope.row.name }}</el-link
+          >
+        </template>
+      </el-table-column>
+      <el-table-column label="提交状态" align="center">
+        <template #default="scope">
+          <el-tag
+            :type="hadFormatter(scope.row.answerStatus).tag"
+            disable-transitions
+          >
+            {{ hadFormatter(scope.row.answerStatus).text }}</el-tag
           >
         </template>
       </el-table-column>
@@ -65,8 +81,8 @@
         prop="date"
         label="截止日期"
         align="center"
+        min-width="150px"
         sortable
-        v-if="false"
       />
       <el-table-column
         prop="lesson"
@@ -90,16 +106,6 @@
         <template #default="scope">
           <el-tag :type="ableFormatter(scope.row.able).tag" disable-transitions>
             {{ ableFormatter(scope.row.able).text }}</el-tag
-          >
-        </template>
-      </el-table-column>
-      <el-table-column label="提交状态" align="center">
-        <template #default="scope">
-          <el-tag
-            :type="hadFormatter(scope.row.answerStatus).tag"
-            disable-transitions
-          >
-            {{ hadFormatter(scope.row.answerStatus).text }}</el-tag
           >
         </template>
       </el-table-column>
@@ -253,6 +259,11 @@ export default {
     },
     async handleReviewClick(index, row) {
       this.$router.push(`/lesson/${row.lid}/submit/${row.hwtID}?able=false`);
+    },
+    async handleHwtNameClick(index, row) {
+      this.$router.push(
+        `/lesson/${row.lid}/submit/${row.hwtID}?able=${row.able}`
+      );
     },
     async handleTagClick(lid) {
       let url = `${this.lessonPageUrl}${lid}`;

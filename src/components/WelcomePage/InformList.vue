@@ -40,7 +40,7 @@
           >
         </template>
       </el-table-column>
-      <el-table-column prop="pubTime" label="发布时间" />
+      <el-table-column prop="pubTime" label="发布时间" align="right" />
     </el-table>
   </el-card>
 </template>
