@@ -72,4 +72,7 @@ export default {
   display: flex;
   flex-direction: column;
 }
+.el-card {
+  height: 100%;
+}
 </style>

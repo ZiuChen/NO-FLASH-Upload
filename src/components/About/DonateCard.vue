@@ -21,6 +21,9 @@ export default {};
 </script>
 
 <style scoped>
+.el-card {
+  height: 100%;
+}
 .card-body {
   text-align: center;
 }
