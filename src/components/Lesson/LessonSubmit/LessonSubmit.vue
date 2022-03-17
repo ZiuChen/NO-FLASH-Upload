@@ -42,14 +42,6 @@
         <div v-if="this.$route.query.able === 'true'" class="operation">
           <el-button @click="handleButtonSubmit">提交</el-button>
           <el-button @click="handleButtonReturn">返回</el-button>
-          <el-tooltip
-            class="box-item"
-            effect="dark"
-            content="查看提交效果，此按钮将在未来被删除"
-            placement="right-start"
-          >
-            <el-button @click="handleButtonDebug">查看效果</el-button>
-          </el-tooltip>
         </div>
       </el-card>
     </el-col>
@@ -182,25 +174,11 @@ export default {
     handleButtonReturn() {
       this.$router.go(-1);
     },
-    handleButtonDebug() {
-      window.open(
-        `http://cc.bjtu.edu.cn:81/meol/common/hw/student/taskanswer.jsp?hwtid=${this.hwtContentWithId.hwtid}`
-      );
-    },
   },
 };
 </script>
 
 <style scoped>
-.hwt-list .el-table {
-  height: 100%;
-}
-
-.el-card {
-  min-height: 100%;
-  height: 100%;
-}
-
 .operation {
   display: flex;
   justify-content: center;
