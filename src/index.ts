@@ -14,9 +14,9 @@ main();
 function main() {
   const href = window.location.href;
   if (ConfigOperations.readUserConfig()["config-back-to-old"].value === false) {
-    log("vue version enabled");
+    log("main", "启用新版", "info");
     if (href.indexOf("personal.do") !== -1) {
-      log("enter page personal.do");
+      log("main", "进入personal.do", "info");
       checkUpdate();
       removeTags();
       LoadResource.loadLINK(
@@ -29,7 +29,7 @@ function main() {
       createApp(Main).use(router).mount("body");
     }
   } else {
-    log("script version enabled");
+    log("main", "启用旧版", "info");
     if (href.indexOf("personal.do") !== -1) {
       checkUpdate();
       CheckUsingOld();
@@ -38,7 +38,6 @@ function main() {
 }
 
 function removeTags() {
-  log("tags removed");
   document.querySelectorAll("head link, head script").forEach((n) => {
     n.remove();
   });

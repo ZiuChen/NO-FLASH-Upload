@@ -3,7 +3,7 @@ import log from "./Log";
 import config from "./Config/Config";
 
 async function getVersionInfo() {
-  log(`current userscript version: ${config.version}`);
+  log("getVersionInfo", `脚本当前版本: ${config.version}`, "info");
   let content = sendRequest(
     config.updateInfo,
     (obj: Document) => {

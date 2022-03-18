@@ -27,6 +27,13 @@ const userConfig = {
     id: "config-background-color",
     type: "input",
   },
+  "config-console-log-show": {
+    value: true,
+    default: true,
+    name: "控制台日志输出",
+    id: "config-console-log-show",
+    type: "switch",
+  },
   "config-hwt-recent-range": {
     value: { min: -3, max: 15 },
     default: { min: -3, max: 15 },

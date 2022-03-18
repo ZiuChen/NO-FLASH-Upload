@@ -26,6 +26,13 @@
         @change="handleChange($event, 'config-background-color')"
       />
     </div>
+    <div class="config">
+      <span>{{ userConfig["config-console-log-show"].name }}</span>
+      <el-switch
+        v-model="showConsoleLogStatus"
+        @change="handleChange($event, 'config-console-log-show')"
+      />
+    </div>
   </el-card>
 </template>
 
@@ -41,6 +48,7 @@ export default {
       userConfig: {},
       backToOldStatus: false,
       showSideBarStatus: false,
+      showConsoleLogStatus: false,
       backGroundColor: "",
     };
   },
@@ -50,13 +58,15 @@ export default {
       this.backToOldStatus = this.userConfig["config-back-to-old"].value;
       this.showSideBarStatus = this.userConfig["config-show-side-bar"].value;
       this.backGroundColor = this.userConfig["config-background-color"].value;
+      this.showConsoleLogStatus =
+        this.userConfig["config-console-log-show"].value;
     },
     handleChange(status, param) {
       ConfigOperations.setUserConfig(param, status);
       let notify = ElNotification({
         title: "免Flash文件上传",
         type: "success",
-        message: `修改了用户设置，刷新后生效`,
+        message: `修改了用户设置，部分设置刷新后生效`,
         onClick: () => {
           notify.close();
         },

@@ -118,7 +118,7 @@ export default {
       return editor.getHtml();
     },
     hwtSubmit() {
-      log("submit confirmed");
+      log("hwtSubmit", "提交作业确认");
       let url = `http://cc.bjtu.edu.cn:81/meol/common/hw/student/write.do.jsp`;
       const GBK = window.GBK;
       var details = {
@@ -141,7 +141,7 @@ export default {
         body: formBody,
       }).then((res) => {
         if (res.ok === true) {
-          log("hwt submit successfully");
+          log("hwtSubmit", "成功提交作业", "success");
           this.refreshTable();
           let notify = ElNotification({
             title: "免Flash文件上传",
@@ -155,7 +155,7 @@ export default {
       });
     },
     handleButtonSubmit() {
-      log("hwt submit trigger");
+      log("handleButtonSubmit", "触发作业提交");
       if (this.manySubmitStatus === false) {
         ElMessageBox.confirm(`该作业不允许重复提交，确定提交作业吗？`, "警告", {
           confirmButtonText: "OK",
@@ -165,7 +165,7 @@ export default {
             this.hwtSubmit();
           })
           .catch((res) => {
-            log("submit canceled");
+            log("handleButtonSubmit", "作业提交被取消", "warning");
           });
       } else {
         this.hwtSubmit();

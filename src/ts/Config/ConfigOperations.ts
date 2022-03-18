@@ -8,6 +8,7 @@ function initConfig() {
   }
   initScriptConfig();
   initUserConfig();
+  log("initConfig", "设置初始化完毕", "success");
 }
 
 function initScriptConfig() {
@@ -80,19 +81,17 @@ function readUserConfigWithFilter(type: string) {
 
 function updateConfig(config: object) {
   localStorage.setItem("config", JSON.stringify(config));
-  log("config updated");
 }
 
 function updateUserConfig(userConfig: object) {
   let currentConfig = readConfig();
   currentConfig.userConfig = userConfig;
   localStorage.setItem("config", JSON.stringify(currentConfig));
-  log("userConfig updated");
 }
 
 function restoreUserConfig() {
   updateUserConfig(getDefaultUserConfig());
-  log("userConfig restored");
+  log("restoreUserConfig", "用户设置已重置", "success");
 }
 
 function exportUserConfig() {
@@ -103,6 +102,7 @@ function exportUserConfig() {
   a.download = `[NOFLASHUPLOAD] setting.json`;
   a.href = window.URL.createObjectURL(blob);
   a.click();
+  log("exportUserConfig", "用户设置已导出", "success");
 }
 
 export default {
