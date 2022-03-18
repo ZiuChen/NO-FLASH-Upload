@@ -251,7 +251,7 @@ export default {
         };
       } else if (had === false) {
         return {
-          text: "已过期",
+          text: "无法提交",
           tag: "info",
         };
       }
