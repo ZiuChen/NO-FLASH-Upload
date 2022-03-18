@@ -19,14 +19,18 @@
 
 由于课程平台使用的`THEOL清华教育在线`系统版本过旧，其基于`Flash`的附件上传功能不再在主流浏览器上被支持，故编写此脚本以实现信息汇总、附件上传等功能。
 
-本脚本于2021年9月7日发布，目前已在[*Greasy Fork*](https://greasyfork.org/zh-CN/scripts/432056)被安装近千次，日检查更新次数`~400`。
+**课程平台更新后，脚本升级为`2.0`，提供了更多更方便的功能。**
+
+本脚本于2021年9月7日发布，已在[*Greasy Fork*](https://greasyfork.org/zh-CN/scripts/432056)被安装千余次，日检查更新次数`~400`。
 
 ## 🔰 开始使用
 
-  1. 在任一浏览器上安装[`Tampermonkey`](https://www.tampermonkey.net/)脚本管理器。
-  2. [`点击此处`](https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/publish/index.prod.user.js)安装脚本。[`备用链接`](https://gitee.com/ziuc/NO-FLASH-Upload/raw/master/publish/index.prod.user.js)
+  1. 在任一浏览器上安装 [`Tampermonkey`](https://www.tampermonkey.net/) 脚本管理器。
+  2. [`点击此处`](https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/publish/index.prod.user.js) 安装脚本。[`备用链接`](https://gitee.com/ziuc/NO-FLASH-Upload/raw/master/publish/index.prod.user.js)
 
   新版具有更好的稳定性，**请尽量保持脚本更新，使用最新版本**。使用中遇到任何问题，欢迎在[`Github Issues`](https://github.com/ZiuChen/NO-FLASH-Upload/issues)或[`Gitee Issues`](https://gitee.com/ziuc/NO-FLASH-Upload/issues)反馈交流。
+
+  **注意：`4.13` 版本的 *Tampermonkey* 在 *Chrome* 浏览器下会报错，请及时更新最新版本的 *Tampermonkey***
 
 ## 📸 效果展示
 
