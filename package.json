@@ -38,7 +38,6 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "@wangeditor/editor": "^0.15.13",
     "element-plus": "^2.0.0",
     "vue-router": "^4.0.12"
   }
