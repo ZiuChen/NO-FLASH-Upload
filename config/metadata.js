@@ -13,7 +13,7 @@ module.exports = {
   version: version,
   author: author,
   source: repository.url,
-  supportURL: repository.url,
+  supportURL: repository.url + "/issues",
   license: "MIT",
   match: ["*://cc.bjtu.edu.cn:81/meol*"],
   namespace: "https://greasyfork.org/zh-CN/users/605474",
@@ -22,7 +22,6 @@ module.exports = {
     "https://cdn.jsdelivr.net/npm/gbk.js@0.3.0/dist/gbk.min.js",
     "https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js",
   ],
-  connect: ["raw.githubusercontent.com", "github.com", "cdn.jsdelivr.net"],
   icon: "https://gitee.com/ziuc/utool-filebed/raw/master/20210514-231824-0795.png",
   grant: [],
 };
