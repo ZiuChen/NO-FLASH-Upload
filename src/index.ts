@@ -13,7 +13,7 @@ main();
 
 function main() {
   const href = window.location.href;
-  if (ConfigOperations.readUserConfig()["config-back-to-old"].value === false) {
+  if (!CheckUsingOld()) {
     log("main", "启用新版", "info");
     if (href.indexOf("personal.do") !== -1) {
       log("main", "进入personal.do", "info");
@@ -32,7 +32,6 @@ function main() {
     log("main", "启用旧版", "info");
     if (href.indexOf("personal.do") !== -1) {
       checkUpdate();
-      CheckUsingOld();
     }
   }
 }
