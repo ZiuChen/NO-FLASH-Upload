@@ -14,14 +14,14 @@ function log(Position: string, content: string, type?: string) {
   } else if (type === "error") {
     color = "red";
   } else if (type === "info") {
-    color = "white";
+    color = "blue";
   } else {
     color = "grey";
   }
   return console.log(
     `%c[${time}]` + `%c [${Position}] ` + content,
-    "color: #005bac",
-    `color: ${color}`
+    "color: #005bac;",
+    `color: ${color};`
   );
 }
 export default log;

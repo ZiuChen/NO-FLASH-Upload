@@ -8,6 +8,7 @@ import ProfileIndex from "../components/Profile/ProfileIndex.vue";
 import AboutIndex from "../components/About/AboutIndex.vue";
 
 import API from "../ts/API";
+import log from "../ts/Log";
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -49,6 +50,7 @@ router.beforeEach((to, from, next) => {
   API.getLoginStatus();
   if (to.matched.length === 0) {
     // no match
+    log("router.beforeEach", `未找到界面，重定向`, `warning`);
     from.name ? next({ name: from.name }) : next("/");
     let notify = ElNotification({
       title: "免Flash文件上传",

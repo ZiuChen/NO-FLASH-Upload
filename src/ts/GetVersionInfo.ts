@@ -3,7 +3,6 @@ import log from "./Log";
 import config from "./Config/Config";
 
 async function getVersionInfo() {
-  log("getVersionInfo", `脚本当前版本: ${config.version}`, "info");
   let content = sendRequest(
     config.updateInfo,
     (obj: Document) => {
@@ -28,6 +27,8 @@ async function getVersionInfo() {
       .forEach((value: string, index: number) => {
         weightNow += (index + 1) * Math.pow(10, index + 1) * parseInt(value);
       });
+    log("getVersionInfo", `最新版本: ${res}`, "info");
+    log("getVersionInfo", `脚本当前版本: ${config.version}`, "info");
     if (weightLastest > weightNow) {
       return { need: true, current: config.version, lastest: res };
     } else {
