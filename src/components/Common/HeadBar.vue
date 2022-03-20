@@ -68,13 +68,9 @@ export default {
     };
   },
   created() {
-    this.getUserInfo();
     this.getVersionInfo();
   },
   methods: {
-    async getUserInfo() {
-      this.userInfo = await API.getUserInfo();
-    },
     async getVersionInfo() {
       this.needUpdate = await getVersionInfo().then((res) => {
         return res.need;
