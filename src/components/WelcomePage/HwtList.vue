@@ -41,8 +41,8 @@
         label="剩余时间"
         align="center"
         :filters="[
-          { text: '今日截止', value: '今日截止' },
           { text: '近期截止', value: '近期截止' },
+          { text: '今日截止', value: '今日截止' },
           { text: '未过期', value: '未过期' },
           { text: '已过期', value: '已过期' },
         ]"
@@ -141,7 +141,9 @@ export default {
     return {
       lessonList: [],
       tableData: [],
-      checkedFilters: ["近期截止"],
+      checkedFilters: [
+        ConfigOperations.readUserConfig()["config-hwt-default-filter"].value,
+      ],
       loadingStatus: true,
       configRange:
         ConfigOperations.readUserConfig()["config-hwt-recent-range"].value,

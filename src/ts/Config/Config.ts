@@ -48,6 +48,13 @@ const userConfig = {
     id: "config-hwt-default-sort",
     type: "input",
   },
+  "config-hwt-default-filter": {
+    value: "近期截止",
+    default: "近期截止",
+    name: "默认筛选方式",
+    id: "config-hwt-default-filter",
+    type: "input",
+  },
   "config-hwtlist-show": {
     value: true,
     default: true,

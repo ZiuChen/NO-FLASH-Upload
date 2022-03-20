@@ -55,6 +55,23 @@
         <el-option label="最远截止在上" value="descending" />
       </el-select>
     </div>
+    <div class="config default-filter">
+      <span>{{ userConfig["config-hwt-default-filter"].name }}</span>
+      <el-select
+        v-model="defaultFilterStatus"
+        @change="
+          handleChange($event, {
+            id: 'config-hwt-default-filter',
+          })
+        "
+        placeholder="选择默认筛选方式"
+      >
+        <el-option label="近期截止" value="近期截止" />
+        <el-option label="今日截止" value="今日截止" />
+        <el-option label="未过期" value="未过期" />
+        <el-option label="已过期" value="已过期" />
+      </el-select>
+    </div>
   </el-card>
 </template>
 
@@ -70,6 +87,7 @@ export default {
       userConfig: {},
       recentRangeStatus: {},
       defaultSortStatus: "",
+      defaultFilterStatus: "",
     };
   },
   methods: {
@@ -77,9 +95,13 @@ export default {
       this.userConfig = ConfigOperations.readUserConfig();
       this.recentRangeStatus = this.userConfig["config-hwt-recent-range"].value;
       this.defaultSortStatus = this.userConfig["config-hwt-default-sort"].value;
+      this.defaultFilterStatus =
+        this.userConfig["config-hwt-default-filter"].value;
     },
     handleChange(status, payload) {
       if (payload.id === "config-hwt-default-sort") {
+        ConfigOperations.setUserConfig(payload.id, status);
+      } else if (payload.id === "config-hwt-default-filter") {
         ConfigOperations.setUserConfig(payload.id, status);
       } else if (payload.id === "config-hwt-recent-range") {
         ConfigOperations.setUserConfig(payload.id, this.recentRangeStatus);
@@ -99,7 +121,8 @@ export default {
   display: flex;
   flex-direction: column;
 }
-.default-sort {
+.default-sort,
+.default-filter {
   padding-top: 10px;
 }
 .el-card {
