@@ -1,8 +1,9 @@
 const style = /* css */ `
 body {
     margin: 0;
-    font-family: Helvetica, Tahoma, Arial, 'Heiti SC', 'Microsoft YaHei', 'WenQuanYi Micro Hei';
-    text-shadow: 0px 1px 1px #cccccc;
+    font-family: "PingFang SC,HarmonyOS_Regular,Helvetica Neue,Microsoft YaHei,sans-serif!important";
+    font-weight: 400;
+    text-shadow: 0px 0px 1px #a1a2a3a4;
   }
 `;
 

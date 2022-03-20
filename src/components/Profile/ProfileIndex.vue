@@ -10,10 +10,11 @@
       <ModifyUserConfig></ModifyUserConfig>
     </el-col>
   </el-row>
-  <el-divider />
-  <el-row class="button-group">
-    <el-button @click="handleRestore">重置设置</el-button>
-    <el-button @click="handleExport">导出设置</el-button>
+  <el-row>
+    <el-col :span="24" class="button-group">
+      <el-button @click="handleRestore">重置设置</el-button>
+      <el-button @click="handleExport">导出设置</el-button>
+    </el-col>
   </el-row>
 </template>
 
@@ -57,6 +58,8 @@ export default {
 
 <style scoped>
 .button-group {
+  padding-top: 55px;
+  display: flex;
   justify-content: center;
 }
 </style>

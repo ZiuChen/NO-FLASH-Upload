@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="welcome-index">
     <el-row>
       <el-col :span="24">
         <HwtList v-if="userConfig['config-hwtlist-show'].value"></HwtList>
@@ -57,20 +57,4 @@ export default {
 };
 </script>
 
-<style>
-.el-card {
-  margin: 10px 10px 10px 10px;
-  /* max-height: 1000px; */
-}
-
-.card-header {
-  height: 1.3em;
-  font-size: 1.1em;
-  cursor: default;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #005bac;
-  font-weight: bold;
-}
-</style>
+<style scope></style>

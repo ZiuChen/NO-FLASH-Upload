@@ -110,10 +110,6 @@ export default {
   padding-right: 5px;
 }
 
-.el-tag {
-  zoom: 85%;
-}
-
 .description {
   color: #909399;
   padding-bottom: 10px;
