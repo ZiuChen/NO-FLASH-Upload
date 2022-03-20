@@ -64,7 +64,7 @@
 
 ## 📎 相关链接
 
-[`更新计划`](https://github.com/ZiuChen/NO-FLASH-Upload/projects/1)
+[`更新计划`](https://github.com/ZiuChen/NO-FLASH-Upload/projects/2)
 [`更新日志`](doc/update_log.md)
 [`腾讯问卷反馈链接`](https://wj.qq.com/s2/9790218/23fe/)
 [`v1.x脚本介绍`](doc/usage_old.md)
