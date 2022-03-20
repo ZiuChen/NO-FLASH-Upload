@@ -17,6 +17,7 @@ function main() {
     log("main", "启用新版", "info");
     if (href.indexOf("personal.do") !== -1) {
       log("main", "进入personal.do", "info");
+      log("main", "加载主界面", "info");
       checkUpdate();
       removeTags();
       LoadResource.loadLINK(
@@ -27,6 +28,8 @@ function main() {
       );
       LoadResource.loadCSS(mainStyle);
       createApp(Main).use(router).mount("body");
+    } else {
+      log("main", "当前界面不是主界面", "warning");
     }
   } else {
     log("main", "启用旧版", "info");
