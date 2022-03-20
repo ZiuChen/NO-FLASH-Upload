@@ -9,53 +9,50 @@
       />
     </el-col>
     <el-col :span="8">
-      <div class="operation">
-        <el-dropdown @command="handleCommand">
-          <el-badge :is-dot="needUpdate">
-            <el-icon
-              class="el-dropdown-link dropdown-trigger mdui-ripple"
-              :size="25"
-              color="white"
+      <el-dropdown @command="handleCommand">
+        <el-badge :is-dot="needUpdate">
+          <el-icon
+            class="el-dropdown-link dropdown-trigger mdui-ripple"
+            :size="25"
+            color="white"
+          >
+            <svg
+              t="1647786304896"
+              class="icon"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="21307"
+              width="200"
+              height="200"
             >
-              <svg
-                t="1647786304896"
-                class="icon"
-                viewBox="0 0 1024 1024"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                p-id="21307"
-                width="200"
-                height="200"
-              >
-                <path
-                  d="M128 170.666667h768v170.666666H128V170.666667m0 256h768v170.666666H128v-170.666666m0 256h768v170.666666H128v-170.666666z"
-                  fill=""
-                  p-id="21308"
-                ></path>
-              </svg>
-            </el-icon>
-          </el-badge>
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item command="check">
-                检查更新
-                <el-badge :is-dot="needUpdate"></el-badge>
-              </el-dropdown-item>
-              <el-dropdown-item command="sidebar">
-                展示/隐藏侧栏
-              </el-dropdown-item>
-              <el-dropdown-item command="old">返回旧版</el-dropdown-item>
-              <el-dropdown-item command="exit">退出当前账号</el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
-      </div>
+              <path
+                d="M128 170.666667h768v170.666666H128V170.666667m0 256h768v170.666666H128v-170.666666m0 256h768v170.666666H128v-170.666666z"
+                fill=""
+                p-id="21308"
+              ></path>
+            </svg>
+          </el-icon>
+        </el-badge>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item command="check">
+              检查更新
+              <el-badge :is-dot="needUpdate"></el-badge>
+            </el-dropdown-item>
+            <el-dropdown-item command="sidebar">
+              展示/隐藏侧栏
+            </el-dropdown-item>
+            <el-dropdown-item command="old">返回旧版</el-dropdown-item>
+            <el-dropdown-item command="exit">退出当前账号</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
     </el-col>
   </el-row>
 </template>
 
 <script>
-import API from "../../ts/API";
 import ConfigOperations from "../../ts/Config/ConfigOperations";
 import CheckUpdate from "../../ts/CheckUpdate";
 import getVersionInfo from "../../ts/GetVersionInfo";
@@ -100,7 +97,7 @@ export default {
 
 <style scoped>
 .el-row {
-  background: linear-gradient(135deg, #9708cc, #005bac, #9708cc);
+  background: linear-gradient(135deg, #743481, #005bac, #743481);
 }
 
 .dropdown-trigger {
