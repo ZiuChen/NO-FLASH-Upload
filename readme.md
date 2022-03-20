@@ -30,8 +30,6 @@
 
   新版具有更好的稳定性，**请尽量保持脚本更新，使用最新版本**。使用中遇到任何问题，欢迎在[`Github Issues`](https://github.com/ZiuChen/NO-FLASH-Upload/issues)或[`Gitee Issues`](https://gitee.com/ziuc/NO-FLASH-Upload/issues)反馈交流。
 
-  **注意：`4.13` 版本的 *Tampermonkey* 在 *Chrome* 浏览器下会报错，请及时更新最新版本的 *Tampermonkey***
-
 ## 📸 效果展示
 
 <img alt="homepage" width="80%" src="https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/HomePage.jpg"></img>
@@ -66,6 +64,7 @@
 
 ## 📎 相关链接
 
+[`更新计划`](https://github.com/ZiuChen/NO-FLASH-Upload/projects/1)
 [`更新日志`](doc/update_log.md)
 [`腾讯问卷反馈链接`](https://wj.qq.com/s2/9790218/23fe/)
 [`v1.x脚本介绍`](doc/usage_old.md)
