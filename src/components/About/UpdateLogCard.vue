@@ -43,8 +43,7 @@
 </template>
 
 <script>
-import config from "../../ts/Config/Config";
-import sendRequest from "../../ts/SendRequest";
+import API from "../../ts/API";
 export default {
   mounted() {
     this.fetchUpdateLog();
@@ -58,18 +57,7 @@ export default {
   methods: {
     async fetchUpdateLog() {
       this.loadingStatus = true;
-      return await sendRequest(config.updateLOG, undefined, {
-        cache: "no-cache",
-      }).then((res) => {
-        return res.text().then((res) => {
-          let praser = new DOMParser();
-          let dom = praser.parseFromString(res, "text/html");
-          this.log = `<p>${dom.querySelector("p").innerHTML}</p>
-          ${dom.querySelector("ul").innerHTML}`;
-          this.loadingStatus = false;
-          return res;
-        });
-      });
+      this.log = await API.getScriptUpdateLog();
     },
   },
 };

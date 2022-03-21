@@ -11,6 +11,8 @@ import getInformList from "./Requests/getInformList";
 import lessonOrderOperation from "./Requests/lessonOrderOperation";
 import getLoginStatus from "./Requests/getLoginStatus";
 import getLessonTopList from "./Requests/getLessonTopList";
+import getScriptNotify from "./Requests/getScriptNotify";
+import getScriptUpdateLog from "./Requests/getScriptUpdateLog";
 
 export default {
   getUserInfo: getUserInfo,
@@ -26,4 +28,6 @@ export default {
   lessonOrderOperation: lessonOrderOperation,
   getLoginStatus: getLoginStatus,
   getLessonTopList: getLessonTopList,
+  getScriptNotify: getScriptNotify,
+  getScriptUpdateLog: getScriptUpdateLog,
 };

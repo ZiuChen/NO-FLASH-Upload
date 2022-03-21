@@ -4,6 +4,8 @@ const feedBackURL = `https://wj.qq.com/s2/9790218/23fe/`;
 const updateURL = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/publish/index.prod.user.js`;
 const updateInfo = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/package.json`;
 const updateLOG = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/update_log.md`;
+const notifyURL = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/src/components/About/notify.json`;
+const lastReadNotify = 0;
 
 const userConfig = {
   "config-back-to-old": {
@@ -16,7 +18,7 @@ const userConfig = {
   "config-show-side-bar": {
     value: true,
     default: true,
-    name: "显示/隐藏侧栏",
+    name: "显示侧栏",
     id: "config-show-side-bar",
     type: "switch",
   },
@@ -108,5 +110,7 @@ export default {
   updateInfo: updateInfo,
   updateLOG: updateLOG,
   githubUrl: repository.url,
+  notifyURL: notifyURL,
+  lastReadNotify: lastReadNotify,
   userConfig: userConfig,
 };

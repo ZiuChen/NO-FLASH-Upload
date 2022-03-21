@@ -12,6 +12,7 @@ function initConfig() {
 }
 
 function initScriptConfig() {
+  // 不移除已有项，只添加新项或赋初值
   let defaultScriptConfig = config;
   let currentScriptConfig = readConfig();
   let defaultKeys = Object.keys(defaultScriptConfig);
@@ -23,6 +24,7 @@ function initScriptConfig() {
 }
 
 function initUserConfig() {
+  // 只检查新增或移除项并执行添加或删除，不改变项值
   let currentConfig = readConfig();
   let currentUserConfig = currentConfig.userConfig;
   let currentUserConfigs = Object.getOwnPropertyNames(currentUserConfig);
