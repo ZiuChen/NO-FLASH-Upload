@@ -88,7 +88,6 @@ export default {
     },
     async popNotify() {
       return await API.getScriptNotify().then((notify) => {
-        console.log(notify);
         if (
           notify.id >
           ConfigOperations.readUserConfig()["data-last-read-notify"].value
@@ -96,13 +95,11 @@ export default {
           // 还未阅读此通知
           ElMessageBox.alert(notify.content, notify.title, {
             confirmButtonText: "OK",
-            callback: (action) => {
-              // nothing to do
-            },
           });
           ConfigOperations.setUserConfig("data-last-read-notify", notify.id);
         } else {
           // 此通知已阅读
+          // nothing to do
         }
       });
     },

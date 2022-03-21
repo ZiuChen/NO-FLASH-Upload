@@ -36,9 +36,6 @@ export default {
 </script>
 
 <style scoped>
-.el-card {
-  height: 100%;
-}
 .container {
   height: 100%;
   text-align: center;
