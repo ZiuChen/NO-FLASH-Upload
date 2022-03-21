@@ -40,9 +40,6 @@
               检查更新
               <el-badge :is-dot="needUpdate"></el-badge>
             </el-dropdown-item>
-            <el-dropdown-item command="sidebar">
-              展示/隐藏侧栏
-            </el-dropdown-item>
             <el-dropdown-item command="old">返回旧版</el-dropdown-item>
             <el-dropdown-item command="exit">退出当前账号</el-dropdown-item>
           </el-dropdown-menu>
