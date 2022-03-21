@@ -19,7 +19,7 @@ async function getVersionInfo() {
       .reverse()
       .forEach((value: string, index: number) => {
         weightLastest +=
-          (index + 1) * Math.pow(10, index + 1) * parseInt(value);
+          (index + 1) * Math.pow(100, index + 1) * parseInt(value);
       });
     config.version
       .split(".")
