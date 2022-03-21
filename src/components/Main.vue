@@ -4,7 +4,7 @@
       <head-bar></head-bar>
     </el-header>
     <el-container style="height: calc(100vh - 75px)">
-      <el-aside v-show="sideBarStatus">
+      <el-aside>
         <side-bar></side-bar>
       </el-aside>
       <el-main>
@@ -24,15 +24,6 @@ export default {
     HeadBar,
     SideBar,
     WelcomeMain,
-  },
-  data() {
-    return {
-      sideBarStatus: true,
-    };
-  },
-  created() {
-    this.sideBarStatus =
-      ConfigOperations.readUserConfig()["config-show-side-bar"].value;
   },
 };
 </script>

@@ -21,13 +21,6 @@ const userConfig = {
     id: "config-back-to-old",
     type: "switch",
   },
-  "config-show-side-bar": {
-    value: true,
-    default: true,
-    name: "显示侧栏",
-    id: "config-show-side-bar",
-    type: "switch",
-  },
   "config-console-log-show": {
     value: true,
     default: true,

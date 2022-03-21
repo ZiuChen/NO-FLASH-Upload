@@ -82,13 +82,6 @@ export default {
       } else if (command === "old") {
         ConfigOperations.setUserConfig("config-back-to-old", true);
         window.location.reload();
-      } else if (command === "sidebar") {
-        let status =
-          ConfigOperations.readUserConfig()["config-show-side-bar"].value;
-        status
-          ? (document.querySelector(".el-aside").style.display = "none")
-          : (document.querySelector(".el-aside").style.display = "");
-        ConfigOperations.setUserConfig("config-show-side-bar", !status);
       } else if (command === "check") {
         CheckUpdate();
       }

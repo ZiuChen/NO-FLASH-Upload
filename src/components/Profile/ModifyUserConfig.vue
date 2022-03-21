@@ -13,13 +13,6 @@
       />
     </div>
     <div class="config">
-      <span>{{ userConfig["config-show-side-bar"].name }}</span>
-      <el-switch
-        v-model="showSideBarStatus"
-        @change="handleChange($event, 'config-show-side-bar')"
-      />
-    </div>
-    <div class="config">
       <span>{{ userConfig["config-console-log-show"].name }}</span>
       <el-switch
         v-model="showConsoleLogStatus"
@@ -40,7 +33,6 @@ export default {
     return {
       userConfig: {},
       backToOldStatus: false,
-      showSideBarStatus: false,
       showConsoleLogStatus: false,
     };
   },
@@ -48,7 +40,6 @@ export default {
     dataInit() {
       this.userConfig = ConfigOperations.readUserConfig();
       this.backToOldStatus = this.userConfig["config-back-to-old"].value;
-      this.showSideBarStatus = this.userConfig["config-show-side-bar"].value;
       this.showConsoleLogStatus =
         this.userConfig["config-console-log-show"].value;
     },
