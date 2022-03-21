@@ -56,6 +56,7 @@
 import ConfigOperations from "../../ts/Config/ConfigOperations";
 import CheckUpdate from "../../ts/CheckUpdate";
 import getVersionInfo from "../../ts/GetVersionInfo";
+import API from "../../ts/API";
 
 export default {
   data() {
@@ -66,6 +67,7 @@ export default {
   },
   created() {
     this.getVersionInfo();
+    this.popNotify();
   },
   methods: {
     async getVersionInfo() {
@@ -90,6 +92,26 @@ export default {
       } else if (command === "check") {
         CheckUpdate();
       }
+    },
+    async popNotify() {
+      return await API.getScriptNotify().then((notify) => {
+        console.log(notify);
+        if (
+          notify.id >
+          ConfigOperations.readUserConfig()["data-last-read-notify"].value
+        ) {
+          // 还未阅读此通知
+          ElMessageBox.alert(notify.content, notify.title, {
+            confirmButtonText: "OK",
+            callback: (action) => {
+              // nothing to do
+            },
+          });
+          ConfigOperations.setUserConfig("data-last-read-notify", notify.id);
+        } else {
+          // 此通知已阅读
+        }
+      });
     },
   },
 };

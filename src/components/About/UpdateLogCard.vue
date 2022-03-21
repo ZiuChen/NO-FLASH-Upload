@@ -57,7 +57,10 @@ export default {
   methods: {
     async fetchUpdateLog() {
       this.loadingStatus = true;
-      this.log = await API.getScriptUpdateLog();
+      this.log = await API.getScriptUpdateLog().then((res) => {
+        this.loadingStatus = false;
+        return res;
+      });
     },
   },
 };

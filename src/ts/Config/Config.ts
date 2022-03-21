@@ -5,9 +5,15 @@ const updateURL = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/pu
 const updateInfo = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/package.json`;
 const updateLOG = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/update_log.md`;
 const notifyURL = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/src/components/About/notify.json`;
-const lastReadNotify = 0;
 
 const userConfig = {
+  "data-last-read-notify": {
+    value: 0,
+    default: 0,
+    name: "最近阅读的通知",
+    id: "data-last-read-notify",
+    type: "input",
+  },
   "config-back-to-old": {
     value: false,
     default: false,
@@ -111,6 +117,5 @@ export default {
   updateLOG: updateLOG,
   githubUrl: repository.url,
   notifyURL: notifyURL,
-  lastReadNotify: lastReadNotify,
   userConfig: userConfig,
 };

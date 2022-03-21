@@ -1,7 +1,10 @@
 <template>
   <el-row>
-    <el-col :span="24">
+    <el-col :span="12">
       <ScriptInfoCard></ScriptInfoCard>
+    </el-col>
+    <el-col :span="12">
+      <ScriptNotify></ScriptNotify>
     </el-col>
   </el-row>
   <el-row>
@@ -16,11 +19,13 @@
 
 <script>
 import ScriptInfoCard from "./ScriptInfoCard.vue";
+import ScriptNotify from "./ScriptNotify.vue";
 import UpdateLogCard from "./UpdateLogCard.vue";
 import DonateCard from "./DonateCard.vue";
 export default {
   components: {
     ScriptInfoCard,
+    ScriptNotify,
     UpdateLogCard,
     DonateCard,
   },
