@@ -1,5 +1,4 @@
 import getUserInfo from "./Requests/getUserInfo";
-import getUserAvatar from "./Requests/getUserAvatar";
 import getRemindInfo from "./Requests/getRemindInfo";
 import getHwtList from "./Requests/getHwtList";
 import getHwtSubmitNew from "./Requests/getHwtSubmitNew";
@@ -15,7 +14,6 @@ import getLessonTopList from "./Requests/getLessonTopList";
 
 export default {
   getUserInfo: getUserInfo,
-  getUserAvatar: getUserAvatar,
   getRemindInfo: getRemindInfo,
   getHwtList: getHwtList,
   getHwtSubmitNew: getHwtSubmitNew,
