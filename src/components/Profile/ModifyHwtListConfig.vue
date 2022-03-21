@@ -2,7 +2,7 @@
   <el-card shadow="always">
     <template #header>
       <div class="card-header">
-        <span>作业列表设置</span>
+        <span>作业设置</span>
       </div>
     </template>
     <div class="config">
@@ -72,6 +72,17 @@
         <el-option label="已过期" value="已过期" />
       </el-select>
     </div>
+    <div class="config">
+      <span>{{ userConfig["config-hwt-submit-drag"].name }}</span>
+      <el-switch
+        v-model="hwtSubmitDragStatus"
+        @change="
+          handleChange($event, {
+            id: 'config-hwt-submit-drag',
+          })
+        "
+      />
+    </div>
   </el-card>
 </template>
 
@@ -88,6 +99,7 @@ export default {
       recentRangeStatus: {},
       defaultSortStatus: "",
       defaultFilterStatus: "",
+      hwtSubmitDragStatus: false,
     };
   },
   methods: {
@@ -97,14 +109,14 @@ export default {
       this.defaultSortStatus = this.userConfig["config-hwt-default-sort"].value;
       this.defaultFilterStatus =
         this.userConfig["config-hwt-default-filter"].value;
+      this.hwtSubmitDragStatus =
+        this.userConfig["config-hwt-submit-drag"].value;
     },
     handleChange(status, payload) {
-      if (payload.id === "config-hwt-default-sort") {
-        ConfigOperations.setUserConfig(payload.id, status);
-      } else if (payload.id === "config-hwt-default-filter") {
-        ConfigOperations.setUserConfig(payload.id, status);
-      } else if (payload.id === "config-hwt-recent-range") {
+      if (payload.id === "config-hwt-recent-range") {
         ConfigOperations.setUserConfig(payload.id, this.recentRangeStatus);
+      } else {
+        ConfigOperations.setUserConfig(payload.id, status);
       }
     },
   },

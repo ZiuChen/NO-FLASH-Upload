@@ -3,8 +3,30 @@
     id="upload-trigger"
     action="http://cc.bjtu.edu.cn:81/meol/servlet/SerUpload"
     :on-success="handleUploadSuccess"
+    :drag="hwtSubmitDragStatus"
     multiple
   >
+    <div v-if="hwtSubmitDragStatus">
+      <el-icon class="el-icon--upload">
+        <svg
+          t="1647834161622"
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="20761"
+          width="200"
+          height="200"
+        >
+          <path
+            d="M384 682.666667v-256H213.333333l298.666667-298.666667 298.666667 298.666667h-170.666667v256H384m-170.666667 170.666666v-85.333333h597.333334v85.333333H213.333333z"
+            fill=""
+            p-id="20762"
+          ></path>
+        </svg>
+      </el-icon>
+      <div class="el-upload__text">拖拽文件到此处或 <em>点击上传附件</em></div>
+    </div>
   </el-upload>
   <div id="toolbar-container"></div>
   <div id="editor-container" style="height: 350px"></div>
@@ -13,6 +35,7 @@
 
 <script>
 import sendRequest from "../../../ts/SendRequest";
+import ConfigOperations from "../../../ts/Config/ConfigOperations";
 const E = window.wangEditor;
 class ButtonMenuClass {
   title = "上传附件";
@@ -38,11 +61,14 @@ const buttonMenu = {
 E.Boot.registerMenu(buttonMenu);
 export default {
   mounted() {
+    this.status = "config-hwt-submit-drag";
     this.initEditor();
   },
   data() {
     return {
       editorObj: null,
+      hwtSubmitDragStatus:
+        ConfigOperations.readUserConfig()["config-hwt-submit-drag"].value,
     };
   },
   watch: {
@@ -139,6 +165,10 @@ export default {
 </script>
 
 <style scoped>
+#upload-trigger {
+  text-align: center;
+  padding: 10px;
+}
 #toolbar-container {
   border: 1px solid #ccc;
 }

@@ -48,6 +48,13 @@ const userConfig = {
     id: "config-hwt-default-filter",
     type: "input",
   },
+  "config-hwt-submit-drag": {
+    value: true,
+    default: true,
+    name: "启用拖拽上传附件",
+    id: "config-hwt-submit-drag",
+    type: "switch",
+  },
   "config-hwtlist-show": {
     value: true,
     default: true,
