@@ -1,5 +1,5 @@
 <template>
-  <el-card class="inform-list" shadow="hover">
+  <el-card class="inform-list" shadow="always">
     <template #header>
       <div class="card-header">
         <span>系统通知</span>

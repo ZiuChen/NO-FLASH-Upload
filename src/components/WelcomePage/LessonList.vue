@@ -1,5 +1,5 @@
 <template>
-  <el-card class="lesson-list" shadow="hover">
+  <el-card class="lesson-list" shadow="always">
     <template #header>
       <div class="card-header">
         <span>课程列表</span>

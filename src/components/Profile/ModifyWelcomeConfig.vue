@@ -1,5 +1,5 @@
 <template>
-  <el-card shadow="hover">
+  <el-card shadow="always">
     <template #header>
       <div class="card-header">
         <span>主页卡片设置</span>

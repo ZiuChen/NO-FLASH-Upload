@@ -1,7 +1,7 @@
 <template>
-  <el-row>
+  <el-row class="card-container">
     <el-col :span="14">
-      <el-card shadow="hover">
+      <el-card shadow="always">
         <template #header>
           <div class="card-header">
             <span>提交作业</span>
@@ -31,14 +31,14 @@
             </el-button>
           </div>
         </template>
-        <hwt-info :propHwtContent="hwtContent"></hwt-info>
-        <hwt-editor
+        <HwtInfo :propHwtContent="hwtContent"></HwtInfo>
+        <HwtEditor
           v-if="this.$route.query.able === 'true'"
           ref="editorObj"
           :propHwtContents="{
             hwtContent: hwtContent,
           }"
-        ></hwt-editor>
+        ></HwtEditor>
         <div v-if="this.$route.query.able === 'true'" class="operation">
           <el-button @click="handleButtonSubmit">提交</el-button>
           <el-button @click="handleButtonReturn">返回</el-button>
@@ -46,7 +46,8 @@
       </el-card>
     </el-col>
     <el-col :span="10">
-      <hwt-list></hwt-list>
+      <HwtList></HwtList>
+      <LessonList></LessonList>
     </el-col>
   </el-row>
 </template>
@@ -55,15 +56,17 @@
 import API from "../../../ts/API";
 import log from "../../../ts/Log";
 import sendRequest from "../../../ts/SendRequest";
+import HwtList from "../../WelcomePage/HwtList.vue";
+import LessonList from "../../WelcomePage/LessonList.vue";
 import HwtInfo from "../LessonSubmit/HwtInfo.vue";
 import HwtEditor from "./HwtEditor.vue";
-import HwtList from "../../WelcomePage/HwtList.vue";
 
 export default {
   components: {
+    HwtList,
+    LessonList,
     HwtInfo,
     HwtEditor,
-    HwtList,
   },
   data() {
     return {
@@ -179,6 +182,9 @@ export default {
 </script>
 
 <style scoped>
+.card-container {
+  justify-content: center;
+}
 .operation {
   display: flex;
   justify-content: center;

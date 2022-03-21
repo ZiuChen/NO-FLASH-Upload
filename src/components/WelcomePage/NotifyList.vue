@@ -1,5 +1,5 @@
 <template>
-  <el-card class="notify-list" shadow="hover">
+  <el-card class="notify-list" shadow="always">
     <template #header>
       <div class="card-header">
         <span>未读通知</span>

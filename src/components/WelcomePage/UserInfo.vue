@@ -1,5 +1,5 @@
 <template>
-  <el-card class="user-info" shadow="hover">
+  <el-card class="user-info" shadow="always">
     <template #header>
       <div class="card-header">
         <span>用户信息</span>

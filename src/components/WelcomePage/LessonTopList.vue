@@ -1,5 +1,5 @@
 <template>
-  <el-card class="lesson-top-list" shadow="hover">
+  <el-card class="lesson-top-list" shadow="always">
     <template #header>
       <div class="card-header">
         <span>访问排行</span>

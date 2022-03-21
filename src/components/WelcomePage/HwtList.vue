@@ -1,5 +1,5 @@
 <template>
-  <el-card class="hwt-list" shadow="hover">
+  <el-card class="hwt-list" shadow="always">
     <template #header>
       <div class="card-header">
         <span>作业列表</span>
