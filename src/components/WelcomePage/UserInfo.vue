@@ -30,9 +30,6 @@
       </div>
     </template>
     <div class="container">
-      <p>
-        <img class="avatar" :src="avator" alt="头像" />
-      </p>
       <p>用户名：{{ userInfo.name }}</p>
       <p>登录时间：{{ userInfo.loginTime }}</p>
       <p>在线时间：{{ userInfo.onlineTime }}</p>
@@ -58,7 +55,6 @@ export default {
     async getUserInfo() {
       this.loadingStatus = true;
       this.userInfo = await API.getUserInfo().then(async (res) => {
-        this.avator = await API.getUserAvatar(res.SID);
         this.loadingStatus = false;
         return res;
       });
@@ -70,9 +66,5 @@ export default {
 <style scoped>
 .container {
   text-align: center;
-}
-
-.avatar {
-  height: 150px;
 }
 </style>
