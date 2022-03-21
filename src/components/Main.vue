@@ -7,7 +7,7 @@
       <el-aside v-show="sideBarStatus">
         <side-bar></side-bar>
       </el-aside>
-      <el-main :style="'background-color:' + backGroundColor">
+      <el-main>
         <router-view></router-view>
       </el-main>
     </el-container>
@@ -28,14 +28,11 @@ export default {
   data() {
     return {
       sideBarStatus: true,
-      backGroundColor: "",
     };
   },
   created() {
     this.sideBarStatus =
       ConfigOperations.readUserConfig()["config-show-side-bar"].value;
-    this.backGroundColor =
-      ConfigOperations.readUserConfig()["config-background-color"].value;
   },
 };
 </script>
@@ -76,9 +73,10 @@ export default {
 }
 
 .el-main {
-  /* background-repeat: repeat;
-  background-size: 200px 200px;
-  background-image: url(https://store.hituyu.com/SJrifRejmVxKutSuFzxIkKDJyxgbIpXj.png); */
-  /* 跨域 不能请求到 */
+  background: radial-gradient(
+    879px at 10.4% 22.3%,
+    rgb(255, 235, 238) 0%,
+    rgb(186, 190, 245) 93.6%
+  );
 }
 </style>

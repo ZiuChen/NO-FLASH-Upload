@@ -1,5 +1,5 @@
 <template>
-  <el-card shadow="hover">
+  <el-card shadow="always">
     <template #header>
       <div class="card-header">
         <span>用户设置</span>
@@ -17,13 +17,6 @@
       <el-switch
         v-model="showSideBarStatus"
         @change="handleChange($event, 'config-show-side-bar')"
-      />
-    </div>
-    <div class="config">
-      <span>{{ userConfig["config-background-color"].name }}</span>
-      <el-color-picker
-        v-model="backGroundColor"
-        @change="handleChange($event, 'config-background-color')"
       />
     </div>
     <div class="config">
@@ -49,7 +42,6 @@ export default {
       backToOldStatus: false,
       showSideBarStatus: false,
       showConsoleLogStatus: false,
-      backGroundColor: "",
     };
   },
   methods: {
@@ -57,7 +49,6 @@ export default {
       this.userConfig = ConfigOperations.readUserConfig();
       this.backToOldStatus = this.userConfig["config-back-to-old"].value;
       this.showSideBarStatus = this.userConfig["config-show-side-bar"].value;
-      this.backGroundColor = this.userConfig["config-background-color"].value;
       this.showConsoleLogStatus =
         this.userConfig["config-console-log-show"].value;
     },
