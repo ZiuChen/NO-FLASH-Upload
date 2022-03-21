@@ -137,7 +137,4 @@ export default {
 .default-filter {
   padding-top: 10px;
 }
-.el-card {
-  height: 100%;
-}
 </style>

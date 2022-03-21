@@ -73,7 +73,4 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
-.el-card {
-  height: 100%;
-}
 </style>
