@@ -25,7 +25,7 @@ async function getVersionInfo() {
       .split(".")
       .reverse()
       .forEach((value: string, index: number) => {
-        weightNow += (index + 1) * Math.pow(10, index + 1) * parseInt(value);
+        weightNow += (index + 1) * Math.pow(100, index + 1) * parseInt(value);
       });
     log("getVersionInfo", `最新版本: ${res}`, "info");
     log("getVersionInfo", `脚本当前版本: ${config.version}`, "info");
