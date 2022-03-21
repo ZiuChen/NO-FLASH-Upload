@@ -3,7 +3,7 @@
     <el-header>
       <head-bar></head-bar>
     </el-header>
-    <el-container style="height: calc(100vh - 100px)">
+    <el-container style="height: calc(100vh - 75px)">
       <el-aside v-show="sideBarStatus">
         <side-bar></side-bar>
       </el-aside>
@@ -73,5 +73,12 @@ export default {
   width: auto;
   padding: 0;
   height: auto;
+}
+
+.el-main {
+  /* background-repeat: repeat;
+  background-size: 200px 200px;
+  background-image: url(https://store.hituyu.com/SJrifRejmVxKutSuFzxIkKDJyxgbIpXj.png); */
+  /* 跨域 不能请求到 */
 }
 </style>
