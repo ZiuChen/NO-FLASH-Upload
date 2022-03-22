@@ -69,11 +69,8 @@
       </el-table-column>
       <el-table-column label="提交状态" align="center">
         <template #default="scope">
-          <el-tag
-            :type="hadFormatter(scope.row.answerStatus).tag"
-            disable-transitions
-          >
-            {{ hadFormatter(scope.row.answerStatus).text }}</el-tag
+          <el-tag :type="hadFormatter(scope.row).tag" disable-transitions>
+            {{ hadFormatter(scope.row).text }}</el-tag
           >
         </template>
       </el-table-column>
@@ -240,22 +237,34 @@ export default {
         };
       }
     },
-    hadFormatter(had) {
-      if (had === undefined) {
-        return {
-          text: "未提交",
-          tag: "warning",
-        };
-      } else if (had === true) {
-        return {
-          text: "已提交",
-          tag: "success",
-        };
-      } else if (had === false) {
-        return {
-          text: "无法提交",
-          tag: "info",
-        };
+    hadFormatter(row) {
+      if (row.remain >= 0) {
+        // 未过期
+        if (row.answerStatus === undefined) {
+          return {
+            text: "未提交",
+            tag: "warning",
+          };
+        } else {
+          // 只要不是 undefined 一定是提交过的
+          return {
+            text: "已提交",
+            tag: "success",
+          };
+        }
+      } else {
+        // 已过期
+        if (row.answerStatus === undefined) {
+          return {
+            text: "未提交",
+            tag: "warning",
+          };
+        } else {
+          return {
+            text: "已提交",
+            tag: "success",
+          };
+        }
       }
     },
     async getLessonList() {
