@@ -57,7 +57,6 @@ declare module 'vue' {
     NotifyList: typeof import('./src/components/WelcomePage/NotifyList.vue')['default']
     ProfileIndex: typeof import('./src/components/Profile/ProfileIndex.vue')['default']
     ScriptInfoCard: typeof import('./src/components/About/ScriptInfoCard.vue')['default']
-    ScriptNotify: typeof import('./src/components/About/ScriptNotify.vue')['default']
     SideBar: typeof import('./src/components/Common/SideBar.vue')['default']
     UpdateLogCard: typeof import('./src/components/About/UpdateLogCard.vue')['default']
     UserInfo: typeof import('./src/components/WelcomePage/UserInfo.vue')['default']
