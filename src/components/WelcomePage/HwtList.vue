@@ -34,7 +34,7 @@
       :data="tableData"
       :default-sort="{ prop: 'remain', order: configSort }"
       :row-class-name="tableRowClassName"
-      v-loading="loadingStatus"
+      v-load="loadingStatus"
       style="width: 100%"
     >
       <el-table-column

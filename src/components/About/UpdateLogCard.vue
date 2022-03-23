@@ -29,7 +29,7 @@
         </el-button>
       </div>
     </template>
-    <div class="log-table" v-loading="loadingStatus" v-html="log"></div>
+    <div class="log-table" v-load="loadingStatus" v-html="log"></div>
     <div class="full-log">
       <el-link
         href="https://github.com/ZiuChen/NO-FLASH-Upload/blob/master/doc/update_log.md"

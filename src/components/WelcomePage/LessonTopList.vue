@@ -32,7 +32,7 @@
     <el-table
       :data="lessonTopList"
       height="400px"
-      v-loading="loadingStatus"
+      v-load="loadingStatus"
       style="width: 100%"
     >
       <el-table-column prop="id" label="课程ID" align="center" />

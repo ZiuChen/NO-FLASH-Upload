@@ -8,6 +8,9 @@ import LoadResource from "./ts/LoadResource";
 import log from "./ts/Log";
 import CheckUsingOld from "./ts/CheckUsingOld";
 
+import { ElLoading } from "element-plus/lib/components/loading/index";
+import "element-plus/theme-chalk/el-loading.css";
+
 ConfigOperations.initConfig();
 main();
 
@@ -27,7 +30,9 @@ function main() {
         "https://cdn.jsdelivr.net/npm/@wangeditor/editor@latest/dist/css/style.css"
       );
       LoadResource.loadCSS(mainStyle);
-      createApp(Main).use(router).mount("body");
+      const app = createApp(Main);
+      app.directive("load", ElLoading.directive);
+      app.use(router).mount("body");
     } else {
       log("main", "当前界面不是主界面", "warning");
     }

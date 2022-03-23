@@ -40,7 +40,7 @@ const cfg = merge(webpackConfig, {
       metadata,
     }),
     AutoImport({
-      resolvers: [ElementPlusResolver({ importStyle: false })],
+      resolvers: [ElementPlusResolver()],
     }),
     Components({
       resolvers: [ElementPlusResolver()],

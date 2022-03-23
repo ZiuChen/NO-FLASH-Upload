@@ -34,7 +34,7 @@
       :data="tableData"
       height="400px"
       :default-sort="{ prop: 'pubTime', order: 'descending' }"
-      v-loading="loadingStatus"
+      v-load="loadingStatus"
       style="width: 100%"
     >
       <el-table-column prop="notifyName" label="通知名" width="150px">

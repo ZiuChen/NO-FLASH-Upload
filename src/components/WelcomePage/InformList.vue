@@ -32,7 +32,7 @@
     <el-table
       :data="tableData"
       height="400px"
-      v-loading="loadingStatus"
+      v-load="loadingStatus"
       style="width: 100%"
     >
       <el-table-column prop="notifyName" label="通知">
