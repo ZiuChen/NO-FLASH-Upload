@@ -72,7 +72,7 @@
         <el-option label="已过期" value="已过期" />
       </el-select>
     </div>
-    <div class="config">
+    <div class="config submit-drag">
       <span>{{ userConfig["config-hwt-submit-drag"].name }}</span>
       <el-switch
         v-model="hwtSubmitDragStatus"
@@ -134,7 +134,8 @@ export default {
   flex-direction: column;
 }
 .default-sort,
-.default-filter {
+.default-filter,
+.submit-drag {
   padding-top: 10px;
 }
 </style>

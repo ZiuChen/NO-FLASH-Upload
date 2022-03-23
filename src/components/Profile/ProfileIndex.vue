@@ -62,4 +62,7 @@ export default {
   display: flex;
   justify-content: center;
 }
+.el-card {
+  height: 100%;
+}
 </style>
