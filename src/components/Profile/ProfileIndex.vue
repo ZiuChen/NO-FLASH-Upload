@@ -12,8 +12,9 @@
   </el-row>
   <el-row>
     <el-col :span="24" class="button-group">
-      <el-button @click="handleRestore">重置设置</el-button>
+      <el-button @click="handleImport">导入设置</el-button>
       <el-button @click="handleExport">导出设置</el-button>
+      <el-button @click="handleRestore">重置设置</el-button>
     </el-col>
   </el-row>
 </template>
@@ -51,6 +52,9 @@ export default {
           notify.close();
         },
       });
+    },
+    handleImport() {
+      configOperations.importUserConfig();
     },
   },
 };
