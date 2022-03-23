@@ -9,14 +9,20 @@ export default async function getLessonTopList(type: string) {
   ).then((res) => {
     let rtnArray: object[] = [];
     res.forEach((item: HTMLTableCellElement, index: number) => {
+      let id = "";
       if (index === 0) return;
-      rtnArray.push({
-        id: item
+      if (item.querySelector("a") === null) {
+        id = "暂无id";
+      } else {
+        id = item
           .querySelector("a")
           .getAttribute("href")
           .split("?courseId=")[1]
-          .split("&_style=")[0],
-        course: item.querySelector("a").innerHTML,
+          .split("&_style=")[0];
+      }
+      rtnArray.push({
+        id: id,
+        course: item.querySelector("td").innerText,
         teacher: item.querySelector(".tea").innerHTML,
         visit: item.querySelector("p").innerHTML,
       });

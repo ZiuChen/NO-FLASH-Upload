@@ -40,6 +40,13 @@
       <el-table-column prop="teacher" label="教师" align="center" />
       <el-table-column prop="visit" label="访问数" align="center" />
     </el-table>
+    <div class="select-container">
+      当前排行：
+      <el-select v-model="filterType" placeholder="选择何种排行">
+        <el-option label="今日排行" value="today" />
+        <el-option label="总排行" value="total" />
+      </el-select>
+    </div>
   </el-card>
 </template>
 
@@ -49,11 +56,17 @@ export default {
   data() {
     return {
       lessonTopList: [],
+      filterType: "today",
       loadingStatus: true,
     };
   },
   created() {
-    this.updateLessonList("today");
+    this.updateLessonList(this.filterType);
+  },
+  watch: {
+    filterType: function (val) {
+      this.updateLessonList(val);
+    },
   },
   methods: {
     async updateLessonList(type) {
@@ -65,7 +78,7 @@ export default {
     },
     async handleButtonClick(courseId, action) {
       return await API.lessonOrderOperation(courseId, action).then((res) => {
-        return this.updateLessonList("today");
+        return this.updateLessonList(this.filterType);
       });
     },
   },
@@ -75,5 +88,11 @@ export default {
 <style scoped>
 .table-header-check-tag {
   zoom: 15%;
+}
+.select-container {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding-top: 10px;
 }
 </style>
