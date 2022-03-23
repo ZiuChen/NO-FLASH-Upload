@@ -19,6 +19,13 @@
         @change="handleChange($event, 'config-console-log-show')"
       />
     </div>
+    <div class="config">
+      <span>{{ userConfig["config-post-interval"].name }}</span>
+      <el-switch
+        v-model="postIntervalStatus"
+        @change="handleChange($event, 'config-post-interval')"
+      />
+    </div>
   </el-card>
 </template>
 
@@ -34,6 +41,7 @@ export default {
       userConfig: {},
       backToOldStatus: false,
       showConsoleLogStatus: false,
+      postIntervalStatus: false,
     };
   },
   methods: {
@@ -42,6 +50,7 @@ export default {
       this.backToOldStatus = this.userConfig["config-back-to-old"].value;
       this.showConsoleLogStatus =
         this.userConfig["config-console-log-show"].value;
+      this.postIntervalStatus = this.userConfig["config-post-interval"].value;
     },
     handleChange(status, param) {
       ConfigOperations.setUserConfig(param, status);

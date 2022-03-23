@@ -28,6 +28,13 @@ const userConfig = {
     id: "config-console-log-show",
     type: "switch",
   },
+  "config-post-interval": {
+    value: true,
+    default: true,
+    name: "定期发送请求以保持登录状态",
+    id: "config-post-interval",
+    type: "switch",
+  },
   "config-hwt-recent-range": {
     value: { min: -3, max: 15 },
     default: { min: -3, max: 15 },
@@ -52,7 +59,7 @@ const userConfig = {
   "config-hwt-submit-drag": {
     value: true,
     default: true,
-    name: "启用拖拽上传附件",
+    name: "拖拽上传附件功能",
     id: "config-hwt-submit-drag",
     type: "switch",
   },

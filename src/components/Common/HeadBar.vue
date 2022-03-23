@@ -54,6 +54,7 @@ import ConfigOperations from "../../ts/Config/ConfigOperations";
 import CheckUpdate from "../../ts/CheckUpdate";
 import getVersionInfo from "../../ts/GetVersionInfo";
 import API from "../../ts/API";
+import log from "../../ts/Log";
 
 export default {
   data() {
@@ -65,6 +66,7 @@ export default {
   created() {
     this.getVersionInfo();
     this.popNotify();
+    this.createInterval();
   },
   methods: {
     async getVersionInfo() {
@@ -108,6 +110,19 @@ export default {
           // nothing to do
         }
       });
+    },
+    async createInterval() {
+      if (
+        ConfigOperations.readUserConfig("config-post-interval").value === false
+      )
+        return;
+      let callBack = () => {
+        API.getUserInfo().then((res) => {
+          log("createInterval", "已发送身份保活请求", "success");
+          return res;
+        });
+      };
+      window.setInterval(callBack, 60000);
     },
   },
 };
