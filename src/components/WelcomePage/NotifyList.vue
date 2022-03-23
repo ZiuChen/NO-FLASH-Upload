@@ -34,6 +34,7 @@
       :data="tableData"
       height="400px"
       :default-sort="{ prop: 'pubTime', order: 'descending' }"
+      v-loading="loadingStatus"
       style="width: 100%"
     >
       <el-table-column prop="notifyName" label="通知名" width="150px">
@@ -93,8 +94,7 @@ export default {
     async getRemindNotifies() {
       this.tableData = [];
       this.notifies = await API.getRemindInfo().then(async (res) => {
-        this.loadingStatus = false;
-        for (let lesson of res.notify) {
+        for (let [index, lesson] of res.notify.entries()) {
           await API.getNotifyList(lesson.id).then((notifies) => {
             notifies.forEach((notify) => {
               this.tableData.push({
@@ -107,6 +107,9 @@ export default {
               });
             });
           });
+          if (index + 1 === res.notify.length) {
+            this.loadingStatus = false;
+          }
         }
       });
     },

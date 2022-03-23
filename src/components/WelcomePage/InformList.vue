@@ -29,7 +29,12 @@
         </el-button>
       </div>
     </template>
-    <el-table :data="tableData" height="400px" style="width: 100%">
+    <el-table
+      :data="tableData"
+      height="400px"
+      v-loading="loadingStatus"
+      style="width: 100%"
+    >
       <el-table-column prop="notifyName" label="通知">
         <template #default="scope">
           <el-link

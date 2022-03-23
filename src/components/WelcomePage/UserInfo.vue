@@ -29,7 +29,7 @@
         </el-button>
       </div>
     </template>
-    <div class="container">
+    <div class="container" v-loading="loadingStatus">
       <p>用户名：{{ userInfo.name }}</p>
       <p>登录时间：{{ userInfo.loginTime }}</p>
       <p>在线时间：{{ userInfo.onlineTime }}</p>

@@ -18,6 +18,7 @@ declare global {
   const ElIcon: typeof import('element-plus/es')['ElIcon']
   const ElInputNumber: typeof import('element-plus/es')['ElInputNumber']
   const ElLink: typeof import('element-plus/es')['ElLink']
+  const ElLoadingDirective: typeof import('element-plus/es')['ElLoadingDirective']
   const ElMain: typeof import('element-plus/es')['ElMain']
   const ElMenu: typeof import('element-plus/es')['ElMenu']
   const ElMenuItem: typeof import('element-plus/es')['ElMenuItem']

@@ -29,7 +29,12 @@
         </el-button>
       </div>
     </template>
-    <el-table :data="lessonList" height="400px" style="width: 100%">
+    <el-table
+      :data="lessonList"
+      height="400px"
+      v-loading="loadingStatus"
+      style="width: 100%"
+    >
       <el-table-column prop="number" label="课程号" align="center" />
       <el-table-column prop="name" label="课程名" align="center">
         <template #default="scope">

@@ -20,6 +20,7 @@ const cfg = merge(webpackConfig, {
         terserOptions: {
           format: {
             comments: /./,
+            // comments: false,
           },
         },
       }),
@@ -34,7 +35,7 @@ const cfg = merge(webpackConfig, {
       metadata,
     }),
     AutoImport({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ElementPlusResolver({ importStyle: false })],
     }),
     Components({
       resolvers: [ElementPlusResolver()],

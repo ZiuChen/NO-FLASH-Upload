@@ -35,15 +35,12 @@ const cfg = merge(webpackConfig, {
     ignored: ["**/node_modules", "**/auto-imports.d.ts", "**/components.d.ts"],
   },
   plugins: [
-    new LiveReloadPlugin({
-      delay: 500,
-      protocol: "https",
-    }),
+    new LiveReloadPlugin(),
     new UserScriptMetaDataPlugin({
       metadata,
     }),
     AutoImport({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ElementPlusResolver({ importStyle: false })],
     }),
     Components({
       resolvers: [ElementPlusResolver()],
