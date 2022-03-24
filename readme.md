@@ -59,7 +59,6 @@
  - [Vue](https://cn.vuejs.org/)
  - [Element Plus](http://element-plus.gitee.io/)
  - [wangEditor](https://www.wangeditor.com/)
- - [GBK.js](https://github.com/cnwhy/GBK.js)
  - [MDUI](https://www.mdui.org/)
 
 ## 📎 相关链接
