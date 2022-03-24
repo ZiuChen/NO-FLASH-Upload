@@ -19,9 +19,9 @@ module.exports = {
   namespace: "https://greasyfork.org/zh-CN/users/605474",
   require: [
     "https://cdn.jsdelivr.net/npm/@wangeditor/editor@latest/dist/index.min.js",
-    "https://cdn.jsdelivr.net/npm/gbk.js@0.3.0/dist/gbk.min.js",
     "https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js",
   ],
   icon: "https://gitee.com/ziuc/utool-filebed/raw/master/20210514-231824-0795.png",
-  grant: [],
+  grant: ["GM_xmlhttpRequest"],
+  connect: ["gitee.com"]
 };
