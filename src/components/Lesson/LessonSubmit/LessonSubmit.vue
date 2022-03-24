@@ -125,7 +125,9 @@ export default {
       let url = `http://cc.bjtu.edu.cn:81/meol/hw/stu/hwStuSubmitDo.do`;
       let formData = new FormData();
       formData.append("hwtId", this.hwtContentWithId.id);
-      formData.append("hwaId", this.hwtContentWithId.hwaId);
+      if (this.hwtContentWithId.hwaId !== undefined) {
+        formData.append("hwaId", this.hwtContentWithId.hwaId);
+      }
       formData.append("courseId", this.lid);
       formData.append("answer", this.getEditorContent());
       sendRequest(url, undefined, {

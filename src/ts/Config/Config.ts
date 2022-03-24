@@ -1,6 +1,4 @@
 const { version, repository, description } = require("../../../package.json");
-const greasyURL = `https://greasyfork.org/zh-CN/scripts/432056`;
-const feedBackURL = `https://wj.qq.com/s2/9790218/23fe/`;
 const updateURL = `https://gitee.com/ziuc/NO-FLASH-Upload/raw/master/publish/index.prod.user.js`;
 const updateInfo = `https://gitee.com/ziuc/NO-FLASH-Upload/raw/master/package.json`;
 const updateLOG = `https://gitee.com/ziuc/NO-FLASH-Upload/raw/master/doc/update_log.md`;
@@ -110,8 +108,6 @@ const userConfig = {
 export default {
   version: version,
   description: description,
-  greasyURL: greasyURL,
-  feedBackURL: feedBackURL,
   updateURL: updateURL,
   updateInfo: updateInfo,
   updateLOG: updateLOG,

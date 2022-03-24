@@ -15,7 +15,10 @@
       </span>
     </div>
     <div class="button-block" align="center">
-      <el-button @click="handleButtonClick(config.githubUrl)">
+      <el-button
+        class="inner-button"
+        @click="handleButtonClick(config.githubUrl)"
+      >
         <el-icon :size="iconSize"
           ><svg
             t="1646098546718"
@@ -34,28 +37,10 @@
             ></path></svg></el-icon
         >主页</el-button
       >
-      <el-button @click="handleButtonClick(config.feedBackURL)">
-        <el-icon :size="iconSize">
-          <svg
-            t="1646098492774"
-            class="icon"
-            viewBox="0 0 1024 1024"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            p-id="21633"
-            width="200"
-            height="200"
-          >
-            <path
-              d="M853.333333 85.333333H170.666667a85.333333 85.333333 0 0 0-85.333334 85.333334v768l170.666667-170.666667h597.333333a85.333333 85.333333 0 0 0 85.333334-85.333333V170.666667a85.333333 85.333333 0 0 0-85.333334-85.333334M256 384h512v85.333333H256m341.333333 128H256v-85.333333h341.333333m170.666667-170.666667H256V256h512"
-              fill=""
-              p-id="21634"
-            ></path>
-          </svg>
-        </el-icon>
-        反馈</el-button
+      <el-button
+        class="inner-button"
+        @click="handleButtonClick(this.donateUrl)"
       >
-      <el-button @click="handleButtonClick(this.donateUrl)">
         <el-icon :size="iconSize">
           <svg
             t="1646098584201"
@@ -76,6 +61,38 @@
         </el-icon>
         捐赠</el-button
       >
+      <el-dropdown class="inner-button" @command="handleCommand">
+        <el-button class="el-dropdown-link">
+          <el-icon :size="iconSize">
+            <svg
+              t="1646098492774"
+              class="icon"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="21633"
+              width="200"
+              height="200"
+            >
+              <path
+                d="M853.333333 85.333333H170.666667a85.333333 85.333333 0 0 0-85.333334 85.333334v768l170.666667-170.666667h597.333333a85.333333 85.333333 0 0 0 85.333334-85.333333V170.666667a85.333333 85.333333 0 0 0-85.333334-85.333334M256 384h512v85.333333H256m341.333333 128H256v-85.333333h341.333333m170.666667-170.666667H256V256h512"
+                fill=""
+                p-id="21634"
+              ></path>
+            </svg>
+          </el-icon>
+          反馈</el-button
+        >
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item :command="'github'"
+              >Github Issue</el-dropdown-item
+            >
+            <el-dropdown-item :command="'support'">腾讯兔小巢</el-dropdown-item>
+            <el-dropdown-item :command="'qq'">加入反馈群</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
     </div>
   </el-card>
 </template>
@@ -93,6 +110,17 @@ export default {
   methods: {
     handleButtonClick(url) {
       window.open(url);
+    },
+    handleCommand(command) {
+      if (command === "github") {
+        window.open(`https://github.com/ZiuChen/NO-FLASH-Upload/issues`);
+      } else if (command === "support") {
+        window.open(`https://support.qq.com/products/395800`);
+      } else if (command === "qq") {
+        window.open(
+          `https://qm.qq.com/cgi-bin/qm/qr?k=9qfHKTaQuWqYN1ys1yiQPdJ4iIlHwgL5&jump_from=webapi`
+        );
+      }
     },
   },
 };
@@ -122,5 +150,10 @@ export default {
 .button-block {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.inner-button {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 </style>
