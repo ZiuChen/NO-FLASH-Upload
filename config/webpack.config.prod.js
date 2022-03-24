@@ -19,8 +19,8 @@ const cfg = merge(webpackConfig, {
         extractComments: false,
         terserOptions: {
           format: {
-            comments: /./,
-            // comments: false,
+            // comments: /./,
+            comments: false,
           },
         },
       }),
