@@ -2,7 +2,9 @@ import sendRequest from "../SendRequest";
 
 export default async function getHwtReviewNew(courseId: string, hwtId: string) {
   let url = `http://cc.bjtu.edu.cn:81/meol/hw/stu/hwTaskAnswerView.do?courseId=${courseId}&hwtId=${hwtId}`;
-  return await sendRequest(url, undefined);
+  return await sendRequest(url, undefined).then((res) => {
+    return res;
+  });
   return {
     datas: {
       hwaAnswer: "", // 回答内容

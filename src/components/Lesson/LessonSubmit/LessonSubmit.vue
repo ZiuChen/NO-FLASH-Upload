@@ -81,7 +81,7 @@ export default {
   created() {
     this.lid = this.$route.params.lid;
     this.hwtid = this.$route.params.hwtid;
-    this.dataInit(this.hwtid);
+    this.dataInit(this.lid, this.hwtid);
   },
   watch: {
     $route(to) {
@@ -89,11 +89,11 @@ export default {
       if (this.$route.params.hwtid === undefined) return;
       this.hwtContent = {};
       this.hwtContentWithId = {};
-      this.dataInit(this.$route.params.hwtid);
+      this.dataInit(this.$route.params.lid, this.$route.params.hwtid);
     },
   },
   methods: {
-    async dataInit(hwtid) {
+    async dataInit(lid, hwtid) {
       await API.getHwtReviewNew(this.lid, this.hwtid).then((res) => {
         res.json().then((res) => {
           this.manySubmitStatus = res.datas.manySubmitStatus;
@@ -106,7 +106,7 @@ export default {
         return res;
       });
       if (this.$route.query.able === "true") {
-        await API.getHwtSubmitOld(hwtid).then((res) => {
+        await API.getHwtSubmitNew(lid, hwtid).then((res) => {
           this.hwtContentWithId = res;
           return res;
         });
@@ -114,7 +114,7 @@ export default {
     },
     refreshTable() {
       this.loadingStatus = true;
-      this.dataInit(this.$route.params.hwtid);
+      this.dataInit(this.$route.params.lid, this.$route.params.hwtid);
     },
     getEditorContent() {
       let editor = this.$refs.editorObj.editorObj;
@@ -122,26 +122,15 @@ export default {
     },
     hwtSubmit() {
       log("hwtSubmit", "提交作业确认");
-      let url = `http://cc.bjtu.edu.cn:81/meol/common/hw/student/write.do.jsp`;
-      const GBK = window.GBK;
-      var details = {
-        hwtid: this.hwtContentWithId.hwtid,
-        hwaid: this.hwtContentWithId.hwaid,
-        IPT_BODY: this.getEditorContent(),
-      };
-      var formBody = [];
-      for (var property in details) {
-        var encodedKey = GBK.URI.encodeURIComponent(property);
-        var encodedValue = GBK.URI.encodeURIComponent(details[property]);
-        formBody.push(encodedKey + "=" + encodedValue);
-      }
-      formBody = formBody.join("&");
+      let url = `http://cc.bjtu.edu.cn:81/meol/hw/stu/hwStuSubmitDo.do`;
+      let formData = new FormData();
+      formData.append("hwtId", this.hwtContentWithId.id);
+      formData.append("hwaId", this.hwtContentWithId.hwaId);
+      formData.append("courseId", this.lid);
+      formData.append("answer", this.getEditorContent());
       sendRequest(url, undefined, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: formBody,
+        body: formData,
       }).then((res) => {
         if (res.ok === true) {
           log("hwtSubmit", "成功提交作业", "success");
