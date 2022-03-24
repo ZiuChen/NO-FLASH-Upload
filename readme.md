@@ -26,13 +26,13 @@
 ## 🔰 开始使用
 
   1. 在任一浏览器上安装 [`Tampermonkey`](https://www.tampermonkey.net/) 脚本管理器。
-  2. [`点击此处`](https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/publish/index.prod.user.js) 安装脚本。[`备用链接`](https://gitee.com/ziuc/NO-FLASH-Upload/raw/master/publish/index.prod.user.js)
+  2. [`点击此处`](https://gitee.com/ziuc/NO-FLASH-Upload/raw/master/publish/index.prod.user.js) 安装脚本。
 
 | 浏览器版本  | 脚本管理器及其版本    | 脚本版本  | 可用性 |
 | ----------- | --------------------- | --------- | ------ |
-| **Chrome**  | **Tampermonkey 4.15** | **2.1.3** | ✔      |
-| **Edge**    | **Tampermonkey 4.15** | **2.1.3** | ✔      |
-| **FireFox** | **Tampermonkey 4.15** | **2.1.3** | ✔      |
+| **Chrome**  | **Tampermonkey 4.15** | **2.1.5** | ✔      |
+| **Edge**    | **Tampermonkey 4.15** | **2.1.5** | ✔      |
+| **FireFox** | **Tampermonkey 4.15** | **2.1.5** | ✔      |
 
   新版具有更好的稳定性，**请尽量保持脚本更新，使用最新版本**。使用中遇到任何问题，欢迎在[`Github Issues`](https://github.com/ZiuChen/NO-FLASH-Upload/issues)或[`Gitee Issues`](https://gitee.com/ziuc/NO-FLASH-Upload/issues)反馈交流。
 
@@ -69,8 +69,9 @@
 
 ## 📎 相关链接
 
+[`兔小巢反馈平台`](https://support.qq.com/products/395800)
+[`反馈交流QQ群：769115389`](https://qm.qq.com/cgi-bin/qm/qr?k=9qfHKTaQuWqYN1ys1yiQPdJ4iIlHwgL5&jump_from=webapi)
 [`更新计划`](https://github.com/ZiuChen/NO-FLASH-Upload/projects/2)
 [`更新日志`](doc/update_log.md)
-[`腾讯问卷反馈链接`](https://wj.qq.com/s2/9790218/23fe/)
 [`v1.x脚本介绍`](doc/usage_old.md)
 [`v1.x更新日志`](doc/update_log_old.md)
