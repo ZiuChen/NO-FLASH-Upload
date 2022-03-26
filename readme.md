@@ -26,7 +26,7 @@
 ## 🔰 开始使用
 
   1. 在任一浏览器上安装 [`Tampermonkey`](https://www.tampermonkey.net/) 脚本管理器。
-  2. [`点击此处`](https://gitee.com/ziuc/NO-FLASH-Upload/raw/master/publish/index.prod.user.js) 安装脚本。
+  2. [`点击此处`](https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/publish/index.prod.user.js) 安装脚本。
 
 | 浏览器版本  | 脚本管理器及其版本    | 脚本版本  | 可用性 |
 | ----------- | --------------------- | --------- | ------ |
