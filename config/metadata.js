@@ -21,7 +21,7 @@ module.exports = {
     "https://cdn.jsdelivr.net/npm/@wangeditor/editor@latest/dist/index.min.js",
     "https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js",
   ],
-  icon: "https://gitee.com/ziuc/utool-filebed/raw/master/20210514-231824-0795.png",
+  icon: "https://cdn.jsdelivr.net/gh/ZiuChen/ZiuChen@main/avatar.jpg",
   grant: ["GM_xmlhttpRequest"],
   connect: ["gitee.com"]
 };
