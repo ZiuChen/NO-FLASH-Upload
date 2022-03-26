@@ -8,9 +8,21 @@ async function getVersionInfo() {
     anonymous: true,
     method: "GET",
     url: config.updateInfo,
+    headers: { Referer: config.updateInfo },
     responseType: "json",
   })
     .then((res: any) => {
+      if (res === undefined) {
+        log("getVersionInfo", "数据获取异常，请重试或联系开发者", "error");
+        let notify = ElNotification({
+          title: "免Flash文件上传",
+          type: "warning",
+          message: `数据获取异常，请重试或联系开发者`,
+          onClick: () => {
+            notify.close();
+          },
+        });
+      }
       return res.body.version;
     })
     .then((res) => {
