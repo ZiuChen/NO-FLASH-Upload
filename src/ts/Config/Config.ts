@@ -1,8 +1,8 @@
 const { version, repository, description } = require("../../../package.json");
-const updateURL = `https://gitee.com/ziuc/NO-FLASH-Upload/raw/master/publish/index.prod.user.js`;
-const updateInfo = `https://gitee.com/ziuc/NO-FLASH-Upload/raw/master/package.json`;
-const updateLOG = `https://gitee.com/ziuc/NO-FLASH-Upload/raw/master/doc/update_log.md`;
-const notifyURL = `https://gitee.com/ziuc/NO-FLASH-Upload/raw/master/src/notify.json`;
+const updateURL = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/publish/index.prod.user`;
+const updateInfo = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/package.json`;
+const updateLOG = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/update_log.md`;
+const notifyURL = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/src/notify.json`;
 
 const userConfig = {
   "data-last-read-notify": {
