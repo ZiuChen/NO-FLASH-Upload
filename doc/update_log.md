@@ -1,6 +1,14 @@
 
 <p>
 <span>2022年3月26日</span>
+<em><b>V2.1.7：</b></em>
+</p>
+<ul>
+<li><b>FIX: </b>弃用从Gitee请求静态数据的方法，全部转移到jsdelivr</li>
+</ul>
+
+<p>
+<span>2022年3月26日</span>
 <em><b>V2.1.6：</b></em>
 </p>
 <ul>
