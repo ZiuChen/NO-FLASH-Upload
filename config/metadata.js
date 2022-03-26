@@ -22,6 +22,4 @@ module.exports = {
     "https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js",
   ],
   icon: "https://cdn.jsdelivr.net/gh/ZiuChen/ZiuChen@main/avatar.jpg",
-  grant: ["GM_xmlhttpRequest"],
-  connect: ["gitee.com"]
 };
