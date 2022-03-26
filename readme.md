@@ -34,7 +34,7 @@
 | **Edge**    | **Tampermonkey 4.15** | **2.1.5** | ✔      |
 | **FireFox** | **Tampermonkey 4.15** | **2.1.5** | ✔      |
 
-  新版具有更好的稳定性，**请尽量保持脚本更新，使用最新版本**。使用中遇到任何问题，欢迎在[`Github Issues`](https://github.com/ZiuChen/NO-FLASH-Upload/issues)或[`Gitee Issues`](https://gitee.com/ziuc/NO-FLASH-Upload/issues)反馈交流。
+  新版具有更好的稳定性，**请尽量保持脚本更新，使用最新版本**。使用中遇到任何问题，欢迎在[`Github Issues`](https://github.com/ZiuChen/NO-FLASH-Upload/issues)或[`腾讯兔小巢`](https://support.qq.com/products/395800)反馈交流。
 
 ## 📸 效果展示
 
@@ -53,11 +53,11 @@
   
 ## ❤️ 感谢捐赠
 
-**如果觉得脚本帮到了你，可以通过[捐赠二维码](https://gitee.com/ziuc/utool-filebed/raw/master/Buy%20me%20a%20coffee.png)赞赏我，这将鼓励我继续维护这个脚本。**
+**如果觉得脚本帮到了你，可以通过[捐赠二维码](https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/Buy%20me%20a%20coffee.png)赞赏我，这将鼓励我继续维护这个脚本。**
 
 [【定期更新】感谢捐赠名单❤](https://docs.qq.com/sheet/DRWFjSFlKWFplSldi)
 
-<a href="https://gitee.com/ziuc/utool-filebed/raw/master/Buy%20me%20a%20coffee.png"><img alt="捐赠二维码" width="65%" src="https://raw.githubusercontent.com/ZiuChen/NO-FLASH-Upload/v2.x-Vue/doc/img/Buy%20me%20a%20coffee.png"></img></a>
+<a href="https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/Buy%20me%20a%20coffee.png"><img alt="捐赠二维码" width="65%" src="https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/Buy%20me%20a%20coffee.png"></img></a>
 ## 🧱 第三方开源组件
 
 感谢这些组件帮助我极大地提升了开发效率：
