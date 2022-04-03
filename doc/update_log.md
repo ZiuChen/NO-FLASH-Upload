@@ -1,5 +1,15 @@
 
 <p>
+<span>2022年4月3日</span>
+<em><b>V2.1.10：</b></em>
+</p>
+<ul>
+<li><b>FIX: </b>修复切换作业时重复提交状态不更新的bug</li>
+<li><b>FIX: </b>修复脚本通知sort方法报错的bug</li>
+<li><b>PREF: </b>降低身份保活请求的发送频率</li>
+</ul>
+
+<p>
 <span>2022年3月26日</span>
 <em><b>V2.1.7：</b></em>
 </p>
