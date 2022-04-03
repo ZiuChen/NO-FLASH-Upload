@@ -122,7 +122,7 @@ export default {
           return res;
         });
       };
-      window.setInterval(callBack, 60000);
+      window.setInterval(callBack, 120000);
     },
   },
 };
