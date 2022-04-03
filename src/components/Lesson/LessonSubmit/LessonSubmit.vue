@@ -94,7 +94,7 @@ export default {
   },
   methods: {
     async dataInit(lid, hwtid) {
-      await API.getHwtReviewNew(this.lid, this.hwtid).then((res) => {
+      await API.getHwtReviewNew(lid, hwtid).then((res) => {
         res.json().then((res) => {
           this.manySubmitStatus = res.datas.manySubmitStatus;
           return res;
