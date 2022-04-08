@@ -73,7 +73,6 @@ export default {
   },
   watch: {
     propHwtContent: function (val) {
-      console.log(val);
       this.editorObj.clear();
       this.editorObj.dangerouslyInsertHtml(val.hwaAnswer);
     },

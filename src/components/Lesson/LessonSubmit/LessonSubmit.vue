@@ -92,16 +92,17 @@ export default {
   },
   methods: {
     async dataInit(lid, hwtid) {
-      await API.getHwtReviewNew(lid, hwtid).then((res) => {
-        res.json().then((res) => {
-          this.manySubmitStatus = res.datas.manySubmitStatus;
-          return res;
-        });
-      });
       await API.getHwtReviewOld(hwtid).then((res) => {
+        // 新接口加载速度很慢，在弃用旧接口前暂时不换
         this.hwtContent = res;
         this.loadingStatus = false;
         return res;
+      });
+      await API.getHwtReviewNew(lid, hwtid).then((res) => {
+        // 只用新接口获取重复提交信息
+        this.hwtContent.manySubmitStatus = res.datas.manySubmitStatus;
+        this.manySubmitStatus = res.datas.manySubmitStatus;
+        return res.datas.manySubmitStatus;
       });
       if (this.$route.query.able === "true") {
         await API.getHwtSubmitNew(lid, hwtid).then((res) => {
