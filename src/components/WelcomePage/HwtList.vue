@@ -100,7 +100,16 @@
         min-width="150px"
         sortable
       />
-      <el-table-column label="取得分数" align="center">
+      <el-table-column
+        label="取得分数"
+        :filters="[
+          { text: '尚未提交', value: -1 },
+          { text: '未批阅', value: 0 },
+          { text: '已批阅', value: 1 },
+        ]"
+        :filter-method="filterMark"
+        align="center"
+      >
         <template #default="scope">
           <el-tag :type="markFormatter(scope.row).type" disable-transitions>
             {{ markFormatter(scope.row).text }}</el-tag
@@ -191,6 +200,16 @@ export default {
       }
       // return row.lesson === value;
     },
+    filterMark(value, row) {
+      switch (value) {
+        case 0:
+          return this.hadFormatter(row).status === false;
+        case -1:
+          return row.mark === undefined;
+        case 1:
+          return row.mark !== undefined;
+      }
+    },
     toFilterArray(hwtArray) {
       let rtnArray = [];
       hwtArray.forEach((item) => {
@@ -232,7 +251,7 @@ export default {
     markFormatter(row) {
       if (row.mark !== undefined) {
         return {
-          text: mark,
+          text: row.mark,
           type: "success",
         };
       } else {
