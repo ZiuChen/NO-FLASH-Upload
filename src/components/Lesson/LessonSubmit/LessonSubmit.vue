@@ -44,7 +44,7 @@
       </el-card>
     </el-col>
     <el-col :span="10">
-      <HwtList></HwtList>
+      <HwtList :reloadTrigger="reloadTrigger"></HwtList>
       <LessonList></LessonList>
     </el-col>
   </el-row>
@@ -74,6 +74,7 @@ export default {
       hwtContentWithId: {}, // hwtid & hwaid
       manySubmitStatus: false,
       loadingStatus: true,
+      reloadTrigger: false,
     };
   },
   created() {
@@ -137,6 +138,7 @@ export default {
         if (res.ok === true) {
           log("hwtSubmit", "成功提交作业", "success");
           this.refreshTable();
+          this.reloadTrigger = !this.reloadTrigger;
           let notify = ElNotification({
             title: "免Flash文件上传",
             type: "success",

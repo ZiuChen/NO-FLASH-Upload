@@ -155,6 +155,7 @@ export default {
       hwtWriteUrl: `http://cc.bjtu.edu.cn:81/meol/common/hw/student/write.jsp?hwtid=`,
     };
   },
+  props: ["reloadTrigger"],
   watch: {
     lessonList: async function (val) {
       // Async Trap: cannot async in forEach
@@ -168,6 +169,9 @@ export default {
         });
       }
       this.loadingStatus = false;
+    },
+    reloadTrigger: function (val) {
+      this.refreshHwtList();
     },
   },
   methods: {
