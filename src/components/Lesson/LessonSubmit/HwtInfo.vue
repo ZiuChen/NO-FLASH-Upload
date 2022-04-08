@@ -9,25 +9,48 @@
     <el-descriptions-item label="总分">{{
       propHwtContent.fullMark
     }}</el-descriptions-item>
-    <el-descriptions-item label="重复提交">{{
-      formatter
-    }}</el-descriptions-item>
-    <el-descriptions-item label="作业内容" :span="5">
-      <div v-html="propHwtContent.content"></div>
+    <el-descriptions-item label="重复提交">
+      <el-tag :type="formatter.type"> {{ formatter.content }} </el-tag>
     </el-descriptions-item>
-    <el-descriptions-item label="回答内容" :span="5">
-      <div v-html="propHwtContent.hwaAnswer"></div>
-      <span v-if="propHwtContent.hwaAnswer === undefined">未提交内容</span>
+    <el-descriptions-item :span="5">
+      <template #label>
+        <div class="hwt-content-label">
+          <span>作业内容</span>
+          <el-button size="small" @click="toggleHwtContentShow">
+            显示/隐藏作业内容
+          </el-button>
+        </div>
+      </template>
+      <div v-show="hwtContentShow" v-html="propHwtContent.content"></div>
+      <div v-show="!hwtContentShow">作业内容已隐藏</div>
+    </el-descriptions-item>
+    <el-descriptions-item :span="5">
+      <template #label>
+        <div class="answer-content-label">
+          <span>回答内容</span>
+          <el-button size="small" @click="toggleAnswerContentShow">
+            显示/隐藏回答内容
+          </el-button>
+        </div>
+      </template>
+      <div class="hwt-answer">
+        <div v-show="answerContentShow">
+          <div v-html="propHwtContent.hwaAnswer"></div>
+          <span v-if="propHwtContent.hwaAnswer === undefined">未提交内容</span>
+        </div>
+        <div v-show="!answerContentShow">回答内容已隐藏</div>
+      </div>
     </el-descriptions-item>
   </el-descriptions>
 </template>
 
 <script>
-import API from "../../../ts/API";
 export default {
   data() {
     return {
       hwtContent: {}, // dont assign this.propHwtContent directly
+      hwtContentShow: true,
+      answerContentShow: true,
     };
   },
   props: ["propHwtContent"],
@@ -36,16 +59,47 @@ export default {
       this.hwtContent = val;
     },
   },
+  methods: {
+    toggleHwtContentShow() {
+      this.hwtContentShow = !this.hwtContentShow;
+    },
+    toggleAnswerContentShow() {
+      this.answerContentShow = !this.answerContentShow;
+    },
+  },
   computed: {
     formatter: function () {
-      if (this.hwtContent.manySubmitStatus) {
-        return "允许重复提交";
+      if (this.hwtContent.manySubmitStatus === true) {
+        return {
+          status: true,
+          type: "success",
+          content: "允许重复提交",
+        };
+      } else if (this.hwtContent.manySubmitStatus === false) {
+        return {
+          status: false,
+          type: "warning",
+          content: "只允许提交一次",
+        };
       } else {
-        return "只允许提交一次";
+        return {
+          status: undefined,
+          type: "info",
+          content: "...",
+        };
       }
     },
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.hwt-content-label,
+.answer-content-label {
+  display: flex;
+  justify-content: space-between;
+}
+.hwt-answer {
+  max-width: 500px;
+}
+</style>
