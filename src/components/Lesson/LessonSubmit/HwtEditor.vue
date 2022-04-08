@@ -163,9 +163,14 @@ export default {
     },
     handleUploadSuccess(response, file, fileList) {
       const node = {
-        type: "link",
-        url: `/meol/${response}" href="/meol/${response}`,
-        children: [{ text: file.name }],
+        type: "paragraph",
+        children: [
+          {
+            type: "link",
+            url: `/meol/${response}" href="/meol/${response}`,
+            children: [{ text: file.name }],
+          },
+        ],
       };
       this.editorObj.insertNode(node);
     },
