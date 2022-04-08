@@ -22,7 +22,10 @@
         </div>
       </template>
       <div v-show="hwtContentShow" v-html="propHwtContent.content"></div>
-      <div v-show="!hwtContentShow">作业内容已隐藏</div>
+
+      <div v-show="!hwtContentShow">
+        <el-tag type="warning">作业内容已隐藏</el-tag>
+      </div>
     </el-descriptions-item>
     <el-descriptions-item :span="5">
       <template #label>
@@ -38,7 +41,9 @@
           <div v-html="propHwtContent.hwaAnswer"></div>
           <span v-if="propHwtContent.hwaAnswer === undefined">未提交内容</span>
         </div>
-        <div v-show="!answerContentShow">回答内容已隐藏</div>
+        <div v-show="!answerContentShow">
+          <el-tag type="warning">回答内容已隐藏</el-tag>
+        </div>
       </div>
     </el-descriptions-item>
   </el-descriptions>

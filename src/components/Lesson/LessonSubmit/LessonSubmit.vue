@@ -1,7 +1,7 @@
 <template>
   <el-row class="card-container">
     <el-col :span="14">
-      <el-card shadow="always">
+      <el-card shadow="always" v-load="loadingStatus">
         <template #header>
           <div class="card-header">
             <span>提交作业</span>
@@ -87,6 +87,7 @@ export default {
       if (this.$route.params.hwtid === undefined) return;
       this.hwtContent = {};
       this.hwtContentWithId = {};
+      this.loadingStatus = true;
       this.dataInit(this.$route.params.lid, this.$route.params.hwtid);
     },
   },
