@@ -13,17 +13,17 @@
       />
     </div>
     <div class="config">
-      <span>{{ userConfig["config-notifylist-show"].name }}</span>
-      <el-switch
-        v-model="notifylistShow"
-        @change="handleChange($event, { id: 'config-notifylist-show' })"
-      />
-    </div>
-    <div class="config">
       <span>{{ userConfig["config-lessonlist-show"].name }}</span>
       <el-switch
         v-model="lessonlistShow"
         @change="handleChange($event, { id: 'config-lessonlist-show' })"
+      />
+    </div>
+    <div class="config">
+      <span>{{ userConfig["config-notifylist-show"].name }}</span>
+      <el-switch
+        v-model="notifylistShow"
+        @change="handleChange($event, { id: 'config-notifylist-show' })"
       />
     </div>
     <div class="config">
