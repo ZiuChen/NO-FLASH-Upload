@@ -57,7 +57,7 @@
         prop="name"
         label="作业标题"
         align="center"
-        min-width="150px"
+        min-width="200px"
       >
         <template #default="scope">
           <el-link
@@ -102,11 +102,8 @@
       />
       <el-table-column label="取得分数" align="center">
         <template #default="scope">
-          <el-tag
-            :type="markFormatter(scope.row.mark).type"
-            disable-transitions
-          >
-            {{ markFormatter(scope.row.mark).text }}</el-tag
+          <el-tag :type="markFormatter(scope.row).type" disable-transitions>
+            {{ markFormatter(scope.row).text }}</el-tag
           >
         </template>
       </el-table-column>
@@ -232,17 +229,24 @@ export default {
         return `还有${row.remain}天截止`;
       }
     },
-    markFormatter(mark) {
-      if (mark !== undefined) {
+    markFormatter(row) {
+      if (row.mark !== undefined) {
         return {
           text: mark,
           type: "success",
         };
       } else {
-        return {
-          text: "未批阅",
-          type: "info",
-        };
+        if (this.hadFormatter(row).status) {
+          return {
+            text: "未批阅",
+            type: "info",
+          };
+        } else {
+          return {
+            text: "尚未提交",
+            type: "info",
+          };
+        }
       }
     },
     hadFormatter(row) {
@@ -250,12 +254,14 @@ export default {
         // 未过期
         if (row.answerStatus === undefined) {
           return {
+            status: false,
             text: "未提交",
             tag: "warning",
           };
         } else {
           // 只要不是 undefined 一定是提交过的
           return {
+            status: true,
             text: "已提交",
             tag: "success",
           };
@@ -264,11 +270,13 @@ export default {
         // 已过期
         if (row.answerStatus === undefined) {
           return {
+            status: false,
             text: "未提交",
             tag: "warning",
           };
         } else {
           return {
+            status: true,
             text: "已提交",
             tag: "success",
           };
