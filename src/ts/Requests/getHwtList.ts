@@ -24,6 +24,7 @@ export default async function getHwtList(courseId: string) {
               (24 * 60 * 60 * 1000)
           ),
           able: item.submitStruts, // 是否允许提交
+          mark: item.mark,
           publisher: item.realName,
           mutualTask: item.mutualTask,
           answerStatus: item.answerStatus, // 是否已经提交，未提交为undefined，已经提交为true，过期为false

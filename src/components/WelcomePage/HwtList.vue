@@ -62,7 +62,7 @@
         <template #default="scope">
           <el-link
             @click="handleHwtNameClick(scope.$index, scope.row)"
-            :underline="false"
+            :title="scope.row.name"
             target="_blank"
             >{{ scope.row.name }}</el-link
           >
@@ -76,23 +76,16 @@
         </template>
       </el-table-column>
       <el-table-column
-        prop="date"
-        label="截止日期"
-        align="center"
-        min-width="150px"
-        sortable
-      />
-      <el-table-column
         prop="lesson"
         label="课程名"
         align="center"
+        width="200px"
         :filters="toFilterArray(lessonList)"
         :filter-method="filterLesson"
         ><template #default="scope">
           <el-tag
             class="lesson-tag"
             :title="scope.row.lesson"
-            type="success"
             @click="handleTagClick(scope.row.lid)"
             disable-transitions
           >
@@ -100,10 +93,20 @@
           >
         </template>
       </el-table-column>
-      <el-table-column label="能否提交" align="center">
+      <el-table-column
+        prop="date"
+        label="截止日期"
+        align="center"
+        min-width="150px"
+        sortable
+      />
+      <el-table-column label="取得分数" align="center">
         <template #default="scope">
-          <el-tag :type="ableFormatter(scope.row.able).tag" disable-transitions>
-            {{ ableFormatter(scope.row.able).text }}</el-tag
+          <el-tag
+            :type="markFormatter(scope.row.mark).type"
+            disable-transitions
+          >
+            {{ markFormatter(scope.row.mark).text }}</el-tag
           >
         </template>
       </el-table-column>
@@ -225,16 +228,16 @@ export default {
         return `还有${row.remain}天截止`;
       }
     },
-    ableFormatter(able) {
-      if (able === true) {
+    markFormatter(mark) {
+      if (mark !== undefined) {
         return {
-          text: "允许提交",
-          tag: "success",
+          text: mark,
+          type: "success",
         };
       } else {
         return {
-          text: "禁止提交",
-          tag: "info",
+          text: "未批阅",
+          type: "info",
         };
       }
     },
@@ -299,6 +302,7 @@ export default {
         mutualTask: hwt.mutualTask,
         answerStatus: hwt.answerStatus,
         showGrade: hwt.showGrade, // answerStatus == true || submitStruts == false
+        mark: hwt.mark,
       };
     },
     async appendTableData(tableObject) {
