@@ -131,7 +131,16 @@ export default {
         },
       };
       const toolbarConfig = {
-        excludeKeys: ["blockquote", "insertTable", "codeBlock", "fullScreen"],
+        excludeKeys: [
+          "blockquote",
+          "insertTable",
+          "codeBlock",
+          "fullScreen",
+          "emotion",
+          "lineHeight",
+          "todo",
+          "group-indent",
+        ],
         insertKeys: {
           index: 26,
           keys: ["attachment"],
