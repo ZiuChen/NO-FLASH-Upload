@@ -35,9 +35,7 @@
         <HwtEditor
           v-if="this.$route.query.able === 'true'"
           ref="editorObj"
-          :propHwtContents="{
-            hwtContent: hwtContent,
-          }"
+          :propHwtContent="hwtContent"
         ></HwtEditor>
         <div v-if="this.$route.query.able === 'true'" class="operation">
           <el-button @click="handleButtonSubmit">提交</el-button>

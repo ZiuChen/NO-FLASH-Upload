@@ -72,12 +72,13 @@ export default {
     };
   },
   watch: {
-    propHwtContents: function (val) {
+    propHwtContent: function (val) {
+      console.log(val);
       this.editorObj.clear();
-      this.editorObj.dangerouslyInsertHtml(val.hwtContent.hwaAnswer);
+      this.editorObj.dangerouslyInsertHtml(val.hwaAnswer);
     },
   },
-  props: ["propHwtContents"],
+  props: ["propHwtContent"],
   beforeUnmount() {
     this.editorObj.destroy(); // 取消挂载时销毁编辑器
   },
@@ -140,7 +141,7 @@ export default {
       const editor = E.createEditor({
         selector: "#editor-container",
         config: editorConfig,
-        html: this.propHwtContents.hwtContent.hwaAnswer,
+        html: this.propHwtContent.hwaAnswer,
         mode: "default",
       });
       // 创建工具栏
