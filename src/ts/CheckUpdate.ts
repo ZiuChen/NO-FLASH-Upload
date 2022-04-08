@@ -1,5 +1,6 @@
 import getVersionInfo from "./GetVersionInfo";
 import config from "./Config/Config";
+import ConfigOperations from "./Config/ConfigOperations";
 import type { Action } from "element-plus";
 
 async function checkUpdate() {
@@ -31,15 +32,19 @@ async function checkUpdate() {
       });
       return true; // need update
     } else {
-      // if(localStorage.getItem("config-update") !== "true") return
-      let notify = ElNotification({
-        title: "免Flash文件上传",
-        type: "success",
-        message: `版本已是最新：${res.current}`,
-        onClick: () => {
-          notify.close();
-        },
-      });
+      if (
+        ConfigOperations.readUserConfig()["config-hide-update-notify"].value ===
+        false
+      ) {
+        let notify = ElNotification({
+          title: "免Flash文件上传",
+          type: "success",
+          message: `版本已是最新：${res.current}`,
+          onClick: () => {
+            notify.close();
+          },
+        });
+      }
       return false; // don't need update
     }
   });

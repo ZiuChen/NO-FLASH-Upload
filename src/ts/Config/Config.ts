@@ -33,6 +33,13 @@ const userConfig = {
     id: "config-post-interval",
     type: "switch",
   },
+  "config-hide-update-notify": {
+    value: false,
+    default: false,
+    name: "隐藏检查更新提示",
+    id: "config-hide-update-notify",
+    type: "switch",
+  },
   "config-hwt-recent-range": {
     value: { min: -3, max: 15 },
     default: { min: -3, max: 15 },

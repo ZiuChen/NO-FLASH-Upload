@@ -26,6 +26,13 @@
         @change="handleChange($event, 'config-post-interval')"
       />
     </div>
+    <div class="config">
+      <span>{{ userConfig["config-hide-update-notify"].name }}</span>
+      <el-switch
+        v-model="hideUpdateNotifyStatus"
+        @change="handleChange($event, 'config-hide-update-notify')"
+      />
+    </div>
   </el-card>
 </template>
 
@@ -42,6 +49,7 @@ export default {
       backToOldStatus: false,
       showConsoleLogStatus: false,
       postIntervalStatus: false,
+      hideUpdateNotifyStatus: false,
     };
   },
   methods: {
@@ -51,6 +59,8 @@ export default {
       this.showConsoleLogStatus =
         this.userConfig["config-console-log-show"].value;
       this.postIntervalStatus = this.userConfig["config-post-interval"].value;
+      this.hideUpdateNotifyStatus =
+        this.userConfig["config-hide-update-notify"].value;
     },
     handleChange(status, param) {
       ConfigOperations.setUserConfig(param, status);
