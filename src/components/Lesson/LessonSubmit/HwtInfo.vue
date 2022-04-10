@@ -21,10 +21,11 @@
           </el-button>
         </div>
       </template>
-      <div v-show="hwtContentShow" v-html="propHwtContent.content"></div>
-
-      <div v-show="!hwtContentShow">
-        <el-tag type="warning">作业内容已隐藏</el-tag>
+      <div class="hwt-content">
+        <div v-show="hwtContentShow" v-html="propHwtContent.content"></div>
+        <div v-show="!hwtContentShow">
+          <el-tag type="warning">作业内容已隐藏</el-tag>
+        </div>
       </div>
     </el-descriptions-item>
     <el-descriptions-item :span="5">
@@ -104,7 +105,7 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-.hwt-answer {
+.hwt-content .hwt-answer {
   max-width: 500px;
 }
 </style>
