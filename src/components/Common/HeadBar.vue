@@ -14,8 +14,6 @@
 
 <script>
 import ConfigOperations from "../../ts/Config/ConfigOperations";
-import CheckUpdate from "../../ts/CheckUpdate";
-import getVersionInfo from "../../ts/GetVersionInfo";
 import API from "../../ts/API";
 import log from "../../ts/Log";
 
@@ -26,27 +24,10 @@ export default {
     };
   },
   created() {
-    this.getVersionInfo();
     this.popNotify();
     this.createInterval();
   },
   methods: {
-    async getVersionInfo() {
-      this.needUpdate = await getVersionInfo().then((res) => {
-        return res.need;
-      });
-    },
-    handleCommand(command) {
-      if (command === "exit") {
-        window.location.href =
-          "http://cc.bjtu.edu.cn:81/meol/popups/logout.jsp";
-      } else if (command === "old") {
-        ConfigOperations.setUserConfig("config-back-to-old", true);
-        window.location.reload();
-      } else if (command === "check") {
-        CheckUpdate();
-      }
-    },
     async popNotify() {
       return await API.getScriptNotify().then((notifies) => {
         // 取最大通知id若未阅读则弹窗提示阅读
