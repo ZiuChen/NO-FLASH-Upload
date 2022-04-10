@@ -162,17 +162,25 @@ export default {
       this.editorObj = editor; // 编辑器对象传递给父组件执行上传
     },
     handleUploadSuccess(response, file, fileList) {
-      const node = {
-        type: "paragraph",
-        children: [
-          {
-            type: "link",
-            url: `/meol/${response}" href="/meol/${response}`,
-            children: [{ text: file.name }],
-          },
-        ],
+      const innerNode = {
+        type: "link",
+        url: `/meol/${response}" href="/meol/${response}`,
+        children: [{ text: file.name }],
       };
-      this.editorObj.insertNode(node);
+      const outerNode = {
+        type: "paragraph",
+        children: [innerNode],
+      };
+      // 增加非空判断避免插入空行
+      if (this.editorObj.isEmpty()) {
+        this.editorObj.insertNode(innerNode);
+      } else {
+        this.editorObj.insertNode(outerNode);
+      }
+      setTimeout(() => {
+        // 上传成功后1.5秒清空上传文件列表
+        fileList.splice(0, 99);
+      }, 1500);
     },
   },
 };
