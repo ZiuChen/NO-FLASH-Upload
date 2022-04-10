@@ -63,6 +63,7 @@
           <el-link
             @click="handleHwtNameClick(scope.$index, scope.row)"
             :title="scope.row.name"
+            :underline="false"
             target="_blank"
             >{{ scope.row.name }}</el-link
           >
@@ -103,7 +104,6 @@
       <el-table-column
         label="取得分数"
         :filters="[
-          { text: '尚未提交', value: -1 },
           { text: '未批阅', value: 0 },
           { text: '已批阅', value: 1 },
         ]"
@@ -203,8 +203,6 @@ export default {
     filterMark(value, row) {
       switch (value) {
         case 0:
-          return this.hadFormatter(row).status === false;
-        case -1:
           return row.mark === undefined;
         case 1:
           return row.mark !== undefined;
@@ -255,17 +253,10 @@ export default {
           type: "success",
         };
       } else {
-        if (this.hadFormatter(row).status) {
-          return {
-            text: "未批阅",
-            type: "info",
-          };
-        } else {
-          return {
-            text: "尚未提交",
-            type: "info",
-          };
-        }
+        return {
+          text: "未批阅",
+          type: "info",
+        };
       }
     },
     hadFormatter(row) {
