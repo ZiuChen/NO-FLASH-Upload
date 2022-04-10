@@ -41,6 +41,7 @@
           <el-link
             :underline="false"
             :href="lessonPageUrl + scope.row.id"
+            :title="scope.row.name"
             target="_blank"
             >{{ scope.row.name }}</el-link
           >

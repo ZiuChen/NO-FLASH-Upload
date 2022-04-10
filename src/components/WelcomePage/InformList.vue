@@ -40,6 +40,7 @@
           <el-link
             :underline="false"
             :href="informUrl + scope.row.id"
+            :title="scope.row.notifyName"
             target="_blank"
             >{{ scope.row.notifyName }}</el-link
           >

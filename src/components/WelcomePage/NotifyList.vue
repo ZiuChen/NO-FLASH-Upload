@@ -42,6 +42,7 @@
           <el-link
             :href="`http://cc.bjtu.edu.cn:81/meol/jpk/course/layout/course_meswrap.jsp?courseId=${scope.row.lid}&nid=${scope.row.nid}`"
             :underline="false"
+            :title="scope.row.notifyName"
             target="_blank"
             >{{ scope.row.notifyName }}</el-link
           >
