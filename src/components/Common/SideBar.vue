@@ -9,7 +9,7 @@
     @select="handleSelect"
   >
     <el-menu-item class="mdui-ripple" index="welcome">
-      <el-icon :size="iconSize">
+      <el-icon title="主页" :size="iconSize">
         <svg
           t="1646100577131"
           class="icon"
@@ -29,41 +29,8 @@
       </el-icon>
       <span>主页</span>
     </el-menu-item>
-    <el-sub-menu class="mdui-ripple" index="lesson" v-if="false">
-      <template #title>
-        <el-icon :size="iconSize">
-          <svg
-            t="1646098033361"
-            class="icon"
-            viewBox="0 0 1024 1024"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            p-id="20883"
-            width="200"
-            height="200"
-          >
-            <path
-              d="M810.666667 810.666667H213.333333V341.333333h597.333334m-128-298.666666v85.333333H341.333333V42.666667H256v85.333333H213.333333c-47.36 0-85.333333 37.973333-85.333333 85.333333v597.333334a85.333333 85.333333 0 0 0 85.333333 85.333333h597.333334a85.333333 85.333333 0 0 0 85.333333-85.333333V213.333333a85.333333 85.333333 0 0 0-85.333333-85.333333h-42.666667V42.666667m-42.666667 469.333333h-213.333333v213.333333h213.333333v-213.333333z"
-              fill=""
-              p-id="20884"
-            ></path>
-          </svg>
-        </el-icon>
-        <span>课程列表</span>
-      </template>
-      <!-- <el-menu-item-group title="置顶课程"> </el-menu-item-group> -->
-      <el-menu-item-group title="所有课程">
-        <el-menu-item
-          class="mdui-ripple"
-          v-for="lesson in lessonList"
-          :key="lesson.id"
-          :index="lesson.id"
-          >{{ lesson.name }}</el-menu-item
-        >
-      </el-menu-item-group>
-    </el-sub-menu>
     <el-menu-item class="mdui-ripple" index="profile">
-      <el-icon :size="iconSize">
+      <el-icon title="个人设置" :size="iconSize">
         <svg
           t="1647787200801"
           class="icon"
@@ -84,7 +51,7 @@
       <span>个人设置</span>
     </el-menu-item>
     <el-menu-item class="mdui-ripple" index="about">
-      <el-icon :size="iconSize">
+      <el-icon title="关于" :size="iconSize">
         <svg
           t="1646097918982"
           class="icon"
@@ -105,7 +72,7 @@
       <span>关于</span>
     </el-menu-item>
     <el-menu-item class="mdui-ripple" index="logout" @click="handleLogoutClick">
-      <el-icon :size="iconSize">
+      <el-icon title="退出" :size="iconSize">
         <svg
           t="1649576180183"
           class="icon"
@@ -129,21 +96,13 @@
 </template>
 
 <script>
-import API from "../../ts/API";
 export default {
   data() {
     return {
-      lessonList: [],
       iconSize: 18,
     };
   },
-  mounted() {
-    this.getLessonList();
-  },
   methods: {
-    async getLessonList() {
-      this.lessonList = await API.getLessonList();
-    },
     handleSelect(index, indexPath, item, routeResult) {
       if (index === "logout") return;
       let rtn =

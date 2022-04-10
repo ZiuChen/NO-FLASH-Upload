@@ -2,7 +2,6 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 import WelcomeIndex from "../components/WelcomePage/WelcomeIndex.vue";
 import LessonIndex from "../components/Lesson/LessonIndex.vue";
-import LessonInfo from "../components/Lesson/LessonInfo/LessonInfo.vue";
 import LessonSubmit from "../components/Lesson/LessonSubmit/LessonSubmit.vue";
 import ProfileIndex from "../components/Profile/ProfileIndex.vue";
 import AboutIndex from "../components/About/AboutIndex.vue";
@@ -25,10 +24,6 @@ const router = createRouter({
         return `${to.path}/info`;
       },
       children: [
-        {
-          path: "info",
-          component: LessonInfo,
-        },
         {
           path: "submit/:hwtid",
           component: LessonSubmit,
