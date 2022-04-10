@@ -141,6 +141,6 @@ export default {
 }
 
 .el-icon {
-  zoom: 150%;
+  transform: scale(1.5);
 }
 </style>

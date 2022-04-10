@@ -86,9 +86,6 @@ export default {
 </script>
 
 <style scoped>
-.table-header-check-tag {
-  zoom: 15%;
-}
 .select-container {
   display: flex;
   align-items: center;

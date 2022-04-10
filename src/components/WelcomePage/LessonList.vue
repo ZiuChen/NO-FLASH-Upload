@@ -133,8 +133,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.table-header-check-tag {
-  zoom: 15%;
-}
-</style>
+<style scoped></style>

@@ -12,7 +12,7 @@
       <el-dropdown @command="handleCommand">
         <el-badge :is-dot="needUpdate">
           <el-icon
-            class="el-dropdown-link dropdown-trigger mdui-ripple"
+            class="el-dropdown-link dropdown-trigger"
             :size="25"
             color="white"
           >
@@ -131,10 +131,6 @@ export default {
 <style scoped>
 .el-row {
   background: linear-gradient(135deg, #743481, #005bac, #743481);
-}
-
-.dropdown-trigger {
-  cursor: pointer;
 }
 
 .el-col {
