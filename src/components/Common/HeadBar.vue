@@ -8,44 +8,7 @@
         alt="logo"
       />
     </el-col>
-    <el-col :span="8">
-      <el-dropdown @command="handleCommand">
-        <el-badge :is-dot="needUpdate">
-          <el-icon
-            class="el-dropdown-link dropdown-trigger"
-            :size="25"
-            color="white"
-          >
-            <svg
-              t="1647786304896"
-              class="icon"
-              viewBox="0 0 1024 1024"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              p-id="21307"
-              width="200"
-              height="200"
-            >
-              <path
-                d="M128 170.666667h768v170.666666H128V170.666667m0 256h768v170.666666H128v-170.666666m0 256h768v170.666666H128v-170.666666z"
-                fill=""
-                p-id="21308"
-              ></path>
-            </svg>
-          </el-icon>
-        </el-badge>
-        <template #dropdown>
-          <el-dropdown-menu>
-            <el-dropdown-item command="check">
-              检查更新
-              <el-badge :is-dot="needUpdate"></el-badge>
-            </el-dropdown-item>
-            <el-dropdown-item command="old">返回旧版</el-dropdown-item>
-            <el-dropdown-item command="exit">退出当前账号</el-dropdown-item>
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
-    </el-col>
+    <el-col :span="8"> </el-col>
   </el-row>
 </template>
 
@@ -60,7 +23,6 @@ export default {
   data() {
     return {
       userInfo: {},
-      needUpdate: false,
     };
   },
   created() {

@@ -104,6 +104,27 @@
       </el-icon>
       <span>关于</span>
     </el-menu-item>
+    <el-menu-item class="mdui-ripple" index="logout" @click="handleLogoutClick">
+      <el-icon :size="iconSize">
+        <svg
+          t="1649576180183"
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="21421"
+          width="200"
+          height="200"
+        >
+          <path
+            d="M512 85.333333c235.946667 0 426.666667 190.72 426.666667 426.666667s-190.72 426.666667-426.666667 426.666667S85.333333 747.946667 85.333333 512 276.053333 85.333333 512 85.333333m153.173333 213.333334L512 451.84 358.826667 298.666667 298.666667 358.826667 451.84 512 298.666667 665.173333 358.826667 725.333333 512 572.16 665.173333 725.333333 725.333333 665.173333 572.16 512 725.333333 358.826667 665.173333 298.666667z"
+            fill=""
+            p-id="21422"
+          ></path>
+        </svg>
+      </el-icon>
+      <span>退出</span>
+    </el-menu-item>
   </el-menu>
 </template>
 
@@ -124,11 +145,29 @@ export default {
       this.lessonList = await API.getLessonList();
     },
     handleSelect(index, indexPath, item, routeResult) {
+      if (index === "logout") return;
       let rtn =
         indexPath.length === 2
           ? { path: `/${indexPath[0]}/${indexPath[1]}/info` }
           : { path: `/${index}` };
       this.$router.push(rtn);
+    },
+    handleLogoutClick() {
+      ElMessageBox.confirm("即将退出当前账号", "警告", {
+        confirmButtonText: "确认",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          window.location.href =
+            "http://cc.bjtu.edu.cn:81/meol/popups/logout.jsp";
+        })
+        .catch(() => {
+          ElMessage({
+            type: "info",
+            message: "操作已取消",
+          });
+        });
     },
   },
 };
