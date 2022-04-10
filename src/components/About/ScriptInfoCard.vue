@@ -95,27 +95,29 @@
           </el-dropdown-menu>
         </template>
       </el-dropdown>
-      <el-button class="inner-button" @click="CheckUpdate()">
-        <el-icon :size="iconSize">
-          <svg
-            t="1649576753250"
-            class="icon"
-            viewBox="0 0 1024 1024"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            p-id="21556"
-            width="200"
-            height="200"
-          >
-            <path
-              d="M896 431.786667h-289.28l116.906667-120.32c-116.48-115.2-305.066667-119.466667-421.546667-4.266667a293.845333 293.845333 0 0 0 0 418.133333c116.48 115.2 305.066667 115.2 421.546667 0 58.026667-57.6 87.04-124.586667 87.04-209.066666h85.333333c0 84.48-37.546667 194.133333-112.64 268.373333-149.76 148.48-392.96 148.48-542.72 0-149.333333-148.053333-150.613333-388.693333-0.853333-536.746667a383.445333 383.445333 0 0 1 539.733333 0L896 128v303.786667M533.333333 341.333333v181.333334l149.333334 88.746666-30.72 51.626667L469.333333 554.666667V341.333333h64z"
-              fill=""
-              p-id="21557"
-            ></path>
-          </svg>
-        </el-icon>
-        更新
-      </el-button>
+      <el-badge :is-dot="needUpdate">
+        <el-button class="inner-button" @click="CheckUpdate()">
+          <el-icon :size="iconSize">
+            <svg
+              t="1649576753250"
+              class="icon"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="21556"
+              width="200"
+              height="200"
+            >
+              <path
+                d="M896 431.786667h-289.28l116.906667-120.32c-116.48-115.2-305.066667-119.466667-421.546667-4.266667a293.845333 293.845333 0 0 0 0 418.133333c116.48 115.2 305.066667 115.2 421.546667 0 58.026667-57.6 87.04-124.586667 87.04-209.066666h85.333333c0 84.48-37.546667 194.133333-112.64 268.373333-149.76 148.48-392.96 148.48-542.72 0-149.333333-148.053333-150.613333-388.693333-0.853333-536.746667a383.445333 383.445333 0 0 1 539.733333 0L896 128v303.786667M533.333333 341.333333v181.333334l149.333334 88.746666-30.72 51.626667L469.333333 554.666667V341.333333h64z"
+                fill=""
+                p-id="21557"
+              ></path>
+            </svg>
+          </el-icon>
+          更新
+        </el-button>
+      </el-badge>
     </div>
   </el-card>
 </template>
@@ -123,10 +125,15 @@
 <script>
 import config from "../../ts/Config/Config";
 import CheckUpdate from "../../ts/CheckUpdate";
+import getVersionInfo from "../../ts/GetVersionInfo";
 export default {
+  mounted() {
+    this.getVersionInfo();
+  },
   data() {
     return {
       config: config,
+      needUpdate: false,
       iconSize: 18,
       donateUrl: `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/Buy%20me%20a%20coffee.png`,
     };
@@ -148,6 +155,11 @@ export default {
     },
     CheckUpdate() {
       CheckUpdate();
+    },
+    async getVersionInfo() {
+      await getVersionInfo().then((res) => {
+        this.needUpdate = res.need;
+      });
     },
   },
 };
