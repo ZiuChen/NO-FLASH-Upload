@@ -64,13 +64,9 @@ export default {
     },
     handleChange(status, param) {
       ConfigOperations.setUserConfig(param, status);
-      let notify = ElNotification({
-        title: "免Flash文件上传",
+      ElMessage({
+        message: "设置已更新，部分设置刷新后生效",
         type: "success",
-        message: `修改了用户设置，部分设置刷新后生效`,
-        onClick: () => {
-          notify.close();
-        },
       });
     },
   },

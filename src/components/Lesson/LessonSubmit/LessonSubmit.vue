@@ -198,13 +198,9 @@ export default {
           log("hwtSubmit", "成功提交作业", "success");
           this.refreshTable();
           this.reloadTrigger = !this.reloadTrigger;
-          let notify = ElNotification({
-            title: "免Flash文件上传",
+          ElMessage({
+            message: "作业已成功提交",
             type: "success",
-            message: `作业已成功提交`,
-            onClick: () => {
-              notify.close();
-            },
           });
         }
       });
@@ -213,13 +209,9 @@ export default {
       log("handleButtonSubmit", "触发作业提交");
       if (this.$refs.editorObj.editorObj.isEmpty()) {
         log("handleButtonSubmit", "编辑器为空，拒绝执行提交", "error");
-        let notify = ElNotification({
-          title: "免Flash文件上传",
-          type: "error",
-          message: `编辑器内容为空，提交请求被拒绝。`,
-          onClick: () => {
-            notify.close();
-          },
+        ElMessage({
+          message: "编辑器内容为空，提交请求被拒绝",
+          type: "success",
         });
         return;
       }

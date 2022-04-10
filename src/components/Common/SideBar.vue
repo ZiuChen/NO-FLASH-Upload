@@ -112,7 +112,7 @@ export default {
       this.$router.push(rtn);
     },
     handleLogoutClick() {
-      ElMessageBox.confirm("即将退出当前账号", "警告", {
+      ElMessageBox.confirm("即将退出当前账号", "免Flash文件上传", {
         confirmButtonText: "确认",
         cancelButtonText: "取消",
         type: "warning",

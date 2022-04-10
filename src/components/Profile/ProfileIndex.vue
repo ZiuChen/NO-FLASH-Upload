@@ -33,24 +33,16 @@ export default {
   methods: {
     handleRestore() {
       configOperations.restoreUserConfig();
-      let notify = ElNotification({
-        title: "免Flash文件上传",
+      ElMessage({
+        message: "设置已重置，部分设置刷新后生效",
         type: "success",
-        message: `设置已重置，部分设置刷新后生效`,
-        onClick: () => {
-          notify.close();
-        },
       });
     },
     handleExport() {
       configOperations.exportUserConfig();
-      let notify = ElNotification({
-        title: "免Flash文件上传",
+      ElMessage({
+        message: "设置文件已导出",
         type: "success",
-        message: `设置文件已导出`,
-        onClick: () => {
-          notify.close();
-        },
       });
     },
     handleImport() {
