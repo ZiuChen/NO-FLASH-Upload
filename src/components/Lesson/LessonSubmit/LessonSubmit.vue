@@ -127,6 +127,7 @@ export default {
       let formData = new FormData();
       formData.append("hwtId", this.hwtContentWithId.id);
       if (this.hwtContentWithId.hwaId !== undefined) {
+        // 只能提交一次的作业不再要求hwaId参数
         formData.append("hwaId", this.hwtContentWithId.hwaId);
       }
       formData.append("courseId", this.lid);
@@ -152,6 +153,18 @@ export default {
     },
     handleButtonSubmit() {
       log("handleButtonSubmit", "触发作业提交");
+      if (this.$refs.editorObj.editorObj.isEmpty()) {
+        log("handleButtonSubmit", "编辑器为空，拒绝执行提交", "error");
+        let notify = ElNotification({
+          title: "免Flash文件上传",
+          type: "error",
+          message: `编辑器内容为空，提交请求被拒绝。`,
+          onClick: () => {
+            notify.close();
+          },
+        });
+        return;
+      }
       if (this.manySubmitStatus === false) {
         ElMessageBox.confirm(`该作业不允许重复提交，确定提交作业吗？`, "警告", {
           confirmButtonText: "OK",
