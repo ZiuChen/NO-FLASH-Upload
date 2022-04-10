@@ -61,7 +61,6 @@ const buttonMenu = {
 E.Boot.registerMenu(buttonMenu);
 export default {
   mounted() {
-    this.status = "config-hwt-submit-drag";
     this.initEditor();
   },
   data() {
@@ -162,8 +161,6 @@ export default {
       this.editorObj = editor; // 编辑器对象传递给父组件执行上传
     },
     handleUploadSuccess(response, file, fileList) {
-      console.log(file);
-      console.log(fileList);
       const innerNode = {
         type: "link",
         url: `/meol/${response}" href="/meol/${response}`,
