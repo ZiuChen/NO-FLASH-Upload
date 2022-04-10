@@ -162,6 +162,8 @@ export default {
       this.editorObj = editor; // 编辑器对象传递给父组件执行上传
     },
     handleUploadSuccess(response, file, fileList) {
+      console.log(file);
+      console.log(fileList);
       const innerNode = {
         type: "link",
         url: `/meol/${response}" href="/meol/${response}`,
@@ -179,7 +181,11 @@ export default {
       }
       setTimeout(() => {
         // 上传成功后1.5秒清空上传文件列表
-        fileList.splice(0, 99);
+        fileList.forEach((item, index) => {
+          if (item.name === file.name) {
+            fileList.splice(index, 1);
+          }
+        });
       }, 1500);
     },
   },
