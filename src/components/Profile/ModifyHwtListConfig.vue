@@ -83,6 +83,17 @@
         "
       />
     </div>
+    <div class="config default-expand">
+      <span>{{ userConfig["config-hwt-default-expand"].name }}</span>
+      <el-switch
+        v-model="defaultExpandStatus"
+        @change="
+          handleChange($event, {
+            id: 'config-hwt-default-expand',
+          })
+        "
+      />
+    </div>
   </el-card>
 </template>
 
@@ -100,6 +111,7 @@ export default {
       defaultSortStatus: "",
       defaultFilterStatus: "",
       hwtSubmitDragStatus: false,
+      defaultExpandStatus: false,
     };
   },
   methods: {
@@ -111,6 +123,8 @@ export default {
         this.userConfig["config-hwt-default-filter"].value;
       this.hwtSubmitDragStatus =
         this.userConfig["config-hwt-submit-drag"].value;
+      this.defaultExpandStatus =
+        this.userConfig["config-hwt-default-expand"].value;
     },
     handleChange(status, payload) {
       if (payload.id === "config-hwt-recent-range") {
@@ -135,7 +149,8 @@ export default {
 }
 .default-sort,
 .default-filter,
-.submit-drag {
+.submit-drag,
+.default-expand {
   padding-top: 10px;
 }
 </style>

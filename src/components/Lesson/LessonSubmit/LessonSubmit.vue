@@ -96,6 +96,7 @@
 </template>
 
 <script>
+import ConfigOperations from "../../../ts/Config/ConfigOperations";
 import API from "../../../ts/API";
 import log from "../../../ts/Log";
 import sendRequest from "../../../ts/SendRequest";
@@ -118,7 +119,7 @@ export default {
       hwtContent: {},
       hwtContentWithId: {}, // hwtid & hwaid
       expandSpanWidth: {
-        true: { left: 21, right: 0 },
+        true: { left: 24, right: 0 },
         false: {
           left: 14,
           right: 10,
@@ -127,7 +128,8 @@ export default {
       manySubmitStatus: false,
       loadingStatus: true,
       reloadTrigger: false,
-      tableExpandStatus: false,
+      tableExpandStatus:
+        ConfigOperations.readUserConfig()["config-hwt-default-expand"].value,
     };
   },
   created() {
@@ -167,10 +169,7 @@ export default {
       }
     },
     expandTable() {
-      console.log("expandTable");
       this.tableExpandStatus = !this.tableExpandStatus;
-      this.spanWidth.left = 24;
-      this.spanWidth.right = 0;
     },
     refreshTable() {
       this.loadingStatus = true;
