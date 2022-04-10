@@ -125,26 +125,17 @@ function importUserConfig() {
       let result: any = res.target.result;
       if (result.indexOf(`NOFLASHUPLOAD Setting`) === -1) {
         log("importUserConfig", "校验错误，导入设置中止", "error");
-        let notify = ElNotification({
-          title: "免Flash文件上传",
+        ElMessage({
+          message: "校验出错，导入中止，请检查后重试",
           type: "error",
-          duration: 0,
-          message: `校验出错，导入中止，请检查后重试`,
-          onClick: () => {
-            notify.close();
-          },
         });
         return false;
       } else {
         updateUserConfig(JSON.parse(result).userConfig);
         log("importUserConfig", "成功导入设置", "success");
-        let notify = ElNotification({
-          title: "免Flash文件上传",
+        ElMessage({
+          message: "成功导入设置，即将自动刷新",
           type: "success",
-          message: `成功导入设置，即将自动刷新...`,
-          onClick: () => {
-            notify.close();
-          },
         });
         setTimeout("location.reload()", 2500);
         return true;
