@@ -207,11 +207,14 @@ export default {
     },
     handleButtonSubmit() {
       log("handleButtonSubmit", "触发作业提交");
-      if (this.$refs.editorObj.editorObj.isEmpty()) {
+      if (
+        this.$refs.editorObj.editorObj.isEmpty() ||
+        this.$refs.editorObj.editorObj.getText() === ` `
+      ) {
         log("handleButtonSubmit", "编辑器为空，拒绝执行提交", "error");
         ElMessage({
           message: "编辑器内容为空，提交请求被拒绝",
-          type: "success",
+          type: "error",
         });
         return;
       }
