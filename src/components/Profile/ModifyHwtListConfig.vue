@@ -149,8 +149,7 @@ export default {
 }
 .default-sort,
 .default-filter,
-.submit-drag,
-.default-expand {
+.submit-drag {
   padding-top: 10px;
 }
 </style>
