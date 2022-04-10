@@ -68,6 +68,13 @@ const userConfig = {
     id: "config-hwt-submit-drag",
     type: "switch",
   },
+  "config-hwt-default-expand": {
+    value: false,
+    default: false,
+    name: "自动扩展作业卡片宽度",
+    id: "config-hwt-default-expand",
+    type: "switch",
+  },
   "config-hwtlist-show": {
     value: true,
     default: true,
