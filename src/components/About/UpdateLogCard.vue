@@ -29,7 +29,9 @@
         </el-button>
       </div>
     </template>
-    <div class="log-table" v-load="loadingStatus" v-html="log"></div>
+    <el-scrollbar height="125px">
+      <div v-load="loadingStatus" v-html="log"></div>
+    </el-scrollbar>
     <div class="full-log">
       <el-link
         href="https://github.com/ZiuChen/NO-FLASH-Upload/blob/master/doc/update_log.md"
@@ -67,10 +69,6 @@ export default {
 </script>
 
 <style scoped>
-.el-card {
-  height: 100%;
-}
-
 .full-log {
   text-align: right;
 }

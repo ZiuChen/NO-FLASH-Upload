@@ -3,8 +3,6 @@
     <el-col :span="24">
       <ScriptInfoCard></ScriptInfoCard>
     </el-col>
-  </el-row>
-  <el-row>
     <el-col :span="12">
       <UpdateLogCard></UpdateLogCard>
     </el-col>
@@ -30,6 +28,7 @@ export default {
 <style scoped>
 .el-card {
   margin: 10px 10px 10px 10px;
+  height: 250px;
   /* max-height: 1000px; */
 }
 </style>
