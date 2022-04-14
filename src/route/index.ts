@@ -47,13 +47,9 @@ router.beforeEach((to, from, next) => {
     // no match
     log("router.beforeEach", `未找到界面，重定向`, `warning`);
     from.name ? next({ name: from.name }) : next("/");
-    let notify = ElNotification({
-      title: "免Flash文件上传",
-      type: "warning",
-      message: `未找到页面，已重定向。`,
-      onClick: () => {
-        notify.close();
-      },
+    ElMessage({
+      type: "error",
+      message: "未找到页面",
     });
   } else {
     // matched
