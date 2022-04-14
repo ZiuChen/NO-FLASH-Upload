@@ -54,11 +54,11 @@ export default {
 
 <style scoped>
 .button-group {
-  padding-top: 55px;
+  padding-top: 10px;
   display: flex;
   justify-content: center;
 }
 .el-card {
-  height: 100%;
+  height: 350px;
 }
 </style>
