@@ -5,6 +5,7 @@ import LessonIndex from "../components/Lesson/LessonIndex.vue";
 import LessonSubmit from "../components/Lesson/LessonSubmit/LessonSubmit.vue";
 import ProfileIndex from "../components/Profile/ProfileIndex.vue";
 import AboutIndex from "../components/About/AboutIndex.vue";
+import PluginsIndex from "../components/Plugins/PluginsIndex.vue";
 
 import API from "../ts/API";
 import log from "../ts/Log";
@@ -37,6 +38,10 @@ const router = createRouter({
     {
       path: "/about",
       component: AboutIndex,
+    },
+    {
+      path: "/plugins",
+      component: PluginsIndex,
     },
   ],
 });
