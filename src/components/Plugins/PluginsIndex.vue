@@ -71,7 +71,21 @@ export default {
     },
     handleInstallClick(id) {
       const baseURL = ConfigOperations.readConfig()["pluginsBaseURL"];
-      window.open(baseURL + id + ".js");
+      window.location.href = baseURL + id + ".user.js";
+      ElMessageBox.alert(
+        `请在弹出的网页中更新脚本，更新后点击“ OK ”重新加载此页面`,
+        "提示",
+        {
+          confirmButtonText: "OK",
+          callback: (action) => {
+            if (action === "confirm") {
+              window.location.reload();
+            } else {
+              return false;
+            }
+          },
+        }
+      );
     },
   },
 };
