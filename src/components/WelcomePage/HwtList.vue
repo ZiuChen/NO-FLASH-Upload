@@ -364,13 +364,18 @@ export default {
     },
     async captureAsPicture() {
       let node = document.querySelector("#dom-capture");
+      let timeString = new Date().toLocaleDateString();
       domtoimage
-        .toPng(node)
+        .toPng(node, { filter: filter })
         .then(function (dataUrl) {
           var link = document.createElement("a");
-          link.download = "MyHwtTable.png";
+          link.download = "MyHwtTable_" + timeString + ".png";
           link.href = dataUrl;
           link.click();
+          ElMessage({
+            type: "success",
+            message: "成功将列表导出为PNG图像",
+          });
         })
         .catch(function (error) {
           ElMessage({
@@ -379,6 +384,9 @@ export default {
           });
           log("captureAsPicture", error, "error");
         });
+      function filter(node) {
+        return node.className !== "button-group"; // filter out .button-group
+      }
     },
     async refreshHwtList() {
       this.loadingStatus = true;
