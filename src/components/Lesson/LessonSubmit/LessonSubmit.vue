@@ -220,8 +220,8 @@ export default {
       }
       if (this.manySubmitStatus === false) {
         ElMessageBox.confirm(`该作业不允许重复提交，确定提交作业吗？`, "警告", {
-          confirmButtonText: "OK",
-          cancelButtonText: "Cancel",
+          confirmButtonText: "确认",
+          cancelButtonText: "取消",
         })
           .then((res) => {
             this.hwtSubmit();

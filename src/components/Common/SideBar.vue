@@ -146,10 +146,7 @@ export default {
             "http://cc.bjtu.edu.cn:81/meol/popups/logout.jsp";
         })
         .catch(() => {
-          ElMessage({
-            type: "info",
-            message: "操作已取消",
-          });
+          // cancel
         });
     },
   },
