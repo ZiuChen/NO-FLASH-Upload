@@ -3,6 +3,8 @@ const updateURL = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/pu
 const updateInfo = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/package.json`;
 const updateLOG = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/update_log.md`;
 const notifyURL = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/src/notify.json`;
+const pluginsURL = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/src/plugins.json`;
+const pluginsBaseURL = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/plugins/`;
 
 const userConfig = {
   "data-last-read-notify": {
@@ -121,11 +123,13 @@ const userConfig = {
 
 export default {
   version: version,
+  githubURL: repository.url,
   description: description,
   updateURL: updateURL,
   updateInfo: updateInfo,
   updateLOG: updateLOG,
-  githubUrl: repository.url,
   notifyURL: notifyURL,
+  pluginsURL: pluginsURL,
+  pluginsBaseURL: pluginsBaseURL,
   userConfig: userConfig,
 };

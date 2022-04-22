@@ -18,7 +18,7 @@
       <div class="button-block" align="center">
         <el-button
           class="inner-button"
-          @click="handleButtonClick(config.githubUrl)"
+          @click="handleButtonClick(config.githubURL)"
         >
           <el-icon :size="iconSize">
             <svg
