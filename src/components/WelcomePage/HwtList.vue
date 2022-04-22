@@ -1,5 +1,5 @@
 <template>
-  <el-card class="hwt-list" shadow="always" id="canvas-capture">
+  <el-card class="hwt-list" shadow="always" id="dom-capture">
     <template #header>
       <div class="card-header">
         <span>作业列表</span>
@@ -166,6 +166,7 @@
 <script>
 import API from "../../ts/API";
 import ConfigOperations from "../../ts/Config/ConfigOperations";
+import log from "../../ts/Log";
 
 export default {
   created() {
@@ -362,25 +363,22 @@ export default {
       }
     },
     async captureAsPicture() {
-      html2canvas(document.querySelector("#canvas-capture")).then((canvas) => {
-        canvas.toBlob(function (blob) {
-          var url = URL.createObjectURL(blob);
+      let node = document.querySelector("#dom-capture");
+      domtoimage
+        .toPng(node)
+        .then(function (dataUrl) {
           var link = document.createElement("a");
-          link.textContent = "download image";
-          link.href = url;
-          link.download = "mypainting.jpeg";
+          link.download = "MyHwtTable.png";
+          link.href = dataUrl;
           link.click();
-          // no longer need to read the blob so it's revoked
-          URL.revokeObjectURL(url);
+        })
+        .catch(function (error) {
+          ElMessage({
+            type: "error",
+            message: "导出为PNG时出错",
+          });
+          log("captureAsPicture", error, "error");
         });
-
-        // var base64 = canvas.toDataURL();
-        // var link = document.createElement("a");
-        // link.textContent = "download image";
-        // link.href = base64;
-        // link.download = "mypainting.jpeg";
-        // link.click();
-      });
     },
     async refreshHwtList() {
       this.loadingStatus = true;
