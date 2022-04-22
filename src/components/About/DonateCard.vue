@@ -22,6 +22,9 @@ export default {};
 
 <style scoped>
 .card-body {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
 }
 </style>
