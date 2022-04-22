@@ -1,7 +1,10 @@
 [
   {
-    "name": "批量下载课程平台资源",
     "id": "getResources",
-    "disabled": "false"
+    "name": "批量下载课程平台资源",
+    "description": "在资源列表添加按钮，点击即可批量下载课程平台资源",
+    "author": "Ziu",
+    "version": 0.1,
+    "status": true
   }
 ]
