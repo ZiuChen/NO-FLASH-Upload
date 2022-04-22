@@ -8,7 +8,7 @@
     :default-openeds="['lesson']"
     @select="handleSelect"
   >
-    <el-menu-item class="mdui-ripple first-menu-item" index="welcome">
+    <el-menu-item class="mdui-ripple top-menu-item" index="welcome">
       <el-icon title="主页" :size="iconSize">
         <svg
           t="1646100577131"
@@ -29,7 +29,7 @@
       </el-icon>
       <span>主页</span>
     </el-menu-item>
-    <el-menu-item class="mdui-ripple" index="plugins">
+    <el-menu-item class="mdui-ripple top-menu-item" index="plugins">
       <el-icon title="插件" :size="iconSize">
         <svg
           t="1649904381349"
@@ -49,7 +49,7 @@
       </el-icon>
       <span>关于</span>
     </el-menu-item>
-    <el-menu-item class="mdui-ripple" index="about">
+    <el-menu-item class="mdui-ripple top-menu-item" index="about">
       <el-icon title="关于" :size="iconSize">
         <svg
           t="1646097918982"
@@ -70,7 +70,7 @@
       </el-icon>
       <span>关于</span>
     </el-menu-item>
-    <el-menu-item class="mdui-ripple last-menu-item" index="profile">
+    <el-menu-item class="mdui-ripple bottom-menu-item" index="profile">
       <el-icon title="个人设置" :size="iconSize">
         <svg
           t="1647787200801"
@@ -91,7 +91,11 @@
       </el-icon>
       <span>个人设置</span>
     </el-menu-item>
-    <el-menu-item class="mdui-ripple" index="logout" @click="handleLogoutClick">
+    <el-menu-item
+      class="mdui-ripple bottom-menu-item"
+      index="logout"
+      @click="handleLogoutClick"
+    >
       <el-icon title="退出" :size="iconSize">
         <svg
           t="1649576180183"
@@ -162,11 +166,11 @@ export default {
   transform: scale(1.5);
 }
 
-.first-menu-item {
-  margin-top: 10px;
+.top-menu-item {
+  top: 10px;
 }
 
-.last-menu-item {
-  margin-top: 400px;
+.bottom-menu-item {
+  top: 400px;
 }
 </style>
