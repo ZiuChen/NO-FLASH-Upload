@@ -20,6 +20,7 @@ module.exports = {
   require: [
     "https://cdn.jsdelivr.net/npm/@wangeditor/editor@latest/dist/index.min.js",
     "https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js",
+    "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js",
   ],
   icon: "https://cdn.jsdelivr.net/gh/ZiuChen/ZiuChen@main/avatar.jpg",
 };
