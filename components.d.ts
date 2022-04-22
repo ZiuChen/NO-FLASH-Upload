@@ -49,6 +49,7 @@ declare module 'vue' {
     ModifyUserConfig: typeof import('./src/components/Profile/ModifyUserConfig.vue')['default']
     ModifyWelcomeConfig: typeof import('./src/components/Profile/ModifyWelcomeConfig.vue')['default']
     NotifyList: typeof import('./src/components/WelcomePage/NotifyList.vue')['default']
+    PluginsIndex: typeof import('./src/components/Plugins/PluginsIndex.vue')['default']
     ProfileIndex: typeof import('./src/components/Profile/ProfileIndex.vue')['default']
     ScriptInfoCard: typeof import('./src/components/About/ScriptInfoCard.vue')['default']
     SideBar: typeof import('./src/components/Common/SideBar.vue')['default']
