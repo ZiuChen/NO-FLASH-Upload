@@ -171,6 +171,6 @@ export default {
 }
 
 .bottom-menu-item {
-  top: 400px;
+  top: 425px;
 }
 </style>
