@@ -16,10 +16,7 @@
         </span>
       </div>
       <div class="button-block" align="center">
-        <el-button
-          class="inner-button"
-          @click="handleButtonClick(config.githubURL)"
-        >
+        <el-button class="inner-button" @click="handleButtonClick('github')">
           <el-icon :size="iconSize">
             <svg
               t="1649577317658"
@@ -40,10 +37,7 @@
           </el-icon>
           主页
         </el-button>
-        <el-button
-          class="inner-button"
-          @click="handleButtonClick(this.donateUrl)"
-        >
+        <el-button class="inner-button" @click="handleButtonClick('donate')">
           <el-icon :size="iconSize">
             <svg
               t="1646098584201"
@@ -64,7 +58,7 @@
           </el-icon>
           捐赠
         </el-button>
-        <el-dropdown class="inner-button" @command="handleCommand">
+        <el-dropdown class="inner-button" @command="handleButtonClick">
           <el-button class="el-dropdown-link">
             <el-icon :size="iconSize">
               <svg
@@ -121,6 +115,27 @@
             更新
           </el-button>
         </el-badge>
+        <el-button class="inner-button" @click="handleButtonClick('notify')">
+          <el-icon :size="iconSize">
+            <svg
+              t="1650700559946"
+              class="icon"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="20746"
+              width="200"
+              height="200"
+            >
+              <path
+                d="M554.666667 426.666667h-85.333334V256h85.333334m0 341.333333h-85.333334v-85.333333h85.333334m298.666666-426.666667H170.666667a85.333333 85.333333 0 0 0-85.333334 85.333334v768l170.666667-170.666667h597.333333a85.333333 85.333333 0 0 0 85.333334-85.333333V170.666667a85.333333 85.333333 0 0 0-85.333334-85.333334z"
+                fill=""
+                p-id="20747"
+              ></path>
+            </svg>
+          </el-icon>
+          通知
+        </el-button>
       </div>
     </div>
   </el-card>
@@ -130,6 +145,7 @@
 import config from "../../ts/Config/Config";
 import CheckUpdate from "../../ts/CheckUpdate";
 import getVersionInfo from "../../ts/GetVersionInfo";
+import API from "../../ts/API";
 export default {
   mounted() {
     this.getVersionInfo();
@@ -143,15 +159,18 @@ export default {
     };
   },
   methods: {
-    handleButtonClick(url) {
-      window.open(url);
-    },
-    handleCommand(command) {
-      if (command === "github") {
-        window.open(`https://github.com/ZiuChen/NO-FLASH-Upload/issues`);
+    handleButtonClick(type) {
+      if (type === "github") {
+        window.open(this.config.githubURL);
+      } else if (type === "donate") {
+        window.open(this.donateUrl);
+      } else if (type === "notify") {
+        API.getLastestScriptNotify(true);
       } else if (command === "support") {
+        // drop-down items
         window.open(`https://support.qq.com/products/395800`);
       } else if (command === "qq") {
+        // drop-down items
         window.open(
           `https://qm.qq.com/cgi-bin/qm/qr?k=9qfHKTaQuWqYN1ys1yiQPdJ4iIlHwgL5&jump_from=webapi`
         );
