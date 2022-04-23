@@ -13,6 +13,7 @@ import lessonOrderOperation from "./Requests/lessonOrderOperation";
 import getLoginStatus from "./Requests/getLoginStatus";
 import getLessonTopList from "./Requests/getLessonTopList";
 import getScriptNotify from "./Requests/getScriptNotify";
+import getLastestScriptNotify from "./Requests/getLastestScriptNotify";
 import getScriptUpdateLog from "./Requests/getScriptUpdateLog";
 import getPluginsData from "./Requests/getPluginsData";
 
@@ -32,6 +33,7 @@ export default {
   getLoginStatus: getLoginStatus,
   getLessonTopList: getLessonTopList,
   getScriptNotify: getScriptNotify,
+  getLastestScriptNotify: getLastestScriptNotify,
   getScriptUpdateLog: getScriptUpdateLog,
   getPluginsData: getPluginsData,
 };
