@@ -166,10 +166,10 @@ export default {
         window.open(this.donateUrl);
       } else if (type === "notify") {
         API.getLastestScriptNotify(true);
-      } else if (command === "support") {
+      } else if (type === "support") {
         // drop-down items
         window.open(`https://support.qq.com/products/395800`);
-      } else if (command === "qq") {
+      } else if (type === "qq") {
         // drop-down items
         window.open(
           `https://qm.qq.com/cgi-bin/qm/qr?k=9qfHKTaQuWqYN1ys1yiQPdJ4iIlHwgL5&jump_from=webapi`
