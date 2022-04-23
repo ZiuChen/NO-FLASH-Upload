@@ -8,8 +8,11 @@ export default async function getScriptUpdateLog() {
     return res.text().then((res: string) => {
       let praser = new DOMParser();
       let dom = praser.parseFromString(res, "text/html");
-      return `<p>${dom.querySelector("p").innerHTML}</p>
-      ${dom.querySelector("ul").innerHTML}`;
+      return `<p>${dom.querySelectorAll("p")[0].innerHTML}</p>
+      ${dom.querySelectorAll("ul")[0].innerHTML}<p>${
+        dom.querySelectorAll("p")[1].innerHTML
+      }</p>
+      ${dom.querySelectorAll("ul")[1].innerHTML}`;
     });
   });
 }
