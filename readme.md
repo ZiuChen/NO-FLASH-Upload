@@ -30,9 +30,9 @@
 
 | 浏览器版本  | 脚本管理器及其版本    | 脚本版本  | 可用性 |
 | ----------- | --------------------- | --------- | ------ |
-| **Chrome**  | `Tampermonkey 4.16` | `2.2.6` | ✔      |
-| **Edge**    | `Tampermonkey 4.16` | `2.2.6` | ✔      |
-| **FireFox** | `Tampermonkey 4.16` | `2.2.6` | ✔      |
+| **Chrome**  | `Tampermonkey 4.16` | `2.2.7` | ✔      |
+| **Edge**    | `Tampermonkey 4.16` | `2.2.7` | ✔      |
+| **FireFox** | `Tampermonkey 4.16` | `2.2.7` | ✔      |
 
   新版具有更好的稳定性，**请尽量保持脚本更新，使用最新版本**。使用中遇到任何问题，欢迎在[`Github Issues`](https://github.com/ZiuChen/NO-FLASH-Upload/issues)或[`腾讯兔小巢`](https://support.qq.com/products/395800)反馈交流。
 
