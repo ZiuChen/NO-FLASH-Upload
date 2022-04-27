@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         批量下载课程平台资源
 // @namespace    https://github.com/ZiuChen/NO-FLASH-Upload
-// @version      0.1
+// @version      0.2
 // @description  在资源列表添加按钮，点击即可批量下载课程平台资源
 // @author       Ziu
-// @updateURL    https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/plugins/getResources.js
-// @downloadURL  https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/plugins/getResources.js
+// @updateURL    https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/plugins/getResources.user.js
+// @downloadURL  https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/plugins/getResources.user.js
 // @match        http://cc.bjtu.edu.cn:81/meol/*
 // @require      https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js
 // @icon         https://cdn.jsdelivr.net/gh/ZiuChen/ZiuChen@main/avatar.jpg

@@ -4,6 +4,14 @@
     "name": "批量下载课程平台资源",
     "description": "在资源列表添加按钮，点击即可批量下载课程平台资源",
     "author": "Ziu",
+    "version": 0.2,
+    "status": true
+  },
+  {
+    "id": "fillCaptcha",
+    "name": "识别并自动填写MIS验证码",
+    "description": "利用讯飞识别API，识别并自动填写MIS入口的验证码答案，使用前需自行申请API",
+    "author": "Ziu",
     "version": 0.1,
     "status": true
   }
