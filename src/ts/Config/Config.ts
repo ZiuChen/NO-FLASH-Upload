@@ -1,10 +1,10 @@
-const { version, repository, description } = require("../../../package.json");
-const updateURL = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/publish/index.prod.user.js`;
-const updateInfo = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/package.json`;
-const updateLOG = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/update_log.md`;
-const notifyURL = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/src/notify.json`;
-const pluginsURL = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/src/plugins.json`;
-const pluginsBaseURL = `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/plugins/`;
+const { version, repository, description } = require("../../../package.json")
+const updateURL = `https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/publish/index.prod.user.js`
+const updateInfo = `https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/package.json`
+const updateLOG = `https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/update_log.md`
+const notifyURL = `https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/src/notify.json`
+const pluginsURL = `https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/src/plugins.json`
+const pluginsBaseURL = `https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/plugins/`
 
 const userConfig = {
   "data-last-read-notify": {
@@ -119,7 +119,7 @@ const userConfig = {
     id: "config-userinfo-show",
     type: "switch",
   },
-};
+}
 
 export default {
   version: version,
@@ -132,4 +132,4 @@ export default {
   pluginsURL: pluginsURL,
   pluginsBaseURL: pluginsBaseURL,
   userConfig: userConfig,
-};
+}

@@ -82,12 +82,8 @@
           >
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item :command="'github'"
-                >Github Issue</el-dropdown-item
-              >
-              <el-dropdown-item :command="'support'"
-                >腾讯兔小巢</el-dropdown-item
-              >
+              <el-dropdown-item :command="'github'">Github Issue</el-dropdown-item>
+              <el-dropdown-item :command="'support'">腾讯兔小巢</el-dropdown-item>
               <el-dropdown-item :command="'qq'">加入反馈群</el-dropdown-item>
             </el-dropdown-menu>
           </template>
@@ -142,50 +138,50 @@
 </template>
 
 <script>
-import config from "../../ts/Config/Config";
-import CheckUpdate from "../../ts/CheckUpdate";
-import getVersionInfo from "../../ts/GetVersionInfo";
-import API from "../../ts/API";
+import config from "../../ts/Config/Config"
+import CheckUpdate from "../../ts/CheckUpdate"
+import getVersionInfo from "../../ts/GetVersionInfo"
+import API from "../../ts/API"
 export default {
   mounted() {
-    this.getVersionInfo();
+    this.getVersionInfo()
   },
   data() {
     return {
       config: config,
       needUpdate: false,
       iconSize: 18,
-      donateUrl: `https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/Buy%20me%20a%20coffee.png`,
-    };
+      donateUrl: `https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/Buy%20me%20a%20coffee.png`,
+    }
   },
   methods: {
     handleButtonClick(type) {
       if (type === "github") {
-        window.open(this.config.githubURL);
+        window.open(this.config.githubURL)
       } else if (type === "donate") {
-        window.open(this.donateUrl);
+        window.open(this.donateUrl)
       } else if (type === "notify") {
-        API.getLastestScriptNotify(true);
+        API.getLastestScriptNotify(true)
       } else if (type === "support") {
         // drop-down items
-        window.open(`https://support.qq.com/products/395800`);
+        window.open(`https://support.qq.com/products/395800`)
       } else if (type === "qq") {
         // drop-down items
         window.open(
           `https://qm.qq.com/cgi-bin/qm/qr?k=9qfHKTaQuWqYN1ys1yiQPdJ4iIlHwgL5&jump_from=webapi`
-        );
+        )
       }
     },
     CheckUpdate() {
-      CheckUpdate();
+      CheckUpdate()
     },
     async getVersionInfo() {
       await getVersionInfo().then((res) => {
-        this.needUpdate = res.need;
-      });
+        this.needUpdate = res.need
+      })
     },
   },
-};
+}
 </script>
 
 <style scoped>

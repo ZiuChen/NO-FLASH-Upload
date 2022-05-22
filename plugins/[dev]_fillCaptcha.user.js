@@ -18,8 +18,8 @@
 const config = {
   hostUrl: "https://webapi.xfyun.cn/v1/service/v1/ocr/general",
   host: "webapi.xfyun.cn",
-  appid: "**********", // 控制台->我的应用->文字识别->印刷文字识别->APPID
-  apiKey: "********************", // 控制台->我的应用->文字识别->印刷文字识别->APIKey
+  appid: "5ef36af9", // 控制台->我的应用->文字识别->印刷文字识别->APPID
+  apiKey: "2619c2fc95d399dbf91297743b433d12", // 控制台->我的应用->文字识别->印刷文字识别->APIKey
   uri: "/v1/ise",
 };
 

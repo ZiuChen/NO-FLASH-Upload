@@ -26,7 +26,7 @@
 ## 🔰 开始使用
 
   1. 在任一浏览器上安装 [`Tampermonkey`](https://www.tampermonkey.net/) 脚本管理器。
-  2. [`点击此处`](https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/publish/index.prod.user.js) 安装脚本。
+  2. [`点击此处`](https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/publish/index.prod.user.js) 安装脚本。
 
 | 浏览器版本  | 脚本管理器及其版本    | 脚本版本  | 可用性 |
 | ----------- | --------------------- | --------- | ------ |
@@ -38,9 +38,9 @@
 
 ## 📸 效果展示
 
-<img alt="homepage" width="80%" src="https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/HomePage.jpg"></img>
+<img alt="homepage" width="80%" src="https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/HomePage.jpg"></img>
 
-<img alt="submissionpage" width="80%" src="https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/SubmissionPage.jpg"></img>
+<img alt="submissionpage" width="80%" src="https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/SubmissionPage.jpg"></img>
 ## 🏗️ 参与开发
 
   1. `Fork`[本仓库](https://github.com/ZiuChen/NO-FLASH-Upload)并`clone`到本地。
@@ -66,11 +66,11 @@
   
 ## ❤️ 感谢捐赠
 
-**如果觉得脚本帮到了你，可以通过[捐赠二维码](https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/Buy%20me%20a%20coffee.png)赞赏我，这将鼓励我继续维护这个脚本。**
+**如果觉得脚本帮到了你，可以通过[捐赠二维码](https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/Buy%20me%20a%20coffee.png)赞赏我，这将鼓励我继续维护这个脚本。**
 
 [【定期更新】感谢捐赠名单❤](https://docs.qq.com/sheet/DRWFjSFlKWFplSldi)
 
-<a href="https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/Buy%20me%20a%20coffee.png"><img alt="捐赠二维码" width="65%" src="https://cdn.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/Buy%20me%20a%20coffee.png"></img></a>
+<a href="https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/Buy%20me%20a%20coffee.png"><img alt="捐赠二维码" width="65%" src="https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/Buy%20me%20a%20coffee.png"></img></a>
 ## 🧱 第三方开源组件
 
 感谢这些组件帮助我极大地提升了开发效率：

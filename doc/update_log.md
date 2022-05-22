@@ -1,5 +1,14 @@
 
 <p>
+<span>2022年5月22日</span>
+<em><b>V2.2.9：</b></em>
+</p>
+<ul>
+<li><b>FIX: </b>将CDN迁移至fastly.jsdelivr.net</li>
+<li><b>STYLE: </b>调整插件列表样式</li>
+</ul>
+
+<p>
 <span>2022年4月23日</span>
 <em><b>V2.2.7：</b></em>
 </p>
