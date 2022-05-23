@@ -34,5 +34,11 @@
     "title": "急需帮助，缺你一票！",
     "content": "脚本作者正在参加编程挑战赛, 需要你的帮助! 访问: https://hackathon2022.juejin.cn/#/works/detail?unique=hUGM64FLXg31S7B-ooFxWA为我投上一票, 每天都可以投一票, 谢谢!",
     "pubTime": "2022-05-10"
+  },
+  {
+    "id": 7,
+    "title": "保持脚本更新，使用最新版本",
+    "content": "脚本可能会由于网络、政策等各种原因失效，当出现问题时请随时通过反馈通道反馈：https://support.qq.com/products/395800，我将及时在此处提供解决方案。",
+    "pubTime": "2022-05-23"
   }
 ]
