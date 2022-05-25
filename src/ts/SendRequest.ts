@@ -24,24 +24,33 @@ async function sendRequest(url: string, callBack?: Function, options?: Object) {
         reject(new Error(`请求超时: ${url}`));
       }, 5000);
     }),
-  ]).then((res) => {
-    if (res === undefined) {
-      // return undefined
-      log("sendRequest", `返回值为 undefined: ${url}`, "error");
-    } else {
-      if (res.ok !== undefined) {
-        // Response
-        if (res.ok === true) {
-          log("sendRequest", `请求完成: ${url}`, "success");
-        } else {
-          log("sendRequest", `请求出错: ${url}`, "error");
-        }
+  ])
+    .then((res) => {
+      if (res === undefined) {
+        // return undefined
+        log("sendRequest", `返回值为 undefined: ${url}`, "error");
       } else {
-        log("sendRequest", `请求完成: ${url}`, "success");
+        if (res.ok !== undefined) {
+          // Response
+          if (res.ok === true) {
+            log("sendRequest", `请求完成: ${url}`, "success");
+          } else {
+            log("sendRequest", `请求出错: ${url}`, "error");
+          }
+        } else {
+          log("sendRequest", `请求完成: ${url}`, "success");
+        }
       }
-    }
-    return res;
-  });
+      return res;
+    })
+    .catch((err) =>
+      ElNotification({
+        title: "免Flash文件上传",
+        type: "error",
+        message: `${err}，请重新尝试或联系开发者解决。`,
+        duration: 0,
+      })
+    );
 }
 
 async function blob2txt(blob: Blob) {
