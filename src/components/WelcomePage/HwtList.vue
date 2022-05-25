@@ -59,13 +59,13 @@
     <el-table
       ref="tableRef"
       :data="tableData"
-      :default-sort="{ prop: 'remain', order: configSort }"
+      :default-sort="{ prop: 'remainFloat', order: configSort }"
       :row-class-name="tableRowClassName"
       v-load="loadingStatus"
       style="width: 100%"
     >
       <el-table-column
-        prop="remain"
+        prop="remainFloat"
         label="剩余时间"
         align="center"
         :filters="[
@@ -215,16 +215,19 @@ export default {
     filterRemain(value, row) {
       switch (value) {
         case "今日截止":
-          return row.remain === 0;
+          return (
+            Math.floor(row.remainFloat) === 0 &&
+            new Date(row.date).getDate() === new Date().getDate()
+          );
         case "近期截止":
           return (
-            row.remain <= this.configRange.max &&
-            row.remain >= this.configRange.min
+            row.remainFloat <= this.configRange.max &&
+            row.remainFloat >= this.configRange.min
           );
         case "未过期":
-          return row.remain >= 0;
+          return row.remainFloat >= 0;
         case "已过期":
-          return row.remain < 0;
+          return row.remainFloat < 0;
       }
       // return row.lesson === value;
     },
@@ -249,16 +252,18 @@ export default {
     tableDataFilter(tableObj, start, end) {
       // start: larger, end: smaller
       // won't add to tableData
-      if (tableObj.remain < start && tableObj.remain > end) return true;
+      let remain = Math.floor(tableObj.remainFloat);
+      if (remain < start && remain > end) return true;
       else false;
     },
     tableRowClassName({ row, rowIndex }) {
+      let remain = Math.floor(row.remainFloat);
       if (row.able === false) {
         return "info-row";
       } else {
-        if (row.remain <= 3 && row.remain > 0) {
+        if (remain <= 3 && remain > 0) {
           return "warning-row";
-        } else if (row.remain === 0) {
+        } else if (remain === 0) {
           return "danger-row";
         } else {
           return "success-row";
@@ -266,12 +271,19 @@ export default {
       }
     },
     remainDayFormatter(row, column) {
-      if (row.remain < 0) {
-        return `已过期${Math.abs(row.remain).toString()}天`;
-      } else if (row.remain === 0) {
-        return `今日截止`;
-      } else if (row.remain > 0) {
-        return `还有${row.remain}天截止`;
+      let remainFloat = row.remainFloat;
+      let remain = Math.floor(remainFloat);
+      if (remainFloat < 0) {
+        return `已过期${Math.abs(remain).toString()}天`;
+      } else if (remainFloat >= 0 && remainFloat < 1) {
+        if (new Date(row.date).getDate() > new Date().getDate()) {
+          // (<24h) 但是截止日期在明天
+          return "还有1天截止";
+        } else {
+          return `今日截止`;
+        }
+      } else if (remainFloat > 0) {
+        return `还有${remain}天截止`;
       }
     },
     markFormatter(row) {
@@ -288,7 +300,7 @@ export default {
       }
     },
     hadFormatter(row) {
-      if (row.remain >= 0) {
+      if (row.remainFloat >= 0) {
         // 未过期
         if (row.answerStatus === undefined) {
           return {
@@ -346,7 +358,7 @@ export default {
         hwtID: hwt.id,
         name: hwt.title,
         date: hwt.deadLine,
-        remain: hwt.remain,
+        remainFloat: hwt.remainFloat,
         able: hwt.able,
         publisher: hwt.publisher,
         mutualTask: hwt.mutualTask,

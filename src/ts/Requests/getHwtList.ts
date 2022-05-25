@@ -19,10 +19,10 @@ export default async function getHwtList(courseId: string) {
           id: item.id.toString(),
           title: item.title,
           deadLine: item.deadLine,
-          remain: Math.floor(
+          remainFloat:
             (new Date(item.deadLine).getTime() - new Date().getTime()) /
-              (24 * 60 * 60 * 1000)
-          ),
+            (24 * 60 * 60 * 1000),
+          remain: Math.floor(this.remainFloat),
           able: item.submitStruts, // 是否允许提交
           mark: item.mark,
           publisher: item.realName,
