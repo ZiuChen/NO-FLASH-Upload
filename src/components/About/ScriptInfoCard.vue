@@ -176,7 +176,6 @@ export default {
       config: config,
       needUpdate: false,
       iconSize: 18,
-      donateUrl: `https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/Buy%20me%20a%20coffee.png`,
     };
   },
   methods: {
@@ -186,17 +185,13 @@ export default {
       } else if (type === "gitee") {
         window.open(this.config.giteeURL);
       } else if (type === "donate") {
-        window.open(this.donateUrl);
+        window.open(this.config.donateURL);
       } else if (type === "notify") {
         API.getLastestScriptNotify(true);
       } else if (type === "support") {
-        // drop-down items
-        window.open(`https://support.qq.com/products/395800`);
+        window.open(this.config.supportURL); // drop-down items
       } else if (type === "qq") {
-        // drop-down items
-        window.open(
-          `https://qm.qq.com/cgi-bin/qm/qr?k=9qfHKTaQuWqYN1ys1yiQPdJ4iIlHwgL5&jump_from=webapi`
-        );
+        window.open(this.config.qGroupURL); // drop-down items
       }
     },
     CheckUpdate() {

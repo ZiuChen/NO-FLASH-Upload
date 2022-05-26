@@ -1,5 +1,8 @@
 const { version, repository, description } = require("../../../package.json");
 const giteeURL = `https://gitee.com/ziuc/NO-FLASH-Upload`;
+const supportURL = `https://support.qq.com/products/395800`;
+const donateURL = `https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/Buy%20me%20a%20coffee.png`;
+const qGroupURL = `https://qm.qq.com/cgi-bin/qm/qr?k=9qfHKTaQuWqYN1ys1yiQPdJ4iIlHwgL5&jump_from=webapi`;
 const updateURL = `https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/publish/index.prod.user.js`;
 const updateInfo = `https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/package.json`;
 const updateLOG = `https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/update_log.md`;
@@ -126,6 +129,9 @@ export default {
   version: version,
   githubURL: repository.url,
   giteeURL: giteeURL,
+  supportURL: supportURL,
+  donateURL: donateURL,
+  qGroupURL: qGroupURL,
   description: description,
   updateURL: updateURL,
   updateInfo: updateInfo,

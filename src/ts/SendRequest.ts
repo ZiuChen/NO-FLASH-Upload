@@ -1,4 +1,5 @@
 import log from "./Log";
+import config from "./Config/Config";
 
 async function sendRequest(url: string, callBack?: Function, options?: Object) {
   log("sendRequest", `发送请求: ${url}`);
@@ -47,8 +48,12 @@ async function sendRequest(url: string, callBack?: Function, options?: Object) {
       ElNotification({
         title: "免Flash文件上传",
         type: "error",
-        message: `${err}，请重新尝试或联系开发者解决。`,
+        message: `请求出错：${err}，请重新尝试或点此联系开发者解决。`,
         duration: 0,
+        onClick: function () {
+          window.open(config.supportURL);
+          this.close();
+        },
       })
     );
 }
