@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         识别并自动填写MIS验证码
 // @namespace    https://github.com/ZiuChen/NO-FLASH-Upload
-// @version      0.1
+// @version      0.2
 // @description  利用讯飞识别API，识别并自动填写MIS入口的验证码答案，使用前需自行申请API
 // @author       Ziu
 // @updateURL    https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/plugins/fillCaptcha.user.js

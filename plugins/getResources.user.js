@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         批量下载课程平台资源
 // @namespace    https://github.com/ZiuChen/NO-FLASH-Upload
-// @version      0.2
+// @version      0.3
 // @description  在资源列表添加按钮，点击即可批量下载课程平台资源
 // @author       Ziu
 // @updateURL    https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/plugins/getResources.user.js
