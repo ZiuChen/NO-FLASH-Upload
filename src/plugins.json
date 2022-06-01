@@ -12,7 +12,7 @@
     "name": "识别并自动填写MIS验证码",
     "description": "利用讯飞识别API，识别并自动填写MIS入口的验证码答案，使用前需自行申请API",
     "author": "Ziu",
-    "version": 0.2,
+    "version": 0.3,
     "status": true
   }
 ]

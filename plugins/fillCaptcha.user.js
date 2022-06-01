@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         识别并自动填写MIS验证码
 // @namespace    https://github.com/ZiuChen/NO-FLASH-Upload
-// @version      0.2
+// @version      0.3
 // @description  利用讯飞识别API，识别并自动填写MIS入口的验证码答案，使用前需自行申请API
 // @author       Ziu
 // @updateURL    https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/plugins/fillCaptcha.user.js
@@ -9,7 +9,7 @@
 // @match        https://cas.bjtu.edu.cn/*
 // @connect      webapi.xfyun.cn
 // @grant        GM_xmlhttpRequest
-// @require      https://fastly.bootcss.com/crypto-js/3.1.9-1/crypto-js.min.js
+// @require      https://cdn.bootcss.com/crypto-js/3.1.9-1/crypto-js.min.js
 // @icon         https://fastly.jsdelivr.net/gh/ZiuChen/ZiuChen@main/avatar.jpg
 // ==/UserScript==
 
@@ -18,8 +18,8 @@
 const config = {
   hostUrl: "https://webapi.xfyun.cn/v1/service/v1/ocr/general",
   host: "webapi.xfyun.cn",
-  appid: "**********", // 控制台->我的应用->文字识别->印刷文字识别->APPID
-  apiKey: "********************", // 控制台->我的应用->文字识别->印刷文字识别->APIKey
+  appid: "*****", // 控制台->我的应用->文字识别->印刷文字识别->APPID
+  apiKey: "**********", // 控制台->我的应用->文字识别->印刷文字识别->APIKey
   uri: "/v1/ise",
 };
 
