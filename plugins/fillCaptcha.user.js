@@ -11,6 +11,7 @@
 // @grant        GM_xmlhttpRequest
 // @require      https://cdn.bootcss.com/crypto-js/3.1.9-1/crypto-js.min.js
 // @icon         https://fastly.jsdelivr.net/gh/ZiuChen/ZiuChen@main/avatar.jpg
+// @license      MIT
 // ==/UserScript==
 
 // 使用前请先申请: 讯飞开放平台 印刷文字识别接口 申请链接 www.xfyun.cn 每天可免费识别500次
@@ -175,7 +176,7 @@ const calcResult = (string) => {
 };
 
 // 发送识别请求
-await getPostBody()
+getPostBody()
   .then((body) => {
     if (!init()) throw new Error("初始化错误，请检查API是否正确输入");
     XHR({
