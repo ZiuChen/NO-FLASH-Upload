@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         识别并自动填写MIS验证码
 // @namespace    https://github.com/ZiuChen/NO-FLASH-Upload
-// @version      0.3
-// @description  利用讯飞识别API，识别并自动填写MIS入口的验证码答案，使用前需自行申请API
+// @version      1.0.0
+// @description  识别并自动填写北京交通大学MIS入口的验证码，使用前需自行申请讯飞印刷文字识别API
 // @author       Ziu
 // @updateURL    https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/plugins/fillCaptcha.user.js
 // @downloadURL  https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/plugins/fillCaptcha.user.js
@@ -13,126 +13,92 @@
 // @icon         https://fastly.jsdelivr.net/gh/ZiuChen/ZiuChen@main/avatar.jpg
 // ==/UserScript==
 
-// 讯飞开放平台 印刷文字识别接口 免费申请链接 www.xfyun.cn 每天500次
-// 使用前请先申请，申请后将APPID与APIKey填入下方config中
-const config = {
+// 使用前请先申请: 讯飞开放平台 印刷文字识别接口 申请链接 www.xfyun.cn 每天可免费识别500次
+// apikey存储在本地不会上传
+const global = {
   hostUrl: "https://webapi.xfyun.cn/v1/service/v1/ocr/general",
-  host: "webapi.xfyun.cn",
-  appid: "*****", // 控制台->我的应用->文字识别->印刷文字识别->APPID
-  apiKey: "**********", // 控制台->我的应用->文字识别->印刷文字识别->APIKey
-  uri: "/v1/ise",
+  appid: localStorage.getItem("xf_appid"), // 控制台->我的应用->文字识别->印刷文字识别->APPID
+  apiKey: localStorage.getItem("xf_apiKey"), // 控制台->我的应用->文字识别->印刷文字识别->APIKey
+  imgSrc: document.querySelector(".captcha").src, // img src
 };
 
-// 获取当前时间戳
-let ts = parseInt(new Date().getTime() / 1000);
-
-// 发送识别请求
-await getPostBody().then((body) => {
-  XHR({
-    GM: true,
-    anonymous: true,
-    method: "POST",
-    url: config.hostUrl,
-    headers: getReqHeader(),
-    data: body,
-    responseType: "json",
-  }).then((res) => {
-    try {
-      let originString = res.body.data.block[0].line[0].word[0].content;
-      document.querySelector("#id_captcha_1").value =
-        processString(originString).toString(); // 填入输入框内
-      // FIXME: Debug output
-      console.log(originString);
-      console.log(processString(originString));
-    } catch (error) {
-      console.log(error);
-      if (confirm("识别失败，请检查Key是否正确填写，点击确定重新识别")) {
-        location.reload();
-      }
+const init = () => {
+  if (!global.appid || !global.apiKey) {
+    const appid = prompt("[讯飞印刷文字识别]请输入appid: ");
+    const apiKey = prompt("[讯飞印刷文字识别]请输入apiKey: ");
+    if (appid && apiKey) {
+      localStorage.setItem("xf_appid", appid);
+      localStorage.setItem("xf_apiKey", apiKey);
+      global.appid = appid;
+      global.apiKey = apiKey;
+      return true;
+    } else {
+      return false;
     }
-  });
-});
-
-// 处理ocr识别传回的字符串
-function processString(string) {
-  if (string.indexOf("x") !== -1) {
-    return parseInt(string.split("x")[0]) * parseInt(string.split("x")[1]);
-  } else if (string.indexOf("X") !== -1) {
-    return parseInt(string.split("X")[0]) * parseInt(string.split("X")[1]);
-  } else if (string.indexOf("×") !== -1) {
-    return parseInt(string.split("×")[0]) * parseInt(string.split("×")[1]);
-  } else if (string.indexOf("*") !== -1) {
-    return parseInt(string.split("*")[0]) * parseInt(string.split("*")[1]);
-  } else if (string.indexOf("+") !== -1) {
-    return parseInt(string.split("+")[0]) + parseInt(string.split("+")[1]);
-  } else if (string.indexOf("-") !== -1) {
-    return parseInt(string.split("-")[0]) - parseInt(string.split("-")[1]);
-  } else if (string.indexOf(".") !== -1) {
-    return parseInt(string.split(".")[0]) - parseInt(string.split(".")[1]);
-  } else {
-    return "未能成功识别";
   }
-}
+  return true;
+};
 
 // 获取图片base64编码
-async function getBase64() {
-  let url = document.querySelector(".captcha").src;
-  return await fetch(url).then(async (res) => {
+const getBase64 = async () => {
+  return fetch(global.imgSrc).then(async (res) => {
     if (res.ok) {
       return res.blob().then(async (blob) => {
-        return await readFileAsync(blob).then((base64) => {
-          return base64.split("base64,")[1]; // 移除前缀
-        });
-        function readFileAsync(blob) {
+        const readFileAsync = (blob) => {
           return new Promise((resolve, reject) => {
-            let reader = new FileReader();
+            const reader = new FileReader();
             reader.onload = () => {
               resolve(reader.result);
             };
             reader.onerror = reject;
             reader.readAsDataURL(blob);
           });
-        }
+        };
+        return readFileAsync(blob).then((base64) => {
+          return base64.split("base64,")[1]; // 移除前缀
+        });
       });
     } else {
       alert("获取源图像失败");
     }
   });
-}
+};
 
 // 组装业务参数
-function getXParamStr() {
-  let xParam = {
-    language: "cn|en",
-  };
+const getXParamStr = () => {
   return CryptoJS.enc.Base64.stringify(
-    CryptoJS.enc.Utf8.parse(JSON.stringify(xParam))
+    CryptoJS.enc.Utf8.parse(
+      JSON.stringify({
+        language: "cn|en",
+      })
+    )
   );
-}
+};
 
 // 组装请求头
-function getReqHeader() {
-  let xParamStr = getXParamStr();
-  let xCheckSum = CryptoJS.MD5(config.apiKey + ts + xParamStr).toString();
+const getReqHeader = () => {
+  const xParamStr = getXParamStr();
+  const ts = parseInt(new Date().getTime() / 1000); // 获取当前时间戳
+  const xCheckSum = CryptoJS.MD5(global.apiKey + ts + xParamStr).toString();
   return {
     "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
-    "X-Appid": config.appid,
+    "X-Appid": global.appid,
     "X-CurTime": ts + "",
     "X-Param": xParamStr,
     "X-CheckSum": xCheckSum,
   };
-}
+};
 
 // 生成请求body
-async function getPostBody() {
-  return await getBase64().then((base64) => {
+const getPostBody = async () => {
+  return getBase64().then((base64) => {
     return "image=" + base64;
   });
-}
+};
 
 // 发起xmlhttpRequest请求（GM函数和浏览器原生）
 // @Github andywang425
-function XHR(XHROptions) {
+const XHR = (XHROptions) => {
   return new Promise((resolve) => {
     const onerror = (error) => {
       console.log("XHR出错");
@@ -175,4 +141,62 @@ function XHR(XHROptions) {
       xhr.send(XHROptions.data);
     }
   });
-}
+};
+
+const reviseString = (originString) => {
+  const rules = {
+    "*": ["x", "X", "×"],
+    "/": ["."],
+    " ": ["=", "元", "月"], // remove
+  };
+  let rtnString = originString;
+  for (let symbol of Object.keys(rules)) {
+    let rule = rules[symbol];
+    rule.forEach((r) => {
+      if (originString.indexOf(r) !== -1) {
+        rtnString = rtnString.replace(r, symbol);
+      } else {
+        // 未匹配到修正规则
+      }
+    });
+  }
+  console.log("originString: " + originString);
+  console.log("rtnString: " + rtnString);
+  return rtnString;
+};
+
+// 处理ocr识别传回的字符串
+const calcResult = (string) => {
+  try {
+    return eval(reviseString(string));
+  } catch (error) {
+    confirm("计算失败，点击确定重新识别") && location.reload();
+  }
+};
+
+// 发送识别请求
+await getPostBody()
+  .then((body) => {
+    if (!init()) throw new Error("初始化错误，请检查API是否正确输入");
+    XHR({
+      GM: true,
+      anonymous: true,
+      method: "POST",
+      url: global.hostUrl,
+      headers: getReqHeader(),
+      data: body,
+      responseType: "json",
+    }).then((response) => {
+      const originString =
+        response?.body?.data?.block[0]?.line[0]?.word[0]?.content;
+      if (originString) {
+        const result = calcResult(originString);
+        document.querySelector("#id_captcha_1").value = result; // 填入输入框内
+      } else {
+        confirm("识别失败，点击确定重新识别") && location.reload();
+      }
+    });
+  })
+  .catch((error) => {
+    alert("出错了: " + error);
+  });
