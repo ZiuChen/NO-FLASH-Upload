@@ -7,7 +7,7 @@ import ProfileIndex from "../components/Profile/ProfileIndex.vue";
 import AboutIndex from "../components/About/AboutIndex.vue";
 import PluginsIndex from "../components/Plugins/PluginsIndex.vue";
 
-import API from "../ts/API";
+import API from "../request/API";
 import log from "../ts/Log";
 
 const router = createRouter({

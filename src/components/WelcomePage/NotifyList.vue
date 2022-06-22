@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import API from "@/ts/API";
+import API from "@/request/API";
 export default {
   created() {
     this.getRemindNotifies();

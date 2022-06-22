@@ -166,7 +166,7 @@
 import config from "@/ts/Config/Config";
 import CheckUpdate from "@/ts/CheckUpdate";
 import getVersionInfo from "@/ts/GetVersionInfo";
-import API from "@/ts/API";
+import API from "@/request/API";
 export default {
   mounted() {
     this.getVersionInfo();

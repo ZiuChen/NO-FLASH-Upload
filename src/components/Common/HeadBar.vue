@@ -14,7 +14,7 @@
 
 <script>
 import ConfigOperations from "@/ts/Config/ConfigOperations";
-import API from "@/ts/API";
+import API from "@/request/API";
 import log from "@/ts/Log";
 
 export default {

@@ -1,4 +1,4 @@
-import sendRequest from "./SendRequest";
+import sendRequest from "../request/SendRequest";
 import log from "./Log";
 import config from "./Config/Config";
 

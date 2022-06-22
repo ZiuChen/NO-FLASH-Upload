@@ -164,7 +164,7 @@
 </template>
 
 <script>
-import API from "@/ts/API";
+import API from "@/request/API";
 import ConfigOperations from "@/ts/Config/ConfigOperations";
 import log from "@/ts/Log";
 

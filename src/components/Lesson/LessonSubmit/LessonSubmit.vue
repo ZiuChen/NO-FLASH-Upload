@@ -97,9 +97,9 @@
 
 <script>
 import ConfigOperations from "@/ts/Config/ConfigOperations";
-import API from "@/ts/API";
+import API from "@/request/API";
 import log from "@/ts/Log";
-import sendRequest from "@/ts/SendRequest";
+import sendRequest from "@/request/SendRequest";
 import HwtList from "../../WelcomePage/HwtList.vue";
 import LessonList from "../../WelcomePage/LessonList.vue";
 import HwtInfo from "../LessonSubmit/HwtInfo.vue";

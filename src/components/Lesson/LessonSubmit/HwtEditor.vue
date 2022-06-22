@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import sendRequest from "@/ts/SendRequest";
+import sendRequest from "@/request/SendRequest";
 import ConfigOperations from "@/ts/Config/ConfigOperations";
 const E = window.wangEditor;
 class ButtonMenuClass {
