@@ -8,7 +8,7 @@ import AboutIndex from "../components/About/AboutIndex.vue";
 import PluginsIndex from "../components/Plugins/PluginsIndex.vue";
 
 import API from "../request/API";
-import log from "../ts/Log";
+import log from "../hooks/Log";
 
 const router = createRouter({
   history: createWebHashHistory(),

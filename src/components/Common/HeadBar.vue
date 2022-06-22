@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import ConfigOperations from "@/ts/Config/ConfigOperations";
+import ConfigOperations from "@/hooks/Config/ConfigOperations";
 import API from "@/request/API";
-import log from "@/ts/Log";
+import log from "@/hooks/Log";
 
 export default {
   data() {

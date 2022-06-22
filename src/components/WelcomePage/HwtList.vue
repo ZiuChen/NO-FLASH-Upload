@@ -165,8 +165,8 @@
 
 <script>
 import API from "@/request/API";
-import ConfigOperations from "@/ts/Config/ConfigOperations";
-import log from "@/ts/Log";
+import ConfigOperations from "@/hooks/Config/ConfigOperations";
+import log from "@/hooks/Log";
 
 export default {
   created() {

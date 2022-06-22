@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import ConfigOperations from "@/ts/Config/ConfigOperations";
+import ConfigOperations from "@/hooks/Config/ConfigOperations";
 import HwtList from "./HwtList.vue";
 import InformList from "./InformList.vue";
 import NotifyList from "./NotifyList.vue";

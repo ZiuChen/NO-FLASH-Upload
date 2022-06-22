@@ -1,5 +1,5 @@
 import getScriptNotify from "./getScriptNotify";
-import ConfigOperations from "../../ts/Config/ConfigOperations";
+import ConfigOperations from "../../hooks/Config/ConfigOperations";
 
 export default async function getLastestScriptNotify(manually: boolean) {
   return await getScriptNotify().then((notifies) => {

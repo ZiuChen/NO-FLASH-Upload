@@ -163,9 +163,9 @@
 </template>
 
 <script>
-import config from "@/ts/Config/Config";
-import CheckUpdate from "@/ts/CheckUpdate";
-import getVersionInfo from "@/ts/GetVersionInfo";
+import config from "@/hooks/Config/Config";
+import CheckUpdate from "@/hooks/CheckUpdate";
+import getVersionInfo from "@/hooks/GetVersionInfo";
 import API from "@/request/API";
 export default {
   mounted() {

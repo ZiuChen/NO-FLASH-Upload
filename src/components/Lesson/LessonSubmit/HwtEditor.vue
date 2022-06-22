@@ -35,7 +35,7 @@
 
 <script>
 import sendRequest from "@/request/SendRequest";
-import ConfigOperations from "@/ts/Config/ConfigOperations";
+import ConfigOperations from "@/hooks/Config/ConfigOperations";
 const E = window.wangEditor;
 class ButtonMenuClass {
   title = "上传附件";

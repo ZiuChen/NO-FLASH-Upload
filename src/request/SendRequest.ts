@@ -1,5 +1,5 @@
-import log from "../ts/Log";
-import config from "../ts/Config/Config";
+import log from "../hooks/Log";
+import config from "../hooks/Config/Config";
 
 async function sendRequest(url: string, callBack?: Function, options?: Object) {
   log("sendRequest", `发送请求: ${url}`);

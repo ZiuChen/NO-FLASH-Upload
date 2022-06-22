@@ -98,7 +98,7 @@
 
 <script>
 import API from "@/request/API";
-import ConfigOperations from "@/ts/Config/ConfigOperations";
+import ConfigOperations from "@/hooks/Config/ConfigOperations";
 export default {
   mounted() {
     this.updateData();

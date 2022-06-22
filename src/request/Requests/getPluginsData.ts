@@ -1,5 +1,5 @@
 import sendRequest from "../SendRequest";
-import config from "../../ts/Config/Config";
+import config from "../../hooks/Config/Config";
 
 export default async function getPluginsData() {
   return await sendRequest(config.pluginsURL, undefined, {

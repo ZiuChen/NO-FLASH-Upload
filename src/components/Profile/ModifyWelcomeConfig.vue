@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import ConfigOperations from "@/ts/Config/ConfigOperations";
+import ConfigOperations from "@/hooks/Config/ConfigOperations";
 
 export default {
   created() {
