@@ -14,6 +14,7 @@
 
 <script>
 import ConfigOperations from "@/hooks/Config/ConfigOperations";
+import CheckUpdate from "@/hooks/CheckUpdate";
 import API from "@/request/API";
 import log from "@/hooks/Log";
 
@@ -24,6 +25,7 @@ export default {
     };
   },
   created() {
+    CheckUpdate();
     this.popNotify();
     this.createInterval();
   },
