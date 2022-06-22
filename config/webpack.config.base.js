@@ -3,6 +3,9 @@ const { VueLoaderPlugin } = require("vue-loader");
 
 const webpackConfig = {
   resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "../src"),
+    },
     extensions: [".js", ".ts"],
   },
   entry: "./src/index.ts",

@@ -97,8 +97,8 @@
 </template>
 
 <script>
-import API from "../../ts/API";
-import ConfigOperations from "../../ts/Config/ConfigOperations";
+import API from "@/ts/API";
+import ConfigOperations from "@/ts/Config/ConfigOperations";
 export default {
   mounted() {
     this.updateData();

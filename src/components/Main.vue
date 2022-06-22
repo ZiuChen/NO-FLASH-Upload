@@ -18,7 +18,6 @@
 import HeadBar from "./Common/HeadBar.vue";
 import SideBar from "./Common/SideBar.vue";
 import WelcomeMain from "./WelcomePage/WelcomeIndex.vue";
-import ConfigOperations from "../ts/Config/ConfigOperations";
 export default {
   components: {
     HeadBar,

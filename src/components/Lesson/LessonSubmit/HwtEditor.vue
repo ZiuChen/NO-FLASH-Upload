@@ -34,8 +34,8 @@
 </template>
 
 <script>
-import sendRequest from "../../../ts/SendRequest";
-import ConfigOperations from "../../../ts/Config/ConfigOperations";
+import sendRequest from "@/ts/SendRequest";
+import ConfigOperations from "@/ts/Config/ConfigOperations";
 const E = window.wangEditor;
 class ButtonMenuClass {
   title = "上传附件";

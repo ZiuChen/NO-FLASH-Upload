@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import configOperations from "../../ts/Config/ConfigOperations";
+import configOperations from "@/ts/Config/ConfigOperations";
 import ModifyWelcomeConfig from "./ModifyWelcomeConfig.vue";
 import ModifyHwtListConfig from "./ModifyHwtListConfig.vue";
 import ModifyUserConfig from "./ModifyHwtListConfig.vue";

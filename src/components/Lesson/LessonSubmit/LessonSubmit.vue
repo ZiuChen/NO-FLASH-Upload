@@ -96,10 +96,10 @@
 </template>
 
 <script>
-import ConfigOperations from "../../../ts/Config/ConfigOperations";
-import API from "../../../ts/API";
-import log from "../../../ts/Log";
-import sendRequest from "../../../ts/SendRequest";
+import ConfigOperations from "@/ts/Config/ConfigOperations";
+import API from "@/ts/API";
+import log from "@/ts/Log";
+import sendRequest from "@/ts/SendRequest";
 import HwtList from "../../WelcomePage/HwtList.vue";
 import LessonList from "../../WelcomePage/LessonList.vue";
 import HwtInfo from "../LessonSubmit/HwtInfo.vue";

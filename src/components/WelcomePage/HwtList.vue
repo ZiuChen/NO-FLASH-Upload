@@ -164,9 +164,9 @@
 </template>
 
 <script>
-import API from "../../ts/API";
-import ConfigOperations from "../../ts/Config/ConfigOperations";
-import log from "../../ts/Log";
+import API from "@/ts/API";
+import ConfigOperations from "@/ts/Config/ConfigOperations";
+import log from "@/ts/Log";
 
 export default {
   created() {

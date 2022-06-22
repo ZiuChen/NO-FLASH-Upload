@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import API from "../../ts/API";
+import API from "@/ts/API";
 export default {
   mounted() {
     this.fetchUpdateLog();
