@@ -88,7 +88,7 @@
       >
         <template #default="scope">
           <el-link
-            @click="handleHwtNameClick(scope.$index, scope.row)"
+            @click="handleBtnClick(scope.row)"
             :title="scope.row.name"
             :underline="false"
             target="_blank"
@@ -145,17 +145,8 @@
       </el-table-column>
       <el-table-column label="操作" align="center">
         <template #default="scope">
-          <el-button
-            size="small"
-            v-if="scope.row.able"
-            @click="handleSubmitClick(scope.$index, scope.row)"
-            >交作业
-          </el-button>
-          <el-button
-            size="small"
-            v-if="!scope.row.able"
-            @click="handleReviewClick(scope.$index, scope.row)"
-            >看作业
+          <el-button size="small" @click="handleBtnClick(scope.row)"
+            >{{ scope.row.able ? "交作业" : "看作业" }}
           </el-button>
         </template>
       </el-table-column>
@@ -166,7 +157,7 @@
 <script>
 import API from "@/request/API";
 import ConfigOperations from "@/hooks/Config/ConfigOperations";
-import log from "@/hooks/Log";
+import captureAsPicture from "@/hooks/CaptureAsPicture";
 
 export default {
   created() {
@@ -209,6 +200,7 @@ export default {
     },
   },
   methods: {
+    captureAsPicture,
     filterLesson(value, row) {
       return row.lesson === value;
     },
@@ -336,18 +328,12 @@ export default {
     async getLessonList() {
       this.lessonList = await API.getLessonList();
     },
-    async handleSubmitClick(index, row) {
-      this.$router.push(`/lesson/${row.lid}/submit/${row.hwtID}?able=true`);
-    },
-    async handleReviewClick(index, row) {
-      this.$router.push(`/lesson/${row.lid}/submit/${row.hwtID}?able=false`);
-    },
-    async handleHwtNameClick(index, row) {
+    handleBtnClick(row) {
       this.$router.push(
         `/lesson/${row.lid}/submit/${row.hwtID}?able=${row.able}`
       );
     },
-    async handleTagClick(lid) {
+    handleTagClick(lid) {
       let url = `${this.lessonPageUrl}${lid}`;
       window.open(url);
     },
@@ -367,40 +353,14 @@ export default {
         mark: hwt.mark,
       };
     },
-    async appendTableData(tableObject) {
+    appendTableData(tableObject) {
       if (this.tableDataFilter(tableObject, 365, -365)) {
         this.tableData.push(tableObject);
       } else {
         // do nothing
       }
     },
-    async captureAsPicture() {
-      let node = document.querySelector("#dom-capture");
-      let timeString = new Date().toLocaleDateString();
-      domtoimage
-        .toPng(node, { filter: filter })
-        .then(function (dataUrl) {
-          var link = document.createElement("a");
-          link.download = "MyHwtTable_" + timeString + ".png";
-          link.href = dataUrl;
-          link.click();
-          ElMessage({
-            type: "success",
-            message: "成功将列表导出为PNG图像",
-          });
-        })
-        .catch(function (error) {
-          ElMessage({
-            type: "error",
-            message: "导出为PNG时出错",
-          });
-          log("captureAsPicture", error, "error");
-        });
-      function filter(node) {
-        return node.className !== "button-group"; // filter out .button-group
-      }
-    },
-    async refreshHwtList() {
+    refreshHwtList() {
       this.loadingStatus = true;
       this.tableData = [];
       this.getLessonList();
