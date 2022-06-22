@@ -5,6 +5,7 @@
 declare module 'vue' {
   export interface GlobalComponents {
     AboutIndex: typeof import('./src/components/About/AboutIndex.vue')['default']
+    App: typeof import('./src/components/App.vue')['default']
     DonateCard: typeof import('./src/components/About/DonateCard.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElBadge: typeof import('element-plus/es')['ElBadge']
@@ -43,7 +44,6 @@ declare module 'vue' {
     LessonList: typeof import('./src/components/WelcomePage/LessonList.vue')['default']
     LessonSubmit: typeof import('./src/components/Lesson/LessonSubmit/LessonSubmit.vue')['default']
     LessonTopList: typeof import('./src/components/WelcomePage/LessonTopList.vue')['default']
-    Main: typeof import('./src/components/Main.vue')['default']
     ModifyHwtListConfig: typeof import('./src/components/Profile/ModifyHwtListConfig.vue')['default']
     ModifyUserConfig: typeof import('./src/components/Profile/ModifyUserConfig.vue')['default']
     ModifyWelcomeConfig: typeof import('./src/components/Profile/ModifyWelcomeConfig.vue')['default']
