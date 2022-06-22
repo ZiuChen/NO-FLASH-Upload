@@ -189,10 +189,16 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 #upload-trigger {
   text-align: center;
   padding: 10px;
+}
+#upload-trigger .el-upload {
+  width: 100%;
+}
+#upload-trigger .el-upload .el-upload-dragger {
+  width: 100%;
 }
 #toolbar-container {
   border: 1px solid #ccc;
