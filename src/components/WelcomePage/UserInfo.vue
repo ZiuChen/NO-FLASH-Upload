@@ -38,28 +38,19 @@
   </el-card>
 </template>
 
-<script>
+<script setup>
+import { ref } from "vue";
 import API from "@/request/API";
-export default {
-  data() {
-    return {
-      loadingStatus: true,
-      userInfo: {},
-      avator: "",
-    };
-  },
-  created() {
-    this.getUserInfo();
-  },
-  methods: {
-    async getUserInfo() {
-      this.loadingStatus = true;
-      this.userInfo = await API.getUserInfo().then(async (res) => {
-        this.loadingStatus = false;
-        return res;
-      });
-    },
-  },
+
+const loadingStatus = ref(true);
+const userInfo = ref({});
+const getUserInfo = async () => {
+  loadingStatus.value = true;
+  await API.getUserInfo().then((res) => {
+    userInfo.value = { ...res };
+    loadingStatus.value = false;
+    return res;
+  });
 };
 </script>
 

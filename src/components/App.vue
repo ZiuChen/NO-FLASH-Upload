@@ -14,17 +14,10 @@
   </el-container>
 </template>
 
-<script>
+<script setup>
 import HeadBar from "./Common/HeadBar.vue";
 import SideBar from "./Common/SideBar.vue";
 import WelcomeMain from "./WelcomePage/WelcomeIndex.vue";
-export default {
-  components: {
-    HeadBar,
-    SideBar,
-    WelcomeMain,
-  },
-};
 </script>
 
 <style>

@@ -123,11 +123,7 @@ export default {
       return row.hadRead.toString() === value;
     },
     hadReadformatter(row, column) {
-      if (row.hadRead === true) {
-        return "已阅读";
-      } else {
-        return "未阅读";
-      }
+      return row.hadRead ? "已阅读" : "未阅读";
     },
   },
 };
