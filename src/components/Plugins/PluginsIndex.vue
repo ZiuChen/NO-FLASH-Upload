@@ -96,65 +96,54 @@
   </el-row>
 </template>
 
-<script>
+<script setup>
+import { ref, reactive } from "vue";
 import API from "@/request/API";
 import ConfigOperations from "@/hooks/Config/ConfigOperations";
-export default {
-  mounted() {
-    this.updateData();
-  },
-  data() {
-    return {
-      loadingStatus: true,
-      plugins: [],
-    };
-  },
-  methods: {
-    async updateData() {
-      this.loadingStatus = true;
-      return await API.getPluginsData().then((json) => {
-        this.plugins = json;
-        this.loadingStatus = false;
-        return json;
-      });
-    },
-    statusFormatter(row) {
-      if (row.status) {
-        return "可用";
-      } else {
-        return "不可用";
-      }
-    },
-    handleInstallClick(id) {
-      const baseURL = ConfigOperations.readConfig()["pluginsBaseURL"];
-      window.location.href = baseURL + id + ".user.js";
-      ElMessageBox.alert(
-        `请在弹出的网页中更新脚本，更新后点击“ OK ”重新加载此页面`,
-        "提示",
-        {
-          confirmButtonText: "OK",
-          callback: (action) => {
-            if (action === "confirm") {
-              window.location.reload();
-            } else {
-              return false;
-            }
-          },
+
+const loadingStatus = ref(true);
+const plugins = reactive([]);
+const updateData = async () => {
+  plugins.length = 0;
+  loadingStatus.value = true;
+  return await API.getPluginsData().then((json) => {
+    plugins.push(...json);
+    loadingStatus.value = false;
+    return json;
+  });
+};
+updateData();
+const statusFormatter = (row) => {
+  return row.status ? "可用" : "不可用";
+};
+const handleInstallClick = (id) => {
+  const baseURL = ConfigOperations.readConfig()["pluginsBaseURL"];
+  window.location.href = baseURL + id + ".user.js";
+  ElMessageBox.alert(
+    `请在弹出的网页中更新脚本，更新后点击“ OK ”重新加载此页面`,
+    "提示",
+    {
+      confirmButtonText: "OK",
+      callback: (action) => {
+        if (action === "confirm") {
+          window.location.reload();
+        } else {
+          return false;
         }
-      );
-    },
-    handleHelpClick() {
-      let content = `
+      },
+    }
+  );
+};
+const handleHelpClick = () => {
+  const content = `
       这里你可以提交自己编写的用户脚本，用来提升平台的使用体验，脚本将在审核后展示在这里，供所有人安装使用，你编写的脚本独立于原脚本运行，详见教程：
       <p><a href="https://juejin.cn/post/6933130783268241422" target="_blank">强大的油猴Tampermonkey：简单的脚本制作</a></p>
       <p>有任何问题，欢迎随时通过反馈通道与我联系 :D</p>
       `;
-      ElMessageBox.alert(content, "这是什么", {
-        confirmButtonText: "OK",
-        dangerouslyUseHTMLString: true,
-      });
-    },
-  },
+  ElMessageBox.alert(content, "这是什么", {
+    confirmButtonText: "OK",
+    dangerouslyUseHTMLString: true,
+  });
 };
 </script>
 
