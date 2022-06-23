@@ -120,14 +120,16 @@
 </template>
 
 <script setup>
+import { useRouter } from "vue-router";
+const router = useRouter();
 const iconSize = 18;
-const handleSelect = (index, indexPath) => {
+const handleSelect = (index, indexPath, item, routeResult) => {
   if (index === "logout") return;
-  const rtn =
+  let rtn =
     indexPath.length === 2
       ? { path: `/${indexPath[0]}/${indexPath[1]}/info` }
       : { path: `/${index}` };
-  this.$router.push(rtn);
+  router.push(rtn);
 };
 const handleLogoutClick = () => {
   ElMessageBox.confirm("即将退出当前账号", "免Flash文件上传", {
