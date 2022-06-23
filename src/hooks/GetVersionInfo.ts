@@ -3,39 +3,38 @@ import log from "./Log";
 import config from "./Config/Config";
 
 async function getVersionInfo() {
-  let content = sendRequest(
+  return sendRequest(
     config.updateInfo,
     (obj: Document) => {
-      return JSON.parse(obj.querySelector("body").innerText).version;
+      return JSON.parse(obj.querySelector("body").innerText);
     },
     {
       cache: "no-cache",
     }
-  ).then((res) => {
-    let weightLastest = 0;
-    let weightNow = 0;
-    res
-      .split(".")
-      .reverse()
-      .forEach((value: string, index: number) => {
-        weightLastest +=
-          (index + 1) * Math.pow(100, index + 1) * parseInt(value);
-      });
-    config.version
-      .split(".")
-      .reverse()
-      .forEach((value: string, index: number) => {
-        weightNow += (index + 1) * Math.pow(100, index + 1) * parseInt(value);
-      });
-    log("getVersionInfo", `最新版本: ${res}`, "info");
-    log("getVersionInfo", `脚本当前版本: ${config.version}`, "info");
-    if (weightLastest > weightNow) {
-      return { need: true, current: config.version, lastest: res };
-    } else {
-      return { need: false, current: config.version, lastest: res };
-    }
+  ).then(({ version }) => {
+    const weightLastest = v2weight(version);
+    const weightNow = v2weight(config.version);
+    log(
+      "getVersionInfo",
+      `当前版本: ${config.version}, 最新版本: ${version}`,
+      "info"
+    );
+    return {
+      need: weightLastest > weightNow,
+      current: config.version,
+      lastest: version,
+    };
   });
-  return content;
+}
+
+function v2weight(v: string) {
+  let weight = 0;
+  v.split(".")
+    .reverse()
+    .forEach((value, index) => {
+      weight += (index + 1) * Math.pow(100, index + 1) * parseInt(value);
+    });
+  return weight;
 }
 
 export default getVersionInfo;
