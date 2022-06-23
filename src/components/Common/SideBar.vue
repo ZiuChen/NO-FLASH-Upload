@@ -119,37 +119,28 @@
   </el-menu>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      iconSize: 18,
-    };
-  },
-  methods: {
-    handleSelect(index, indexPath, item, routeResult) {
-      if (index === "logout") return;
-      let rtn =
-        indexPath.length === 2
-          ? { path: `/${indexPath[0]}/${indexPath[1]}/info` }
-          : { path: `/${index}` };
-      this.$router.push(rtn);
-    },
-    handleLogoutClick() {
-      ElMessageBox.confirm("即将退出当前账号", "免Flash文件上传", {
-        confirmButtonText: "确认",
-        cancelButtonText: "取消",
-        type: "warning",
-      })
-        .then(() => {
-          window.location.href =
-            "http://cc.bjtu.edu.cn:81/meol/popups/logout.jsp";
-        })
-        .catch(() => {
-          // cancel
-        });
-    },
-  },
+<script setup>
+const iconSize = 18;
+const handleSelect = (index, indexPath) => {
+  if (index === "logout") return;
+  const rtn =
+    indexPath.length === 2
+      ? { path: `/${indexPath[0]}/${indexPath[1]}/info` }
+      : { path: `/${index}` };
+  this.$router.push(rtn);
+};
+const handleLogoutClick = () => {
+  ElMessageBox.confirm("即将退出当前账号", "免Flash文件上传", {
+    confirmButtonText: "确认",
+    cancelButtonText: "取消",
+    type: "warning",
+  })
+    .then(() => {
+      window.location.href = "http://cc.bjtu.edu.cn:81/meol/popups/logout.jsp";
+    })
+    .catch(() => {
+      // cancel
+    });
 };
 </script>
 

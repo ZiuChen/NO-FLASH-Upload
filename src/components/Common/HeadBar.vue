@@ -12,42 +12,27 @@
   </el-row>
 </template>
 
-<script>
+<script setup>
 import ConfigOperations from "@/hooks/Config/ConfigOperations";
 import CheckUpdate from "@/hooks/CheckUpdate";
 import API from "@/request/API";
 import log from "@/hooks/Log";
 
-export default {
-  data() {
-    return {
-      userInfo: {},
-    };
-  },
-  created() {
-    CheckUpdate();
-    this.popNotify();
-    this.createInterval();
-  },
-  methods: {
-    async popNotify() {
-      return await API.getLastestScriptNotify();
-    },
-    async createInterval() {
-      if (
-        ConfigOperations.readUserConfig("config-post-interval").value === false
-      )
-        return;
-      let callBack = () => {
-        API.getUserInfo().then((res) => {
-          log("createInterval", "已发送身份保活请求", "success");
-          return res;
-        });
-      };
-      window.setInterval(callBack, 120000);
-    },
-  },
+const createInterval = async () => {
+  const callBack = () => {
+    API.getUserInfo().then((res) => {
+      log("createInterval", "已发送身份保活请求", "success");
+      return res;
+    });
+  };
+  if (ConfigOperations.readUserConfig("config-post-interval").value) {
+    window.setInterval(callBack, 120000);
+  }
 };
+
+CheckUpdate();
+API.getLastestScriptNotify();
+createInterval();
 </script>
 
 <style scoped>
