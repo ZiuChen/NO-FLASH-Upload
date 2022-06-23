@@ -12,17 +12,10 @@
   </el-row>
 </template>
 
-<script>
+<script setup>
 import ScriptInfoCard from "./ScriptInfoCard.vue";
 import UpdateLogCard from "./UpdateLogCard.vue";
 import DonateCard from "./DonateCard.vue";
-export default {
-  components: {
-    ScriptInfoCard,
-    UpdateLogCard,
-    DonateCard,
-  },
-};
 </script>
 
 <style scoped>

@@ -44,28 +44,18 @@
   </el-card>
 </template>
 
-<script>
+<script setup>
+import { ref } from "vue";
 import API from "@/request/API";
-export default {
-  mounted() {
-    this.fetchUpdateLog();
-  },
-  data() {
-    return {
-      log: ``,
-      loadingStatus: true,
-    };
-  },
-  methods: {
-    async fetchUpdateLog() {
-      this.loadingStatus = true;
-      this.log = await API.getScriptUpdateLog().then((res) => {
-        this.loadingStatus = false;
-        return res;
-      });
-    },
-  },
+
+const loadingStatus = ref(true);
+const log = ref("");
+const fetchUpdateLog = async () => {
+  loadingStatus.value = true;
+  log.value = await API.getScriptUpdateLog();
+  loadingStatus.value = false;
 };
+fetchUpdateLog();
 </script>
 
 <style scoped>

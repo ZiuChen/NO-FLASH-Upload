@@ -16,7 +16,7 @@
         </span>
       </div>
       <div class="button-block" align="center">
-        <el-button class="inner-button" @click="handleButtonClick('github')">
+        <el-button class="inner-button" @click="handleBtnClick('github')">
           <el-icon :size="iconSize">
             <svg
               t="1649577317658"
@@ -37,7 +37,7 @@
           </el-icon>
           Github
         </el-button>
-        <el-button class="inner-button" @click="handleButtonClick('gitee')">
+        <el-button class="inner-button" @click="handleBtnClick('gitee')">
           <el-icon :size="iconSize">
             <svg
               t="1653490652186"
@@ -58,7 +58,7 @@
           </el-icon>
           Gitee
         </el-button>
-        <el-button class="inner-button" @click="handleButtonClick('donate')">
+        <el-button class="inner-button" @click="handleBtnClick('donate')">
           <el-icon :size="iconSize">
             <svg
               t="1646098584201"
@@ -79,7 +79,7 @@
           </el-icon>
           捐赠
         </el-button>
-        <el-dropdown class="inner-button" @command="handleButtonClick">
+        <el-dropdown class="inner-button" @command="handleBtnClick">
           <el-button class="el-dropdown-link">
             <el-icon :size="iconSize">
               <svg
@@ -109,12 +109,14 @@
               <el-dropdown-item :command="'support'"
                 >腾讯兔小巢</el-dropdown-item
               >
-              <el-dropdown-item :command="'qq'">加入反馈群</el-dropdown-item>
+              <el-dropdown-item :command="'qGroup'"
+                >加入反馈群</el-dropdown-item
+              >
             </el-dropdown-menu>
           </template>
         </el-dropdown>
         <el-badge :is-dot="needUpdate">
-          <el-button class="inner-button" @click="CheckUpdate()">
+          <el-button class="inner-button" @click="CheckUpdate">
             <el-icon :size="iconSize">
               <svg
                 t="1649576753250"
@@ -136,7 +138,7 @@
             更新
           </el-button>
         </el-badge>
-        <el-button class="inner-button" @click="handleButtonClick('notify')">
+        <el-button class="inner-button" @click="handleBtnClick('notify')">
           <el-icon :size="iconSize">
             <svg
               t="1650700559946"
@@ -162,47 +164,24 @@
   </el-card>
 </template>
 
-<script>
+<script setup>
+import { ref } from "vue";
 import config from "@/hooks/Config/Config";
 import CheckUpdate from "@/hooks/CheckUpdate";
 import getVersionInfo from "@/hooks/GetVersionInfo";
 import API from "@/request/API";
-export default {
-  mounted() {
-    this.getVersionInfo();
-  },
-  data() {
-    return {
-      config: config,
-      needUpdate: false,
-      iconSize: 18,
-    };
-  },
-  methods: {
-    handleButtonClick(type) {
-      if (type === "github") {
-        window.open(this.config.githubURL);
-      } else if (type === "gitee") {
-        window.open(this.config.giteeURL);
-      } else if (type === "donate") {
-        window.open(this.config.donateURL);
-      } else if (type === "notify") {
-        API.getLastestScriptNotify(true);
-      } else if (type === "support") {
-        window.open(this.config.supportURL); // drop-down items
-      } else if (type === "qq") {
-        window.open(this.config.qGroupURL); // drop-down items
-      }
-    },
-    CheckUpdate() {
-      CheckUpdate();
-    },
-    async getVersionInfo() {
-      await getVersionInfo().then((res) => {
-        this.needUpdate = res.need;
-      });
-    },
-  },
+
+const iconSize = 18;
+const needUpdate = ref(false);
+getVersionInfo().then(({ need }) => {
+  needUpdate.value = need;
+});
+const handleBtnClick = (type) => {
+  if (type === "notify") {
+    API.getLastestScriptNotify(true);
+  } else {
+    window.open(config[`${type}URL`]);
+  }
 };
 </script>
 
