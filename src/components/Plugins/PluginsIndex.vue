@@ -1,11 +1,6 @@
 <template>
   <div class="plugin-index">
-    <ZUCard
-      ref="ZUCardRef"
-      v-bind="CardConfig"
-      :listData="pluginList"
-      @reload="fetchTableData"
-    >
+    <ZUCard v-bind="CardConfig" :listData="pluginList" @reload="fetchTableData">
       <template #status="scope">
         <el-tag :type="scope.row.status ? 'success' : 'danger'">{{
           scope.row.status ? "可用" : "不可用"
@@ -30,14 +25,12 @@ import { CardConfig } from "./config/card.config";
 import API from "@/request/API";
 import ConfigOperations from "@/hooks/Config/ConfigOperations";
 
-const ZUCardRef = ref();
 const pluginList = ref([]);
-const fetchTableData = async () => {
+const fetchTableData = async ({ loadingStatus }) => {
   return API.getPluginsData()
     .then((json) => (pluginList.value = json))
-    .then(() => (ZUCardRef.value.loadingStatus = false));
+    .then((res) => (loadingStatus.value = false));
 };
-fetchTableData();
 const handleInstallClick = (id) => {
   const baseURL = ConfigOperations.readConfig()["pluginsBaseURL"];
   window.location.href = baseURL + id + ".user.js";
