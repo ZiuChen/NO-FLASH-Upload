@@ -35,7 +35,7 @@
           </div>
         </div>
       </template>
-      <el-table :data="listData">
+      <el-table :data="listData" :height="tableHeight" v-load="loadingStatus">
         <template v-for="item of propList" :key="item.prop">
           <el-table-column v-bind="item" :align="item?.align">
             <template #default="scope">
@@ -66,14 +66,19 @@ export default defineComponent({
       type: Array,
       required: true,
     },
+    tableHeight: {
+      type: String,
+      default: "auto",
+    },
   },
   emits: ["reload"],
   setup(props, { emit }) {
     const loadingStatus = ref(true);
     const handleReloadClick = () => {
       loadingStatus.value = true;
-      emit("reload");
+      emit("reload", { loadingStatus });
     };
+    emit("reload", { loadingStatus });
     return {
       loadingStatus,
       handleReloadClick,

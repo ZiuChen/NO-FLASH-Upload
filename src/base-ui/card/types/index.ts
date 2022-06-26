@@ -9,4 +9,5 @@ type TPropListItem = {
 export interface ICardConfig {
   title: string;
   propList: TPropListItem[];
+  tableHeight?: string;
 }
