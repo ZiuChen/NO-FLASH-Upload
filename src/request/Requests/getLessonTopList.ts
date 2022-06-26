@@ -15,16 +15,16 @@ export default async function getLessonTopList(type: string) {
         id = "暂无id";
       } else {
         id = item
-          .querySelector("a")
-          .getAttribute("href")
-          .split("?courseId=")[1]
-          .split("&_style=")[0];
+          ?.querySelector("a")
+          ?.getAttribute("href")
+          ?.split("?courseId=")[1]
+          ?.split("&_style=")[0] as string;
       }
       rtnArray.push({
         id: id,
-        course: item.querySelector("td").innerText,
-        teacher: item.querySelector(".tea").innerHTML,
-        visit: item.querySelector("p").innerHTML,
+        course: item.querySelector("td")?.innerText,
+        teacher: item.querySelector(".tea")?.innerHTML,
+        visit: item.querySelector("p")?.innerHTML,
       });
     });
     return rtnArray;

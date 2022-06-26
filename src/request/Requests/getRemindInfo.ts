@@ -1,4 +1,8 @@
 import sendRequest from "../SendRequest";
+interface INotifyObj {
+  notify: any[];
+  hwt: any[];
+}
 
 export default async function getRemindInfo() {
   return await sendRequest(
@@ -8,12 +12,12 @@ export default async function getRemindInfo() {
     }
   )
     .then((res) => {
-      let obj: object = {
+      let obj: INotifyObj = {
         notify: [],
         hwt: [],
       };
       res.forEach((it: Document, ind: number) => {
-        it.querySelectorAll("li>a").forEach((item: HTMLElement) => {
+        it.querySelectorAll("li>a").forEach((item: any) => {
           let classobj = {
             name: "",
             id: "",
@@ -21,13 +25,13 @@ export default async function getRemindInfo() {
           };
           classobj.name = item.innerText.trim();
           classobj.id = item
-            .getAttribute("href")
-            .split("lid=")[1]
-            .split("&t=")[0];
+            ?.getAttribute("href")
+            ?.split("lid=")[1]
+            ?.split("&t=")[0] as string;
           classobj.type = item
-            .getAttribute("href")
-            .split("lid=")[1]
-            .split("&t=")[1];
+            ?.getAttribute("href")
+            ?.split("lid=")[1]
+            ?.split("&t=")[1] as string;
           if (classobj.type === "hw") {
             obj["hwt"].push(classobj);
           } else if (classobj.type === "info") {

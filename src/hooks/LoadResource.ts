@@ -23,7 +23,7 @@ function loadCSS(css: string) {
 function DOMParse(string: string) {
   let div = document.createElement("div");
   div.innerHTML = string;
-  return div.firstChild;
+  return div.firstChild as ChildNode;
 }
 
 export default { loadCSS: loadCSS, loadJS: loadJS, loadLINK: loadLINK };

@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-
+import { ElMessage } from "element-plus";
 import WelcomeIndex from "../components/WelcomePage/WelcomeIndex.vue";
 import LessonIndex from "../components/Lesson/LessonIndex.vue";
 import LessonSubmit from "../components/Lesson/LessonSubmit/LessonSubmit.vue";

@@ -22,7 +22,10 @@ export default async function getHwtList(courseId: string) {
           remainFloat:
             (new Date(item.deadLine).getTime() - new Date().getTime()) /
             (24 * 60 * 60 * 1000),
-          remain: Math.floor(this.remainFloat),
+          remain: Math.floor(
+            (new Date(item.deadLine).getTime() - new Date().getTime()) /
+              (24 * 60 * 60 * 1000)
+          ),
           able: item.submitStruts, // 是否允许提交
           mark: item.mark,
           publisher: item.realName,

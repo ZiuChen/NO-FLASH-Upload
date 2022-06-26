@@ -1,3 +1,4 @@
+import { ElNotification } from "element-plus";
 import log from "../hooks/Log";
 import config from "../hooks/Config/Config";
 
@@ -35,7 +36,6 @@ async function sendRequest(url: string, callBack?: Function, options?: Object) {
         duration: 0,
         onClick: function () {
           window.open(config.supportURL);
-          this.close();
         },
       })
     );
@@ -46,7 +46,7 @@ async function blob2dom(blob: Blob) {
     let reader = new FileReader();
     reader.readAsText(blob, "GBK");
     reader.onload = (e) => {
-      const text = e.target.result as string;
+      const text = e?.target?.result as string;
       const dom = new window.DOMParser().parseFromString(text, "text/html");
       res(dom);
     };

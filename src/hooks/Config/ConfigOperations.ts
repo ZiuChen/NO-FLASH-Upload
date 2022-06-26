@@ -1,3 +1,4 @@
+import { ElMessage } from "element-plus";
 import config from "./Config";
 import log from "../Log";
 
@@ -13,7 +14,7 @@ function initConfig() {
 
 function initScriptConfig() {
   // 不移除已有项，只添加新项或赋初值
-  let defaultScriptConfig = config;
+  let defaultScriptConfig = config as any;
   let currentScriptConfig = readConfig();
   let defaultKeys = Object.keys(defaultScriptConfig);
   defaultKeys.forEach((key) => {
@@ -40,8 +41,9 @@ function initUserConfig() {
     removedConfigs.forEach((item) => {
       delete currentUserConfig[item];
     });
-    newConfigs.forEach((item) => {
-      currentUserConfig[item] = config.userConfig[item];
+    newConfigs.forEach((item: any) => {
+      let Dconfig = config as any;
+      currentUserConfig[item] = Dconfig.userConfig[item];
     });
     currentConfig.userConfig = currentUserConfig;
     updateConfig(currentConfig);
@@ -63,7 +65,7 @@ function getDefaultUserConfig() {
 }
 
 function readConfig() {
-  return JSON.parse(localStorage.getItem("config"));
+  return JSON.parse(localStorage.getItem("config") as string);
 }
 
 function readUserConfig() {
@@ -122,7 +124,7 @@ function importUserConfig() {
   input.addEventListener("change", (e: any) => {
     let reader = new FileReader();
     reader.onload = (res) => {
-      let result: any = res.target.result;
+      let result: any = res?.target?.result;
       if (result.indexOf(`NOFLASHUPLOAD Setting`) === -1) {
         log("importUserConfig", "校验错误，导入设置中止", "error");
         ElMessage({

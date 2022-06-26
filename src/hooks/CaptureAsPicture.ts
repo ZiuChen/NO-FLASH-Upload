@@ -1,3 +1,5 @@
+import { ElMessage } from "element-plus";
+
 declare global {
   interface Window {
     domtoimage: any;

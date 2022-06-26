@@ -1,3 +1,4 @@
+import { ElNotification } from "element-plus";
 import getUserInfo from "./getUserInfo";
 
 export default async function getLoginStatus() {

@@ -1,3 +1,4 @@
+import { ElMessageBox } from "element-plus";
 import getScriptNotify from "./getScriptNotify";
 import ConfigOperations from "../../hooks/Config/ConfigOperations";
 

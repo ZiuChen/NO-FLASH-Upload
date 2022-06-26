@@ -6,7 +6,8 @@ async function getVersionInfo() {
   return sendRequest(
     config.updateInfo,
     (obj: Document) => {
-      return JSON.parse(obj.querySelector("body").innerText);
+      const string = obj.querySelector("body")?.innerText as string;
+      return JSON.parse(string);
     },
     {
       cache: "no-cache",

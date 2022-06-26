@@ -12,11 +12,11 @@ export default async function getLessonList() {
       let academy = item.children[2] as HTMLTableCellElement;
       let teacher = item.children[3] as HTMLTableCellElement;
       rtnArray.push({
-        number: item.querySelector("td").innerText,
+        number: item.querySelector("td")?.innerText,
         id: course
-          .getAttribute("onclick")
-          .split("courseId=")[1]
-          .split("','")[0],
+          ?.getAttribute("onclick")
+          ?.split("courseId=")[1]
+          ?.split("','")[0],
         name: course.innerText.split("\n")[0].trim(),
         academy: academy.innerText.split("\n")[0],
         teacher: teacher.innerText.split("\n")[0],

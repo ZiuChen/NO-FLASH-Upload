@@ -1,12 +1,51 @@
 {
-    "compilerOptions": {
-      "outDir": "./dist/",
-      "esModuleInterop": true,
-      "noImplicitAny": true,
-      "moduleResolution": "Node",
-      "module": "ESNext",
-      "target": "ES2020",
-      "allowJs": true,
-      "suppressImplicitAnyIndexErrors": true
-    }
-  }
+  "compilerOptions": {
+    "outDir": "/dist/",
+    // target: 目标代码编译生成的目标js版本
+    // "esnext": es6及以后的版本: 是因为有babel负责编译转化, 这里保持默认即可; 如果只是通过tsc, 则应按需配置.
+    "target": "esnext",
+    // module 目标代码使用的模块方案: CommonJS: require/module.exports; ESModule: import/export
+    // "esnext": 即ESModule, 但因为有babel的存在，打包时还会再对代码进行转化.
+    // "umd": 同时支持多种模块化
+    "module": "esnext",
+    // strict: 严格检查, 例如是否允许使用any
+    "strict": true,
+    // jsx: 对jsx进行怎样的处理; "preserve": 保留, 不转化; babel本身可以帮助对jsx做处理
+    "jsx": "preserve",
+    // importHelpers: 辅助的导入功能
+    "importHelpers": true,
+    // 按照node的方式解析模块 import "/index.node"
+    "moduleResolution": "node",
+    // 跳过对库的类型检测 axios, lodash (@types/lodash), 其他第三方库
+    // 提高性能 避免冲突
+    "skipLibCheck": true,
+    // CommonJS与ESModule能否混合使用
+    "esModuleInterop": true,
+    // 能否使用export default
+    "allowSyntheticDefaultImports": true,
+    // 是否生成映射文件 (ts -> js)
+    "sourceMap": true,
+    // 文件路径解析时基本的url
+    "baseUrl": ".",
+    // 指定具体要解析使用的类型, 比如制定了es5, 那么在代码中就只能使用es5的类型
+    // 如果不指定, 则跟随 "target" 配置; 此处指定了读取webpack-env类型
+    // "types": ["webpack-env"],
+    // 路径解析, 类似于webpack alias
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    // 指定在项目中可以使用哪些库的类型 (Proxy / Window / Document)
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+  },
+  // 哪些目录下的ts代码是需要用tsc解析的
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+  // 排除哪些目录: 如果include中的代码引入了来自node_modules的代码, 则不解析
+  // 手动引入的类型, 依然会解析.
+  "exclude": ["node_modules"]
+}
