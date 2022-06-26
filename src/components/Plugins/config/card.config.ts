@@ -27,4 +27,5 @@ export const CardConfig: ICardConfig = {
       slotName: "handler",
     },
   ],
+  tableHeight: "400px",
 };
