@@ -35,7 +35,12 @@
           </div>
         </div>
       </template>
-      <el-table :data="listData" :height="tableHeight" v-load="loadingStatus">
+      <el-table
+        :data="listData"
+        :height="tableHeight"
+        v-load="loadingStatus"
+        :default-sort="defaultSort"
+      >
         <template v-for="item of propList" :key="item.prop">
           <el-table-column v-bind="item" :align="item?.align">
             <template #default="scope">
@@ -50,41 +55,37 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
-export default defineComponent({
-  props: {
-    title: {
-      type: String,
-      required: true,
-    },
-    listData: {
-      type: Array,
-      required: true,
-    },
-    propList: {
-      type: Array,
-      required: true,
-    },
-    tableHeight: {
-      type: String,
-      default: "auto",
-    },
+<script setup>
+import { defineProps, defineEmits, ref } from "vue";
+const props = defineProps({
+  title: {
+    type: String,
+    required: true,
   },
-  emits: ["reload"],
-  setup(props, { emit }) {
-    const loadingStatus = ref(true);
-    const handleReloadClick = () => {
-      loadingStatus.value = true;
-      emit("reload", { loadingStatus });
-    };
-    emit("reload", { loadingStatus });
-    return {
-      loadingStatus,
-      handleReloadClick,
-    };
+  listData: {
+    type: Array,
+    required: true,
+  },
+  propList: {
+    type: Array,
+    required: true,
+  },
+  tableHeight: {
+    type: String,
+    default: "auto",
+  },
+  defaultSort: {
+    type: Object,
   },
 });
+const emit = defineEmits(["reload"]);
+console.log(props.defaultSort);
+const loadingStatus = ref(true);
+const handleReloadClick = () => {
+  loadingStatus.value = true;
+  emit("reload", { loadingStatus });
+};
+emit("reload", { loadingStatus });
 </script>
 
 <style scoped></style>
