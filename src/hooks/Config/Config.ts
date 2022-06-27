@@ -46,27 +46,6 @@ const userConfig = {
     id: "config-hide-update-notify",
     type: "switch",
   },
-  "config-hwt-recent-range": {
-    value: { min: -3, max: 15 },
-    default: { min: -3, max: 15 },
-    name: "近期截止显示范围",
-    id: "config-hwt-recent-range",
-    type: "input-number",
-  },
-  "config-hwt-default-sort": {
-    value: "ascending",
-    default: "ascending",
-    name: "默认排序方式",
-    id: "config-hwt-default-sort",
-    type: "input",
-  },
-  "config-hwt-default-filter": {
-    value: "近期截止",
-    default: "近期截止",
-    name: "默认筛选方式",
-    id: "config-hwt-default-filter",
-    type: "input",
-  },
   "config-hwt-submit-drag": {
     value: true,
     default: true,
