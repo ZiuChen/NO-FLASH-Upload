@@ -28,6 +28,7 @@ import ZUTable from "@/base-ui/table";
 import { TableConfig } from "./config/table.config";
 import API from "@/request/API";
 import ConfigOperations from "@/hooks/Config/ConfigOperations";
+import { ElMessageBox } from "element-plus";
 
 const pluginList = ref([]);
 const fetchTableData = async ({ loadingStatus }) => {
@@ -39,6 +40,7 @@ const handleInstallClick = (id) => {
   const baseURL = ConfigOperations.readConfig()["pluginsBaseURL"];
   window.location.href = baseURL + id + ".user.js";
   ElMessageBox.alert("请在弹出的网页中更新脚本, 更新后点击OK重新加载此页面", {
+    title: "提示",
     callback: (action) => action === "confirm" || window.location.reload(),
   });
 };
