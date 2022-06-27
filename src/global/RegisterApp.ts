@@ -6,6 +6,7 @@ import { registerIcons } from "./RegisterIcons";
 import { ElLoading } from "element-plus";
 import "element-plus/theme-chalk/el-loading.css";
 import "element-plus/theme-chalk/el-notification.css";
+import "element-plus/theme-chalk/el-message-box.css";
 
 const registerApp = () => {
   const app = createApp(App);

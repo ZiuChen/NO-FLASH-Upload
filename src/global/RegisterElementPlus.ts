@@ -25,6 +25,7 @@ import {
   ElMenu,
   ElMenuItem,
   ElOption,
+  ElOverlay,
   ElRow,
   ElScrollbar,
   ElSelect,
@@ -68,6 +69,7 @@ const components = [
   ElCheckbox,
   ElForm,
   ElFormItem,
+  ElOverlay,
 ];
 
 export function registerElementPlus(app: App) {

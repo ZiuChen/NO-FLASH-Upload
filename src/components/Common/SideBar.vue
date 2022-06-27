@@ -37,6 +37,7 @@
 
 <script setup>
 import { useRouter } from "vue-router";
+import { ElMessageBox } from "element-plus";
 const router = useRouter();
 const iconSize = 16;
 const handleSelect = (index, indexPath, item, routeResult) => {
