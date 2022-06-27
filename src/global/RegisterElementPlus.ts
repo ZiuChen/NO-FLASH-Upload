@@ -6,6 +6,7 @@ import {
   ElButton,
   ElButtonGroup,
   ElCard,
+  ElCheckbox,
   ElCol,
   ElContainer,
   ElDescriptions,
@@ -62,6 +63,7 @@ const components = [
   ElTableColumn,
   ElTag,
   ElUpload,
+  ElCheckbox,
 ];
 
 export function registerElementPlus(app: App) {

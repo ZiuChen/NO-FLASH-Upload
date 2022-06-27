@@ -10,6 +10,31 @@ export const TableConfig: ITableConfig = {
       align: "center",
       slotName: "remain",
       sortable: true,
+      filters: [
+        {
+          text: "近期截止",
+          value: 1,
+        },
+        {
+          text: "未过期",
+          value: 0,
+        },
+        {
+          text: "已过期",
+          value: -1,
+        },
+      ],
+      "filtered-value": [1],
+      "filter-method": (value, row) => {
+        switch (value) {
+          case 1:
+            return row.remain >= 3;
+          case 0:
+            return row.remain >= 0;
+          case -1:
+            return row.remain < 0;
+        }
+      },
     },
     {
       prop: "title",
@@ -54,7 +79,7 @@ export const TableConfig: ITableConfig = {
       slotName: "handler",
     },
   ],
-  tableHeight: "550",
+  tableHeight: "520",
   defaultSort: {
     prop: "remain",
     order: "descending",

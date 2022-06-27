@@ -5,6 +5,9 @@ type TPropListItem = {
   slotName?: string;
   align?: string;
   sortable?: boolean;
+  filters?: any[];
+  "filtered-value"?: (-1 | 0 | 1)[];
+  "filter-method"?: (value: any, row: any, column: any) => any;
 };
 
 type TSortItem = {

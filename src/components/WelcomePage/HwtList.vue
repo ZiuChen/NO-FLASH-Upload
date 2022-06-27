@@ -10,7 +10,9 @@
         {{ formatterRemain(row) }}
       </template>
       <template #title="{ row }">
-        <el-link @click="handlePageJump(row)">{{ row.title }}</el-link>
+        <el-link @click="handlePageJump(row)" :underline="false">{{
+          row.title
+        }}</el-link>
       </template>
       <template #answerStatus="{ row }">
         <el-tag :type="formatterAnswerStatus(row).tag">{{
