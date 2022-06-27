@@ -69,6 +69,9 @@ const handleReloadClick = () => {
   emit("reload", { loadingStatus });
 };
 emit("reload", { loadingStatus });
+defineExpose({
+  handleReloadClick,
+});
 </script>
 
 <style scoped>
