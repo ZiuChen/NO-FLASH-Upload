@@ -56,7 +56,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits, ref } from "vue";
+import { ref } from "vue";
 const props = defineProps({
   title: {
     type: String,
@@ -79,7 +79,6 @@ const props = defineProps({
   },
 });
 const emit = defineEmits(["reload"]);
-console.log(props.defaultSort);
 const loadingStatus = ref(true);
 const handleReloadClick = () => {
   loadingStatus.value = true;
