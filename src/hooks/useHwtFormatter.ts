@@ -28,7 +28,7 @@ const formatterAnswerStatus = ({ able, answerStatus }: any) => {
       };
 };
 const formatterCourseId = ({ courseId }: any) => {
-  return lessonList.find((lesson: any) => lesson.id === courseId).name;
+  return lessonList?.find((lesson: any) => lesson.id === courseId).name;
 };
 const formatterMark = ({ mark }: any) => {
   return mark !== undefined
