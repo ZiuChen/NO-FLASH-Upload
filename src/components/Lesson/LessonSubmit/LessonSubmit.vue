@@ -1,9 +1,9 @@
 <template>
-  <el-row class="card-container">
-    <el-col :span="expandSpanWidth[tableExpandStatus.toString()].left">
-      <el-card shadow="always" v-load="loadingStatus">
-        <template #header>
-          <div class="card-header">
+  <div class="lesson-submit">
+    <el-row class="card-container">
+      <el-col :span="expandSpanWidth[tableExpandStatus.toString()].left">
+        <ZUCard v-load="loadingStatus">
+          <template #header>
             <span>提交作业</span>
             <div class="buttonDiv">
               <el-button
@@ -12,87 +12,41 @@
                 @click="expandTable"
                 circle
               >
-                <el-icon>
-                  <svg
-                    v-show="!tableExpandStatus"
-                    t="1649574988965"
-                    class="icon"
-                    viewBox="0 0 1024 1024"
-                    version="1.1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    p-id="21016"
-                    width="200"
-                    height="200"
-                  >
-                    <path
-                      d="M426.666667 896v-85.333333H273.493333l192-192-60.16-60.16-192 192V597.333333H128v298.666667h298.666667m192-430.506667l192-192V426.666667h85.333333V128h-298.666667v85.333333h153.173334l-192 192 60.16 60.16z"
-                      fill=""
-                      p-id="21017"
-                    ></path>
-                  </svg>
-                  <svg
-                    v-show="tableExpandStatus"
-                    t="1649574901619"
-                    class="icon"
-                    viewBox="0 0 1024 1024"
-                    version="1.1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    p-id="20881"
-                    width="200"
-                    height="200"
-                  >
-                    <path
-                      d="M832 131.84L640 323.84V170.666667h-85.333333v298.666666h298.666666V384h-153.173333l192-192-60.16-60.16M170.666667 554.666667v85.333333h153.173333l-192 192 60.16 60.16 192-192V853.333333h85.333333v-298.666666H170.666667z"
-                      fill=""
-                      p-id="20882"
-                    ></path>
-                  </svg>
+                <el-icon v-show="tableExpandStatus">
+                  <ZoomOut />
+                </el-icon>
+                <el-icon v-show="!tableExpandStatus">
+                  <ZoomIn />
                 </el-icon>
               </el-button>
               <el-button
+                icon="Refresh"
                 :loading="loadingStatus"
                 :disabled="loadingStatus"
                 @click="refreshTable"
                 circle
               >
-                <el-icon
-                  ><svg
-                    t="1645775950545"
-                    class="icon"
-                    viewBox="0 0 1024 1024"
-                    version="1.1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    p-id="21783"
-                    width="200"
-                    height="200"
-                  >
-                    <path
-                      d="M753.066667 270.933333A339.541333 339.541333 0 0 0 512 170.666667a341.333333 341.333333 0 0 0-341.333333 341.333333 341.333333 341.333333 0 0 0 341.333333 341.333333c159.146667 0 291.84-108.8 329.813333-256h-88.746666A255.573333 255.573333 0 0 1 512 768a256 256 0 0 1-256-256 256 256 0 0 1 256-256c70.826667 0 133.973333 29.44 180.053333 75.946667L554.666667 469.333333h298.666666V170.666667l-100.266666 100.266666z"
-                      fill=""
-                      p-id="21784"
-                    ></path></svg
-                ></el-icon>
               </el-button>
             </div>
+          </template>
+          <HwtInfo :propHwtContent="hwtContent"></HwtInfo>
+          <HwtEditor
+            v-if="this.$route.query.able === 'true'"
+            ref="editorObj"
+            :propHwtContent="hwtContent"
+          ></HwtEditor>
+          <div v-if="this.$route.query.able === 'true'" class="operation">
+            <el-button @click="handleButtonSubmit">提交</el-button>
+            <el-button @click="handleButtonReturn">返回</el-button>
           </div>
-        </template>
-        <HwtInfo :propHwtContent="hwtContent"></HwtInfo>
-        <HwtEditor
-          v-if="this.$route.query.able === 'true'"
-          ref="editorObj"
-          :propHwtContent="hwtContent"
-        ></HwtEditor>
-        <div v-if="this.$route.query.able === 'true'" class="operation">
-          <el-button @click="handleButtonSubmit">提交</el-button>
-          <el-button @click="handleButtonReturn">返回</el-button>
-        </div>
-      </el-card>
-    </el-col>
-    <el-col :span="expandSpanWidth[tableExpandStatus.toString()].right">
-      <HwtList :reloadTrigger="reloadTrigger"></HwtList>
-      <LessonList></LessonList>
-    </el-col>
-  </el-row>
+        </ZUCard>
+      </el-col>
+      <el-col :span="expandSpanWidth[tableExpandStatus.toString()].right">
+        <HwtList :reloadTrigger="reloadTrigger"></HwtList>
+        <LessonList></LessonList>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 
 <script>
@@ -104,6 +58,7 @@ import HwtList from "../../WelcomePage/HwtList.vue";
 import LessonList from "../../WelcomePage/LessonList.vue";
 import HwtInfo from "../LessonSubmit/HwtInfo.vue";
 import HwtEditor from "./HwtEditor.vue";
+import ZUCard from "@/base-ui/card";
 
 export default {
   components: {
@@ -111,6 +66,7 @@ export default {
     LessonList,
     HwtInfo,
     HwtEditor,
+    ZUCard,
   },
   data() {
     return {

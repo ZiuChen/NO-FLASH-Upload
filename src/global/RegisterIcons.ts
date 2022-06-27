@@ -8,6 +8,8 @@ import {
   Open,
   MoreFilled,
   CircleCloseFilled,
+  ZoomIn,
+  ZoomOut,
 } from "@element-plus/icons-vue";
 
 const Icons = [
@@ -19,6 +21,8 @@ const Icons = [
   Open,
   MoreFilled,
   CircleCloseFilled,
+  ZoomIn,
+  ZoomOut,
 ];
 
 export function registerIcons(app: App) {
