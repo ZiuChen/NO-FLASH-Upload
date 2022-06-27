@@ -1,14 +1,11 @@
 const { merge } = require("webpack-merge");
-const path = require("path");
 const UserScriptMetaDataPlugin = require("userscript-metadata-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
-const AutoImport = require("unplugin-auto-import/webpack");
-const Components = require("unplugin-vue-components/webpack");
-const { ElementPlusResolver } = require("unplugin-vue-components/resolvers");
-
 const metadata = require("./metadata.js");
 const webpackConfig = require("./webpack.config.base.js");
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 const cfg = merge(webpackConfig, {
   mode: "production",
@@ -34,6 +31,7 @@ const cfg = merge(webpackConfig, {
     new UserScriptMetaDataPlugin({
       metadata,
     }),
+    new BundleAnalyzerPlugin(),
   ],
 });
 

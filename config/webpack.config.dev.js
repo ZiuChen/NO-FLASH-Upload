@@ -2,11 +2,6 @@ const path = require("path");
 const { merge } = require("webpack-merge");
 const LiveReloadPlugin = require("webpack-livereload-plugin");
 const UserScriptMetaDataPlugin = require("userscript-metadata-webpack-plugin");
-
-const AutoImport = require("unplugin-auto-import/webpack");
-const Components = require("unplugin-vue-components/webpack");
-const { ElementPlusResolver } = require("unplugin-vue-components/resolvers");
-
 const metadata = require("./metadata.js");
 const webpackConfig = require("./webpack.config.base.js");
 
