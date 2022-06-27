@@ -1,7 +1,7 @@
 import { App } from "vue";
-import { ArrowUpBold, ArrowDownBold } from "@element-plus/icons-vue";
+import { ArrowUpBold, ArrowDownBold, Refresh } from "@element-plus/icons-vue";
 
-const Icons = [ArrowUpBold, ArrowDownBold];
+const Icons = [ArrowUpBold, ArrowDownBold, Refresh];
 
 export function registerIcons(app: App) {
   for (const icon of Icons) {
