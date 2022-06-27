@@ -1,6 +1,11 @@
 <template>
   <div class="lesson-top-list">
-    <ZUCard v-bind="CardConfig" :listData="listData" @reload="fetchTableData">
+    <ZUCard
+      ref="ZUCardRef"
+      v-bind="CardConfig"
+      :listData="listData"
+      @reload="fetchTableData"
+    >
       <template #footer>
         <div class="footer">
           <el-select v-model="type" placeholder="选择何种排行">
@@ -14,10 +19,11 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import ZUCard from "@/base-ui/card";
 import { CardConfig } from "./config/lessontoplist.card.config";
 import API from "@/request/API";
+const ZUCardRef = ref();
 const type = ref("today"); // totay | total
 const listData = ref([]);
 const fetchTableData = async ({ loadingStatus }) => {
@@ -25,6 +31,7 @@ const fetchTableData = async ({ loadingStatus }) => {
     .then((list) => (listData.value = list))
     .then(() => (loadingStatus.value = false));
 };
+watch(type, () => ZUCardRef.value.handleReloadClick());
 </script>
 
 <style scoped>
