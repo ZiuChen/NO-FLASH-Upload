@@ -1,10 +1,11 @@
 import { ElMessage } from "element-plus";
 import config from "./Config";
 import log from "../Log";
+import localCache from "@/utils/localCache";
 
 function initConfig() {
   if (readConfig() === null) {
-    localStorage.setItem("config", JSON.stringify(config));
+    localCache.setCache("config", config);
     return;
   }
   initScriptConfig();
@@ -65,7 +66,7 @@ function getDefaultUserConfig() {
 }
 
 function readConfig() {
-  return JSON.parse(localStorage.getItem("config") as string);
+  return localCache.getCache("config");
 }
 
 function readUserConfig() {
@@ -84,13 +85,13 @@ function readUserConfigWithFilter(type: string) {
 }
 
 function updateConfig(config: object) {
-  localStorage.setItem("config", JSON.stringify(config));
+  localCache.setCache("config", config);
 }
 
 function updateUserConfig(userConfig: object) {
   let currentConfig = readConfig();
   currentConfig.userConfig = userConfig;
-  localStorage.setItem("config", JSON.stringify(currentConfig));
+  localCache.setCache("config", currentConfig);
 }
 
 function restoreUserConfig() {
