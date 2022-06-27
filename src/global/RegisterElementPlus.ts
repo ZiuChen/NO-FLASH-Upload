@@ -14,6 +14,8 @@ import {
   ElDropdown,
   ElDropdownItem,
   ElDropdownMenu,
+  ElForm,
+  ElFormItem,
   ElHeader,
   ElIcon,
   ElInput,
@@ -64,6 +66,8 @@ const components = [
   ElTag,
   ElUpload,
   ElCheckbox,
+  ElForm,
+  ElFormItem,
 ];
 
 export function registerElementPlus(app: App) {
