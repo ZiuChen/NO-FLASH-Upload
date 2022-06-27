@@ -1,8 +1,8 @@
 <template>
   <div class="lesson-list">
-    <ZUCard
-      ref="ZUCardRef"
-      v-bind="CardConfig"
+    <ZUTable
+      ref="ZUTableRef"
+      v-bind="TableConfig"
       :listData="lessonList"
       @reload="fetchTableData"
     >
@@ -22,17 +22,17 @@
           </el-button>
         </el-button-group>
       </template>
-    </ZUCard>
+    </ZUTable>
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
-import ZUCard from "@/base-ui/card";
-import { CardConfig } from "./config/lessonlist.card.config";
+import ZUTable from "@/base-ui/table";
+import { TableConfig } from "./config/lessonlist.table.config";
 import API from "@/request/API";
 const lessonList = ref([]);
-const ZUCardRef = ref();
+const ZUTableRef = ref();
 const fetchTableData = async ({ loadingStatus }) => {
   return API.getLessonList()
     .then((list) => (lessonList.value = list))
@@ -40,7 +40,7 @@ const fetchTableData = async ({ loadingStatus }) => {
 };
 const handleBtnClick = async (courseId, action) => {
   return API.lessonOrderOperation(courseId, action).then(() =>
-    ZUCardRef.value.handleReloadClick()
+    ZUTableRef.value.handleReloadClick()
   );
 };
 </script>

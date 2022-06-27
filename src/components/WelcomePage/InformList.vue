@@ -1,6 +1,10 @@
 <template>
   <div class="inform-list">
-    <ZUCard v-bind="CardConfig" :listData="tableData" @reload="fetchTableData">
+    <ZUTable
+      v-bind="TableConfig"
+      :listData="tableData"
+      @reload="fetchTableData"
+    >
       <template #notifyName="{ row }">
         <el-link
           :underline="false"
@@ -10,14 +14,14 @@
           >{{ row.notifyName }}</el-link
         >
       </template>
-    </ZUCard>
+    </ZUTable>
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
-import ZUCard from "@/base-ui/card";
-import { CardConfig } from "./config/informlist.card.config";
+import ZUTable from "@/base-ui/table";
+import { TableConfig } from "./config/informlist.table.config";
 import API from "@/request/API";
 
 const tableData = ref([]);

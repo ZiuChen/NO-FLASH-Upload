@@ -1,6 +1,10 @@
 <template>
   <div class="notify-list">
-    <ZUCard v-bind="CardConfig" :listData="notifyList" @reload="fetchListData">
+    <ZUTable
+      v-bind="TableConfig"
+      :listData="notifyList"
+      @reload="fetchListData"
+    >
       <template #notifyName="{ row }">
         <el-link
           :href="notifyHref(row)"
@@ -15,14 +19,14 @@
           row.hadRead ? "已阅读" : "未阅读"
         }}</el-tag>
       </template>
-    </ZUCard>
+    </ZUTable>
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
-import ZUCard from "@/base-ui/card";
-import { CardConfig } from "./config/notifylist.card.config";
+import ZUTable from "@/base-ui/table";
+import { TableConfig } from "./config/notifylist.table.config";
 import API from "@/request/API";
 const notifyList = ref([]);
 const fetchListData = async ({ loadingStatus }) => {

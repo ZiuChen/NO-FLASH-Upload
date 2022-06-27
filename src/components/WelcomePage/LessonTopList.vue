@@ -1,8 +1,8 @@
 <template>
   <div class="lesson-top-list">
-    <ZUCard
-      ref="ZUCardRef"
-      v-bind="CardConfig"
+    <ZUTable
+      ref="ZUTableRef"
+      v-bind="TableConfig"
       :listData="listData"
       @reload="fetchTableData"
     >
@@ -14,16 +14,16 @@
           </el-select>
         </div>
       </template>
-    </ZUCard>
+    </ZUTable>
   </div>
 </template>
 
 <script setup>
 import { ref, watch } from "vue";
-import ZUCard from "@/base-ui/card";
-import { CardConfig } from "./config/lessontoplist.card.config";
+import ZUTable from "@/base-ui/table";
+import { TableConfig } from "./config/lessontoplist.table.config";
 import API from "@/request/API";
-const ZUCardRef = ref();
+const ZUTableRef = ref();
 const type = ref("today"); // totay | total
 const listData = ref([]);
 const fetchTableData = async ({ loadingStatus }) => {
@@ -31,7 +31,7 @@ const fetchTableData = async ({ loadingStatus }) => {
     .then((list) => (listData.value = list))
     .then(() => (loadingStatus.value = false));
 };
-watch(type, () => ZUCardRef.value.handleReloadClick());
+watch(type, () => ZUTableRef.value.handleReloadClick());
 </script>
 
 <style scoped>

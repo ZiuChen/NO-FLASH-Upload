@@ -1,6 +1,6 @@
-import type { ICardConfig } from "@/base-ui/card/types";
+import type { ITableConfig } from "@/base-ui/table/types";
 
-export const CardConfig: ICardConfig = {
+export const TableConfig: ITableConfig = {
   title: "插件列表",
   propList: [
     { prop: "name", label: "插件名", minWidth: "100" },

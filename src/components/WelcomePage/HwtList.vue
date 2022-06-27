@@ -1,8 +1,8 @@
 <template>
   <div class="hwt-list">
-    <ZUCard
-      ref="ZUCardRef"
-      v-bind="CardConfig"
+    <ZUTable
+      ref="ZUTableRef"
+      v-bind="TableConfig"
       :listData="hwtList"
       @reload="fetchTableData"
     >
@@ -30,25 +30,25 @@
           formatterHandler(row)
         }}</el-button>
       </template>
-    </ZUCard>
+    </ZUTable>
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import ZUCard from "@/base-ui/card";
-import { CardConfig } from "./config/hwtlist.card.config";
+import ZUTable from "@/base-ui/table";
+import { TableConfig } from "./config/hwtlist.table.config";
 import API from "@/request/API";
 import { useHwtFormatter } from "@/hooks/useHwtFormatter";
 
-const ZUCardRef = ref();
+const ZUTableRef = ref();
 const lessonList = ref([]);
 const hwtList = ref([]);
 const fetchLessonList = async () => {
   return API.getLessonList()
     .then((list) => (lessonList.value = list))
-    .then(() => ZUCardRef.value.handleReloadClick());
+    .then(() => ZUTableRef.value.handleReloadClick());
 };
 fetchLessonList();
 const fetchTableData = async ({ loadingStatus }) => {

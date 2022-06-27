@@ -1,6 +1,10 @@
 <template>
   <div class="plugin-index">
-    <ZUCard v-bind="CardConfig" :listData="pluginList" @reload="fetchTableData">
+    <ZUTable
+      v-bind="TableConfig"
+      :listData="pluginList"
+      @reload="fetchTableData"
+    >
       <template #status="scope">
         <el-tag :type="scope.row.status ? 'success' : 'danger'">{{
           scope.row.status ? "可用" : "不可用"
@@ -14,14 +18,14 @@
           >安装/更新</el-button
         >
       </template>
-    </ZUCard>
+    </ZUTable>
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
-import ZUCard from "@/base-ui/card";
-import { CardConfig } from "./config/card.config";
+import ZUTable from "@/base-ui/table";
+import { TableConfig } from "./config/table.config";
 import API from "@/request/API";
 import ConfigOperations from "@/hooks/Config/ConfigOperations";
 

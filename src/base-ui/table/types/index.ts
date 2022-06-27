@@ -16,7 +16,7 @@ type TRow = {
   [key: string]: any;
 };
 
-export interface ICardConfig {
+export interface ITableConfig {
   title: string;
   propList: TPropListItem[];
   tableHeight?: string;
