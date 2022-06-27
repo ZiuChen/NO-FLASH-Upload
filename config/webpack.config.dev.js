@@ -27,7 +27,7 @@ const cfg = merge(webpackConfig, {
   devtool: "eval-source-map",
   watch: true,
   watchOptions: {
-    ignored: ["**/node_modules", "**/auto-imports.d.ts", "**/components.d.ts"],
+    ignored: ["**/node_modules"],
   },
   plugins: [
     new LiveReloadPlugin(),
