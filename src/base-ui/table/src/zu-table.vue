@@ -1,22 +1,20 @@
 <template>
-  <div class="zu-card">
-    <el-card>
+  <div class="zu-table">
+    <ZUCard>
       <template #header>
-        <div class="card-header">
-          <span>{{ title }}</span>
-          <div class="button-group">
-            <slot name="button-group">
-              <el-button
-                icon="Refresh"
-                :loading="loadingStatus"
-                :disabled="loadingStatus"
-                @click="handleReloadClick"
-                circle
-              >
-              </el-button>
-              <slot name="more-button"></slot>
-            </slot>
-          </div>
+        <span>{{ title }}</span>
+        <div class="button-group">
+          <slot name="button-group">
+            <el-button
+              icon="Refresh"
+              :loading="loadingStatus"
+              :disabled="loadingStatus"
+              @click="handleReloadClick"
+              circle
+            >
+            </el-button>
+            <slot name="more-button"></slot>
+          </slot>
         </div>
       </template>
       <el-table
@@ -36,15 +34,14 @@
           </el-table-column>
         </template>
       </el-table>
-      <div class="footer">
-        <slot name="footer"></slot>
-      </div>
-    </el-card>
+      <template #footer><slot name="footer"></slot></template>
+    </ZUCard>
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
+import ZUCard from "@/base-ui/card";
 const props = defineProps({
   title: {
     type: String,
@@ -82,22 +79,3 @@ defineExpose({
   handleReloadClick,
 });
 </script>
-
-<style scoped>
-.el-card {
-  margin: 10px 10px 10px 10px;
-  border-radius: 15px;
-  padding: 10px;
-  /* max-height: 1000px; */
-}
-.card-header {
-  height: 1.3em;
-  font-size: 1.1em;
-  cursor: default;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #005bac;
-  font-weight: bold;
-}
-</style>
