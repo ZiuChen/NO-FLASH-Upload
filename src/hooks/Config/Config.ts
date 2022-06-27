@@ -116,13 +116,6 @@ const userConfig = {
     id: "config-lessontoplist-show",
     type: "switch",
   },
-  "config-userinfo-show": {
-    value: false,
-    default: false,
-    name: "显示用户信息卡片",
-    id: "config-userinfo-show",
-    type: "switch",
-  },
 };
 
 export default {

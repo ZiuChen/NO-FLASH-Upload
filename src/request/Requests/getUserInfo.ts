@@ -9,7 +9,7 @@ interface IUserInfoObj {
 }
 
 export default async function getUserInfo() {
-  return await sendRequest(
+  return sendRequest(
     `http://cc.bjtu.edu.cn:81/meol/welcomepage/student/index.jsp`,
     (obj: Document) => {
       return obj.querySelectorAll(".userinfobody>ul>li");
