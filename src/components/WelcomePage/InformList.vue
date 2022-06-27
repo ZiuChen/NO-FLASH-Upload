@@ -1,13 +1,13 @@
 <template>
   <div class="inform-list">
     <ZUCard v-bind="CardConfig" :listData="tableData" @reload="fetchTableData">
-      <template #notifyName="scope">
+      <template #notifyName="{ row }">
         <el-link
           :underline="false"
-          :href="baseUrl + scope.row.id"
-          :title="scope.row.notifyName"
+          :href="baseUrl + row.id"
+          :title="row.notifyName"
           target="_blank"
-          >{{ scope.row.notifyName }}</el-link
+          >{{ row.notifyName }}</el-link
         >
       </template>
     </ZUCard>
