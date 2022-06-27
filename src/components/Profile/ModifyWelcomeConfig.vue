@@ -1,5 +1,5 @@
 <template>
-  <el-card shadow="always">
+  <ZUCard>
     <template #header>
       <div class="card-header">
         <span>主页卡片设置</span>
@@ -40,13 +40,17 @@
         @change="handleChange($event, { id: 'config-lessontoplist-show' })"
       />
     </div>
-  </el-card>
+  </ZUCard>
 </template>
 
 <script>
 import ConfigOperations from "@/hooks/Config/ConfigOperations";
+import ZUCard from "@/base-ui/card";
 
 export default {
+  components: {
+    ZUCard,
+  },
   created() {
     this.dataInit();
   },

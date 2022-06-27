@@ -18,10 +18,4 @@ import UpdateLogCard from "./UpdateLogCard.vue";
 import DonateCard from "./DonateCard.vue";
 </script>
 
-<style scoped>
-.el-card {
-  margin: 10px 10px 10px 10px;
-  height: 250px;
-  /* max-height: 1000px; */
-}
-</style>
+<style scoped></style>

@@ -1,5 +1,5 @@
 <template>
-  <el-card shadow="always">
+  <ZUCard>
     <template #header>
       <div class="card-header">
         <span>感谢捐赠❤</span>
@@ -13,8 +13,12 @@
         >【定期更新】感谢捐赠名单❤</el-link
       >
     </div>
-  </el-card>
+  </ZUCard>
 </template>
+
+<script setup>
+import ZUCard from "@/base-ui/card";
+</script>
 
 <style scoped>
 .card-body {

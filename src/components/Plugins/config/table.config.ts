@@ -27,5 +27,5 @@ export const TableConfig: ITableConfig = {
       slotName: "handler",
     },
   ],
-  tableHeight: "400px",
+  tableHeight: "350px",
 };

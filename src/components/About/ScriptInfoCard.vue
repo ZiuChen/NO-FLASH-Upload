@@ -1,5 +1,5 @@
 <template>
-  <el-card shadow="always">
+  <ZUCard>
     <template #header>
       <div class="card-header">
         <span>脚本信息</span>
@@ -59,48 +59,11 @@
           Gitee
         </el-button>
         <el-button class="inner-button" @click="handleBtnClick('donate')">
-          <el-icon :size="iconSize">
-            <svg
-              t="1646098584201"
-              class="icon"
-              viewBox="0 0 1024 1024"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              p-id="21933"
-              width="200"
-              height="200"
-            >
-              <path
-                d="M512 910.933333l-61.866667-56.32C230.4 655.36 85.333333 523.52 85.333333 362.666667 85.333333 230.826667 188.586667 128 320 128c74.24 0 145.493333 34.56 192 88.746667C558.506667 162.56 629.76 128 704 128 835.413333 128 938.666667 230.826667 938.666667 362.666667c0 160.853333-145.066667 292.693333-364.8 491.946666L512 910.933333z"
-                fill=""
-                p-id="21934"
-              ></path>
-            </svg>
-          </el-icon>
+          <el-icon :size="iconSize"><StarFilled /></el-icon>
           捐赠
         </el-button>
         <el-dropdown class="inner-button" @command="handleBtnClick">
-          <el-button class="el-dropdown-link">
-            <el-icon :size="iconSize">
-              <svg
-                t="1649577361138"
-                class="icon"
-                viewBox="0 0 1024 1024"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                p-id="22096"
-                width="200"
-                height="200"
-              >
-                <path
-                  d="M768 597.333333h-320l85.333333-85.333333H768M256 597.333333v-106.666666l293.546667-292.693334c8.106667-8.106667 21.76-8.106667 30.293333 0l75.093333 75.52c8.533333 8.533333 8.533333 21.76 0 30.293334L361.386667 597.333333M853.333333 85.333333H170.666667a85.333333 85.333333 0 0 0-85.333334 85.333334v768l170.666667-170.666667h597.333333a85.333333 85.333333 0 0 0 85.333334-85.333333V170.666667a85.333333 85.333333 0 0 0-85.333334-85.333334z"
-                  fill=""
-                  p-id="22097"
-                ></path>
-              </svg>
-            </el-icon>
-            反馈</el-button
-          >
+          <el-button icon="Promotion" class="el-dropdown-link"> 反馈</el-button>
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item :command="'github'"
@@ -117,55 +80,22 @@
         </el-dropdown>
         <el-badge :is-dot="needUpdate">
           <el-button class="inner-button" @click="CheckUpdate">
-            <el-icon :size="iconSize">
-              <svg
-                t="1649576753250"
-                class="icon"
-                viewBox="0 0 1024 1024"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                p-id="21556"
-                width="200"
-                height="200"
-              >
-                <path
-                  d="M896 431.786667h-289.28l116.906667-120.32c-116.48-115.2-305.066667-119.466667-421.546667-4.266667a293.845333 293.845333 0 0 0 0 418.133333c116.48 115.2 305.066667 115.2 421.546667 0 58.026667-57.6 87.04-124.586667 87.04-209.066666h85.333333c0 84.48-37.546667 194.133333-112.64 268.373333-149.76 148.48-392.96 148.48-542.72 0-149.333333-148.053333-150.613333-388.693333-0.853333-536.746667a383.445333 383.445333 0 0 1 539.733333 0L896 128v303.786667M533.333333 341.333333v181.333334l149.333334 88.746666-30.72 51.626667L469.333333 554.666667V341.333333h64z"
-                  fill=""
-                  p-id="21557"
-                ></path>
-              </svg>
-            </el-icon>
+            <el-icon :size="iconSize"><Refresh /></el-icon>
             更新
           </el-button>
         </el-badge>
         <el-button class="inner-button" @click="handleBtnClick('notify')">
-          <el-icon :size="iconSize">
-            <svg
-              t="1650700559946"
-              class="icon"
-              viewBox="0 0 1024 1024"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              p-id="20746"
-              width="200"
-              height="200"
-            >
-              <path
-                d="M554.666667 426.666667h-85.333334V256h85.333334m0 341.333333h-85.333334v-85.333333h85.333334m298.666666-426.666667H170.666667a85.333333 85.333333 0 0 0-85.333334 85.333334v768l170.666667-170.666667h597.333333a85.333333 85.333333 0 0 0 85.333334-85.333333V170.666667a85.333333 85.333333 0 0 0-85.333334-85.333334z"
-                fill=""
-                p-id="20747"
-              ></path>
-            </svg>
-          </el-icon>
+          <el-icon :size="iconSize"><BellFilled /></el-icon>
           通知
         </el-button>
       </div>
     </div>
-  </el-card>
+  </ZUCard>
 </template>
 
 <script setup>
 import { ref } from "vue";
+import ZUCard from "@/base-ui/card";
 import config from "@/hooks/Config/Config";
 import CheckUpdate from "@/hooks/CheckUpdate";
 import getVersionInfo from "@/hooks/GetVersionInfo";

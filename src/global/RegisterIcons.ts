@@ -10,6 +10,9 @@ import {
   CircleCloseFilled,
   ZoomIn,
   ZoomOut,
+  StarFilled,
+  Promotion,
+  BellFilled,
 } from "@element-plus/icons-vue";
 
 const Icons = [
@@ -23,6 +26,9 @@ const Icons = [
   CircleCloseFilled,
   ZoomIn,
   ZoomOut,
+  StarFilled,
+  Promotion,
+  BellFilled,
 ];
 
 export function registerIcons(app: App) {
