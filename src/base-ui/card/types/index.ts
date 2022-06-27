@@ -12,9 +12,14 @@ type TSortItem = {
   order?: string;
 };
 
+type TRow = {
+  [key: string]: any;
+};
+
 export interface ICardConfig {
   title: string;
   propList: TPropListItem[];
   tableHeight?: string;
   defaultSort?: TSortItem;
+  rowClassName?: (row: TRow) => any;
 }

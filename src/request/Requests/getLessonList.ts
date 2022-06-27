@@ -1,4 +1,5 @@
 import sendRequest from "../SendRequest";
+import localCache from "@/utils/localCache";
 
 export default async function getLessonList() {
   let url = `http://cc.bjtu.edu.cn:81/meol/lesson/blen.student.lesson.list.jsp`;
@@ -22,6 +23,7 @@ export default async function getLessonList() {
         teacher: teacher.innerText.split("\n")[0],
       });
     });
+    localCache.setCache("lesson-list", rtnArray);
     return rtnArray;
   });
 }

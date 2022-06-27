@@ -9,7 +9,7 @@ interface json {
 
 export default async function getHwtList(courseId: string) {
   let url = `http://cc.bjtu.edu.cn:81/meol/hw/stu/hwStuHwtList.do?courseId=${courseId}&pagingNumberPer=100`;
-  return await sendRequest(url, undefined).then((response) => {
+  return await sendRequest(url, undefined).then((response: any) => {
     return response.json().then((json: json) => {
       let rtnArray: object[] = [];
       if (json.datas.hwtList === undefined) return [];

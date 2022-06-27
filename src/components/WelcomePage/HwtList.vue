@@ -1,392 +1,89 @@
 <template>
-  <el-card class="hwt-list" shadow="always" id="dom-capture">
-    <template #header>
-      <div class="card-header">
-        <span>作业列表</span>
-        <div class="button-group">
-          <el-button
-            :loading="loadingStatus"
-            :disabled="loadingStatus"
-            @click="captureAsPicture"
-            circle
-          >
-            <el-icon>
-              <svg
-                t="1649770475211"
-                class="icon"
-                viewBox="0 0 1024 1024"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                p-id="20746"
-                width="200"
-                height="200"
-              >
-                <path
-                  d="M640 384H213.333333V213.333333h426.666667m-128 597.333334a128 128 0 0 1-128-128 128 128 0 0 1 128-128 128 128 0 0 1 128 128 128 128 0 0 1-128 128m213.333333-682.666667H213.333333a85.333333 85.333333 0 0 0-85.333333 85.333333v597.333334a85.333333 85.333333 0 0 0 85.333333 85.333333h597.333334a85.333333 85.333333 0 0 0 85.333333-85.333333V298.666667l-170.666667-170.666667z"
-                  fill=""
-                  p-id="20747"
-                ></path>
-              </svg>
-            </el-icon>
-          </el-button>
-          <el-button
-            :loading="loadingStatus"
-            :disabled="loadingStatus"
-            @click="refreshHwtList"
-            circle
-          >
-            <el-icon
-              ><svg
-                t="1645775950545"
-                class="icon"
-                viewBox="0 0 1024 1024"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                p-id="21783"
-                width="200"
-                height="200"
-              >
-                <path
-                  d="M753.066667 270.933333A339.541333 339.541333 0 0 0 512 170.666667a341.333333 341.333333 0 0 0-341.333333 341.333333 341.333333 341.333333 0 0 0 341.333333 341.333333c159.146667 0 291.84-108.8 329.813333-256h-88.746666A255.573333 255.573333 0 0 1 512 768a256 256 0 0 1-256-256 256 256 0 0 1 256-256c70.826667 0 133.973333 29.44 180.053333 75.946667L554.666667 469.333333h298.666666V170.666667l-100.266666 100.266666z"
-                  fill=""
-                  p-id="21784"
-                ></path></svg
-            ></el-icon>
-          </el-button>
-        </div>
-      </div>
-    </template>
-    <el-table
-      ref="tableRef"
-      :data="tableData"
-      :default-sort="{ prop: 'remainFloat', order: configSort }"
-      :row-class-name="tableRowClassName"
-      v-load="loadingStatus"
-      style="width: 100%"
+  <div class="hwt-list">
+    <ZUCard
+      ref="ZUCardRef"
+      v-bind="CardConfig"
+      :listData="hwtList"
+      @reload="fetchTableData"
     >
-      <el-table-column
-        prop="remainFloat"
-        label="剩余时间"
-        align="center"
-        :filters="[
-          { text: '近期截止', value: '近期截止' },
-          { text: '今日截止', value: '今日截止' },
-          { text: '未过期', value: '未过期' },
-          { text: '已过期', value: '已过期' },
-        ]"
-        :filter-method="filterRemain"
-        :filtered-value="checkedFilters"
-        :formatter="remainDayFormatter"
-        min-width="120px"
-        sortable
-      />
-      <el-table-column
-        prop="name"
-        label="作业标题"
-        align="center"
-        min-width="200px"
-      >
-        <template #default="scope">
-          <el-link
-            @click="handleBtnClick(scope.row)"
-            :title="scope.row.name"
-            :underline="false"
-            target="_blank"
-            >{{ scope.row.name }}</el-link
-          >
-        </template>
-      </el-table-column>
-      <el-table-column label="提交状态" align="center">
-        <template #default="scope">
-          <el-tag :type="hadFormatter(scope.row).tag" disable-transitions>
-            {{ hadFormatter(scope.row).text }}</el-tag
-          >
-        </template>
-      </el-table-column>
-      <el-table-column
-        prop="lesson"
-        label="课程名"
-        align="center"
-        width="200px"
-        :filters="toFilterArray(lessonList)"
-        :filter-method="filterLesson"
-        ><template #default="scope">
-          <el-tag
-            class="lesson-tag"
-            :title="scope.row.lesson"
-            @click="handleTagClick(scope.row.lid)"
-            disable-transitions
-          >
-            {{ scope.row.lesson }}</el-tag
-          >
-        </template>
-      </el-table-column>
-      <el-table-column
-        prop="date"
-        label="截止日期"
-        align="center"
-        min-width="150px"
-        sortable
-      />
-      <el-table-column
-        label="取得分数"
-        :filters="[
-          { text: '未批阅', value: 0 },
-          { text: '已批阅', value: 1 },
-        ]"
-        :filter-method="filterMark"
-        align="center"
-      >
-        <template #default="scope">
-          <el-tag :type="markFormatter(scope.row).type" disable-transitions>
-            {{ markFormatter(scope.row).text }}</el-tag
-          >
-        </template>
-      </el-table-column>
-      <el-table-column label="操作" align="center">
-        <template #default="scope">
-          <el-button size="small" @click="handleBtnClick(scope.row)"
-            >{{ scope.row.able ? "交作业" : "看作业" }}
-          </el-button>
-        </template>
-      </el-table-column>
-    </el-table>
-  </el-card>
+      <template #remain="{ row }">
+        {{ formatterRemain(row) }}
+      </template>
+      <template #title="{ row }">
+        <el-link @click="handlePageJump(row)">{{ row.title }}</el-link>
+      </template>
+      <template #answerStatus="{ row }">
+        <el-tag :type="formatterAnswerStatus(row).tag">{{
+          formatterAnswerStatus(row).text
+        }}</el-tag>
+      </template>
+      <template #courseId="{ row }">
+        <el-tag>{{ formatterCourseId(row) }}</el-tag>
+      </template>
+      <template #mark="{ row }">
+        <el-tag :type="formatterMark(row).tag">{{
+          formatterMark(row).text
+        }}</el-tag>
+      </template>
+      <template #handler="{ row }">
+        <el-button @click="handlePageJump(row)" size="small">{{
+          formatterHandler(row)
+        }}</el-button>
+      </template>
+    </ZUCard>
+  </div>
 </template>
 
-<script>
+<script setup>
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import ZUCard from "@/base-ui/card";
+import { CardConfig } from "./config/hwtlist.card.config";
 import API from "@/request/API";
-import ConfigOperations from "@/hooks/Config/ConfigOperations";
-import captureAsPicture from "@/hooks/CaptureAsPicture";
+import { useHwtFormatter } from "@/hooks/useHwtFormatter";
 
-export default {
-  created() {
-    this.getLessonList();
-  },
-  data() {
-    return {
-      lessonList: [],
-      tableData: [],
-      checkedFilters: [
-        ConfigOperations.readUserConfig()["config-hwt-default-filter"].value,
-      ],
-      loadingStatus: true,
-      configRange:
-        ConfigOperations.readUserConfig()["config-hwt-recent-range"].value,
-      configSort:
-        ConfigOperations.readUserConfig()["config-hwt-default-sort"].value,
-      lessonPageUrl: `http://cc.bjtu.edu.cn:81/meol/jpk/course/layout/newpage/index.jsp?courseId=`,
-      taskAnswerUrl: `http://cc.bjtu.edu.cn:81/meol/common/hw/student/taskanswer.jsp?hwtid=`,
-      hwtWriteUrl: `http://cc.bjtu.edu.cn:81/meol/common/hw/student/write.jsp?hwtid=`,
-    };
-  },
-  props: ["reloadTrigger"],
-  watch: {
-    lessonList: async function (val) {
-      // Async Trap: cannot async in forEach
-      for (let lesson of this.lessonList) {
-        await API.getHwtList(lesson.id).then((hwtList) => {
-          for (let hwt of hwtList) {
-            this.hwtObj2TableObj(lesson, hwt).then((tableObject) => {
-              this.appendTableData(tableObject);
-            });
-          }
-        });
-      }
-      this.loadingStatus = false;
-    },
-    reloadTrigger: function (val) {
-      this.refreshHwtList();
-    },
-  },
-  methods: {
-    captureAsPicture,
-    filterLesson(value, row) {
-      return row.lesson === value;
-    },
-    filterRemain(value, row) {
-      switch (value) {
-        case "今日截止":
-          return (
-            Math.floor(row.remainFloat) === 0 &&
-            new Date(row.date).getDate() === new Date().getDate()
-          );
-        case "近期截止":
-          return (
-            row.remainFloat <= this.configRange.max &&
-            row.remainFloat >= this.configRange.min
-          );
-        case "未过期":
-          return row.remainFloat >= 0;
-        case "已过期":
-          return row.remainFloat < 0;
-      }
-      // return row.lesson === value;
-    },
-    filterMark(value, row) {
-      switch (value) {
-        case 0:
-          return row.mark === undefined;
-        case 1:
-          return row.mark !== undefined;
-      }
-    },
-    toFilterArray(hwtArray) {
-      let rtnArray = [];
-      hwtArray.forEach((item) => {
-        let obj = { text: "", value: "" };
-        obj.text = item.name;
-        obj.value = item.name;
-        rtnArray.push(obj);
-      });
-      return rtnArray;
-    },
-    tableDataFilter(tableObj, start, end) {
-      // start: larger, end: smaller
-      // won't add to tableData
-      let remain = Math.floor(tableObj.remainFloat);
-      if (remain < start && remain > end) return true;
-      else false;
-    },
-    tableRowClassName({ row, rowIndex }) {
-      let remain = Math.floor(row.remainFloat);
-      if (row.able === false) {
-        return "info-row";
-      } else {
-        if (remain <= 3 && remain > 0) {
-          return "warning-row";
-        } else if (remain === 0) {
-          return "danger-row";
-        } else {
-          return "success-row";
-        }
-      }
-    },
-    remainDayFormatter(row, column) {
-      let remainFloat = row.remainFloat;
-      let remain = Math.floor(remainFloat);
-      if (remainFloat < 0) {
-        return `已过期${Math.abs(remain).toString()}天`;
-      } else if (remainFloat >= 0 && remainFloat < 1) {
-        if (new Date(row.date).getDate() > new Date().getDate()) {
-          // (<24h) 但是截止日期在明天
-          return "还有1天截止";
-        } else {
-          return `今日截止`;
-        }
-      } else if (remainFloat > 0) {
-        return `还有${remain}天截止`;
-      }
-    },
-    markFormatter(row) {
-      if (row.mark !== undefined) {
-        return {
-          text: row.mark,
-          type: "success",
-        };
-      } else {
-        return {
-          text: "未批阅",
-          type: "info",
-        };
-      }
-    },
-    hadFormatter(row) {
-      if (row.remainFloat >= 0) {
-        // 未过期
-        if (row.answerStatus === undefined) {
-          return {
-            status: false,
-            text: "未提交",
-            tag: "warning",
-          };
-        } else {
-          // 只要不是 undefined 一定是提交过的
-          return {
-            status: true,
-            text: "已提交",
-            tag: "success",
-          };
-        }
-      } else {
-        // 已过期
-        if (row.answerStatus === undefined) {
-          return {
-            status: false,
-            text: "未提交",
-            tag: "warning",
-          };
-        } else {
-          return {
-            status: true,
-            text: "已提交",
-            tag: "success",
-          };
-        }
-      }
-    },
-    async getLessonList() {
-      this.lessonList = await API.getLessonList();
-    },
-    handleBtnClick(row) {
-      this.$router.push(
-        `/lesson/${row.lid}/submit/${row.hwtID}?able=${row.able}`
-      );
-    },
-    handleTagClick(lid) {
-      let url = `${this.lessonPageUrl}${lid}`;
-      window.open(url);
-    },
-    async hwtObj2TableObj(lesson, hwt) {
-      return {
-        lid: lesson.id,
-        lesson: lesson.name,
-        hwtID: hwt.id,
-        name: hwt.title,
-        date: hwt.deadLine,
-        remainFloat: hwt.remainFloat,
-        able: hwt.able,
-        publisher: hwt.publisher,
-        mutualTask: hwt.mutualTask,
-        answerStatus: hwt.answerStatus,
-        showGrade: hwt.showGrade, // answerStatus == true || submitStruts == false
-        mark: hwt.mark,
-      };
-    },
-    appendTableData(tableObject) {
-      if (this.tableDataFilter(tableObject, 365, -365)) {
-        this.tableData.push(tableObject);
-      } else {
-        // do nothing
-      }
-    },
-    refreshHwtList() {
-      this.loadingStatus = true;
-      this.tableData = [];
-      this.getLessonList();
-    },
-  },
+const ZUCardRef = ref();
+const lessonList = ref([]);
+const hwtList = ref([]);
+const fetchLessonList = async () => {
+  return API.getLessonList()
+    .then((list) => (lessonList.value = list))
+    .then(() => ZUCardRef.value.handleReloadClick());
 };
+fetchLessonList();
+const fetchTableData = async ({ loadingStatus }) => {
+  hwtList.value.length = 0;
+  for (const { id } of lessonList.value) {
+    await API.getHwtList(id).then((list) => {
+      hwtList.value.push(...list);
+    });
+  }
+  loadingStatus.value = false;
+};
+const router = useRouter();
+const handlePageJump = ({ courseId, id, able }) => {
+  router.push(`/lesson/${courseId}/submit/${id}?able=${able}`);
+};
+const {
+  formatterRemain,
+  formatterAnswerStatus,
+  formatterCourseId,
+  formatterMark,
+  formatterHandler,
+} = useHwtFormatter();
 </script>
 
 <style>
-.lesson-tag {
-  cursor: pointer;
-}
-
 .el-table .danger-row {
-  --el-table-tr-bg-color: var(--el-color-danger-light);
+  --el-table-tr-bg-color: var(--el-color-danger-light-8);
 }
-
 .el-table .success-row {
-  --el-table-tr-bg-color: var(--el-color-success-light);
+  --el-table-tr-bg-color: var(--el-color-success-light-8);
 }
-
 .el-table .warning-row {
-  --el-table-tr-bg-color: var(--el-color-warning-light);
+  --el-table-tr-bg-color: var(--el-color-warning-light-8);
 }
-
 .el-table .info-row {
-  --el-table-tr-bg-color: var(--el-color-info-light);
+  --el-table-tr-bg-color: var(--el-color-info-light-8);
 }
 </style>

@@ -24,6 +24,7 @@
         :height="tableHeight"
         v-load="loadingStatus"
         :default-sort="defaultSort"
+        :row-class-name="rowClassName"
       >
         <template v-for="item of propList" :key="item.prop">
           <el-table-column v-bind="item" :align="item?.align">
@@ -63,6 +64,11 @@ const props = defineProps({
   },
   defaultSort: {
     type: Object,
+    default: () => ({}),
+  },
+  rowClassName: {
+    type: Function,
+    default: () => {},
   },
 });
 const emit = defineEmits(["reload"]);
