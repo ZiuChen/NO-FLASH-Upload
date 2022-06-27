@@ -1,9 +1,11 @@
 import { ElNotification } from "element-plus";
 import log from "../hooks/Log";
 import config from "../hooks/Config/Config";
+const baseURL = "http://cc.bjtu.edu.cn:81/meol/";
 
 async function sendRequest(url: string, callBack?: Function, options?: Object) {
-  log("sendRequest", `发送请求: ${url}`);
+  const reportURL = url.split(baseURL)[1] ?? url;
+  log("sendRequest", `发送请求: ${reportURL}`);
   return fetch(url, options)
     .then((response) => {
       // 没有处理DOM的回调则直接返回
@@ -16,15 +18,10 @@ async function sendRequest(url: string, callBack?: Function, options?: Object) {
       }
     })
     .then((res) => {
-      if (res === undefined) {
-        // return undefined
-        log("sendRequest", `返回值为 undefined: ${url}`, "error");
+      if (!!res || res.ok) {
+        log("sendRequest", `请求完成: ${reportURL}`, "success");
       } else {
-        if (res.ok) {
-          log("sendRequest", `请求完成: ${url}`, "success");
-        } else {
-          log("sendRequest", `请求出错: ${url}`, "error");
-        }
+        log("sendRequest", `请求出错: ${reportURL}`, "error");
       }
       return res;
     })
