@@ -38,7 +38,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "element-plus": "^2.0.4",
+    "element-plus": "^2.2.6",
     "vue-router": "^4.0.12"
   }
 }
