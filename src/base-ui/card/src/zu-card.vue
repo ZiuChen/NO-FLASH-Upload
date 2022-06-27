@@ -35,6 +35,9 @@
           </el-table-column>
         </template>
       </el-table>
+      <div class="footer">
+        <slot name="footer"></slot>
+      </div>
     </el-card>
   </div>
 </template>
