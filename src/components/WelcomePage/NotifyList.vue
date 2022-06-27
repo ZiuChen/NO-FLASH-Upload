@@ -11,7 +11,9 @@
         >
       </template>
       <template #hadRead="{ row }">
-        {{ row.hadRead ? "已阅读" : "未阅读" }}
+        <el-tag :type="row.hadRead ? 'success' : 'danger'">{{
+          row.hadRead ? "已阅读" : "未阅读"
+        }}</el-tag>
       </template>
     </ZUCard>
   </div>
