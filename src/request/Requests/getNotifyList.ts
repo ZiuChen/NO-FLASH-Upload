@@ -12,7 +12,7 @@ export default async function getNotifyList(lid: string) {
       if (index === 0) return;
       let obj = {
         notifyName: "",
-        id: "",
+        nid: "",
         pubTime: "",
         hadRead: false,
       };
@@ -20,7 +20,7 @@ export default async function getNotifyList(lid: string) {
       obj.notifyName = item
         .querySelectorAll("a")[0]
         .getAttribute("title") as string;
-      obj.id = item
+      obj.nid = item
         ?.querySelectorAll("a")[0]
         ?.getAttribute("href")
         ?.split("?nid=")[1]
