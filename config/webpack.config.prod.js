@@ -34,12 +34,6 @@ const cfg = merge(webpackConfig, {
     new UserScriptMetaDataPlugin({
       metadata,
     }),
-    AutoImport({
-      resolvers: [ElementPlusResolver()],
-    }),
-    Components({
-      resolvers: [ElementPlusResolver()],
-    }),
   ],
 });
 
