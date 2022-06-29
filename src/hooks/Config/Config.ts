@@ -60,41 +60,6 @@ const userConfig = {
     id: "config-hwt-default-expand",
     type: "switch",
   },
-  "config-hwtlist-show": {
-    value: true,
-    default: true,
-    name: "显示作业列表卡片",
-    id: "config-hwtlist-show",
-    type: "switch",
-  },
-  "config-notifylist-show": {
-    value: true,
-    default: true,
-    name: "显示未读通知卡片",
-    id: "config-notifylist-show",
-    type: "switch",
-  },
-  "config-lessonlist-show": {
-    value: true,
-    default: true,
-    name: "显示课程列表卡片",
-    id: "config-lessonlist-show",
-    type: "switch",
-  },
-  "config-informlist-show": {
-    value: true,
-    default: true,
-    name: "显示系统通知卡片",
-    id: "config-informlist-show",
-    type: "switch",
-  },
-  "config-lessontoplist-show": {
-    value: false,
-    default: false,
-    name: "显示访问排行卡片",
-    id: "config-lessontoplist-show",
-    type: "switch",
-  },
 };
 
 export default {
