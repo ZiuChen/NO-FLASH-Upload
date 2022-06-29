@@ -8,19 +8,19 @@
     :default-openeds="['lesson']"
     @select="handleSelect"
   >
-    <el-menu-item class="mdui-ripple top-menu-item" index="welcome">
+    <el-menu-item index="welcome">
       <el-icon :size="iconSize"><Platform /></el-icon>
       <span>主页</span>
     </el-menu-item>
-    <el-menu-item class="mdui-ripple top-menu-item" index="plugins">
+    <el-menu-item index="plugins">
       <el-icon :size="iconSize"><Menu /></el-icon>
       <span>插件</span>
     </el-menu-item>
-    <el-menu-item class="mdui-ripple top-menu-item" index="profile">
+    <el-menu-item index="profile">
       <el-icon :size="iconSize"><Open /></el-icon>
       <span>个人设置</span>
     </el-menu-item>
-    <el-menu-item class="mdui-ripple top-menu-item" index="about">
+    <el-menu-item index="about">
       <el-icon :size="iconSize"><MoreFilled /></el-icon>
       <span>关于</span>
     </el-menu-item>

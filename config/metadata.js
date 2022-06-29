@@ -19,8 +19,6 @@ module.exports = {
   namespace: "https://greasyfork.org/zh-CN/users/605474",
   require: [
     "https://fastly.jsdelivr.net/npm/@wangeditor/editor@latest/dist/index.min.js",
-    "https://fastly.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js",
-    "https://fastly.jsdelivr.net/npm/dom-to-image@2.6.0/src/dom-to-image.min.js",
   ],
   icon: "https://fastly.jsdelivr.net/gh/ZiuChen/ZiuChen@main/avatar.jpg",
 };
