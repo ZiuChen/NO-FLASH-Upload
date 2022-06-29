@@ -42,8 +42,11 @@
         </ZUCard>
       </el-col>
       <el-col :span="expandSpanWidth[tableExpandStatus.toString()].right">
-        <HwtList :reloadTrigger="reloadTrigger"></HwtList>
-        <LessonList></LessonList>
+        <HwtList
+          :showDragHandler="false"
+          :reloadTrigger="reloadTrigger"
+        ></HwtList>
+        <LessonList :showDragHandler="false"></LessonList>
       </el-col>
     </el-row>
   </div>

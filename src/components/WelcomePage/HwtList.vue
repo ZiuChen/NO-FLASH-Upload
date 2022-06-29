@@ -3,6 +3,7 @@
     <ZUTable
       ref="ZUTableRef"
       v-bind="TableConfig"
+      :showDragHandler="showDragHandler"
       :listData="hwtList"
       @reload="fetchTableData"
     >
@@ -49,6 +50,13 @@ import ZUTable from "@/base-ui/table";
 import { TableConfig } from "./config/hwtlist.table.config";
 import API from "@/request/API";
 import { useHwtFormatter } from "@/hooks/useHwtFormatter";
+
+const props = defineProps({
+  showDragHandler: {
+    type: Boolean,
+    default: true,
+  },
+});
 
 const ZUTableRef = ref();
 const lessonList = ref([]);

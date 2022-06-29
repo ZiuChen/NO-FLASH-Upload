@@ -3,6 +3,7 @@
     <ZUTable
       ref="ZUTableRef"
       v-bind="TableConfig"
+      :showDragHandler="showDragHandler"
       :listData="lessonList"
       @reload="fetchTableData"
     >
@@ -48,6 +49,12 @@ import ZUTable from "@/base-ui/table";
 import { TableConfig } from "./config/lessonlist.table.config";
 import API from "@/request/API";
 import localCache from "@/utils/localCache";
+const props = defineProps({
+  showDragHandler: {
+    type: Boolean,
+    default: true,
+  },
+});
 const lessonList = ref([]);
 const ZUTableRef = ref();
 const fetchTableData = async ({ loadingStatus }) => {
