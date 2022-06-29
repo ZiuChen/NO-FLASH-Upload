@@ -11,17 +11,6 @@ const cfg = merge(webpackConfig, {
   mode: "production",
   optimization: {
     minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        extractComments: false,
-        terserOptions: {
-          format: {
-            // comments: /./,
-            comments: false,
-          },
-        },
-      }),
-    ],
     moduleIds: "named",
   },
   output: {
