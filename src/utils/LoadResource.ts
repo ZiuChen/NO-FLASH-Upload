@@ -1,10 +1,10 @@
-function loadJS(url: string) {
+export function loadJS(url: string) {
   document
     .querySelectorAll("head")[0]
     .append(DOMParse(`<script type="text/javascript" src="${url}"></script>`));
 }
 
-function loadLINK(link: string) {
+export function loadLINK(link: string) {
   document
     .querySelectorAll("head")[0]
     .append(
@@ -14,7 +14,7 @@ function loadLINK(link: string) {
     );
 }
 
-function loadCSS(css: string) {
+export function loadCSS(css: string) {
   document
     .querySelectorAll("head")[0]
     .append(DOMParse(`<style class="append-style">${css}</style>`));
@@ -25,5 +25,3 @@ function DOMParse(string: string) {
   div.innerHTML = string;
   return div.firstChild as ChildNode;
 }
-
-export default { loadCSS: loadCSS, loadJS: loadJS, loadLINK: loadLINK };

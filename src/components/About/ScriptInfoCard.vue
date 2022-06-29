@@ -98,12 +98,12 @@ import { ref } from "vue";
 import ZUCard from "@/base-ui/card";
 import config from "@/hooks/Config/Config";
 import CheckUpdate from "@/hooks/CheckUpdate";
-import getVersionInfo from "@/hooks/GetVersionInfo";
+import useVersionInfo from "@/hooks/useVersionInfo";
 import API from "@/request/API";
 
 const iconSize = 18;
 const needUpdate = ref(false);
-getVersionInfo().then(({ need }) => {
+useVersionInfo().then(({ need }) => {
   needUpdate.value = need;
 });
 const handleBtnClick = (type) => {

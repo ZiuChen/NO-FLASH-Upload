@@ -16,7 +16,7 @@
 import ConfigOperations from "@/hooks/Config/ConfigOperations";
 import CheckUpdate from "@/hooks/CheckUpdate";
 import API from "@/request/API";
-import log from "@/hooks/Log";
+import log from "@/hooks/useLog";
 
 const createInterval = async () => {
   const callBack = () => {

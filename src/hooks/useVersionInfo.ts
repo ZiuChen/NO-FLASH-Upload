@@ -1,8 +1,8 @@
-import sendRequest from "../request/SendRequest";
-import log from "./Log";
+import sendRequest from "@/request/SendRequest";
+import log from "./useLog";
 import config from "./Config/Config";
 
-async function getVersionInfo() {
+export default async function useVersionInfo() {
   return sendRequest(
     config.updateInfo,
     (obj: Document) => {
@@ -16,7 +16,7 @@ async function getVersionInfo() {
     const weightLastest = v2weight(version);
     const weightNow = v2weight(config.version);
     log(
-      "getVersionInfo",
+      "versionInfo",
       `当前版本: ${config.version}, 最新版本: ${version}`,
       "info"
     );
@@ -37,5 +37,3 @@ function v2weight(v: string) {
     });
   return weight;
 }
-
-export default getVersionInfo;

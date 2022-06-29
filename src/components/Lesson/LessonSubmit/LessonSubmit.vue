@@ -52,7 +52,7 @@
 <script>
 import ConfigOperations from "@/hooks/Config/ConfigOperations";
 import API from "@/request/API";
-import log from "@/hooks/Log";
+import log from "@/hooks/useLog";
 import sendRequest from "@/request/SendRequest";
 import HwtList from "../../WelcomePage/HwtList.vue";
 import LessonList from "../../WelcomePage/LessonList.vue";

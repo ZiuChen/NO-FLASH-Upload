@@ -1,4 +1,4 @@
-import LoadResource from "../hooks/LoadResource";
+import { loadLINK, loadCSS } from "@/utils/LoadResource";
 import mainStyle from "../style/MainStyle";
 
 const links = [
@@ -8,9 +8,9 @@ const links = [
 
 const loadResources = () => {
   for (const link of links) {
-    LoadResource.loadLINK(link);
+    loadLINK(link);
   }
-  LoadResource.loadCSS(mainStyle);
+  loadCSS(mainStyle);
 };
 
 export default loadResources;

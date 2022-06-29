@@ -1,5 +1,5 @@
 import { ElNotification } from "element-plus";
-import log from "../hooks/Log";
+import log from "../hooks/useLog";
 import config from "../hooks/Config/Config";
 const baseURL = "http://cc.bjtu.edu.cn:81/meol/";
 

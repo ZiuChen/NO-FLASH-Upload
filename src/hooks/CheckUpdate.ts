@@ -1,11 +1,11 @@
 import { ElNotification, ElMessageBox } from "element-plus";
-import getVersionInfo from "./GetVersionInfo";
+import useVersionInfo from "./useVersionInfo";
 import config from "./Config/Config";
 import ConfigOperations from "./Config/ConfigOperations";
 import type { Action } from "element-plus";
 
 async function checkUpdate() {
-  await getVersionInfo().then((res) => {
+  await useVersionInfo().then((res) => {
     if (res.need) {
       let notify = ElNotification({
         title: "免Flash文件上传",

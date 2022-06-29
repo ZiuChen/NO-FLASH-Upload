@@ -1,6 +1,6 @@
 import { ElMessage } from "element-plus";
 import config from "./Config";
-import log from "../Log";
+import log from "../useLog";
 import localCache from "@/utils/localCache";
 
 function initConfig() {
