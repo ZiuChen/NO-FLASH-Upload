@@ -36,6 +36,12 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "HwtList",
+};
+</script>
+
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";

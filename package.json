@@ -1,6 +1,6 @@
 {
   "name": "no-flash-upload",
-  "version": "2.2.14",
+  "version": "2.3.0",
   "description": "北京交通大学课程平台功能增强脚本，实现信息聚合，附件上传，让你高效处理课程信息。",
   "main": "userscript.js",
   "scripts": {
@@ -38,5 +38,8 @@
     "webpack-cli": "^4.9.1",
     "webpack-livereload-plugin": "^3.0.2",
     "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "sortablejs": "^1.15.0"
   }
 }

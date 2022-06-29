@@ -18,6 +18,12 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "LessonTopList",
+};
+</script>
+
 <script setup>
 import { ref, watch } from "vue";
 import ZUTable from "@/base-ui/table";

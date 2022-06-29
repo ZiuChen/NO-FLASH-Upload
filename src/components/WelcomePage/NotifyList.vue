@@ -23,6 +23,12 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "NotifyList",
+};
+</script>
+
 <script setup>
 import { ref } from "vue";
 import ZUTable from "@/base-ui/table";

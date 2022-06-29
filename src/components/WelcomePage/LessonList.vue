@@ -36,6 +36,12 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "LessonList",
+};
+</script>
+
 <script setup>
 import { ref } from "vue";
 import ZUTable from "@/base-ui/table";

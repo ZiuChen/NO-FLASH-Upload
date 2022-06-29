@@ -18,6 +18,12 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "InformList",
+};
+</script>
+
 <script setup>
 import { ref } from "vue";
 import ZUTable from "@/base-ui/table";
