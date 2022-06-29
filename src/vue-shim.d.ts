@@ -4,5 +4,11 @@ declare module "*.vue" {
   export default componentOptions;
 }
 declare module "sortablejs" {
-  any;
+  export interface Temp {
+    new (arg1: any, arg2: any): any;
+  }
+  export class Temp {
+    constructor(arg1: any, arg2: any);
+  }
+  export default Temp;
 }
