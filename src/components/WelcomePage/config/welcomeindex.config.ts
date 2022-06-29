@@ -4,19 +4,19 @@ export const plainConfig = [
     span: 24,
   },
   {
+    cpn: "NotifyList",
+    span: 12,
+  },
+  {
     cpn: "InformList",
     span: 12,
   },
   {
-    cpn: "NotifyList",
-    span: 8,
-  },
-  {
     cpn: "LessonList",
-    span: 8,
+    span: 24,
   },
   {
     cpn: "LessonTopList",
-    span: 8,
+    span: 12,
   },
 ];
