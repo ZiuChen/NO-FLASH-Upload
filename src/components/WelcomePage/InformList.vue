@@ -8,7 +8,7 @@
       <template #notifyName="{ row }">
         <el-link
           :underline="false"
-          :href="baseUrl + row.id"
+          :href="baseUrl + row.nid"
           :title="row.notifyName"
           target="_blank"
           >{{ row.notifyName }}</el-link
