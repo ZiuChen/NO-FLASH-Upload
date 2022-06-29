@@ -57,7 +57,7 @@ const props = defineProps({
   },
   tableHeight: {
     type: String,
-    default: "auto",
+    default: undefined,
   },
   defaultSort: {
     type: Object,

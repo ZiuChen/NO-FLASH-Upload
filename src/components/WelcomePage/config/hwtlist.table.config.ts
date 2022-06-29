@@ -79,7 +79,6 @@ export const TableConfig: ITableConfig = {
       slotName: "handler",
     },
   ],
-  tableHeight: "520",
   defaultSort: {
     prop: "remain",
     order: "ascending",
