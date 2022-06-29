@@ -82,7 +82,7 @@ export const TableConfig: ITableConfig = {
   tableHeight: "520",
   defaultSort: {
     prop: "remain",
-    order: "descending",
+    order: "ascending",
   },
   rowClassName: ({ row }) => {
     if (row.able === false) {
