@@ -5,7 +5,7 @@ export default async function getLessonList() {
   let url = `http://cc.bjtu.edu.cn:81/meol/lesson/blen.student.lesson.list.jsp`;
   return await sendRequest(url, (doc: Document) => {
     return doc.querySelectorAll("tbody > tr");
-  }).then((res) => {
+  }).then((res: any) => {
     let rtnArray: object[] = [];
     res.forEach((item: HTMLTableRowElement, index: number) => {
       if (index === 0) return;
