@@ -31,7 +31,6 @@ export default function usePageSort(
     var el = document.querySelector(selector);
     var sortable = new Sortable(el, {
       ...otherOptions,
-      handle: ".card-header",
       animation: 150,
       onEnd: function ({ oldIndex, newIndex }: any) {
         // replace position: oldIndex <=> newIndex
