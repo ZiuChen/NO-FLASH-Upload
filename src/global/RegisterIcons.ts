@@ -13,6 +13,7 @@ import {
   StarFilled,
   Promotion,
   BellFilled,
+  CollectionTag,
 } from "@element-plus/icons-vue";
 
 const Icons = [
@@ -29,6 +30,7 @@ const Icons = [
   StarFilled,
   Promotion,
   BellFilled,
+  CollectionTag,
 ];
 
 export function registerIcons(app: App) {

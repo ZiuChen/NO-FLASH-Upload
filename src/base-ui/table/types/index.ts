@@ -25,4 +25,5 @@ export interface ITableConfig {
   tableHeight?: string;
   defaultSort?: TSortItem;
   rowClassName?: (row: TRow) => any;
+  showDragHandler?: boolean;
 }

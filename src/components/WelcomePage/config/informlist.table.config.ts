@@ -12,4 +12,5 @@ export const TableConfig: ITableConfig = {
     { prop: "pubTime", label: "发布时间", minWidth: "200", align: "right" },
   ],
   tableHeight: "400px",
+  showDragHandler: true,
 };

@@ -1,6 +1,6 @@
 <template>
   <div class="zu-table">
-    <ZUCard>
+    <ZUCard :showDragHandler="showDragHandler">
       <template #header>
         <span>{{ title }}</span>
         <div class="button-group">
@@ -66,6 +66,10 @@ const props = defineProps({
   rowClassName: {
     type: Function,
     default: () => {},
+  },
+  showDragHandler: {
+    type: Boolean,
+    default: false,
   },
 });
 const emit = defineEmits(["reload"]);

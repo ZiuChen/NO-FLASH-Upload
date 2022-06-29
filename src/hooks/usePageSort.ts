@@ -18,15 +18,20 @@ const cpnMap = {
   LessonTopList,
 };
 
-export default function usePageSort(plainConfig: TPlainConfig) {
+export default function usePageSort(
+  plainConfig: TPlainConfig,
+  { selector, otherOptions }: any
+) {
   const localCpnCache = localCache.getCache("cpn-cache");
   const components = localCpnCache
     ? toCpnConfig(localCpnCache)
     : toCpnConfig(plainConfig);
   const cpnCacheRef = ref(components);
   onMounted(() => {
-    var el = document.querySelector(".welcome-index .el-row");
+    var el = document.querySelector(selector);
     var sortable = new Sortable(el, {
+      ...otherOptions,
+      handle: ".card-header",
       animation: 150,
       onEnd: function ({ oldIndex, newIndex }: any) {
         // replace position: oldIndex <=> newIndex

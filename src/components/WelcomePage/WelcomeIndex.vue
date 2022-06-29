@@ -14,7 +14,12 @@
 import { plainConfig } from "./config/welcomeindex.config";
 import usePageSort from "@/hooks/usePageSort";
 
-const [components] = usePageSort(plainConfig);
+const [components] = usePageSort(plainConfig, {
+  selector: ".welcome-index .el-row",
+  otherOptions: {
+    handle: ".drag-handler",
+  },
+});
 </script>
 
 <style scope></style>

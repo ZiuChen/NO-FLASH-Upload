@@ -29,4 +29,5 @@ export const TableConfig: ITableConfig = {
     prop: "pubTime",
     order: "descending",
   },
+  showDragHandler: true,
 };

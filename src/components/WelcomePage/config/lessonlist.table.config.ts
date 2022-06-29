@@ -36,4 +36,5 @@ export const TableConfig: ITableConfig = {
     },
   ],
   tableHeight: "400px",
+  showDragHandler: true,
 };
