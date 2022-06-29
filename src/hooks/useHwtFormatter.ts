@@ -1,5 +1,4 @@
 import localCache from "@/utils/localCache";
-const lessonList = localCache.getCache("lesson-list");
 
 const formatterRemain = ({ remainFloat, remain, date }: any) => {
   const dDate = new Date(date).getDate();
@@ -28,6 +27,7 @@ const formatterAnswerStatus = ({ able, answerStatus }: any) => {
       };
 };
 const formatterCourseId = ({ courseId }: any) => {
+  const lessonList = localCache.getCache("lesson-list");
   return lessonList?.find((lesson: any) => lesson.id === courseId).name;
 };
 const formatterMark = ({ mark }: any) => {
