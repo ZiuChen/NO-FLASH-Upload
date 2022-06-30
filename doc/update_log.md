@@ -1,5 +1,16 @@
 
 <p>
+<span>2022年6月30日</span>
+<em><b>V2.3.0：</b></em>
+</p>
+<ul>
+<li><b>REFACTOR: </b>脚本重构, 绝大部分组件使用Composition API重写</li>
+<li><b>REFACTOR: </b>移除了部分冗余功能, 精简逻辑, 提高组件复用性</li>
+<li><b>FEAT: </b>主页卡片支持拖动排序</li>
+<li><b>FEAT: </b>对部分数据加入了本地缓存机制, 减少网络请求次数</li>
+</ul>
+
+<p>
 <span>2022年5月26日</span>
 <em><b>V2.2.14：</b></em>
 </p>
