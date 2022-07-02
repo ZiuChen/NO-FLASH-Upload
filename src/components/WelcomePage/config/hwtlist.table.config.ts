@@ -28,7 +28,7 @@ export const TableConfig: ITableConfig = {
       "filter-method": (value, row) => {
         switch (value) {
           case 1:
-            return row.remain >= 3;
+            return row.remain <= 15 && row.remain >= -2;
           case 0:
             return row.remain >= 0;
           case -1:
