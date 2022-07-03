@@ -62,6 +62,7 @@ import LessonList from "../../WelcomePage/LessonList.vue";
 import HwtInfo from "../LessonSubmit/HwtInfo.vue";
 import HwtEditor from "./HwtEditor.vue";
 import ZUCard from "@/base-ui/card";
+import { ElMessage, ElMessageBox } from "element-plus";
 
 export default {
   components: {
