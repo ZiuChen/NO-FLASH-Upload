@@ -6,6 +6,7 @@ const metadata = require("./metadata.js");
 const webpackConfig = require("./webpack.config.base.js");
 
 metadata.name = "NO-Flash-Upload(dev)";
+metadata["name:en"] = "NO-Flash-Upload(dev)";
 metadata.require.push(
   "file://" + path.resolve(__dirname, "../dist/index.debug.user.js")
 );

@@ -1,14 +1,14 @@
 const { version, repository, description } = require("../../../package.json");
 const giteeURL = `https://gitee.com/ziuc/NO-FLASH-Upload`;
 const supportURL = `https://support.qq.com/products/395800`;
-const donateURL = `https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/img/Buy%20me%20a%20coffee.png`;
+const donateURL = `https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/doc/img/Buy%20me%20a%20coffee.png`;
 const qGroupURL = `https://qm.qq.com/cgi-bin/qm/qr?k=9qfHKTaQuWqYN1ys1yiQPdJ4iIlHwgL5&jump_from=webapi`;
-const updateURL = `https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/publish/index.prod.user.js`;
-const updateInfo = `https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/package.json`;
-const updateLOG = `https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/doc/update_log.md`;
-const notifyURL = `https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/src/notify.json`;
-const pluginsURL = `https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/src/plugins.json`;
-const pluginsBaseURL = `https://fastly.jsdelivr.net/gh/ZiuChen/NO-FLASH-Upload@master/plugins/`;
+const updateURL = `https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/publish/index.prod.user.js`;
+const updateInfo = `https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/package.json`;
+const updateLOG = `https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/doc/update_log.md`;
+const notifyURL = `https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/src/notify.json`;
+const pluginsURL = `https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/src/plugins.json`;
+const pluginsBaseURL = `https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/plugins/`;
 
 const userConfig = {
   "data-last-read-notify": {

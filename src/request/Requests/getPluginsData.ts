@@ -1,12 +1,12 @@
-import sendRequest from "../SendRequest";
 import config from "../../hooks/Config/Config";
+import XHR from "../../utils/XHR";
 
 export default async function getPluginsData() {
-  return await sendRequest(config.pluginsURL, undefined, {
-    cache: "no-cache",
-  }).then((res) => {
-    return res.json().then((json: JSON) => {
-      return json;
-    });
-  });
+  return await XHR({
+    GM: true,
+    anonymous: true,
+    method: "GET",
+    url: config.pluginsURL,
+    responseType: "json",
+  }).then(({ body }: any) => body);
 }

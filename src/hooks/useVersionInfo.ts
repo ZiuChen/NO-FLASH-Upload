@@ -1,31 +1,33 @@
-import sendRequest from "@/request/SendRequest";
 import log from "./useLog";
 import config from "./Config/Config";
+import XHR from "../utils/XHR";
 
 export default async function useVersionInfo() {
-  return sendRequest(
-    config.updateInfo,
-    (obj: Document) => {
-      const string = obj.querySelector("body")?.innerText as string;
-      return JSON.parse(string);
-    },
-    {
-      cache: "no-cache",
-    }
-  ).then(({ version }) => {
-    const weightLastest = v2weight(version);
-    const weightNow = v2weight(config.version);
-    log(
-      "versionInfo",
-      `当前版本: ${config.version}, 最新版本: ${version}`,
-      "info"
-    );
-    return {
-      need: weightLastest > weightNow,
-      current: config.version,
-      lastest: version,
-    };
-  });
+  return await XHR({
+    GM: true,
+    anonymous: true,
+    method: "GET",
+    url: config.updateInfo,
+    headers: { Referer: config.updateInfo },
+    responseType: "json",
+  })
+    .then((res: any) => {
+      if (res === undefined) {
+        log("getVersionInfo", "数据获取异常，请重试或联系开发者", "error");
+      }
+      return res.body.version;
+    })
+    .then((version) => {
+      const weightLastest = v2weight(version);
+      const weightNow = v2weight(config.version);
+      log("getVersionInfo", `最新版本: ${version}`, "info");
+      log("getVersionInfo", `脚本当前版本: ${config.version}`, "info");
+      if (weightLastest > weightNow) {
+        return { need: true, current: config.version, lastest: version };
+      } else {
+        return { need: false, current: config.version, lastest: version };
+      }
+    });
 }
 
 function v2weight(v: string) {
