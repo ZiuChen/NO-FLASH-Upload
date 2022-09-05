@@ -16,14 +16,14 @@ const formatterRemain = ({ remainFloat, remain, date }: any) => {
   }
 };
 const formatterAnswerStatus = ({ able, answerStatus }: any) => {
-  return able === true || answerStatus === undefined
+  return able === true && answerStatus === true
     ? {
-        text: "未提交",
-        tag: "warning",
-      }
-    : {
         text: "已提交",
         tag: "success",
+      }
+    : {
+        text: "未提交",
+        tag: "warning",
       };
 };
 const formatterCourseId = ({ courseId }: any) => {
