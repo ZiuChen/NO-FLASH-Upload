@@ -1,4 +1,13 @@
 <p>
+<span>2022年9月8日</span>
+<em><b>V2.3.4：</b></em>
+</p>
+<ul>
+<li><b>FEAT: </b>插件数据源从jsdelivr改为gitee</li>
+<li><b>FIX: </b>修复已提交作业错误展示为未提交的问题</li>
+</ul>
+
+<p>
 <span>2022年7月3日</span>
 <em><b>V2.3.2：</b></em>
 </p>
