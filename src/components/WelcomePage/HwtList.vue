@@ -44,7 +44,7 @@ export default {
 </script>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useRouter } from "vue-router";
 import ZUTable from "@/base-ui/table";
 import { TableConfig } from "./config/hwtlist.table.config";
@@ -55,6 +55,10 @@ const props = defineProps({
   showDragHandler: {
     type: Boolean,
     default: true,
+  },
+  reloadTrigger: {
+    type: Boolean,
+    default: false,
   },
 });
 
@@ -80,6 +84,15 @@ const router = useRouter();
 const handlePageJump = ({ courseId, id, able }) => {
   router.push(`/lesson/${courseId}/submit/${id}?able=${able}`);
 };
+// 作业提交 触发reloadTrigger改变 刷新作业列表
+watch(
+  () => props.reloadTrigger,
+  (newVal) => {
+    if (newVal) {
+      fetchLessonList();
+    }
+  }
+);
 const {
   formatterRemain,
   formatterAnswerStatus,
