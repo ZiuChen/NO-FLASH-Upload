@@ -13,26 +13,26 @@
 </template>
 
 <script setup>
+import { onMounted } from "vue";
 import ConfigOperations from "@/hooks/Config/ConfigOperations";
 import CheckUpdate from "@/hooks/CheckUpdate";
 import API from "@/request/API";
 import log from "@/hooks/useLog";
 
 const createInterval = async () => {
-  const callBack = () => {
-    API.getUserInfo().then((res) => {
-      log("createInterval", "已发送身份保活请求", "success");
-      return res;
-    });
-  };
-  if (ConfigOperations.readUserConfig("config-post-interval").value) {
-    window.setInterval(callBack, 120000);
+  if (ConfigOperations.readUserConfig()["config-post-interval"].value) {
+    window.setInterval(() => {
+      API.getUserInfo().then((res) => {
+        log("createInterval", "已发送身份保活请求", "success");
+        return res;
+      });
+    }, 120000);
   }
 };
 
 CheckUpdate();
 API.getLastestScriptNotify();
-createInterval();
+onMounted(() => createInterval());
 </script>
 
 <style scoped>
