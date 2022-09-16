@@ -18,6 +18,7 @@
 
 <script setup>
 import { ref, watch } from "vue";
+import { ElNotification } from "element-plus";
 import configOperations from "@/hooks/Config/ConfigOperations";
 import ZUCard from "@/base-ui/card";
 import ZUForm from "@/base-ui/form";
@@ -34,14 +35,14 @@ watch(formData, (formData) => {
 });
 const handleRestore = () => {
   configOperations.restoreUserConfig();
-  ElMessage({
+  ElNotification({
     message: "设置已重置，部分设置刷新后生效",
     type: "success",
   });
 };
 const handleExport = () => {
   configOperations.exportUserConfig();
-  ElMessage({
+  ElNotification({
     message: "设置文件已导出",
     type: "success",
   });
