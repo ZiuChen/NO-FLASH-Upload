@@ -14,6 +14,22 @@ export default async function getHwtList(courseId: string) {
       let rtnArray: object[] = [];
       if (json.datas.hwtList === undefined) return [];
       json.datas.hwtList.forEach((item: any) => {
+        /* 
+          只能提交一次的作业
+            未过期
+              已提交 able: false answerStatus: false
+              未提交 able: true answerStatus: undefined
+            已过期
+              已提交 
+              未提交 able: false answerStatus: undefined
+          允许重复提交的作业
+            未过期
+              已提交 able: true answerStatus: true
+              未提交 able: true answerStatus: undefined
+            已过期
+              已提交 able: false answerStatus: false
+              未提交 able: false answerStatus： undefined
+        */
         rtnArray.push({
           courseId: json.datas.courseId,
           id: item.id.toString(),
@@ -30,7 +46,7 @@ export default async function getHwtList(courseId: string) {
           mark: item.mark,
           publisher: item.realName,
           mutualTask: item.mutualTask,
-          answerStatus: item.answerStatus, // 是否已经提交，未提交为undefined，已经提交为true，过期为false
+          answerStatus: item.answerStatus, // 是否已经提交
           showGrade: item.showGrade, // answerStatus == true || able == false
         });
       });

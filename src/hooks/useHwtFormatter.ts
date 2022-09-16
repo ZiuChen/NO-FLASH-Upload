@@ -16,15 +16,16 @@ const formatterRemain = ({ remainFloat, remain, date }: any) => {
   }
 };
 const formatterAnswerStatus = ({ able, answerStatus }: any) => {
-  return able === true && answerStatus === true
-    ? {
-        text: "已提交",
-        tag: "success",
-      }
-    : {
-        text: "未提交",
-        tag: "warning",
-      };
+  // 挺复杂的 😅 详细注释在 getHwtList.ts 中
+  if (able === false && answerStatus === false) {
+    return { text: "已提交", tag: "success" };
+  } else if (able === false && answerStatus === undefined) {
+    return { text: "未提交", tag: "warning" };
+  } else if (able === true && answerStatus === true) {
+    return { text: "已提交", tag: "success" };
+  } else if (able === true && answerStatus === undefined) {
+    return { text: "未提交", tag: "warning" };
+  }
 };
 const formatterCourseId = ({ courseId }: any) => {
   const lessonList = localCache.getCache("lesson-list");
