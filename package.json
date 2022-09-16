@@ -1,6 +1,6 @@
 {
   "name": "no-flash-upload",
-  "version": "2.3.4",
+  "version": "2.3.8",
   "description": "北京交通大学课程平台功能增强脚本，实现信息聚合，附件上传，让你高效处理课程信息。",
   "main": "userscript.js",
   "scripts": {
