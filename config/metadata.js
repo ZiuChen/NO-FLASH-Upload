@@ -20,7 +20,7 @@ module.exports = {
   require: [
     "https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/libs/wangeditor.min.js",
   ],
-  icon: "https://fastly.jsdelivr.net/gh/ZiuChen/ZiuChen@main/avatar.jpg",
+  icon: "https://gcore.jsdelivr.net/gh/ZiuChen/ZiuChen@main/avatar.jpg",
   connect: ["gitee.com"],
   grant: ["GM_xmlhttpRequest"],
 };
