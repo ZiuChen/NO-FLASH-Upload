@@ -40,5 +40,11 @@
     "title": "保持脚本更新，使用最新版本",
     "content": "脚本可能会由于网络、政策等各种原因失效，当出现问题时请随时通过反馈通道反馈：https://support.qq.com/products/395800，我将及时在此处提供解决方案。",
     "pubTime": "2022-05-23"
+  },
+  {
+    "id": 8,
+    "title": "保持脚本更新，使用最新版本",
+    "content": "由于Gitee要求登录才能获取代码，导致v2.3.8版本的更新与自动检查更新功能失效，请手动访问：https://service-n4tqsll5-1304937021.sh.apigw.tencentcs.com/release/v1/index.prod.user.js 更新获取脚本的最新版本。",
+    "pubTime": "2022-09-18"
   }
 ]
