@@ -4,12 +4,13 @@ const path = require("path");
 const app = express();
 
 app.get("/v1/index.prod.user.js", (req, res) => {
+  console.log("[fetchScript] time: " + new Date().toLocaleString());
   res.sendFile(path.join(__dirname, "resource/index.prod.user.js"));
 });
 
 // Error handler
 app.use(function (err, req, res, next) {
-  console.error(err);
+  console.error("[Error] error: " + err);
   res.status(500).send("Internal Serverless Error");
 });
 
