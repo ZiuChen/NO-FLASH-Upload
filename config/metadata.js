@@ -7,9 +7,9 @@ module.exports = {
   "description:en":
     "Beijing Jiaotong University curriculum platform function enhancements, information aggregation, accessories uploading, allowing you to efficient course information.",
   updateURL:
-    "https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/publish/index.prod.user.js",
+    "https://service-n4tqsll5-1304937021.sh.apigw.tencentcs.com/release/v1/index.prod.user.js",
   downloadURL:
-    "https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/publish/index.prod.user.js",
+    "https://service-n4tqsll5-1304937021.sh.apigw.tencentcs.com/release/v1/index.prod.user.js",
   version: version,
   author: author,
   source: repository.url,

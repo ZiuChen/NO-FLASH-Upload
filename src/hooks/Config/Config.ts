@@ -3,7 +3,7 @@ const giteeURL = `https://gitee.com/ziuc/NO-FLASH-Upload`;
 const supportURL = `https://support.qq.com/products/395800`;
 const donateURL = `https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/doc/img/Buy%20me%20a%20coffee.png`;
 const qGroupURL = `https://qm.qq.com/cgi-bin/qm/qr?k=9qfHKTaQuWqYN1ys1yiQPdJ4iIlHwgL5&jump_from=webapi`;
-const updateURL = `https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/publish/index.prod.user.js`;
+const updateURL = `https://service-n4tqsll5-1304937021.sh.apigw.tencentcs.com/release/v1/index.prod.user.js`;
 const updateInfo = `https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/package.json`;
 const updateLOG = `https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/doc/update_log.md`;
 const notifyURL = `https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/src/notify.json`;
