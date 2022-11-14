@@ -25,6 +25,8 @@ const formatterAnswerStatus = ({ able, answerStatus }: any) => {
     return { text: "已提交", tag: "success" };
   } else if (able === true && answerStatus === undefined) {
     return { text: "未提交", tag: "warning" };
+  } else if (able === true && answerStatus === false) {
+    return { text: "已提交", tag: "success" };
   }
 };
 const formatterCourseId = ({ courseId }: any) => {
