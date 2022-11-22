@@ -1,6 +1,5 @@
 const path = require("path");
 const { merge } = require("webpack-merge");
-const LiveReloadPlugin = require("webpack-livereload-plugin");
 const UserScriptMetaDataPlugin = require("userscript-metadata-webpack-plugin");
 const metadata = require("./metadata.js");
 const webpackConfig = require("./webpack.config.base.js");
@@ -31,7 +30,6 @@ const cfg = merge(webpackConfig, {
     ignored: ["**/node_modules"],
   },
   plugins: [
-    new LiveReloadPlugin(),
     new UserScriptMetaDataPlugin({
       metadata,
     }),

@@ -47,8 +47,7 @@
 1. `Fork`[本仓库](https://github.com/ZiuChen/NO-FLASH-Upload)并`clone`到本地。
 2. 使用`npm i`安装依赖，使用`npm run dev`执行自动编译。
 3. 在`Tampermonkey`脚本管理器中新建脚本，将`dist`目录下生成的`index.dev.user.js`复制到其中并保存，开始开发。
-4. **(可选)** 配合浏览器拓展 `LiveReload` 可实现代码更新，浏览器自动刷新。
-5. 开发完毕，整理代码，提交 Pr。
+4. 开发完毕，整理代码，提交 Pr。
 
 ### 📁 目录说明
 
