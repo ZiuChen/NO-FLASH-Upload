@@ -4,7 +4,7 @@ import ConfigOperations from "@/hooks/Config/ConfigOperations";
 import registerApp from "@/global/RegisterApp";
 
 const css = [
-  "https://fastly.jsdelivr.net/npm/@wangeditor/editor@latest/dist/css/style.css",
+  "https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/libs/wangeditor.css",
 ];
 
 const atMainPage = window.location.href.indexOf("personal.do") !== -1;
