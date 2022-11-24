@@ -31,11 +31,11 @@
           </template>
           <HwtInfo :propHwtContent="hwtContent"></HwtInfo>
           <HwtEditor
-            v-if="this.$route.query.able === 'true'"
+            v-if="route.query.able === 'true'"
             ref="editorObj"
             :propHwtContent="hwtContent"
           ></HwtEditor>
-          <div v-if="this.$route.query.able === 'true'" class="operation">
+          <div v-if="route.query.able === 'true'" class="operation">
             <el-button @click="handleButtonSubmit">提交</el-button>
             <el-button @click="handleButtonReturn">返回</el-button>
           </div>
