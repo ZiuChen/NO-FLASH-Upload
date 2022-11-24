@@ -17,7 +17,7 @@
         <template #label>
           <div class="hwt-content-label">
             <span>作业内容</span>
-            <el-button size="small" @click="toggleHwtContentShow">
+            <el-button size="small" @click="hwtContentShow = !hwtContentShow">
               显示/隐藏作业内容
             </el-button>
           </div>
@@ -33,7 +33,10 @@
         <template #label>
           <div class="answer-content-label">
             <span>回答内容</span>
-            <el-button size="small" @click="toggleAnswerContentShow">
+            <el-button
+              size="small"
+              @click="answerContentShow = !answerContentShow"
+            >
               显示/隐藏回答内容
             </el-button>
           </div>
@@ -54,53 +57,39 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      hwtContent: {}, // dont assign this.propHwtContent directly
-      hwtContentShow: true,
-      answerContentShow: true,
-    };
+<script setup>
+import { ref, watch, computed } from "vue";
+
+const hwtContent = ref({}); // dont assign this.propHwtContent directly
+const hwtContentShow = ref(true);
+const answerContentShow = ref(true);
+
+const props = defineProps({
+  propHwtContent: {
+    type: Object,
+    required: true,
   },
-  props: ["propHwtContent"],
-  watch: {
-    propHwtContent: function (val) {
-      this.hwtContent = val;
-    },
-  },
-  methods: {
-    toggleHwtContentShow() {
-      this.hwtContentShow = !this.hwtContentShow;
-    },
-    toggleAnswerContentShow() {
-      this.answerContentShow = !this.answerContentShow;
-    },
-  },
-  computed: {
-    formatter: function () {
-      if (this.hwtContent.manySubmitStatus === true) {
-        return {
-          status: true,
-          type: "success",
-          content: "允许重复提交",
-        };
-      } else if (this.hwtContent.manySubmitStatus === false) {
-        return {
-          status: false,
-          type: "warning",
-          content: "只允许提交一次",
-        };
-      } else {
-        return {
-          status: undefined,
-          type: "info",
-          content: "...",
-        };
+});
+
+watch(
+  () => props.propHwtContent,
+  (val) => (hwtContent.value = val)
+);
+
+const formatter = computed(() => {
+  const status = hwtContent.value.manySubmitStatus;
+  return status
+    ? {
+        status: true,
+        type: "success",
+        content: "允许重复提交",
       }
-    },
-  },
-};
+    : {
+        status: false,
+        type: "warning",
+        content: "只允许提交一次",
+      };
+});
 </script>
 
 <style scoped>
