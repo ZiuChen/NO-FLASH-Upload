@@ -1,2 +1,0 @@
-#!/bin/sh
-/var/lang/node12/bin/node app.js
