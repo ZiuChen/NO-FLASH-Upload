@@ -1,5 +1,15 @@
 
 <p>
+<span>2022年11月24日</span>
+<em><b>V2.3.11：</b></em>
+</p>
+<ul>
+<li><b>FEAT: </b>页面使用keep-alive缓存</li>
+<li><b>FEAT: </b>作业提交组件重构 性能更优</li>
+<li><b>FEAT: </b>wangEditor本地化 脚本不再有外部依赖</li>
+</ul>
+
+<p>
 <span>2022年11月14日</span>
 <em><b>V2.3.10：</b></em>
 </p>
