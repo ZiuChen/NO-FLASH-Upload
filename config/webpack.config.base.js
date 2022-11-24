@@ -1,5 +1,8 @@
 const path = require("path");
 const { VueLoaderPlugin } = require("vue-loader");
+const AutoImport = require("unplugin-auto-import/webpack");
+const Components = require("unplugin-vue-components/webpack");
+const { ElementPlusResolver } = require("unplugin-vue-components/resolvers");
 
 const webpackConfig = {
   resolve: {
@@ -41,7 +44,15 @@ const webpackConfig = {
       },
     ],
   },
-  plugins: [new VueLoaderPlugin()],
+  plugins: [
+    new VueLoaderPlugin(),
+    AutoImport({
+      resolvers: [ElementPlusResolver()],
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()],
+    }),
+  ],
 };
 
 module.exports = webpackConfig;

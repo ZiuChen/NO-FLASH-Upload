@@ -17,9 +17,7 @@ module.exports = {
   license: "MIT",
   match: ["*://cc.bjtu.edu.cn:81/meol*"],
   namespace: "https://greasyfork.org/zh-CN/users/605474",
-  require: [
-    "https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/libs/wangeditor.min.js",
-  ],
+  require: [],
   icon: "https://gcore.jsdelivr.net/gh/ZiuChen/ZiuChen@main/avatar.jpg",
   connect: ["gitee.com"],
   grant: ["GM_xmlhttpRequest"],
