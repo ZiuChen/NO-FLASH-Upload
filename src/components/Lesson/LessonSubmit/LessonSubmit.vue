@@ -32,7 +32,6 @@
           <HwtInfo :propHwtContent="hwtContent"></HwtInfo>
           <HwtEditor
             v-if="route.query.able === 'true'"
-            ref="editorObj"
             :propHwtContent="hwtContent"
           ></HwtEditor>
           <div v-if="route.query.able === 'true'" class="operation">
@@ -54,7 +53,7 @@
 
 <script setup>
 import { ref, onMounted, watch } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { ElMessage, ElMessageBox } from "element-plus";
 
 import ConfigOperations from "@/hooks/Config/ConfigOperations";
@@ -69,9 +68,7 @@ import HwtEditor from "@/components/Lesson/LessonSubmit/HwtEditor.vue";
 import ZUCard from "@/base-ui/card";
 
 const route = useRoute();
-
-const editorObj = ref(null);
-const editor = ref(null);
+const router = useRouter();
 
 const lid = ref("");
 const hwtid = ref("");
@@ -122,7 +119,7 @@ const hwtSubmit = () => {
 
   const url = `http://cc.bjtu.edu.cn:81/meol/hw/stu/hwStuSubmitDo.do`;
   const formData = new FormData();
-  const answer = editor.getHtml();
+  const answer = window.editor.getHtml();
 
   if (hwtContentWithId.value.hwaId !== undefined) {
     // 只能提交一次的作业不再要求hwaId参数
@@ -139,7 +136,7 @@ const hwtSubmit = () => {
     if (res.ok === true) {
       log("hwtSubmit", "成功提交作业", "success");
       refreshTable();
-      reloadTrigger.value = !this.reloadTrigger;
+      reloadTrigger.value = !reloadTrigger.value;
       ElMessage({
         message: "作业已成功提交",
         type: "success",
@@ -150,7 +147,8 @@ const hwtSubmit = () => {
 
 const handleButtonSubmit = () => {
   log("handleButtonSubmit", "触发作业提交");
-  if (editor.isEmpty() || editor.getText().trim() === "") {
+
+  if (window.editor.isEmpty() || window.editor.getText().trim() === "") {
     log("handleButtonSubmit", "编辑器为空，拒绝执行提交", "error");
     ElMessage({
       message: "编辑器内容为空，提交请求被拒绝",
@@ -179,9 +177,6 @@ const handleButtonReturn = () => {
 };
 
 onMounted(() => {
-  // 挂载完毕后 更新editor实例 减少调用时的代码量
-  editor.value = editorObj.editorObj;
-
   // 初始化页面数据
   lid.value = route.params.lid;
   hwtid.value = route.params.hwtid;

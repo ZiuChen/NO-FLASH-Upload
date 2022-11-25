@@ -54,7 +54,7 @@
 <script setup>
 import "@wangeditor/editor/dist/css/style.css"; // 引入 css
 
-import { onBeforeUnmount, ref, shallowRef, onMounted, watch } from "vue";
+import { onBeforeUnmount, ref, shallowRef, watch } from "vue";
 import { Boot } from "@wangeditor/editor";
 import { Editor, Toolbar } from "@wangeditor/editor-for-vue";
 
@@ -188,6 +188,7 @@ onBeforeUnmount(() => {
 });
 
 const handleCreated = (editor) => {
+  window.editor = editor;
   editorRef.value = editor; // 记录 editor 实例，重要！
 };
 
