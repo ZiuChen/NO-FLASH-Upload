@@ -13,7 +13,6 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
 import ConfigOperations from "@/hooks/Config/ConfigOperations";
 import CheckUpdate from "@/hooks/CheckUpdate";
 import API from "@/request/API";

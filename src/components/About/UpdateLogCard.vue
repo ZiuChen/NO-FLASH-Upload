@@ -27,7 +27,6 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
 import API from "@/request/API";
 import ZUCard from "@/base-ui/card";
 

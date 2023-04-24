@@ -58,8 +58,6 @@
 </template>
 
 <script setup>
-import { ref, watch, computed } from "vue";
-
 const hwtContent = ref({}); // dont assign this.propHwtContent directly
 const hwtContentShow = ref(true);
 const answerContentShow = ref(true);

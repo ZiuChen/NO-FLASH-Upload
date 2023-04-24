@@ -25,7 +25,6 @@ export default {
 </script>
 
 <script setup>
-import { ref, watch } from "vue";
 import ZUTable from "@/base-ui/table";
 import { TableConfig } from "./config/lessontoplist.table.config";
 import API from "@/request/API";

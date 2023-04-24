@@ -44,8 +44,6 @@ export default {
 </script>
 
 <script setup>
-import { ref, watch } from "vue";
-import { useRouter } from "vue-router";
 import ZUTable from "@/base-ui/table";
 import { TableConfig } from "./config/hwtlist.table.config";
 import API from "@/request/API";

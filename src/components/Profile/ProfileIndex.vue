@@ -17,7 +17,6 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
 import { ElNotification } from "element-plus";
 import configOperations from "@/hooks/Config/ConfigOperations";
 import ZUCard from "@/base-ui/card";

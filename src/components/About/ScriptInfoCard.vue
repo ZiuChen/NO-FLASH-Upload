@@ -94,7 +94,6 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
 import ZUCard from "@/base-ui/card";
 import config from "@/hooks/Config/Config";
 import CheckUpdate from "@/hooks/CheckUpdate";
