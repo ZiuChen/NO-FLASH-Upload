@@ -1,6 +1,7 @@
-const { author, repository, version, description } = require("../package.json");
+// @ts-nocheck
+import { author, repository, version, description } from "../package.json";
 
-module.exports = {
+export default {
   name: "免Flash文件上传",
   "name:en": "NO-FLASH-Upload",
   description: description,
@@ -17,7 +18,10 @@ module.exports = {
   license: "MIT",
   match: ["*://cc.bjtu.edu.cn:81/meol*"],
   namespace: "https://greasyfork.org/zh-CN/users/605474",
-  require: [],
+  require: [
+    "https://unpkg.com/vue@3.2.47/dist/vue.global.js",
+    "https://unpkg.com/element-plus@2.2.6/dist/index.full.js",
+  ],
   icon: "https://gcore.jsdelivr.net/gh/ZiuChen/ZiuChen@main/avatar.jpg",
   connect: ["gitee.com"],
   grant: ["GM_xmlhttpRequest"],

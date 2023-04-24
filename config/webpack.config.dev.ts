@@ -1,8 +1,9 @@
-const path = require("path");
-const { merge } = require("webpack-merge");
-const UserScriptMetaDataPlugin = require("userscript-metadata-webpack-plugin");
-const metadata = require("./metadata.js");
-const webpackConfig = require("./webpack.config.base.js");
+// @ts-nocheck
+import path from "path";
+import { merge } from "webpack-merge";
+import UserScriptMetaDataPlugin from "userscript-metadata-webpack-plugin";
+import metadata from "./metadata";
+import webpackConfig from "./webpack.config.base";
 
 metadata.name = "NO-Flash-Upload(dev)";
 metadata["name:en"] = "NO-Flash-Upload(dev)";
@@ -10,11 +11,11 @@ metadata.require.push(
   "file://" + path.resolve(__dirname, "../dist/index.debug.user.js")
 );
 
-const cfg = merge(webpackConfig, {
+export default merge(webpackConfig, {
   mode: "development",
   entry: {
     debug: webpackConfig.entry,
-    dev: path.resolve(__dirname, "./dev.js"), // Generate index.dev.user.js
+    dev: path.resolve(__dirname, "./dev.ts"), // Generate index.dev.user.js
   },
   optimization: {
     minimize: false,
@@ -35,5 +36,3 @@ const cfg = merge(webpackConfig, {
     }),
   ],
 });
-
-module.exports = cfg;

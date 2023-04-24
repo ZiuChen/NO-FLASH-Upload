@@ -1,10 +1,10 @@
-const path = require("path");
-const { VueLoaderPlugin } = require("vue-loader");
-const AutoImport = require("unplugin-auto-import/webpack");
-const Components = require("unplugin-vue-components/webpack");
-const { ElementPlusResolver } = require("unplugin-vue-components/resolvers");
+import path from "path";
+import { VueLoaderPlugin } from "vue-loader";
+import AutoImport from "unplugin-auto-import/webpack";
+import Components from "unplugin-vue-components/webpack";
+import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 
-const webpackConfig = {
+export default {
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "../src"),
@@ -15,6 +15,11 @@ const webpackConfig = {
   output: {
     publicPath: path.resolve(__dirname, "../dist"),
     path: path.resolve(__dirname, "../dist"),
+  },
+  externals: {
+    vue: "Vue",
+    "vue-router": "VueRouter",
+    "element-plus": "ElementPlus",
   },
   target: "web",
   module: {
@@ -47,6 +52,7 @@ const webpackConfig = {
   plugins: [
     new VueLoaderPlugin(),
     AutoImport({
+      imports: ["vue", "vue-router"],
       resolvers: [ElementPlusResolver()],
     }),
     Components({
@@ -54,5 +60,3 @@ const webpackConfig = {
     }),
   ],
 };
-
-module.exports = webpackConfig;
