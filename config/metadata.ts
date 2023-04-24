@@ -18,10 +18,7 @@ export default {
   license: "MIT",
   match: ["*://cc.bjtu.edu.cn:81/meol*"],
   namespace: "https://greasyfork.org/zh-CN/users/605474",
-  require: [
-    "https://unpkg.com/vue@3.2.47/dist/vue.global.js",
-    "https://unpkg.com/element-plus@2.2.6/dist/index.full.js",
-  ],
+  require: [],
   icon: "https://gcore.jsdelivr.net/gh/ZiuChen/ZiuChen@main/avatar.jpg",
   connect: ["gitee.com"],
   grant: ["GM_xmlhttpRequest"],

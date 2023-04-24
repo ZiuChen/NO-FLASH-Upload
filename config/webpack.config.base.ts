@@ -16,11 +16,6 @@ export default {
     publicPath: path.resolve(__dirname, "../dist"),
     path: path.resolve(__dirname, "../dist"),
   },
-  externals: {
-    vue: "Vue",
-    "vue-router": "VueRouter",
-    "element-plus": "ElementPlus",
-  },
   target: "web",
   module: {
     rules: [
