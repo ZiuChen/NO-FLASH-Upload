@@ -50,7 +50,6 @@ declare module '@vue/runtime-core' {
     LessonSubmit: typeof import('./src/components/Lesson/LessonSubmit/LessonSubmit.vue')['default']
     LessonTopList: typeof import('./src/components/WelcomePage/LessonTopList.vue')['default']
     NotifyList: typeof import('./src/components/WelcomePage/NotifyList.vue')['default']
-    PluginsIndex: typeof import('./src/components/Plugins/PluginsIndex.vue')['default']
     ProfileIndex: typeof import('./src/components/Profile/ProfileIndex.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

@@ -12,10 +12,6 @@
       <el-icon :size="iconSize"><Platform /></el-icon>
       <span>主页</span>
     </el-menu-item>
-    <el-menu-item index="plugins">
-      <el-icon :size="iconSize"><Menu /></el-icon>
-      <span>插件</span>
-    </el-menu-item>
     <el-menu-item index="profile">
       <el-icon :size="iconSize"><Open /></el-icon>
       <span>个人设置</span>

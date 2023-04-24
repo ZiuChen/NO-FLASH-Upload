@@ -15,7 +15,6 @@ import getLessonTopList from "./Requests/getLessonTopList";
 import getScriptNotify from "./Requests/getScriptNotify";
 import getLastestScriptNotify from "./Requests/getLastestScriptNotify";
 import getScriptUpdateLog from "./Requests/getScriptUpdateLog";
-import getPluginsData from "./Requests/getPluginsData";
 
 export default {
   getUserInfo: getUserInfo,
@@ -35,5 +34,4 @@ export default {
   getScriptNotify: getScriptNotify,
   getLastestScriptNotify: getLastestScriptNotify,
   getScriptUpdateLog: getScriptUpdateLog,
-  getPluginsData: getPluginsData,
 };

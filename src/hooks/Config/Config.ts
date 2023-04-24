@@ -7,8 +7,6 @@ const updateURL = `https://service-n4tqsll5-1304937021.sh.apigw.tencentcs.com/re
 const updateInfo = `https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/package.json`;
 const updateLOG = `https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/doc/update_log.md`;
 const notifyURL = `https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/src/notify.json`;
-const pluginsURL = `https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/src/plugins.json`;
-const pluginsBaseURL = `https://gitee.com/ZiuChen/NO-FLASH-Upload/raw/master/plugins/`;
 
 const userConfig = {
   "data-last-read-notify": {
@@ -74,7 +72,5 @@ export default {
   updateInfo: updateInfo,
   updateLOG: updateLOG,
   notifyURL: notifyURL,
-  pluginsURL: pluginsURL,
-  pluginsBaseURL: pluginsBaseURL,
   userConfig: userConfig,
 };
