@@ -1,5 +1,14 @@
 
 <p>
+<span>2023年4月24日</span>
+<em><b>V2.4.0：</b></em>
+</p>
+<ul>
+<li><b>FEAT: </b>移除插件页</li>
+<li><b>FEAT: </b>调整更新链接</li>
+</ul>
+
+<p>
 <span>2022年11月26日</span>
 <em><b>V2.3.12：</b></em>
 </p>
